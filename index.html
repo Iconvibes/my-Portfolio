@@ -13,10 +13,13 @@
     <link href="./css/output.css" rel="stylesheet" />
     <title>codeFerd</title>
   </head>
-  <body class="bg-myBlack">
+  <body class="bg-myBlack text-myWhite">
+
+    <!-- header -->
     <header id="home">
+
       <!-- mobile navigation -->
-    <nav class="flex items-center justify-between p-3 navigation mb-4 md:mb-9">
+    <nav class="fixed top-0 left-0 w-full flex items-center justify-between p-3 navigation mb-4 md:mb-9 bg-myBlack/40 backdrop-blur-xs z-50">
       <!-- logo -->
       <img src="./images/logo.jpg" alt="logo" class="block w-[50px] h-[50px] rounded-full border-2 border-secondary">
 
@@ -24,7 +27,7 @@
       <button id="menu-burger" class="text-4xl font-bold cursor-pointer md:hidden text-secondary hover:scale-110">&#9776;</button>
       
       <!-- Mobile menu (hidden by default) -->
-      <div id="mobile-menu" class="fixed z-50 flex flex-col items-center justify-center hidden border rounded-lg border-secondary top-1 right-1 pt-11 bg-[#302a187c] backdrop-blur-xs">
+      <div id="mobile-menu" class="fixed z-50 flex flex-col items-center justify-center hidden border rounded-lg border-secondary top-1 right-1 pt-11 bg-primary/90 backdrop-blur-sm">
         
       <!-- Close button -->
         <button id="close-menu" class="absolute text-secondary text-4xl font-bold hover:scale-110 cursor-pointer top-4 right-4">&#10005;</button>
@@ -34,13 +37,13 @@
 
           <li class="list-style"><a href="#home">Home</a></li> 
 
-          <li class="list-style"><a href="#">Project</a></li> 
+          <li class="list-style"><a href="#project">Project</a></li> 
 
           <li class="list-style"><a href="#">About</a></li> 
 
           <li class="list-style"><a href="#">Contact</a></li>
 
-          <li class="p-2 bg-secondary font-DM-Serif font-semibold text-xl w-fit mx-auto rounded-lg cursor-pointer hover:scale-110"><a href="#">View Resume</a></li> 
+          <li class="p-2 bg-secondary text-myBlack font-DM-Serif font-semibold text-xl w-fit mx-auto rounded-lg cursor-pointer hover:scale-110"><a href="#">View Resume</a></li> 
 
         </ul>
 
@@ -48,11 +51,11 @@
     </nav>
 
     <!-- header content -->
-     <div class="p-8">
+     <div class="p-8 pt-24">
 
-      <h1 class="text-myWhite font-bold text-3xl tracking-wide leading-10 my-4 text-center">Hi there, I am <span class="text-secondary">Ashonibare Ferdinard</span></h1>
+      <h1 class="text-myWhite font-bold text-3xl tracking-wide leading-10 my-4 text-center">Hi there, I am <span>Ashonibare Ferdinard</span></h1>
 
-      <h4 class="text-myWhite font-semibold text-lg leading-9">A creative <span class="text-secondary">Frontend developer</span> transforming ideas into stunning digital experiences. Let's create something stunning!</h4>
+      <h4 class="text-myWhite font-semibold text-lg leading-9 font-roboto">A creative <span>Frontend developer</span> transforming ideas into stunning digital experiences. Let's create something stunning!</h4>
 
       <!-- media links -->
       <div class="mt-6 text-white flex w-[70%] justify-between mx-auto">
@@ -64,6 +67,51 @@
 
      </div>
     </header>
+
+    <!-- projects section -->
+     <section id="project" class="p-2 font-roboto">
+      <!-- services box-->
+       <div></div>
+
+
+        <!-- portfolio section -->
+       <section class="px-3 py-4">
+          <h5 class="text-gray-400 font-medium text-center font-roboto">portfolio</h5>
+          <h2 class="text-myWhite font-roboto text-center font-semibold tracking-wider leading-9 text-2xl">My <span>Projects</span>.</h2>
+        <!--project grid  container-->
+         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
+
+          <!-- card 1 -->
+            <div>
+              <!-- card image -->
+              <div class="bg-primary p-4 rounded-lg border border-secondary">
+                <img src="./images/tpc mock.jpg" alt="" class="border border-blue-950 rounded-lg">
+              </div>
+
+                <!-- card content -->
+              <div class="p-4">
+                <h4 class="text-2xl font-bold my-1 uppercase">Tpc Logistics</h4>
+                <p class="text-gray-300">A landing page website for a logistics company, with a customized contact form that leads straight to the company's whatsapp</p>
+
+              <!-- projects link -->
+              <div class="mt-4 mb-2 flex items-center justify-between w-[60%]">
+                <a href="https://github.com/Iconvibes/TPC-Logistics" target="_blank"><i class="fa-brands fa-github inline-block social-links"></i></a>
+
+                <a href="https://iconvibes.github.io/TPC-Logistics/" target="_blank"
+                class="inline-block p-3 bg-secondary text-myBlack font-bold text-lg border-2 border-myBlack rounded-lg hover:bg-secondary/60 hover:scale-110">Live Demo</a>
+              </div>
+              </div>
+           </div>
+        </div>
+       </section>
+
+
+      <!-- my projects -->
+      <div></div>
+
+     </section>
+
+
     
     <script src="index.js"></script>
   </body>

@@ -10,6 +10,9 @@ header{
     background-position: center;
     background-size: cover;
 }
+/* span{
+    color: #fde4c3;
+} */
 
 @layer components{
         .list-style{
@@ -18,6 +21,9 @@ header{
         .social-links{
             @apply  text-4xl bg-myBlack rounded-full border border-primary hover:bg-primary hover:border-myBlack hover:scale-y-105 hover:-translate-y-1.5
         }
+       span{
+        @apply text-secondary
+       }
 }
 
 @theme{
