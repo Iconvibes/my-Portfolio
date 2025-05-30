@@ -1,14 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link href="./css/output.css" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Roboto+Slab:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./assets/fontawesome/css/all.min.css">
+    <link href="./css/output.css" rel="stylesheet" />
     <title>codeFerd</title>
-</head>
-<body>
-    <h1 class="text-3xl font-bold underline">
-    Hello world!
-  </h1>
-</body>
+  </head>
+  <body class="bg-myBlack">
+    <header id="home">
+      <!-- mobile navigation -->
+    <nav class="flex items-center justify-between p-3 navigation mb-4 md:mb-9">
+      <!-- logo -->
+      <img src="./images/logo.jpg" alt="logo" class="block w-[50px] h-[50px] rounded-full border-2 border-secondary">
+
+      <!-- Burger menu button (visible on mobile) -->
+      <button id="menu-burger" class="text-4xl font-bold cursor-pointer md:hidden text-secondary hover:scale-110">&#9776;</button>
+      
+      <!-- Mobile menu (hidden by default) -->
+      <div id="mobile-menu" class="fixed z-50 flex flex-col items-center justify-center hidden border rounded-lg border-secondary top-1 right-1 pt-11 bg-[#302a187c] backdrop-blur-xs">
+        
+      <!-- Close button -->
+        <button id="close-menu" class="absolute text-secondary text-4xl font-bold hover:scale-110 cursor-pointer top-4 right-4">&#10005;</button>
+        
+        <!-- Navigation links -->
+        <ul class="flex flex-col w-64 gap-6 p-8 text-center rounded-lg">
+
+          <li class="list-style"><a href="#home">Home</a></li> 
+
+          <li class="list-style"><a href="#">Project</a></li> 
+
+          <li class="list-style"><a href="#">About</a></li> 
+
+          <li class="list-style"><a href="#">Contact</a></li>
+
+          <li class="p-2 bg-secondary font-DM-Serif font-semibold text-xl w-fit mx-auto rounded-lg cursor-pointer hover:scale-110"><a href="#">View Resume</a></li> 
+
+        </ul>
+
+      </div>
+    </nav>
+
+    <!-- header content -->
+     <div class="p-8">
+
+      <h1 class="text-myWhite font-bold text-3xl tracking-wide leading-10 my-4 text-center">Hi there, I am <span class="text-secondary">Ashonibare Ferdinard</span></h1>
+
+      <h4 class="text-myWhite font-semibold text-lg leading-9">A creative <span class="text-secondary">Frontend developer</span> transforming ideas into stunning digital experiences. Let's create something stunning!</h4>
+
+      <!-- media links -->
+      <div class="mt-6 text-white flex w-[70%] justify-between mx-auto">
+        <a href="#"><i class="fa-brands fa-github social-links"></i></a>
+        <a href="#"><i class="fa-brands fa-tiktok social-links"></i></a>
+        <a href="#"><i class="fa-brands fa-facebook social-links"></i></a>
+        <a href="#"><i class="fa-brands fa-linkedin social-links"></i></a>
+      </div>
+
+     </div>
+    </header>
+    
+    <script src="index.js"></script>
+  </body>
 </html>
