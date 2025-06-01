@@ -2,15 +2,14 @@
 
 ## Summary
 
-A personal portfolio website built with Tailwind CSS, featuring a custom animated loader, responsive header, mobile navigation, and custom theming.
+A personal portfolio website built with Tailwind CSS, showcasing my frontend skills and projects. The site features a custom animated loader, a responsive and transparent navigation bar, interactive mobile navigation, and a modern, professional design.
 
 ## Key Features
 
 - Animated loader
-- Responsive header with logo and navigation.
-- Mobile menu with burger button and close functionality.
-- Social media links and custom styles.
-- Project cards in a responsive grid, all with consistent height for alignment.
-- Built mobile view first, with further responsiveness for larger screens.
+- Responsive header
+- Mobile menu with burger button, close functionality, 
+- Rotating skill logos orbiting the profile image for visual interest.
+- Built mobile-first, fully responsive for all screen sizes.
 
 ---
