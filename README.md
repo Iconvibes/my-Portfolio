@@ -1,10 +1,16 @@
-"# my-portfolio" 
+# My Portfolio
 
-## Summary of Changes
-## working first on the mobile view before other responsiveness
+## Summary
 
-- Set up project structure with Tailwind CSS and custom styles.
-- Built a responsive header with logo and navigation.
-- Added a mobile menu with burger button and close functionality.
-- Mobile menu closes when a link or close button is clicked.
-- Included social media links and custom theming.
+A personal portfolio website built with Tailwind CSS, featuring a custom animated loader, responsive header, mobile navigation, and custom theming.
+
+## Key Features
+
+- Animated loader
+- Responsive header with logo and navigation.
+- Mobile menu with burger button and close functionality.
+- Social media links and custom styles.
+- Project cards in a responsive grid, all with consistent height for alignment.
+- Built mobile view first, with further responsiveness for larger screens.
+
+---
