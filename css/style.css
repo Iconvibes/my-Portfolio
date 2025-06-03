@@ -41,6 +41,18 @@ header{
   height: 560px;
 }
 
+.contact{
+     background-image: linear-gradient(to bottom, #302a18e1, rgba(28, 28, 28, 0.868) 40%), url('../images/contact.avif');
+    background-position: center;
+    background-size: cover;
+}
+
+/* Custom style for select options (WebKit browsers only) */
+select option {
+  background-color: #fde4c387; /* your secondary color */
+  color: #1c1c1c;            /* your black */
+}
+
 @layer components{
         .list-style{
           @apply  text-xl font-medium font-DM-Serif text-secondary w-fit mx-auto border-b cursor-pointer hover:scale-120;
@@ -102,6 +114,8 @@ header{
   width: 48px; height: 48px;
   pointer-events: auto;
 }
+
+
 
 @media (min-width: 1024px) { /* lg breakpoint */
   .project-card {

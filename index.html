@@ -59,7 +59,7 @@
 
           <li class="list-style"><a href="#about">About</a></li> 
 
-          <li class="list-style"><a href="#">Contact</a></li>
+          <li class="list-style"><a href="#contact">Contact</a></li>
 
           <li class="resume"><a href="#">View Resume</a></li> 
 
@@ -126,19 +126,19 @@
             <div class="project-card">
               <!-- card image -->
               <div class="project-card-img">
-                <img src="./images/tpc mock.jpg" alt="" class="border border-blue-950 rounded-lg">
+                <img src="./images/loop.jpg" alt="" class="border border-blue-950 rounded-lg">
               </div>
 
                 <!-- card content -->
               <div class="p-4">
-                <h4 class="text-2xl font-bold my-1 uppercase">Tpc Logistics</h4>
-                <p class="text-gray-300">A landing page website for a logistics company, with a customized contact form that leads straight to the company's whatsapp</p>
+                <h4 class="text-2xl font-bold my-1 uppercase">LoopStudios</h4>
+                <p class="text-gray-300">A landing page website for a virtual reality company (exercise from <a href="https://www.frontendmentor.io" target="_blank" class="text-secondary">frontend Mentor</a> )</p>
 
               <!-- projects link -->
               <div class="mt-4 mb-2 flex items-center justify-between w-[60%]">
-                <a href="https://github.com/Iconvibes/TPC-Logistics" target="_blank"><i class="fa-brands fa-github inline-block social-links"></i></a>
+                <a href="https://github.com/Iconvibes/loopstud" target="_blank"><i class="fa-brands fa-github inline-block social-links"></i></a>
 
-                <a href="https://iconvibes.github.io/TPC-Logistics/" target="_blank"
+                <a href="https://iconvibes.github.io/loopstud/" target="_blank"
                 class="inline-block p-3 bg-secondary text-myBlack font-bold text-lg border-2 border-myBlack rounded-lg hover:bg-secondary/60 hover:scale-110">Live Demo</a>
               </div>
               </div>
@@ -333,6 +333,87 @@
          </div>
         
       </section>
+      
+      <!-- contact section -->
+       <section id="contact" class="p-2 font-roboto contact">
+        <!-- contact top -->
+        <h5 class="text-gray-400 font-medium text-center font-roboto uppercase">Get in touch</h5>
+        <h2 class="text-myWhite font-roboto text-center font-semibold tracking-wider leading-9 text-2xl lg:text-4xl">Contact <span>Me</span>.</h2>
+          
+        <p class="text-gray-200 text-center text-lg lg:w-[70%] lg:mx-auto mt-4 mb-6">
+          I am currently open to full time , contract, or part-time oppurtunities in frontend development
+        </p>
+
+        <!-- contact me content -->
+         <div class="flex flex-col mx-auto w-[95%] md:w-[80%] lg:w-[70%] p-2 border border-secondary rounded-lg bg-primary/70 items-center justify-center lg:flex-row lg:justify-center lg:justify-between">
+
+          <!--contact info  -->
+            <!-- contact info heading -->
+
+           
+
+            <div class="flex flex-col items-start space-y-4 lg:w-full lg:flex-row lg:items-center lg:justify-center lg:justify-between lg:space-x-6 lg:space-y-0">
+
+              <!-- contact details -->
+            <div class="flex flex-col items-start space-y-4">
+
+               <p class="text-myWhite text-lg mb-2">
+              Have an awesome project in mind?
+              <a href="#" class="text-secondary inline-block">Let's Discuss</a>
+            </p>
+
+              <!-- email -->
+               <div class="flex justify-center gap-2.5">
+                <i class="fa-solid fa-envelope mr-2 social-links inline-block"></i>
+                <p class="text-gray-300 mb-2 inline-block"> ferdinardoluwajuwonlo@gmail.com</p>
+               </div>
+              <!-- phone -->
+               <div class="flex justify-center justify-between gap-2.5">
+                <i class="fa-solid fa-phone mr-2 social-links inline-block"></i>
+                <p class="text-gray-300 mb-2 inline-block"> +234 903 123 4567</p>
+               </div>
+              <!-- address -->
+               <div class="flex justify-center gap-2.5">
+                <i class="fa-solid fa-location-dot mr-2 social-links inline-block"></i>
+                <p class="text-gray-300 mb-2 inline-block"> Lagos, Nigeria</p>
+               </div>
+            </div>
+          
+
+          <!-- contact form -->  
+            <div class="my-6 w-full lg:w-[60%]">
+              <form action="#" class="mt-6 flex flex-col gap-3 w-full">
+                <label for="contact-method" class="inline-block self-start">Contact Method</label>
+                <select id="contact-method" name="contact-method" class="p-3 mb-2 w-full bg-primary/70 border border-secondary rounded-lg text-gray-300 focus:outline-none focus:border-secondary" required>
+                  <option value="" disabled selected>Select a method</option>
+                  <option value="whatsapp">WhatsApp</option>
+                  <option value="email">Email</option>
+                  <option value="linkedin">LinkedIn</option>
+                  <option value="facebook">Facebook</option>
+                  <option value="tiktok">TikTok</option>
+                </select>
+
+                <label for="name" class="inline-block self-start">Full Name</label>
+                <input type="text" placeholder="Your Name" class="p-3 mb-2 w-full bg-primary/70 border border-secondary rounded-lg text-gray-300 focus:outline-none focus:border-secondary" required>
+
+                <label for="email" class="inline-block self-start">Email</label>
+                <input type="email" placeholder="Your Email" class="p-3 mb-2 w-full bg-primary/70 border border-secondary rounded-lg text-gray-300 focus:outline-none focus:border-secondary" required>
+
+                <label for="message" class="inline-block self-start">Message</label>
+                <textarea placeholder="Your Message" class="p-3 mb-2 w-full bg-primary/70 border border-secondary rounded-lg text-gray-300 focus:outline-none focus:border-secondary h-32 resize-none" required></textarea>
+                
+                <button type="submit" class="p-3 bg-secondary text-myBlack font-bold text-lg border-2 border-myBlack rounded-lg hover:bg-secondary/60 hover:scale-110 w-full sm:w-auto">
+                  Send Message <i class="fa-solid fa-envelope ml-2"></i>
+                </button>
+              </form>
+            </div>
+            </div>
+            </div>
+
+
+         </div>
+
+       </section>
 
    </div>
 

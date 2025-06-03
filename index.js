@@ -52,3 +52,51 @@ mobileLinks.forEach(link => {
   });
 });
 
+// Contact form submission handling
+document.querySelector('form').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const method = document.getElementById('contact-method').value;
+  const name = document.querySelector('input[placeholder="Your Name"]').value;
+  const email = document.querySelector('input[placeholder="Your Email"]').value;
+  const message = document.querySelector('textarea[placeholder="Your Message"]').value;
+
+  let url = '';
+  let msg = `Name: ${name}\nEmail: ${email}\nMessage: ${message}`;
+
+  switch(method) {
+    case 'whatsapp':
+      url = `https://wa.me/2349137360986?text=${encodeURIComponent(msg)}`;
+      if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+        window.location.href = url;
+        return;
+      } else {
+        window.open(url, '_blank');
+        setTimeout(() => {
+          alert('If WhatsApp did not open, please try on your mobile device or check your browser settings.');
+        }, 1000);
+        return;
+      }
+    case 'email':
+      url = `mailto:ferdinardoluwajuwonlo@gmail.com?subject=Portfolio Contact&body=${encodeURIComponent(msg)}`;
+      break;
+    case 'linkedin':
+      url = `https://www.linkedin.com/in/your-linkedin-username/`;
+      alert('Please send your message via LinkedIn after connecting!');
+      break;
+    case 'facebook':
+      url = `https://www.facebook.com/your-facebook-username/`;
+      alert('Please send your message via Facebook after connecting!');
+      break;
+    case 'tiktok':
+      url = `https://www.tiktok.com/@codeferd`;
+      alert('Please send your message via TikTok after connecting!');
+      break;
+    default:
+      alert('Please select a contact method.');
+      return;
+  }
+
+  window.open(url, '_blank');
+});
+
