@@ -15,16 +15,14 @@ A personal portfolio website built with Tailwind CSS and vanilla JavaScript, sho
 - Fully responsive contact section with selectable contact method (WhatsApp, Email, LinkedIn, Facebook, TikTok) that opens the appropriate app/site and pre-fills the user's message.
 - Built mobile-first, fully responsive for all screen sizes.
 
-## How to Use
+## Feel free to Use the design
+-make your own little changes
 
-1. Clone or download the repository.
-2. Open `index.html` in your browser, or deploy to any static hosting provider (Netlify, Vercel, GitHub Pages, etc.).
-3. Update your contact details and social/profile links in the HTML as needed.
+## Future Improvements To Make 
 
-## Future Improvements
-
-- As my learing progresses i look forward to rebuilding the portfolio with React for better scalability, maintainability, and interactivity.
-- Add backend integration for storing messages or sending emails directly.
-- Add more animations and transitions for enhanced user experience.
+# As my learing progresses i'll be:
+- Rebuilding the portfolio with React for better scalability, maintainability, and interactivity.
+- Adding backend integration for storing messages or sending emails directly.
+- Adding more animations and transitions for enhanced user experience.
 
 ---
