@@ -75,6 +75,9 @@ select option {
        .skills{
         @apply border border-secondary p-5 rounded-full text-center text-2xl bg-secondary/10 inline-block mx-2 my-4
        }
+       footer{
+        @apply bg-myBlack/70 p-4 text-center text-gray-400 font-roboto flex flex-col items-center justify-center space-y-4 mt-8 lg:mt-12 lg:mx-auto lg:w-[70%] lg:grid lg:grid-cols-3 lg:gap-6 lg:items-center lg:justify-items-center lg:text-left
+       }
 }
 
 @theme{

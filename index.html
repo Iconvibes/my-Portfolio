@@ -402,7 +402,7 @@
                 <label for="message" class="inline-block self-start">Message</label>
                 <textarea placeholder="Your Message" class="p-3 mb-2 w-full bg-primary/70 border border-secondary rounded-lg text-gray-300 focus:outline-none focus:border-secondary h-32 resize-none" required></textarea>
                 
-                <button type="submit" class="p-3 bg-secondary text-myBlack font-bold text-lg border-2 border-myBlack rounded-lg hover:bg-secondary/60 hover:scale-110 w-full sm:w-auto">
+                <button type="submit" class="p-3 bg-secondary text-myBlack font-bold text-lg border-2 border-myBlack rounded-lg hover:bg-secondary/60 hover:scale-110 w-full sm:w-auto lg:w-[50%] lg:mx-auto">
                   Send Message <i class="fa-solid fa-envelope ml-2"></i>
                 </button>
               </form>
@@ -415,10 +415,42 @@
 
        </section>
 
+
+       <!-- footer section -->
+        <footer>
+
+          <div>
+            <h2 class="text-2xl font-roboto text- uppercase">codeFerd<span class="text-secondary text-5xl">.</span></h2>
+          </div>
+          
+          <div>
+            <h3 class="text-2xl font-roboto text-gray-200">Web Developer</h3>
+            <h3 class="text-2xl font-roboto text-gray-200">Frontend Developer</h3>
+          </div>
+
+          <div class="mt-2 w-[80%] md:w-[60%] mx-auto flex justify-between items-center lg:w-full">
+            <a href="#"><i class="fa-brands fa-github social-links inline-block"></i></a>
+            <a href="#"><i class="fa-brands fa-tiktok social-links inline-block"></i></a>
+            <a href="#"><i class="fa-brands fa-facebook social-links inline-block"></i></a>
+            <a href="#"><i class="fa-brands fa-linkedin social-links inline-block"></i></a>
+          </div>
+
+          <div class="font-roboto lg:col-span-3 lg:text-center lg:mb-4 tracking-wider leading-14">
+          <p class="text-sm lg:text-2xl">Designed and Developed by <a href="#" class="text-secondary">Me</a></p>
+          <p class="text-sm lg:text-2xl">© <span id="current-year"></span> Ashonibare Ferdinard. All rights reserved.</p>
+          </div>
+
+        </footer>
+
    </div>
 
 
     
     <script src="index.js"></script>
+
+    <!-- short code for the current year  -->
+    <script>
+  document.getElementById('current-year').innerText = new Date().getFullYear();
+</script>
   </body>
 </html>
