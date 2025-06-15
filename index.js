@@ -81,7 +81,7 @@ document.querySelector('form').addEventListener('submit', function(e) {
       url = `mailto:ferdinardoluwajuwonlo@gmail.com?subject=Portfolio Contact&body=${encodeURIComponent(msg)}`;
       break;
     case 'linkedin':
-      url = `https://www.linkedin.com/in/your-linkedin-username/`;
+      url = `https://www.linkedin.com/in/ferdinard-ashonibare-3a3203369`;
       alert('Please send your message via LinkedIn after connecting!');
       break;
     case 'facebook':
