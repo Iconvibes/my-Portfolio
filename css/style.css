@@ -39,6 +39,13 @@ header{
 }
 .project-card {
   height: 560px;
+  position: relative;
+}
+#netflix-message{
+  display: none;
+}
+#demo:hover #netflix-message{
+    display: block;
 }
 
 .contact{

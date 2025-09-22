@@ -170,20 +170,22 @@
           <div class="project-card">
               <!-- card image -->
               <div class="project-card-img">
-                <img src="./images/tpc mock.jpg" alt="" class="border border-blue-950 rounded-lg">
+                <img src="./images/jflix.jpg" alt="" class="border border-blue-950 rounded-lg">
               </div>
 
                 <!-- card content -->
               <div class="p-4">
-                <h4 class="text-2xl font-bold my-1 uppercase">Tpc Logistics</h4>
-                <p class="text-gray-300">A landing page website for a logistics company, with a customized contact form that leads straight to the company's whatsapp</p>
+                <h4 class="text-2xl font-bold my-1 uppercase">Netflix-Clone</h4>
+                <p class="text-gray-300">A Netflix clone built with TMDB Api and Firebase authentication for user sign up, sign in, sign out using ReactJS</p>
 
               <!-- projects link -->
               <div class="mt-4 mb-2 flex items-center justify-between w-[60%]">
-                <a href="https://github.com/Iconvibes/TPC-Logistics" target="_blank"><i class="fa-brands fa-github inline-block social-links"></i></a>
+                <a href="https://github.com/Iconvibes/jay-movie-trailer" target="_blank"><i class="fa-brands fa-github inline-block social-links"></i></a>
 
-                <a href="https://iconvibes.github.io/TPC-Logistics/" target="_blank"
+                <a href="#" target="_blank" id="demo"
                 class="inline-block p-3 bg-secondary text-myBlack font-bold text-lg border-2 border-myBlack rounded-lg hover:bg-secondary/60 hover:scale-110">Live Demo</a>
+
+                <p id="netflix-message" class="absolute bottom-[15%] bg-secondary text-primary w-[90%] p-1.5 rounded-md mx-auto ">Site could not be hosted due to copyright issue with Netflix trademarks. Only github repo is available, might be hosted <br/><span class="uppercase underline text-primary">Do check in later</span></p>
               </div>
               </div>
            </div>
@@ -445,6 +447,19 @@
 
     
     <script src="index.js"></script>
+    <script>
+      const demo = document.getElementById('demo');
+      const netflixMessage = document.getElementById('netflix-message');
+
+      demo.addEventListener('click', (e) => {
+        e.preventDefault();
+        netflixMessage.style.display = 'block';
+
+        setTimeout(() => {
+          netflixMessage.style.display = 'none';
+        }, 4000); // Hide after 4 seconds
+      });
+    </script>
 
     <!-- short code for the current year  -->
     <script>
