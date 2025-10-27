@@ -1,1 +1,10 @@
 @import 'tailwindcss';
+
+@theme{
+    --color-myBlack: #1c1c1c;
+    --color-primary: #302a18;
+    --color-secondary: #fde4c3;
+    --color-myWhite: #f6f6f6;
+    --font-DM-Serif: DM Serif, Arial , sans-serif;
+    --font-roboto: Roboto Slab, verdana, sans-serif;
+}
