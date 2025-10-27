@@ -1,6 +1,20 @@
+import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom"
+import MainLayout from "./layout/MainLayout"
+import LandingPage from "./Pages/LandingPage"
+
+
 const App = () => {
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route path="/" element={<MainLayout />} >
+        <Route index element={<LandingPage />} />
+      </Route>
+    )
+  )
+
+
   return (
-    <h1 className="text-4xl bg-orange-500 text-indigo-600">App</h1>
+     <RouterProvider router={router} />
   )
 }
 
