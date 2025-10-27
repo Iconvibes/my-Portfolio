@@ -1,4 +1,4 @@
-import Navigation from "../Ui/Navigation"
+import Navigation from "../Navigation"
 
 const Header = () => {
   return (

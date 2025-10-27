@@ -1,5 +1,5 @@
-import PillNav from './PillNav';
-import logo from '../../assets/images/logo.jpg';
+import PillNav from './Ui/PillNav';
+import logo from '../assets/images/logo.jpg';
 
 
 const Navigation = () => {

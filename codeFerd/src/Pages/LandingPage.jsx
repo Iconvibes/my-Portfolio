@@ -1,7 +1,7 @@
 const LandingPage = () => {
   return (
-    <div className="pt-24">
-      LandingPage
+    <div className="w-full min-h-[600px] relative">
+      Content goes here
     </div>
   )
 }
