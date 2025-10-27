@@ -11,8 +11,9 @@ const Navigation = () => {
   items={[
     { label: 'Home', href: '/' },
     { label: 'About', href: '/about' },
-    { label: 'Services', href: '/services' },
-    { label: 'Contact', href: '/contact' }
+    { label: 'Projects', href: '/projects' },
+    { label: 'Contact', href: '/contact' },
+    { label: 'Resume', href: '/resume'}
   ]}
   activeHref="/"
   className="custom-nav"

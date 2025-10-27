@@ -65,9 +65,7 @@ select option {
         .list-style{
           @apply  text-xl font-medium font-DM-Serif text-secondary w-fit mx-auto border-b cursor-pointer hover:scale-120;
         }
-        .resume{
-          @apply p-2 bg-secondary text-myBlack font-DM-Serif font-semibold text-xl w-fit mx-auto rounded-lg cursor-pointer hover:scale-110
-        }
+        
         .social-links{
             @apply  text-4xl bg-myBlack rounded-full border border-primary hover:bg-primary hover:border-myBlack hover:scale-y-105 hover:-translate-y-1.5 md:text-5xl lg:text-6xl
         }
@@ -77,15 +75,11 @@ select option {
        .project-card-img{
         @apply bg-primary p-4 rounded-lg border border-secondary
        }
-       .floating-logo{
-        @apply absolute w-[48px] h-[48px] rounded-full border border-secondary
-       }
+       
        .skills{
         @apply border border-secondary p-5 rounded-full text-center text-2xl bg-secondary/10 inline-block mx-2 my-4
        }
-       footer{
-        @apply bg-myBlack/70 p-4 text-center text-gray-400 font-roboto flex flex-col items-center justify-center space-y-4 mt-8 lg:mt-12 lg:mx-auto lg:w-[70%] lg:grid lg:grid-cols-3 lg:gap-6 lg:items-center lg:justify-items-center lg:text-left
-       }
+       
 }
 
 @theme{
