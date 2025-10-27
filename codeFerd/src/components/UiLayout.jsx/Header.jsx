@@ -2,9 +2,9 @@ import Navigation from "../Ui/Navigation"
 
 const Header = () => {
   return (
-    <div className="bg-blue-500 p-4 text-white">
+    <header className="fixed top-0 left-0 right-0 z-50 flex justify-center py-4">
       <Navigation />
-    </div>
+    </header>
   )
 }
 

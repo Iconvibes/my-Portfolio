@@ -5,9 +5,11 @@ import Header from "../components/UiLayout.jsx/Header";
 
 const MainLayout = () => {
   return (
-    <div>
+    <div className="flex flex-col min-h-screen relative">
        <Header />
-       <Outlet />
+       <main className="flex-1">
+         <Outlet />
+       </main>
        <Footer />
     </div>
   );
