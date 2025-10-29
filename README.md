@@ -2,11 +2,9 @@
 
 ## Summary
 
-A personal portfolio website built with Tailwind CSS and vanilla JavaScript, showcasing my projects, and contact information. The site features a custom animated loader, a responsive and transparent navigation bar, interactive mobile navigation, and a modern, professional design.
+A personal portfolio website built with ReactJS and Tailwind CSS, showcasing my projects, and contact information. The site features a custom animated loader, a responsive pill navigation, interactive mobile navigation, and a modern, professional design.
 
 ## Key Features
-
-- Animated loader
 - Responsive header 
 - Mobile menu 
 - Social media links and custom theming.
@@ -21,7 +19,6 @@ A personal portfolio website built with Tailwind CSS and vanilla JavaScript, sho
 ## Future Improvements To Make 
 
 # As my learing progresses i'll be:
-- Rebuilding the portfolio with React for better scalability, maintainability, and interactivity.
 - Adding backend integration for storing messages or sending emails directly.
 - Adding more animations and transitions for enhanced user experience.
 
