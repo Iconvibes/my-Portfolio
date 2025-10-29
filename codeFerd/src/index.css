@@ -23,33 +23,3 @@
         @apply bg-myBlack/80 px-4 py-2 text-center text-gray-400 font-roboto flex flex-col items-center justify-center space-y-4 mt-8 lg:mt-8 lg:mx-auto lg:w-[80%] lg:grid lg:grid-cols-3 lg:gap-6 lg:items-center lg:justify-items-center lg:text-left
        }
 }
-
-
-.orbit {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  pointer-events: none;
-}
-
-/* Orbit animation */
-@keyframes orbit-rotate {
-  0% { transform: rotate(0deg);}
-  100% { transform: rotate(360deg);}
-}
-
-.orbit1 { animation: orbit-rotate 8s linear infinite; }
-.orbit2 { animation: orbit-rotate 8s linear infinite; animation-delay: -1.6s; }
-.orbit3 { animation: orbit-rotate 8s linear infinite; animation-delay: -3.2s; }
-.orbit4 { animation: orbit-rotate 8s linear infinite; animation-delay: -4.8s; }
-.orbit5 { animation: orbit-rotate 8s linear infinite; animation-delay: -6.4s; }
-
-/* Place the logo at the top edge of the orbit */
-.orbit img.floating-logo {
-  position: absolute;
-  top: -24px; /* half the logo height for 48px logos */
-  left: 50%;
-  transform: translateX(-50%);
-  width: 48px; height: 48px;
-  pointer-events: auto;
-}
