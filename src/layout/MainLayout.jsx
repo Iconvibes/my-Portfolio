@@ -3,12 +3,10 @@ import Footer from "../components/UiLayout.jsx/Footer";
 import Header from "../components/UiLayout.jsx/Header";
 import LightRays from '../components/Ui/LightRays';
 
-
 const MainLayout = () => {
 
   const location = useLocation();
   const isLandingPage = location.pathname === '/';
-
 
   return (
     <div className="flex flex-col min-h-screen relative bg-myBlack overflow-hidden">
