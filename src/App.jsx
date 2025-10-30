@@ -9,6 +9,7 @@ import Contact from "./Pages/Contact"
 const App = () => {
   const router = createBrowserRouter(
     createRoutesFromElements(
+      
       <Route path="/" element={<MainLayout />} >
         <Route index element={<Home />} />
         <Route path="about" element={<About />} />
