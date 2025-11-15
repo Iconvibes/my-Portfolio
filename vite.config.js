@@ -10,6 +10,29 @@ export default defineConfig({
   ],
   build: {
     outDir: 'dist',
-    sourcemap: false
+    sourcemap: false,
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true
+      }
+    },
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'vendor': ['react', 'react-dom', 'react-router-dom'],
+          'gsap': ['gsap'],
+          'ogl': ['ogl']
+        }
+      }
+    },
+    chunkSizeWarningLimit: 1000,
+    cssCodeSplit: true,
+    reportCompressedSize: false
+  },
+  server: {
+    middlewareMode: false,
+    preTransformRequests: true
   }
 })
