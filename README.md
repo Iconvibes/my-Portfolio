@@ -1,25 +1,36 @@
-# My Portfolio
+# Codeferd Digital
 
 ## Summary
+A high-end agency website for Codeferd Digital. Built with React, Tailwind CSS, GSAP, and Framer Motion to showcase services, pricing, case studies, and a streamlined contact flow.
 
-A personal portfolio website built with ReactJS and Tailwind CSS, showcasing my projects, and contact information. The site features a custom animated loader, a responsive pill navigation, interactive mobile navigation, and a modern, professional design.
+## Tech Stack
+- React (Vite)
+- Tailwind CSS
+- React Router
+- GSAP
+- Framer Motion
 
 ## Key Features
-- Responsive header 
-- Mobile menu 
-- Social media links and custom theming.
-- Project cards in a responsive grid, all with consistent height for alignment.
-- "About Me" and "Technical Skills" sections with concise, professional descriptions.
-- Fully responsive contact section with selectable contact method (WhatsApp, Email, LinkedIn, Facebook, TikTok) that opens the appropriate app/site and pre-fills the user's message.
-- Built mobile-first, fully responsive for all screen sizes.
+- Dark and light mode with a subdued light palette.
+- Sticky, blurred-glass navigation with a theme toggle.
+- Hero headline with GSAP text-mask reveal.
+- Services and pricing sections with agency-grade copy.
+- Dedicated training section with 3-month and 6-month programs.
+- Pricing cards that deep-link to the contact form with package details pre-filled.
+- Contact form that supports WhatsApp, email, and social channels.
 
-## Feel free to Use the design
--make your own little changes
+## Local Development
+1. Install dependencies:
+   npm install
+2. Start the dev server:
+   npm run dev
 
-## Future Improvements To Make 
+## Configuration
+- Pricing packages are defined in `src/data/pricing.js`.
+- Contact details (email, phone, social links) live in `src/components/ContactHead.jsx` and `src/components/Form.jsx`.
+- Package prefill uses the query param format:
+  `/contact?package=custom-website`
 
-# As my learing progresses i'll be:
-- Adding backend integration for storing messages or sending emails directly.
-- Adding more animations and transitions for enhanced user experience.
-
----
+## Notes
+- Update pricing values and currency in `src/data/pricing.js`.
+- The light theme is intentionally soft (not bright) for a premium look.

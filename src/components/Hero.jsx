@@ -38,7 +38,8 @@ const Hero = () => {
   const highlights = [
     'Brand Strategy & Design',
     'Performance Web Engineering',
-    'Creative Consulting'
+    'Creative Consulting',
+    'Frontend Training'
   ];
 
   return (
