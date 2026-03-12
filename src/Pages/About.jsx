@@ -1,19 +1,35 @@
+import { useEffect, useState } from "react";
 import myPics from "../assets/images/portfolio-img.jpg";
-import InfiniteScroll from "../components/Ui/InfinteScroll";
 import { Link } from "react-router-dom";
 
 const About = () => {
-  const items = [
-    { content: <h3>STRATEGY</h3> },
-    { content: <h3>UI DESIGN</h3> },
-    { content: <h3>UX FLOWS</h3> },
-    { content: <h3>REACT</h3> },
-    { content: <h3>TAILWIND CSS</h3> },
-    { content: <h3>NODE</h3> },
-    { content: <h3>CMS</h3> },
-    { content: <h3>SEO</h3> },
-    { content: <h3>ANALYTICS</h3> },
-    { content: <h3>ACCESSIBILITY</h3> },
+  const [isResumeOpen, setIsResumeOpen] = useState(false);
+  const resumeDocx = "/resume/FERDINARD%20ASHONIBARE(Resume).docx";
+  const resumePdf = "/resume/resume.pdf";
+  const highlights = [
+    "Founder, Codeferd Digital",
+    "Frontend Engineering & UI/UX",
+    "React, JavaScript, Tailwind CSS",
+    "Responsive Web Design (Figma)",
+    "Lagos, Nigeria - Remote worldwide"
+  ];
+  const capabilities = [
+    {
+      title: "Strategy & Direction",
+      items: ["Positioning", "Messaging", "Content structure", "Launch planning"]
+    },
+    {
+      title: "UI/UX & Design",
+      items: ["Figma systems", "Responsive design", "Prototyping", "Design handoff"]
+    },
+    {
+      title: "Frontend Engineering",
+      items: ["HTML/CSS/JS", "React interfaces", "Tailwind systems", "Accessibility"]
+    },
+    {
+      title: "Optimization & Growth",
+      items: ["Performance tuning", "SEO basics", "Analytics", "Conversion flow"]
+    }
   ];
 
   const principles = [
@@ -35,6 +51,15 @@ const About = () => {
     }
   ];
 
+  useEffect(() => {
+    document.body.style.overflow = isResumeOpen ? "hidden" : "";
+    document.documentElement.style.overflow = isResumeOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+    };
+  }, [isResumeOpen]);
+
   return (
     <section className="section py-8 pt-28 md:pt-32 lg:pt-36 overflow-x-hidden">
       <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-12 items-center">
@@ -43,6 +68,8 @@ const About = () => {
           <img
             src={myPics}
             alt="Ashonibare Ferdinard portrait"
+            loading="lazy"
+            decoding="async"
             className="rounded-3xl bg-primary/40 border border-secondary/40 w-full object-cover h-[420px]"
           />
         </div>
@@ -51,8 +78,22 @@ const About = () => {
           <p className="section-kicker">Studio</p>
           <h2 className="section-title">Founder-led web development studio.</h2>
           <p className="text-myWhite/70 text-lg">
-            Codeferd Digital is led by Ashonibare Ferdinard. We partner with startups and growing brands
-            to design and build websites that feel premium, load fast, and convert the right audience.
+            Codeferd Digital is led by{" "}
+            <a
+              href={resumePdf}
+              download
+              onClick={(event) => {
+                if (window.matchMedia("(min-width: 768px)").matches) {
+                  event.preventDefault();
+                  setIsResumeOpen(true);
+                }
+              }}
+              className="text-secondary underline underline-offset-4"
+            >
+              Ashonibare Ferdinard
+            </a>
+            . We partner with startups and growing brands to design and build websites that feel premium,
+            load fast, and convert the right audience.
           </p>
           <p className="text-myWhite/70 text-lg">
             Our work blends strategy, UI design, and modern engineering. The result is a site that looks
@@ -68,13 +109,13 @@ const About = () => {
           </div>
           <div className="pt-4">
             <Link to="/contact" className="btn-primary">
-              Work with the studio
+              Start a project
             </Link>
           </div>
         </div>
       </div>
 
-      <div className="mt-16 grid lg:grid-cols-2 gap-12 items-center">
+      <div className="mt-16 grid lg:grid-cols-2 gap-12 items-start">
         <div className="space-y-4">
           <p className="section-kicker">Capabilities</p>
           <h2 className="section-title">Skills that support the full build.</h2>
@@ -84,16 +125,76 @@ const About = () => {
           </p>
         </div>
 
-        <div className="relative h-[320px]">
-          <InfiniteScroll
-            items={items}
-            isTilted={true}
-            tiltDirection="left"
-            autoplay={true}
-            autoplaySpeed={1.1}
-            autoplayDirection="down"
-            pauseOnHover={true}
-          />
+        <div className="grid gap-4 md:grid-cols-2">
+          {capabilities.map(capability => (
+            <div key={capability.title} className="card p-4">
+              <h3 className="text-lg">{capability.title}</h3>
+              <ul className="mt-3 list-disc list-inside text-sm text-myWhite/70 space-y-2">
+                {capability.items.map(item => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div
+        className={`fixed inset-0 z-50 transition ${
+          isResumeOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+        }`}
+      >
+        <div
+          className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+          onClick={() => setIsResumeOpen(false)}
+        />
+        <div
+          className={`absolute right-0 top-0 h-full w-full max-w-3xl transform bg-primary/95 border-l border-myWhite/10 transition duration-300 ${
+            isResumeOpen ? "translate-x-0" : "translate-x-full"
+          }`}
+        >
+          <div className="flex h-full flex-col p-6 overflow-y-auto overscroll-contain">
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <p className="section-kicker">Resume</p>
+                <h3 className="text-2xl">Ashonibare Ferdinard</h3>
+                <p className="text-sm text-myWhite/70 mt-2">
+                  Highlights, preview, and download in one place.
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={() => setIsResumeOpen(false)}
+                className="text-xs uppercase tracking-[0.3em] text-myWhite/70"
+              >
+                Close
+              </button>
+            </div>
+
+            <div className="mt-6 space-y-4">
+              <div className="card p-4">
+                <p className="section-kicker">Highlights</p>
+                <ul className="mt-3 list-disc list-inside text-sm text-myWhite/70 space-y-2">
+                  {highlights.map(item => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="rounded-2xl border border-myWhite/10 bg-primary/60 overflow-hidden h-[520px] md:h-[600px]">
+                <iframe title="Resume Preview" src={resumePdf} className="w-full h-full" />
+              </div>
+            </div>
+
+            <div className="mt-auto pt-6 flex flex-wrap gap-3">
+              <a href={resumeDocx} className="btn-ghost" download>
+                Download DOCX
+              </a>
+              <a href={resumePdf} className="btn-ghost" target="_blank" rel="noopener noreferrer">
+                Open PDF
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>

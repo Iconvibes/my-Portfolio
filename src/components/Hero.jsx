@@ -49,6 +49,12 @@ const Hero = () => {
           <span className="badge" data-hero>
             Codeferd Digital
           </span>
+          <div data-hero className="flex flex-wrap gap-2 text-xs uppercase tracking-[0.3em] text-myWhite/60">
+            <span className="inline-flex items-center gap-2 rounded-full border border-secondary/40 bg-secondary/10 px-3 py-1 text-secondary">
+              Availability
+            </span>
+            <span>Now booking new projects</span>
+          </div>
           <h1
             aria-label="Engineering Digital Excellence."
             className="text-myWhite font-semibold text-4xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight text-glow"
@@ -86,7 +92,6 @@ const Hero = () => {
             <span>Lagos, Nigeria</span>
             <span className="text-secondary">Remote worldwide</span>
             <span>React + Tailwind</span>
-            <span className="text-secondary">Available for opportunities</span>
           </div>
         </div>
 
@@ -110,6 +115,8 @@ const Hero = () => {
             <img
               src={heroShot}
               alt="Selected case study preview"
+              loading="eager"
+              decoding="async"
               className="w-full h-56 object-cover rounded-2xl"
             />
             <div className="mt-4 flex items-center justify-between text-xs uppercase tracking-[0.3em] text-myWhite/60">

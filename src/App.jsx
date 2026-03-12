@@ -4,6 +4,7 @@ import Home from "./Pages/Home";
 import About from "./Pages/About";
 import Projects from "./Pages/Projects";
 import Contact from "./Pages/Contact";
+import Services from "./Pages/Services";
 
 
 const App = () => {
@@ -11,6 +12,7 @@ const App = () => {
     createRoutesFromElements(
       <Route path="/" element={<MainLayout />}>
         <Route index element={<Home />} />
+        <Route path="services" element={<Services />} />
         <Route path="studio" element={<About />} />
         <Route path="work" element={<Projects />} />
         <Route path="contact" element={<Contact />} />

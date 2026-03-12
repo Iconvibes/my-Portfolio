@@ -9,7 +9,7 @@ const Contact = () => {
   const selectedId = searchParams.get("package");
   const selectedPackage = [...pricing, ...trainingPrograms].find(plan => plan.id === selectedId);
   return(
-    <section className="section pt-28 md:pt-32 lg:pt-36">
+    <section data-animate="fade-up" className="section pt-28 md:pt-32 lg:pt-36">
         <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] items-start">
           <ContactHead />
           <Form selectedPackage={selectedPackage} />
