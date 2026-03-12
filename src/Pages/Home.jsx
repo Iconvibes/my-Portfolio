@@ -2,62 +2,9 @@ import { Link } from 'react-router-dom';
 import Hero from '../components/Hero';
 import workItems from '../assets/project';
 import pricing from '../data/pricing';
-import trainingPrograms from '../data/training';
+import services from '../data/services';
 
 const Home = () => {
-  const services = [
-    {
-      title: 'Brand Strategy & Design',
-      description:
-        'We build visual identities that command attention. From high-end logo systems to comprehensive brand guidelines, we ensure your business looks as professional as it operates.'
-    },
-    {
-      title: 'Performance Web Engineering',
-      description:
-        'We develop bespoke web applications using React and Tailwind CSS. Our focus is on atomic design, lightning-fast load speeds, and seamless user transitions.'
-    },
-    {
-      title: 'Creative Consulting',
-      description:
-        'Digital transformation tailored to your goals. We bridge the gap between complex technical requirements and intuitive user experiences to drive business growth.'
-    },
-    {
-      title: 'Frontend Training',
-      description:
-        'We teach responsive web design in Figma and frontend development with HTML, CSS, Tailwind, JavaScript, and React.'
-    }
-  ];
-
-  const trainingFormat = [
-    {
-      title: 'Live cohort classes',
-      description: 'Structured weekly sessions with practical walkthroughs and guided practice.'
-    },
-    {
-      title: 'Hands-on projects',
-      description: 'Build responsive pages, UI components, and a portfolio-ready capstone.'
-    },
-    {
-      title: 'Mentorship and reviews',
-      description: 'Weekly feedback, code reviews, and design critiques to keep you on track.'
-    },
-    {
-      title: 'Career support',
-      description: 'Portfolio polish, project documentation, and guidance on next steps.'
-    }
-  ];
-
-  const trainingTopics = [
-    'UI/UX',
-    'Responsive Design (Figma)',
-    'HTML',
-    'CSS',
-    'Bootstrap',
-    'Tailwind CSS',
-    'JavaScript',
-    'ReactJS'
-  ];
-
   const process = [
     {
       step: '01',
@@ -102,7 +49,7 @@ const Home = () => {
     <div>
       <Hero />
 
-      <section id="services" className="section pt-16 md:pt-24 scroll-mt-28">
+      <section id="services" data-animate="fade-up" className="section pt-16 md:pt-24 scroll-mt-28">
         <div className="flex flex-col lg:flex-row gap-10 items-start justify-between">
           <div className="max-w-xl space-y-4">
             <p className="section-kicker">Services</p>
@@ -111,9 +58,14 @@ const Home = () => {
               From positioning to performance, we build sites that look sharp and move customers to action.
               Clear scope, focused milestones, and a process that respects your time.
             </p>
-            <Link to="/#process" className="btn-ghost">
-              See the process
-            </Link>
+            <div className="flex flex-wrap gap-3">
+              <Link to="/contact" className="btn-primary">
+                Start a project
+              </Link>
+              <Link to="/services" className="btn-ghost">
+                View all services
+              </Link>
+            </div>
           </div>
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-2 w-full lg:max-w-4xl">
             {services.map(service => (
@@ -126,7 +78,7 @@ const Home = () => {
         </div>
       </section>
 
-      <section id="pricing" className="section pt-16 md:pt-24 scroll-mt-28">
+      <section id="pricing" data-animate="fade-up" className="section pt-16 md:pt-24 scroll-mt-28">
         <div className="max-w-3xl space-y-4">
           <p className="section-kicker">Pricing</p>
           <h2 className="section-title">Clear packages with room to scale.</h2>
@@ -149,6 +101,20 @@ const Home = () => {
                 <p className="mt-2 text-3xl font-semibold text-secondary">{plan.price}</p>
                 <p className="mt-3 text-sm text-myWhite/70">{plan.description}</p>
               </div>
+              <div className="rounded-xl border border-graphite/70 bg-primary/60 p-4 text-xs uppercase tracking-[0.28em] text-myWhite/60 space-y-2">
+                <div className="flex items-center justify-between gap-4">
+                  <span>Timeline</span>
+                  <span className="text-myWhite/80 normal-case tracking-normal">{plan.timeline}</span>
+                </div>
+                <div className="flex items-center justify-between gap-4">
+                  <span>Revisions</span>
+                  <span className="text-myWhite/80 normal-case tracking-normal">{plan.revisions}</span>
+                </div>
+                <div className="flex items-center justify-between gap-4">
+                  <span>Handoff</span>
+                  <span className="text-myWhite/80 normal-case tracking-normal">{plan.handoff}</span>
+                </div>
+              </div>
               <ul className="list-disc list-inside text-sm text-myWhite/70 space-y-2">
                 {plan.includes.map(item => (
                   <li key={item}>{item}</li>
@@ -162,68 +128,7 @@ const Home = () => {
         </div>
       </section>
 
-      <section id="training" className="section pt-16 md:pt-24 scroll-mt-28">
-        <div className="flex flex-col lg:flex-row gap-10 items-start justify-between">
-          <div className="max-w-xl space-y-4">
-            <p className="section-kicker">Training</p>
-            <h2 className="section-title">Learn frontend development the professional way.</h2>
-            <p className="text-myWhite/70 text-lg">
-              We teach UI/UX, responsive web design in Figma, and frontend development from HTML to React.
-              Choose a duration that fits your pace and build real projects along the way.
-            </p>
-            <div className="grid gap-4">
-              {trainingFormat.map(item => (
-                <div key={item.title} className="card p-4">
-                  <h3 className="text-lg">{item.title}</h3>
-                  <p className="mt-2 text-sm text-myWhite/70">{item.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="w-full lg:max-w-2xl space-y-6">
-            <div className="card">
-              <p className="section-kicker">What you will learn</p>
-              <div className="mt-4 flex flex-wrap gap-2">
-                {trainingTopics.map(topic => (
-                  <span key={topic} className="badge">
-                    {topic}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            <div className="grid gap-4 md:grid-cols-2">
-              {trainingPrograms.map(program => (
-                <div
-                  key={program.id}
-                  className={`card flex flex-col gap-4 ${
-                    program.highlight ? 'border-secondary/60 bg-secondary/10' : ''
-                  }`}
-                >
-                  {program.highlight && <span className="badge">{program.highlight}</span>}
-                  <div>
-                    <h3 className="text-xl">{program.name}</h3>
-                    <p className="mt-2 text-3xl font-semibold text-secondary">{program.price}</p>
-                    <p className="mt-1 text-sm text-myWhite/70">{program.duration}</p>
-                    <p className="mt-3 text-sm text-myWhite/70">{program.description}</p>
-                  </div>
-                  <ul className="list-disc list-inside text-sm text-myWhite/70 space-y-2">
-                    {program.includes.map(item => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                  <Link to={`/contact?package=${program.id}`} className="btn-ghost mt-auto">
-                    Apply for training
-                  </Link>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="process" className="section pt-16 md:pt-24 scroll-mt-28">
+      <section id="process" data-animate="fade-up" className="section pt-16 md:pt-24 scroll-mt-28">
         <div className="max-w-3xl space-y-4">
           <p className="section-kicker">Process</p>
           <h2 className="section-title">A focused, transparent workflow.</h2>
@@ -242,7 +147,7 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="section pt-16 md:pt-24">
+      <section data-animate="fade-up" className="section pt-16 md:pt-24">
         <div className="grid gap-4 md:grid-cols-3">
           {differentiators.map(item => (
             <div key={item.title} className="card">
@@ -253,7 +158,7 @@ const Home = () => {
         </div>
       </section>
 
-      <section id="work" className="section pt-16 md:pt-24 scroll-mt-28">
+      <section id="work" data-animate="fade-up" className="section pt-16 md:pt-24 scroll-mt-28">
         <div className="flex flex-col lg:flex-row gap-8 items-start justify-between">
           <div className="max-w-2xl space-y-4">
             <p className="section-kicker">Work</p>
@@ -273,6 +178,8 @@ const Home = () => {
               <img
                 src={item.image}
                 alt={item.title}
+                loading="lazy"
+                decoding="async"
                 className="h-48 w-full rounded-xl object-cover transition duration-500 group-hover:scale-[1.02]"
               />
               <div className="mt-4">
@@ -291,7 +198,7 @@ const Home = () => {
                     href={item.liveLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-primary text-sm"
+                    className="btn-ghost text-sm"
                   >
                     Live demo
                   </a>
@@ -302,7 +209,7 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="section py-20">
+      <section data-animate="fade-up" className="section py-20">
         <div className="card text-center border-secondary/40 bg-secondary/10">
           <p className="section-kicker">Ready to build</p>
           <h2 className="section-title mt-3">Let us shape your next release.</h2>

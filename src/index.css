@@ -41,9 +41,38 @@
     h1, h2, h3, h4, h5{
         @apply font-DM-Serif;
     }
+    a, button, [role="button"]{
+        cursor: pointer;
+        transition: color 0.2s ease, transform 0.2s ease, filter 0.2s ease;
+    }
+    a:hover, button:hover, [role="button"]:hover{
+        filter: brightness(1.08);
+        transform: translateY(-1px);
+    }
+    a:active, button:active, [role="button"]:active{
+        transform: translateY(0);
+    }
     ::selection{
         background: #3b82f6;
         color: #0a0a0a;
+    }
+    a:focus-visible,
+    button:focus-visible,
+    [role="button"]:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible{
+        outline: 2px solid var(--color-accent);
+        outline-offset: 3px;
+    }
+    [data-theme="light"] .btn-ghost{
+        border-color: rgba(16, 16, 16, 0.25);
+        color: rgba(16, 16, 16, 0.85);
+    }
+    [data-theme="light"] .badge{
+        border-color: rgba(16, 16, 16, 0.2);
+        color: rgba(16, 16, 16, 0.85);
+        background: rgba(59, 130, 246, 0.08);
     }
 }
 
@@ -72,7 +101,7 @@
         @apply inline-flex items-center justify-center gap-2 rounded-full border border-myWhite/20 px-6 py-3 text-myWhite/90 font-semibold transition hover:border-secondary/70 hover:text-secondary;
     }
     .social-links{
-        @apply text-3xl bg-primary rounded-full border border-secondary/40 p-3 hover:bg-secondary hover:text-myWhite hover:border-secondary hover:scale-105 transition;
+        @apply inline-flex items-center justify-center w-11 h-11 rounded-full border border-graphite/80 bg-primary/60 text-lg text-myWhite/80 transition hover:bg-secondary hover:text-myWhite hover:border-secondary hover:scale-105;
     }
     .contact-icon{
         @apply text-xl text-secondary;
@@ -84,7 +113,7 @@
         @apply absolute w-12 h-12 rounded-full border border-secondary;
     }
     footer{
-        @apply bg-primary/70 px-6 py-6 text-center text-myWhite/70 font-roboto flex flex-col items-center justify-center space-y-2 mt-12 lg:mt-16 lg:mx-auto lg:w-[85%] lg:grid lg:grid-cols-3 lg:gap-6 lg:items-center lg:justify-items-center;
+        @apply text-myWhite/70 font-roboto;
     }
 }
 

@@ -15,7 +15,7 @@ A high-end agency website for Codeferd Digital. Built with React, Tailwind CSS, 
 - Sticky, blurred-glass navigation with a theme toggle.
 - Hero headline with GSAP text-mask reveal.
 - Services and pricing sections with agency-grade copy.
-- Dedicated training section with 3-month and 6-month programs.
+- Dedicated services page with detailed training programs and a week-by-week curriculum.
 - Pricing cards that deep-link to the contact form with package details pre-filled.
 - Contact form that supports WhatsApp, email, and social channels.
 
@@ -30,6 +30,8 @@ A high-end agency website for Codeferd Digital. Built with React, Tailwind CSS, 
 - Contact details (email, phone, social links) live in `src/components/ContactHead.jsx` and `src/components/Form.jsx`.
 - Package prefill uses the query param format:
   `/contact?package=custom-website`
+- Place the resume DOCX at `public/resume/FERDINARD ASHONIBARE(Resume).docx` for download.
+- Add a PDF at `public/resume/resume.pdf` to allow in-browser viewing via the “Open PDF” button.
 
 ## Notes
 - Update pricing values and currency in `src/data/pricing.js`.

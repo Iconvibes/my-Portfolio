@@ -5,6 +5,11 @@ const trainingPrograms = [
     price: '$75',
     duration: '3 months',
     description: 'A focused, beginner-friendly track covering UI/UX, responsive design, and frontend fundamentals.',
+    outcomes: [
+      'Design and prototype responsive screens in Figma',
+      'Build a multi-section landing page with clean HTML/CSS',
+      'Ship a starter portfolio with a real-world project'
+    ],
     includes: [
       'UI/UX fundamentals',
       'Responsive web design in Figma',
@@ -22,6 +27,11 @@ const trainingPrograms = [
     price: '$120',
     duration: '6 months',
     description: 'A deeper track with more projects, advanced JavaScript, and polished portfolio delivery.',
+    outcomes: [
+      'Design a full UI system and translate it into production-ready code',
+      'Build two React projects with API integration',
+      'Graduate with a capstone portfolio and interview-ready feedback'
+    ],
     includes: [
       'UI/UX foundations and design systems',
       'Responsive web design in Figma',

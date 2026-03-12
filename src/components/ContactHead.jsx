@@ -1,14 +1,11 @@
 const ContactHead = () => {
   return (
-    <div className="space-y-6">
+    <div data-animate="fade-up" className="space-y-6">
       <div className="space-y-3">
         <p className="section-kicker">Contact</p>
         <h2 className="section-title">Start a project.</h2>
         <p className="text-myWhite/70 text-lg">
           Tell us about your goals, timeline, and scope. We will reply with a focused plan and next steps.
-        </p>
-        <p className="text-secondary text-xs uppercase tracking-[0.3em]">
-          Available for new opportunities
         </p>
       </div>
 
