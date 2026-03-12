@@ -14,7 +14,7 @@ const Form = ({ selectedPackage }) => {
     const message = data.get("message");
 
     const packageLine = selectedPackage
-      ? `Package: ${selectedPackage.name} (${selectedPackage.price})`
+      ? `Package: ${selectedPackage.name} (${selectedPackage.price})${selectedPackage.duration ? ` - ${selectedPackage.duration}` : ''}`
       : "Package: Not selected";
     let url = "";
     let msg = `Name: ${name}\nEmail: ${email}\nCompany: ${company || "N/A"}\nProject: ${projectType || "N/A"}\n${packageLine}\nMessage: ${message}`;
@@ -70,6 +70,9 @@ const Form = ({ selectedPackage }) => {
               <p className="text-xs uppercase tracking-[0.3em] text-secondary">Selected package</p>
               <h3 className="text-lg">{selectedPackage.name}</h3>
               <p className="text-2xl font-semibold text-secondary">{selectedPackage.price}</p>
+              {selectedPackage.duration && (
+                <p className="text-sm text-myWhite/70">{selectedPackage.duration}</p>
+              )}
             </div>
             <p className="text-sm text-myWhite/70">{selectedPackage.description}</p>
             <ul className="list-disc list-inside text-sm text-myWhite/70 space-y-1">
@@ -150,6 +153,7 @@ const Form = ({ selectedPackage }) => {
           <option value="ecommerce-whatsapp">Ecommerce (WhatsApp)</option>
           <option value="full-ecommerce">Full ecommerce platform</option>
           <option value="custom-website">Custom website</option>
+          <option value="training">Frontend training</option>
         </select>
 
         <label htmlFor="message" className="inline-block self-start">

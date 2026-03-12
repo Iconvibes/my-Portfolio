@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import Hero from '../components/Hero';
 import workItems from '../assets/project';
 import pricing from '../data/pricing';
+import trainingPrograms from '../data/training';
 
 const Home = () => {
   const services = [
@@ -19,7 +20,42 @@ const Home = () => {
       title: 'Creative Consulting',
       description:
         'Digital transformation tailored to your goals. We bridge the gap between complex technical requirements and intuitive user experiences to drive business growth.'
+    },
+    {
+      title: 'Frontend Training',
+      description:
+        'We teach responsive web design in Figma and frontend development with HTML, CSS, Tailwind, JavaScript, and React.'
     }
+  ];
+
+  const trainingFormat = [
+    {
+      title: 'Live cohort classes',
+      description: 'Structured weekly sessions with practical walkthroughs and guided practice.'
+    },
+    {
+      title: 'Hands-on projects',
+      description: 'Build responsive pages, UI components, and a portfolio-ready capstone.'
+    },
+    {
+      title: 'Mentorship and reviews',
+      description: 'Weekly feedback, code reviews, and design critiques to keep you on track.'
+    },
+    {
+      title: 'Career support',
+      description: 'Portfolio polish, project documentation, and guidance on next steps.'
+    }
+  ];
+
+  const trainingTopics = [
+    'UI/UX',
+    'Responsive Design (Figma)',
+    'HTML',
+    'CSS',
+    'Bootstrap',
+    'Tailwind CSS',
+    'JavaScript',
+    'ReactJS'
   ];
 
   const process = [
@@ -79,7 +115,7 @@ const Home = () => {
               See the process
             </Link>
           </div>
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 w-full lg:max-w-4xl">
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-2 w-full lg:max-w-4xl">
             {services.map(service => (
               <div key={service.title} className="card">
                 <h3 className="text-xl">{service.title}</h3>
@@ -123,6 +159,67 @@ const Home = () => {
               </Link>
             </div>
           ))}
+        </div>
+      </section>
+
+      <section id="training" className="section pt-16 md:pt-24 scroll-mt-28">
+        <div className="flex flex-col lg:flex-row gap-10 items-start justify-between">
+          <div className="max-w-xl space-y-4">
+            <p className="section-kicker">Training</p>
+            <h2 className="section-title">Learn frontend development the professional way.</h2>
+            <p className="text-myWhite/70 text-lg">
+              We teach UI/UX, responsive web design in Figma, and frontend development from HTML to React.
+              Choose a duration that fits your pace and build real projects along the way.
+            </p>
+            <div className="grid gap-4">
+              {trainingFormat.map(item => (
+                <div key={item.title} className="card p-4">
+                  <h3 className="text-lg">{item.title}</h3>
+                  <p className="mt-2 text-sm text-myWhite/70">{item.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="w-full lg:max-w-2xl space-y-6">
+            <div className="card">
+              <p className="section-kicker">What you will learn</p>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {trainingTopics.map(topic => (
+                  <span key={topic} className="badge">
+                    {topic}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div className="grid gap-4 md:grid-cols-2">
+              {trainingPrograms.map(program => (
+                <div
+                  key={program.id}
+                  className={`card flex flex-col gap-4 ${
+                    program.highlight ? 'border-secondary/60 bg-secondary/10' : ''
+                  }`}
+                >
+                  {program.highlight && <span className="badge">{program.highlight}</span>}
+                  <div>
+                    <h3 className="text-xl">{program.name}</h3>
+                    <p className="mt-2 text-3xl font-semibold text-secondary">{program.price}</p>
+                    <p className="mt-1 text-sm text-myWhite/70">{program.duration}</p>
+                    <p className="mt-3 text-sm text-myWhite/70">{program.description}</p>
+                  </div>
+                  <ul className="list-disc list-inside text-sm text-myWhite/70 space-y-2">
+                    {program.includes.map(item => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                  <Link to={`/contact?package=${program.id}`} className="btn-ghost mt-auto">
+                    Apply for training
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
