@@ -1,37 +1,38 @@
 const ContactHead = () => {
   return (
-    <div className="mt-20 lg:mt-0">
-        {/* <!-- contact top --> */}
-        <h2 class="text-myWhite font-roboto text-center font-semibold tracking-wider leading-9 text-2xl lg:text-4xl">Contact <span>Me</span>.</h2>
-          
-        <p class="text-gray-200 text-center text-lg lg:w-[70%] lg:mx-auto mt-4 mb-6">
-          I am currently open to full time , contract, or part-time oppurtunities in frontend development
+    <div className="space-y-6">
+      <div className="space-y-3">
+        <p className="section-kicker">Contact</p>
+        <h2 className="section-title">Start a project.</h2>
+        <p className="text-myWhite/70 text-lg">
+          Tell us about your goals, timeline, and scope. We will reply with a focused plan and next steps.
+        </p>
+        <p className="text-secondary text-xs uppercase tracking-[0.3em]">
+          Available for new opportunities
+        </p>
+      </div>
+
+      <div className="card space-y-4">
+        <p className="text-myWhite/80 text-lg">
+          Have an awesome project in mind?{" "}
+          <a href="#contact-form" className="text-secondary underline underline-offset-4">
+            Let us discuss
+          </a>
         </p>
 
-              {/* <!-- contact details --> */}
-            <div class="flex flex-col items-start space-y-4">
-
-               <p class="text-myWhite text-xl w-fit mx-auto underline mb-2">
-              Have an awesome project in mind?
-              <a href="#" class="text-secondary inline-block">Let's Discuss</a>
-            </p>
-
-              {/* <!-- email --> */}
-               <div class="flex justify-center gap-2.5 items-center ml-3.5 lg:ml-16 ">
-                <i class="fa-solid fa-envelope mr-2 social-links inline-block"></i>
-                <p class="text-gray-300 mb-2 inline-block"> ferdinardoluwajuwonlo@gmail.com</p>
-               </div>
-              {/* <!-- phone --> */}
-               <div class="flex justify-center justify-between gap-2.5 items-center ml-3.5 lg:ml-16">
-                <i class="fa-solid fa-phone mr-2 social-links inline-block"></i>
-                <p class="text-gray-300 mb-2 inline-block"> +2349137360986</p>
-               </div>
-              {/* <!-- address --> */}
-               <div class="flex justify-center gap-2.5 items-center ml-3.5 lg:ml-16">
-                <i class="fa-solid fa-location-dot mr-2 social-links inline-block"></i>
-                <p class="text-gray-300 mb-2 inline-block"> Lagos, Nigeria</p>
-               </div>
-            </div>
+        <div className="flex items-center gap-3">
+          <i className="fa-solid fa-envelope contact-icon"></i>
+          <p className="text-myWhite/70">ferdinardoluwajuwonlo@gmail.com</p>
+        </div>
+        <div className="flex items-center gap-3">
+          <i className="fa-solid fa-phone contact-icon"></i>
+          <p className="text-myWhite/70">+2349137360986</p>
+        </div>
+        <div className="flex items-center gap-3">
+          <i className="fa-solid fa-location-dot contact-icon"></i>
+          <p className="text-myWhite/70">Lagos, Nigeria. Working worldwide.</p>
+        </div>
+      </div>
     </div>
   )
 }
