@@ -2,8 +2,10 @@ import Navigation from "../Navigation"
 
 const Header = () => {
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 flex justify-center py-4">
-      <Navigation />
+    <header className="sticky top-0 z-50 w-full border-b border-myWhite/10 bg-myBlack/70 backdrop-blur">
+      <div className="py-4">
+        <Navigation />
+      </div>
     </header>
   )
 }

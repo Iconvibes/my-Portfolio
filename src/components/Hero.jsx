@@ -1,93 +1,125 @@
 import { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
+import heroShot from '../assets/images/myport.jpg';
+
+const headlineParts = [
+  { text: 'Engineering ' },
+  { text: 'Digital ', accent: true },
+  { text: 'Excellence.' }
+];
 
 const Hero = () => {
-  const mainRef = useRef(null);
-  const headingRef = useRef(null);
-  const subHeadingRef = useRef(null);
-  const socialsRef = useRef(null);
+  const rootRef = useRef(null);
 
   useEffect(() => {
-    const tl = gsap.timeline({
-      defaults: { 
-        ease: "power3.out",
-        duration: 1
-      }
-    });
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
+      tl.fromTo(
+        '.hero-char',
+        { yPercent: 120, opacity: 0 },
+        {
+          yPercent: 0,
+          opacity: 1,
+          duration: 0.9,
+          stagger: 0.02
+        }
+      ).fromTo(
+        '[data-hero]',
+        { y: 18, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.7, stagger: 0.12 },
+        '-=0.45'
+      );
+    }, rootRef);
 
-
-    gsap.set([headingRef.current, subHeadingRef.current, socialsRef.current], {
-      opacity: 0,
-      y: 20
-    });
-
-    // Animation sequence
-    tl.to(headingRef.current, {
-      opacity: 1,
-      y: 0,
-      delay: 0.5
-    })
-    .to(subHeadingRef.current, {
-      opacity: 1,
-      y: 0,
-    }, "-=0.5") 
-    .to(socialsRef.current, {
-      opacity: 1,
-      y: 0,
-    }, "-=0.5");
-
-    
-    const socialIcons = socialsRef.current.querySelectorAll('.social-links');
-    gsap.to(socialIcons, {
-      scale: 1,
-      opacity: 1,
-      duration: 0.4,
-      stagger: 0.1,
-      ease: "back.out(1.7)",
-      delay: 1.5
-    });
-
-    return () => {
-      tl.kill();
-    };
+    return () => ctx.revert();
   }, []);
 
+  const highlights = [
+    'Brand Strategy & Design',
+    'Performance Web Engineering',
+    'Creative Consulting'
+  ];
+
   return (
-    <main ref={mainRef} className="p-8 pt-32 md:pt-40 lg:pt-48">
-      <h1 
-        ref={headingRef}
-        className="text-myWhite font-bold text-3xl md:text-5xl tracking-wide leading-10 md:leading-16 my-4 md:my-6 text-center lg:text-6xl lg:leading-20"
-      >
-        Hi there, I am <span className="md:block">Ashonibare Ferdinard</span>
-      </h1>
+    <section ref={rootRef} className="section pt-28 md:pt-36 lg:pt-40">
+      <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
+        <div className="space-y-6">
+          <span className="badge" data-hero>
+            Codeferd Digital
+          </span>
+          <h1
+            aria-label="Engineering Digital Excellence."
+            className="text-myWhite font-semibold text-4xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight text-glow"
+          >
+            {headlineParts.map((part, partIndex) =>
+              part.text.split('').map((char, index) => (
+                <span
+                  key={`${partIndex}-${index}`}
+                  className="inline-block overflow-hidden align-bottom"
+                >
+                  <span
+                    className={`hero-char inline-block will-change-transform ${
+                      part.accent ? 'text-secondary' : ''
+                    }`}
+                  >
+                    {char === ' ' ? '\u00A0' : char}
+                  </span>
+                </span>
+              ))
+            )}
+          </h1>
+          <p data-hero className="text-myWhite/70 text-lg md:text-xl leading-relaxed max-w-2xl">
+            A high-end digital studio blending strategy, design, and engineering to build premium websites
+            that convert. We deliver clarity, speed, and polish in every release.
+          </p>
+          <div data-hero className="flex flex-wrap gap-4">
+            <Link to="/contact" className="btn-primary">
+              Start a project
+            </Link>
+            <Link to="/work" className="btn-ghost">
+              View case studies
+            </Link>
+          </div>
+          <div data-hero className="flex flex-wrap gap-3 text-xs uppercase tracking-[0.3em] text-myWhite/60">
+            <span>Lagos, Nigeria</span>
+            <span className="text-secondary">Remote worldwide</span>
+            <span>React + Tailwind</span>
+            <span className="text-secondary">Available for opportunities</span>
+          </div>
+        </div>
 
-      <h4 
-        ref={subHeadingRef}
-        className="text-myWhite font-semibold text-lg leading-9 font-roboto md:text-xl md:leading-10 md:text-center md:mx-auto md:w-[70%] md:mb-6 lg:text-2xl lg:leading-12 lg:w-[75%] lg:mb-10"
-      >
-        A creative <span>Frontend</span> and aspiring backend developer transforming ideas into amazing digital experiences. Let's create something stunning!
-      </h4>
+        <div data-hero className="space-y-6">
+          <div className="rounded-3xl border border-myWhite/10 bg-primary/70 backdrop-blur p-6">
+            <div className="flex items-center justify-between text-xs uppercase tracking-[0.3em] text-myWhite/60">
+              <span>Services</span>
+              <span className="text-secondary">Studio focus</span>
+            </div>
+            <div className="mt-4 space-y-3 text-myWhite">
+              {highlights.map(item => (
+                <div key={item} className="flex items-center justify-between border-b border-myWhite/10 pb-3 last:border-b-0 last:pb-0">
+                  <span className="text-sm">{item}</span>
+                  <span className="text-xs text-myWhite/50">High impact</span>
+                </div>
+              ))}
+            </div>
+          </div>
 
-      
-      <div 
-        ref={socialsRef}
-        className="mt-6 text-white flex w-[70%] md:w-[50%] lg:w-[40%] xl:w-[30%] justify-between mx-auto"
-      >
-        <a href="https://github.com/Iconvibes" target="_blank" rel="noopener noreferrer">
-          <i className="fa-brands fa-github social-links opacity-0 scale-0"></i>
-        </a>
-        <a href="https://www.tiktok.com/@codeferd?_t=ZM-8wxQYhyDNE0&_r=1" target="_blank" rel="noopener noreferrer">
-          <i className="fa-brands fa-tiktok social-links opacity-0 scale-0"></i>
-        </a>
-        <a href="https://www.facebook.com/share/16GHr15531/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">
-          <i className="fa-brands fa-facebook social-links opacity-0 scale-0"></i>
-        </a>
-        <a href="https://www.linkedin.com/in/ferdinard-ashonibare-3a3203369" target="_blank" rel="noopener noreferrer">
-          <i className="fa-brands fa-linkedin social-links opacity-0 scale-0"></i>
-        </a>
+          <div className="rounded-3xl border border-myWhite/10 bg-primary/70 backdrop-blur p-4 overflow-hidden">
+            <img
+              src={heroShot}
+              alt="Selected case study preview"
+              className="w-full h-56 object-cover rounded-2xl"
+            />
+            <div className="mt-4 flex items-center justify-between text-xs uppercase tracking-[0.3em] text-myWhite/60">
+              <span>Featured build</span>
+              <span className="text-secondary">Case study</span>
+            </div>
+          </div>
+        </div>
       </div>
-    </main>
+    </section>
   );
-}
+};
 
 export default Hero;
