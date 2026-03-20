@@ -2,7 +2,7 @@ const pricing = [
   {
     id: 'one-page',
     name: 'One-Page Website',
-    price: '$120',
+    price: '$100',
     description: 'A premium single-page site designed to tell your story and drive action.',
     timeline: '7-10 business days',
     revisions: '2 revision rounds',
