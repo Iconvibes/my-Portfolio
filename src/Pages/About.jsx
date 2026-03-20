@@ -70,7 +70,7 @@ const About = () => {
             alt="Ashonibare Ferdinard portrait"
             loading="lazy"
             decoding="async"
-            className="rounded-3xl bg-primary/40 border border-secondary/40 w-full object-cover h-[420px]"
+            className="rounded-3xl bg-primary/40 border border-secondary/40 w-full object-cover object-top h-[420px]"
           />
         </div>
 
