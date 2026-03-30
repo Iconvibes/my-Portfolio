@@ -156,15 +156,27 @@ const ChromaGrid = ({ items, className = '', radius = 300, damping = 0.45, fadeO
             {/* {c.handle && <span className="text-[0.95rem] opacity-80 text-right">{c.handle}</span>} */}
             <p className="m-0 text-[0.85rem] opacity-85">{c.description}</p>
             <div className="flex gap-4 mt-1">
-               <a href={c.githubLink} target="_blank" rel="noopener noreferrer"
-                  className="p-2 bg-secondary rounded-lg text-primary font-bold hover:bg-opacity-80 transition">
-                 GitHub
-               </a>
-               <a href={c.liveLink} target="_blank" rel="noopener noreferrer"
-                  className="p-2 bg-secondary rounded-lg text-primary font-bold hover:bg-opacity-80 transition">
-                 Live Demo
-               </a>
-           </div>
+              {c.githubLink && (
+                <a
+                  href={c.githubLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 bg-secondary rounded-lg text-primary font-bold hover:bg-opacity-80 transition"
+                >
+                  GitHub
+                </a>
+              )}
+              {c.liveLink && (
+                <a
+                  href={c.liveLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 bg-secondary rounded-lg text-primary font-bold hover:bg-opacity-80 transition"
+                >
+                  Live Demo
+                </a>
+              )}
+            </div>
             {c.location && <span className="text-[0.85rem] opacity-85 text-right">{c.location}</span>}
           </footer>
         </article>

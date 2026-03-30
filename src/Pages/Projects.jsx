@@ -57,18 +57,6 @@ const Projects = () => {
                       <p className="mt-2 text-sm text-myWhite/70">{item.build}</p>
                     </div>
                     <div className="rounded-xl border border-myWhite/10 bg-primary/60 p-4">
-                      <p className="text-xs uppercase tracking-[0.3em] text-secondary">Role</p>
-                      <p className="mt-2 text-sm text-myWhite/70">{item.role}</p>
-                    </div>
-                    <div className="rounded-xl border border-myWhite/10 bg-primary/60 p-4">
-                      <p className="text-xs uppercase tracking-[0.3em] text-secondary">Deliverables</p>
-                      <ul className="mt-2 list-disc list-inside text-sm text-myWhite/70 space-y-1">
-                        {item.deliverables?.map(deliverable => (
-                          <li key={deliverable}>{deliverable}</li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div className="rounded-xl border border-myWhite/10 bg-primary/60 p-4">
                       <p className="text-xs uppercase tracking-[0.3em] text-secondary">Outcome</p>
                       <p className="mt-2 text-sm text-myWhite/70">{item.outcome}</p>
                       {item.impact && (
@@ -77,15 +65,35 @@ const Projects = () => {
                         </p>
                       )}
                     </div>
-                    <div className="rounded-xl border border-myWhite/10 bg-primary/60 p-4">
-                      <p className="text-xs uppercase tracking-[0.3em] text-secondary">Results</p>
-                      <ul className="mt-2 list-disc list-inside text-sm text-myWhite/70 space-y-1">
-                        {item.results?.map(result => (
-                          <li key={result}>{result}</li>
-                        ))}
-                      </ul>
-                    </div>
                   </div>
+
+                  <details className="rounded-xl border border-myWhite/10 bg-primary/60 p-4">
+                    <summary className="text-xs uppercase tracking-[0.3em] text-secondary cursor-pointer">
+                      View details
+                    </summary>
+                    <div className="mt-4 grid gap-3 md:grid-cols-2">
+                      <div className="rounded-xl border border-myWhite/10 bg-primary/70 p-4">
+                        <p className="text-xs uppercase tracking-[0.3em] text-secondary">Role</p>
+                        <p className="mt-2 text-sm text-myWhite/70">{item.role}</p>
+                      </div>
+                      <div className="rounded-xl border border-myWhite/10 bg-primary/70 p-4">
+                        <p className="text-xs uppercase tracking-[0.3em] text-secondary">Deliverables</p>
+                        <ul className="mt-2 list-disc list-inside text-sm text-myWhite/70 space-y-1">
+                          {item.deliverables?.map(deliverable => (
+                            <li key={deliverable}>{deliverable}</li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div className="rounded-xl border border-myWhite/10 bg-primary/70 p-4 md:col-span-2">
+                        <p className="text-xs uppercase tracking-[0.3em] text-secondary">Results</p>
+                        <ul className="mt-2 list-disc list-inside text-sm text-myWhite/70 space-y-1">
+                          {item.results?.map(result => (
+                            <li key={result}>{result}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  </details>
 
                   <div className="flex flex-wrap gap-3">
                     <a
@@ -96,14 +104,16 @@ const Projects = () => {
                     >
                       View live
                     </a>
-                    <a
-                      href={item.githubLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn-ghost text-sm"
-                    >
-                      View code
-                    </a>
+                    {item.githubLink && (
+                      <a
+                        href={item.githubLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn-ghost text-sm"
+                      >
+                        View code
+                      </a>
+                    )}
                   </div>
                 </div>
               </div>
