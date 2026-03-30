@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
-import heroShot from '../assets/images/myport.jpg';
+import heroShot from '../assets/images/myport.png';
 
 const headlineParts = [
   { text: 'Engineering ' },

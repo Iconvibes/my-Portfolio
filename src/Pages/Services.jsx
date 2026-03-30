@@ -150,30 +150,35 @@ const Services = () => {
           </div>
         </div>
 
-        <div className="mt-10 grid gap-10 lg:grid-cols-2">
-          <div>
-            <h3 className="text-xl">3-Month Curriculum</h3>
-            <div className="mt-4 grid gap-3">
-              {curriculum3Months.map(item => (
-                <div key={item.week} className="card p-4">
-                  <p className="text-xs uppercase tracking-[0.3em] text-secondary">{item.week}</p>
-                  <p className="mt-2 text-sm text-myWhite/70">{item.topic}</p>
-                </div>
-              ))}
+        <details className="mt-10 rounded-2xl border border-myWhite/10 bg-primary/60 p-6">
+          <summary className="text-xs uppercase tracking-[0.3em] text-secondary cursor-pointer">
+            View curricula
+          </summary>
+          <div className="mt-6 grid gap-10 lg:grid-cols-2">
+            <div>
+              <h3 className="text-xl">3-Month Curriculum</h3>
+              <div className="mt-4 grid gap-3">
+                {curriculum3Months.map(item => (
+                  <div key={item.week} className="card p-4">
+                    <p className="text-xs uppercase tracking-[0.3em] text-secondary">{item.week}</p>
+                    <p className="mt-2 text-sm text-myWhite/70">{item.topic}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div>
+              <h3 className="text-xl">6-Month Curriculum</h3>
+              <div className="mt-4 grid gap-3">
+                {curriculum6Months.map(item => (
+                  <div key={item.week} className="card p-4">
+                    <p className="text-xs uppercase tracking-[0.3em] text-secondary">{item.week}</p>
+                    <p className="mt-2 text-sm text-myWhite/70">{item.topic}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
-          <div>
-            <h3 className="text-xl">6-Month Curriculum</h3>
-            <div className="mt-4 grid gap-3">
-              {curriculum6Months.map(item => (
-                <div key={item.week} className="card p-4">
-                  <p className="text-xs uppercase tracking-[0.3em] text-secondary">{item.week}</p>
-                  <p className="mt-2 text-sm text-myWhite/70">{item.topic}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+        </details>
       </section>
     </div>
   );

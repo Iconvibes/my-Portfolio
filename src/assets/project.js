@@ -1,26 +1,25 @@
 import jflix from './images/jflix.jpg';
-import loop from './images/loop.jpg';
-import portfolio from './images/myport.jpg';
+import portfolio from './images/myport.png';
+import ssc from './images/ssc.png';
 import tpc from './images/tpc mock.jpg';
 
 const items = [
   {
-    image: loop,
-    title: "Loopstudio",
-    description: "Concept brand site for a VR studio with responsive layout and bold storytelling.",
-    category: "Brand Website",
-    role: "Strategy, UI design, frontend build",
-    challenge: "Position a VR studio with immersive visuals while keeping the experience fast.",
-    build: "Crafted a bold narrative layout with responsive sections and clean typography.",
-    outcome: "A premium presentation ready for demos, pitches, and product launches.",
-    deliverables: ["Landing page", "Responsive layout", "Visual storytelling"],
-    results: ["Targeted 90+ Lighthouse performance", "Mobile-first layout across 3 breakpoints", "Launch-ready brand presence"],
-    impact: "Positioned to lift demo requests by 20%+",
-    stack: ["HTML", "CSS", "JavaScript"],
-    githubLink: "https://github.com/Iconvibes/loopstud",
-    liveLink: "https://iconvibes.github.io/loopstud/",
-    borderColor: "#3B82F6",
-    gradient: "linear-gradient(145deg, #3B82F6, #000)"
+    image: ssc,
+    title: "SOSAFE Corps",
+    description: "Official Ogun State SOSAFE Corps site with public information, news, and announcements.",
+    category: "Government Platform",
+    role: "Product strategy, UI design, MERN development",
+    challenge: "Communicate a public safety program with clarity, trust, and timely updates.",
+    build: "Built a MERN stack site with a React front end so news and announcements can be posted.",
+    outcome: "A credible, easy-to-navigate portal that keeps residents informed with timely updates.",
+    deliverables: ["Information architecture", "News and announcements section", "Responsive layouts"],
+    results: ["Mobile-friendly across key breakpoints", "Scannable content hierarchy", "News and announcements publishing"],
+    impact: "Improved access to official program updates",
+    stack: ["MongoDB", "Express", "React", "Node.js"],
+    liveLink: "https://sosafecorps.og.gov.ng",
+    borderColor: "#16A34A",
+    gradient: "linear-gradient(145deg, #16A34A, #000)"
   },
   {
     image: tpc,

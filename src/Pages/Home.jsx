@@ -186,14 +186,16 @@ const Home = () => {
                 <h3 className="text-xl">{item.title}</h3>
                 <p className="mt-2 text-sm text-myWhite/70">{item.description}</p>
                 <div className="mt-4 flex flex-wrap gap-3">
-                  <a
-                    href={item.githubLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-ghost text-sm"
-                  >
-                    GitHub
-                  </a>
+                  {item.githubLink && (
+                    <a
+                      href={item.githubLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-ghost text-sm"
+                    >
+                      GitHub
+                    </a>
+                  )}
                   <a
                     href={item.liveLink}
                     target="_blank"
