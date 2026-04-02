@@ -1,7 +1,7 @@
 import jflix from './images/jflix.jpg';
 import portfolio from './images/myport.png';
 import ssc from './images/ssc.png';
-import tpc from './images/tpc mock.jpg';
+import tpc from './images/tpc mock.png';
 
 const items = [
   {
