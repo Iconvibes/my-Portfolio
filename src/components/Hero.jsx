@@ -1,7 +1,8 @@
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
-import heroShot from '../assets/images/myport.png';
+import heroShot from '../assets/images/myport-optimized.jpg';
+import { shouldSkipMotion } from '../utils/runtime';
 
 const headlineParts = [
   { text: 'Engineering ' },
@@ -13,6 +14,10 @@ const Hero = () => {
   const rootRef = useRef(null);
 
   useEffect(() => {
+    if (shouldSkipMotion()) {
+      return undefined;
+    }
+
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
       tl.fromTo(
@@ -70,7 +75,7 @@ const Hero = () => {
                       part.accent ? 'text-secondary' : ''
                     }`}
                   >
-                    {char === ' ' ? '\u00A0' : char}
+                    {char}
                   </span>
                 </span>
               ))

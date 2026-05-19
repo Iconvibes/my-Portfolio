@@ -65,7 +65,7 @@ const ChromaGrid = ({ items, className = '', radius = 300, damping = 0.45, fadeO
 //     }
 //   ];
 
-  const data = items?.length ? items : demo;
+  const data = items?.length ? items : [];
 
   useEffect(() => {
     const el = rootRef.current;
@@ -106,10 +106,6 @@ const ChromaGrid = ({ items, className = '', radius = 300, damping = 0.45, fadeO
     });
   };
 
-  const handleCardClick = url => {
-    if (url) window.open(url, '_blank', 'noopener,noreferrer');
-  };
-
   const handleCardMove = e => {
     const c = e.currentTarget;
     const rect = c.getBoundingClientRect();
@@ -133,7 +129,6 @@ const ChromaGrid = ({ items, className = '', radius = 300, damping = 0.45, fadeO
         <article
           key={i}
           onMouseMove={handleCardMove}
-        //   onClick={() => handleCardClick(c.url)}
           className=" h-full group relative flex flex-col w-[300px] md:w-[350px] rounded-[20px] overflow-hidden border-2 border-transparent transition-colors duration-300 cursor-pointer"
           style={{
             '--card-border': c.borderColor || 'transparent',

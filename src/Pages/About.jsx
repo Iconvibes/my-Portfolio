@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import myPics from "../assets/images/portfolio-img.jpg";
+import myPics from "../assets/images/portfolio-img-optimized.jpg";
 import { Link } from "react-router-dom";
+import Seo from "../components/Seo";
 
 const About = () => {
   const [isResumeOpen, setIsResumeOpen] = useState(false);
-  const resumeDocx = "/resume/FERDINARD%20ASHONIBARE(Resume).docx";
   const resumePdf = "/resume/resume.pdf";
   const highlights = [
     "Founder, Codeferd Digital",
@@ -62,6 +62,7 @@ const About = () => {
 
   return (
     <section className="section py-8 pt-28 md:pt-32 lg:pt-36 overflow-x-hidden">
+      <Seo path="/studio" />
       <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-12 items-center">
         <div className="relative">
           <div className="absolute -top-6 left-6 w-28 h-28 rounded-full bg-accent/20 blur-2xl" />
@@ -76,7 +77,7 @@ const About = () => {
 
         <div className="space-y-4">
           <p className="section-kicker">Studio</p>
-          <h2 className="section-title">Founder-led web development studio.</h2>
+          <h1 className="section-title">Founder-led web development studio.</h1>
           <p className="text-myWhite/70 text-lg">
             Codeferd Digital is led by{" "}
             <a
@@ -187,9 +188,6 @@ const About = () => {
             </div>
 
             <div className="mt-auto pt-6 flex flex-wrap gap-3">
-              <a href={resumeDocx} className="btn-ghost" download>
-                Download DOCX
-              </a>
               <a href={resumePdf} className="btn-ghost" target="_blank" rel="noopener noreferrer">
                 Open PDF
               </a>

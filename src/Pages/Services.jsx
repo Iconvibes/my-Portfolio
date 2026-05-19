@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import Seo from '../components/Seo';
 import services from '../data/services';
 import trainingPrograms from '../data/training';
 
@@ -58,6 +59,7 @@ const Services = () => {
 
   return (
     <div>
+      <Seo path="/services" />
       <section data-animate="fade-up" className="section pt-28 md:pt-32 lg:pt-36">
         <div className="max-w-3xl space-y-4">
           <p className="section-kicker">Services</p>

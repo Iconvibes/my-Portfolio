@@ -3,7 +3,7 @@ const ContactHead = () => {
     <div data-animate="fade-up" className="space-y-6">
       <div className="space-y-3">
         <p className="section-kicker">Contact</p>
-        <h2 className="section-title">Start a project.</h2>
+        <h1 className="section-title">Start a project.</h1>
         <p className="text-myWhite/70 text-lg">
           Tell us about your goals, timeline, and scope. We will reply with a focused plan and next steps.
         </p>
@@ -19,11 +19,15 @@ const ContactHead = () => {
 
         <div className="flex items-center gap-3">
           <i className="fa-solid fa-envelope contact-icon"></i>
-          <p className="text-myWhite/70">ferdinardoluwajuwonlo@gmail.com</p>
+          <a href="mailto:ferdinardoluwajuwonlo@gmail.com" className="text-myWhite/70">
+            ferdinardoluwajuwonlo@gmail.com
+          </a>
         </div>
         <div className="flex items-center gap-3">
           <i className="fa-solid fa-phone contact-icon"></i>
-          <p className="text-myWhite/70">+2349137360986</p>
+          <a href="tel:+2349137360986" className="text-myWhite/70">
+            +2349137360986
+          </a>
         </div>
         <div className="flex items-center gap-3">
           <i className="fa-solid fa-location-dot contact-icon"></i>

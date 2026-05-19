@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import Hero from '../components/Hero';
+import Seo from '../components/Seo';
 import workItems from '../assets/project';
 import pricing from '../data/pricing';
 import services from '../data/services';
@@ -47,6 +48,7 @@ const Home = () => {
 
   return (
     <div>
+      <Seo path="/" />
       <Hero />
 
       <section id="services" data-animate="fade-up" className="section pt-16 md:pt-24 scroll-mt-28">

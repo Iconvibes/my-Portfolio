@@ -5,10 +5,4 @@ Disallow: /.git
 Disallow: /.env*
 Disallow: /node_modules
 
-Sitemap: https://codeferd.netlify.app/sitemap.xml
-
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
+Sitemap: https://www.ferdinardashonibare.com/sitemap.xml
