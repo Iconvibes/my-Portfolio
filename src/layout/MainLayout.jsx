@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { gsap } from "gsap";
 import Footer from "../components/UiLayout.jsx/Footer";
 import Header from "../components/UiLayout.jsx/Header";
+import { shouldSkipMotion } from "../utils/runtime";
 
 const MainLayout = () => {
 
@@ -21,10 +22,10 @@ const MainLayout = () => {
   }, [location.pathname, location.hash]);
 
   useEffect(() => {
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const skipMotion = shouldSkipMotion();
     const elements = gsap.utils.toArray("[data-animate]");
 
-    if (prefersReducedMotion) {
+    if (skipMotion) {
       elements.forEach((el) => {
         gsap.set(el, { opacity: 1, x: 0, y: 0, scale: 1 });
       });
@@ -110,8 +111,6 @@ const MainLayout = () => {
     <div className="flex flex-col min-h-screen relative bg-myBlack overflow-hidden">
       <div className="absolute inset-0 w-full h-full z-0">
         <div className="absolute inset-0 bg-myBlack" />
-        <div className="absolute -top-48 -left-24 w-[520px] h-[520px] bg-[radial-gradient(circle,rgba(59,130,246,0.25),transparent_70%)] blur-3xl" />
-        <div className="absolute top-1/3 -right-32 w-[560px] h-[560px] bg-[radial-gradient(circle,rgba(255,255,255,0.08),transparent_70%)] blur-3xl" />
         <div className="absolute inset-0 bg-grid opacity-20" />
       </div>
       <div className="relative z-10 flex flex-col min-h-screen text-myWhite">

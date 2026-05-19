@@ -3,10 +3,10 @@ import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
-export default defineConfig({
+export default defineConfig(({ isSsrBuild }) => ({
   plugins: [
-     tailwindcss(),
-     react()
+    tailwindcss(),
+    react()
   ],
   build: {
     outDir: 'dist',
@@ -18,15 +18,17 @@ export default defineConfig({
         drop_debugger: true
       }
     },
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          'vendor': ['react', 'react-dom', 'react-router-dom'],
-          'gsap': ['gsap'],
-          'ogl': ['ogl']
-        }
-      }
-    },
+    rollupOptions: isSsrBuild
+      ? undefined
+      : {
+          output: {
+            manualChunks: {
+              vendor: ['react', 'react-dom', 'react-router-dom'],
+              gsap: ['gsap'],
+              ogl: ['ogl']
+            }
+          }
+        },
     chunkSizeWarningLimit: 1000,
     cssCodeSplit: true,
     reportCompressedSize: false
@@ -35,4 +37,4 @@ export default defineConfig({
     middlewareMode: false,
     preTransformRequests: true
   }
-})
+}))

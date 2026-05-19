@@ -1,12 +1,14 @@
 import items from "../assets/project";
 import { Link } from "react-router-dom";
+import Seo from "../components/Seo";
 const Projects = () => {
   
   return (
     <section className="section pt-28 md:pt-32 lg:pt-36">
+      <Seo path="/work" />
       <div data-animate="fade-up" className="max-w-3xl space-y-4">
         <p className="section-kicker">Case Studies</p>
-        <h2 className="section-title">Projects that showcase strategy, design, and build.</h2>
+        <h1 className="section-title">Projects that showcase strategy, design, and build.</h1>
         <p className="text-myWhite/70 text-lg">
           Each case study highlights the challenge, the build, and the outcome behind the experience.
         </p>
