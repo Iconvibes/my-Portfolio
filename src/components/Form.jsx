@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Icon from "./Icon";
 
 const Form = ({ selectedPackage }) => {
   const [status, setStatus] = useState(null);
@@ -223,7 +224,7 @@ const Form = ({ selectedPackage }) => {
           type="submit"
           className="btn-primary w-full sm:w-auto lg:w-[60%] lg:mx-auto"
         >
-          Start a project <i className="fa-solid fa-envelope ml-2"></i>
+          Start a project <Icon name="envelope" className="h-4 w-4" />
         </button>
 
         {status && (

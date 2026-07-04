@@ -1,20 +1,21 @@
 import { Link } from "react-router-dom";
+import Icon from "../Icon";
 
 const socials = [
   {
     label: "GitHub",
     href: "https://github.com/Iconvibes",
-    icon: "fa-brands fa-github"
+    icon: "github"
   },
   {
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/ferdinard-ashonibare-3a3203369",
-    icon: "fa-brands fa-linkedin-in"
+    icon: "linkedin"
   },
   {
     label: "TikTok",
     href: "https://www.tiktok.com/@codeferd",
-    icon: "fa-brands fa-tiktok"
+    icon: "tiktok"
   }
 ];
 
@@ -75,7 +76,7 @@ const Footer = () => {
                     aria-label={social.label}
                     className="social-links"
                   >
-                    <i className={social.icon}></i>
+                    <Icon name={social.icon} className="h-5 w-5" />
                   </a>
                 ))}
               </div>
@@ -84,7 +85,7 @@ const Footer = () => {
                   href="mailto:ferdinardoluwajuwonlo@gmail.com"
                   className="inline-flex items-center gap-2"
                 >
-                  <i className="fa-solid fa-envelope contact-icon"></i>
+                  <Icon name="envelope" className="contact-icon h-5 w-5" />
                   ferdinardoluwajuwonlo@gmail.com
                 </a>
                 <a
@@ -93,7 +94,7 @@ const Footer = () => {
                   rel="noreferrer"
                   className="inline-flex items-center gap-2"
                 >
-                  <i className="fa-brands fa-whatsapp contact-icon"></i>
+                  <Icon name="whatsapp" className="contact-icon h-5 w-5" />
                   WhatsApp: +234 913 736 0986
                 </a>
               </div>

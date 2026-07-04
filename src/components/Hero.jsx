@@ -1,8 +1,5 @@
-import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { gsap } from 'gsap';
-import heroShot from '../assets/images/myport-optimized.jpg';
-import { shouldSkipMotion } from '../utils/runtime';
+import heroShot from '../assets/images/myport-hero.jpg';
 
 const headlineParts = [
   { text: 'Engineering ' },
@@ -11,35 +8,6 @@ const headlineParts = [
 ];
 
 const Hero = () => {
-  const rootRef = useRef(null);
-
-  useEffect(() => {
-    if (shouldSkipMotion()) {
-      return undefined;
-    }
-
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
-      tl.fromTo(
-        '.hero-char',
-        { yPercent: 120, opacity: 0 },
-        {
-          yPercent: 0,
-          opacity: 1,
-          duration: 0.9,
-          stagger: 0.02
-        }
-      ).fromTo(
-        '[data-hero]',
-        { y: 18, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.7, stagger: 0.12 },
-        '-=0.45'
-      );
-    }, rootRef);
-
-    return () => ctx.revert();
-  }, []);
-
   const highlights = [
     'Brand Strategy & Design',
     'Performance Web Engineering',
@@ -48,13 +16,13 @@ const Hero = () => {
   ];
 
   return (
-    <section ref={rootRef} className="section pt-28 md:pt-36 lg:pt-40">
+    <section className="section pt-28 md:pt-36 lg:pt-40">
       <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
         <div className="space-y-6">
-          <span className="badge" data-hero>
+          <span className="badge">
             Codeferd Digital
           </span>
-          <div data-hero className="flex flex-wrap gap-2 text-xs uppercase tracking-[0.3em] text-myWhite/60">
+          <div className="flex flex-wrap gap-2 text-xs uppercase tracking-[0.3em] text-myWhite/60">
             <span className="inline-flex items-center gap-2 rounded-full border border-secondary/40 bg-secondary/10 px-3 py-1 text-secondary">
               Availability
             </span>
@@ -81,11 +49,11 @@ const Hero = () => {
               ))
             )}
           </h1>
-          <p data-hero className="text-myWhite/70 text-lg md:text-xl leading-relaxed max-w-2xl">
+          <p className="text-myWhite/70 text-lg md:text-xl leading-relaxed max-w-2xl">
             A high-end digital studio blending strategy, design, and engineering to build premium websites
             that convert. We deliver clarity, speed, and polish in every release.
           </p>
-          <div data-hero className="flex flex-wrap gap-4">
+          <div className="flex flex-wrap gap-4">
             <Link to="/contact" className="btn-primary">
               Start a project
             </Link>
@@ -93,14 +61,14 @@ const Hero = () => {
               View case studies
             </Link>
           </div>
-          <div data-hero className="flex flex-wrap gap-3 text-xs uppercase tracking-[0.3em] text-myWhite/60">
+          <div className="flex flex-wrap gap-3 text-xs uppercase tracking-[0.3em] text-myWhite/60">
             <span>Lagos, Nigeria</span>
             <span className="text-secondary">Remote worldwide</span>
             <span>React + Tailwind</span>
           </div>
         </div>
 
-        <div data-hero className="space-y-6">
+        <div className="space-y-6">
           <div className="rounded-3xl border border-myWhite/10 bg-primary/70 backdrop-blur p-6">
             <div className="flex items-center justify-between text-xs uppercase tracking-[0.3em] text-myWhite/60">
               <span>Services</span>
@@ -121,6 +89,7 @@ const Hero = () => {
               src={heroShot}
               alt="Selected case study preview"
               loading="eager"
+              fetchPriority="high"
               decoding="async"
               className="w-full h-56 object-cover rounded-2xl"
             />
