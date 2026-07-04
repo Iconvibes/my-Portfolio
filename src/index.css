@@ -1,5 +1,21 @@
 @import 'tailwindcss';
 
+@font-face{
+    font-family: "Inter";
+    src: url("/fonts/Inter-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face{
+    font-family: "Inter";
+    src: url("/fonts/Inter-SemiBold.ttf") format("truetype");
+    font-weight: 600 700;
+    font-style: normal;
+    font-display: swap;
+}
+
 @theme{
     --color-myBlack: var(--color-bg);
     --color-primary: var(--color-surface);

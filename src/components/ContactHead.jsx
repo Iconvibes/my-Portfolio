@@ -1,3 +1,5 @@
+import Icon from "./Icon";
+
 const ContactHead = () => {
   return (
     <div data-animate="fade-up" className="space-y-6">
@@ -18,19 +20,19 @@ const ContactHead = () => {
         </p>
 
         <div className="flex items-center gap-3">
-          <i className="fa-solid fa-envelope contact-icon"></i>
+          <Icon name="envelope" className="contact-icon h-5 w-5" />
           <a href="mailto:ferdinardoluwajuwonlo@gmail.com" className="text-myWhite/70">
             ferdinardoluwajuwonlo@gmail.com
           </a>
         </div>
         <div className="flex items-center gap-3">
-          <i className="fa-solid fa-phone contact-icon"></i>
+          <Icon name="phone" className="contact-icon h-5 w-5" />
           <a href="tel:+2349137360986" className="text-myWhite/70">
             +2349137360986
           </a>
         </div>
         <div className="flex items-center gap-3">
-          <i className="fa-solid fa-location-dot contact-icon"></i>
+          <Icon name="pin" className="contact-icon h-5 w-5" />
           <p className="text-myWhite/70">Lagos, Nigeria. Working worldwide.</p>
         </div>
       </div>
