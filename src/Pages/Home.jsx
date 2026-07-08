@@ -1,231 +1,149 @@
-import { Link } from 'react-router-dom';
-import Hero from '../components/Hero';
-import Seo from '../components/Seo';
-import workItems from '../assets/project';
-import pricing from '../data/pricing';
-import services from '../data/services';
+import { motion } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
+import Card from '../components/ui/Card';
+import Section from '../components/ui/Section';
+import { Button } from '../components/ui/Button';
+import { faqItems, industries, insights, processSteps, solutions, technologies, trustLogos, whyCodeferd } from '../constants/content';
+import { useReducedMotion } from '../hooks/useReducedMotion';
 
 const Home = () => {
-  const process = [
-    {
-      step: '01',
-      title: 'Discovery',
-      description: 'Align on goals, audiences, and the story your site needs to tell.'
-    },
-    {
-      step: '02',
-      title: 'Design',
-      description: 'Wireframes and high-fidelity UI so you can approve the direction fast.'
-    },
-    {
-      step: '03',
-      title: 'Build',
-      description: 'Component-driven development, responsive QA, and performance checks.'
-    },
-    {
-      step: '04',
-      title: 'Launch',
-      description: 'Deploy, measure, and iterate with analytics and clear next steps.'
-    }
-  ];
-
-  const differentiators = [
-    {
-      title: 'Positioning first',
-      description: 'We shape the message before the pixels, so the site sells the story.'
-    },
-    {
-      title: 'Senior execution',
-      description: 'Founder-led delivery with tight feedback loops and clean handoff.'
-    },
-    {
-      title: 'Systems mindset',
-      description: 'Reusable components and scalable UI so the site grows with you.'
-    }
-  ];
-
-  const featured = workItems.slice(0, 3);
+  const prefersReducedMotion = useReducedMotion();
 
   return (
-    <div>
-      <Seo path="/" />
-      <Hero />
-
-      <section id="services" data-animate="fade-up" className="section pt-16 md:pt-24 scroll-mt-28">
-        <div className="flex flex-col lg:flex-row gap-10 items-start justify-between">
-          <div className="max-w-xl space-y-4">
-            <p className="section-kicker">Services</p>
-            <h2 className="section-title">End-to-end web development for modern brands.</h2>
-            <p className="text-myWhite/70 text-lg">
-              From positioning to performance, we build sites that look sharp and move customers to action.
-              Clear scope, focused milestones, and a process that respects your time.
-            </p>
-            <div className="flex flex-wrap gap-3">
-              <Link to="/contact" className="btn-primary">
-                Start a project
-              </Link>
-              <Link to="/services" className="btn-ghost">
-                View all services
-              </Link>
-            </div>
-          </div>
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-2 w-full lg:max-w-4xl">
-            {services.map(service => (
-              <div key={service.title} className="card">
-                <h3 className="text-xl">{service.title}</h3>
-                <p className="mt-3 text-sm text-myWhite/70">{service.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="pricing" data-animate="fade-up" className="section pt-16 md:pt-24 scroll-mt-28">
-        <div className="max-w-3xl space-y-4">
-          <p className="section-kicker">Pricing</p>
-          <h2 className="section-title">Clear packages with room to scale.</h2>
-          <p className="text-myWhite/70 text-lg">
-            Transparent starting points for the most requested builds. Final pricing depends on scope,
-            content, and timeline.
+    <div className="bg-[#070B14] text-slate-100">
+      <section className="mx-auto flex min-h-[92vh] max-w-7xl flex-col justify-center px-6 py-24 sm:px-8 lg:px-10 lg:py-32">
+        <motion.div initial={prefersReducedMotion ? false : { opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="max-w-5xl">
+          <p className="text-sm font-medium uppercase tracking-[0.35em] text-sky-400">Codeferd Digital</p>
+          <h1 className="mt-6 text-5xl font-semibold tracking-tight text-white sm:text-6xl lg:text-8xl">
+            Building Secure Digital Platforms That Power Organizations.
+          </h1>
+          <p className="mt-8 max-w-3xl text-lg leading-8 text-slate-400 sm:text-xl">
+            Codeferd Digital designs secure software for governments, institutions, security organizations and ambitious businesses.
           </p>
-        </div>
-        <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {pricing.map(plan => (
-            <div
-              key={plan.id}
-              className={`card flex flex-col gap-4 ${
-                plan.highlight ? 'border-secondary/60 bg-secondary/10' : ''
-              }`}
-            >
-              {plan.highlight && <span className="badge">{plan.highlight}</span>}
-              <div>
-                <h3 className="text-xl">{plan.name}</h3>
-                <p className="mt-2 text-3xl font-semibold text-secondary">{plan.price}</p>
-                <p className="mt-3 text-sm text-myWhite/70">{plan.description}</p>
-              </div>
-              <div className="rounded-xl border border-graphite/70 bg-primary/60 p-4 text-xs uppercase tracking-[0.28em] text-myWhite/60 space-y-2">
-                <div className="flex items-center justify-between gap-4">
-                  <span>Timeline</span>
-                  <span className="text-myWhite/80 normal-case tracking-normal">{plan.timeline}</span>
-                </div>
-                <div className="flex items-center justify-between gap-4">
-                  <span>Revisions</span>
-                  <span className="text-myWhite/80 normal-case tracking-normal">{plan.revisions}</span>
-                </div>
-                <div className="flex items-center justify-between gap-4">
-                  <span>Handoff</span>
-                  <span className="text-myWhite/80 normal-case tracking-normal">{plan.handoff}</span>
-                </div>
-              </div>
-              <ul className="list-disc list-inside text-sm text-myWhite/70 space-y-2">
-                {plan.includes.map(item => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-              <Link to={`/contact?package=${plan.id}`} className="btn-ghost mt-auto">
-                Request this package
-              </Link>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section id="process" data-animate="fade-up" className="section pt-16 md:pt-24 scroll-mt-28">
-        <div className="max-w-3xl space-y-4">
-          <p className="section-kicker">Process</p>
-          <h2 className="section-title">A focused, transparent workflow.</h2>
-          <p className="text-myWhite/70 text-lg">
-            We move fast with clear checkpoints. You always know what is shipping next and why it matters.
-          </p>
-        </div>
-        <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-          {process.map(item => (
-            <div key={item.step} className="card">
-              <p className="text-secondary text-sm tracking-[0.3em]">{item.step}</p>
-              <h3 className="mt-3 text-xl">{item.title}</h3>
-              <p className="mt-3 text-sm text-myWhite/70">{item.description}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section data-animate="fade-up" className="section pt-16 md:pt-24">
-        <div className="grid gap-4 md:grid-cols-3">
-          {differentiators.map(item => (
-            <div key={item.title} className="card">
-              <h3 className="text-xl">{item.title}</h3>
-              <p className="mt-3 text-sm text-myWhite/70">{item.description}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section id="work" data-animate="fade-up" className="section pt-16 md:pt-24 scroll-mt-28">
-        <div className="flex flex-col lg:flex-row gap-8 items-start justify-between">
-          <div className="max-w-2xl space-y-4">
-            <p className="section-kicker">Work</p>
-            <h2 className="section-title">Selected projects and prototypes.</h2>
-            <p className="text-myWhite/70 text-lg">
-              A mix of client work and concept builds that show the range of layout, interaction, and
-              performance we deliver.
-            </p>
+          <div className="mt-10 flex flex-wrap gap-4">
+            <Button href="/contact">Schedule Consultation</Button>
+            <Button href="/case-study" variant="secondary">View Case Study</Button>
           </div>
-          <Link to="/work" className="btn-ghost">
-            View all work
-          </Link>
-        </div>
-        <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {featured.map(item => (
-            <article key={item.title} className="card group overflow-hidden">
-              <img
-                src={item.image}
-                alt={item.title}
-                loading="lazy"
-                decoding="async"
-                className="h-48 w-full rounded-xl object-cover transition duration-500 group-hover:scale-[1.02]"
-              />
-              <div className="mt-4">
-                <h3 className="text-xl">{item.title}</h3>
-                <p className="mt-2 text-sm text-myWhite/70">{item.description}</p>
-                <div className="mt-4 flex flex-wrap gap-3">
-                  {item.githubLink && (
-                    <a
-                      href={item.githubLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn-ghost text-sm"
-                    >
-                      GitHub
-                    </a>
-                  )}
-                  <a
-                    href={item.liveLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-ghost text-sm"
-                  >
-                    Live demo
-                  </a>
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
+        </motion.div>
       </section>
 
-      <section data-animate="fade-up" className="section py-20">
-        <div className="card text-center border-secondary/40 bg-secondary/10">
-          <p className="section-kicker">Ready to build</p>
-          <h2 className="section-title mt-3">Let us shape your next release.</h2>
-          <p className="mt-4 text-myWhite/70 text-lg max-w-2xl mx-auto">
-            Tell us about your goals, timeline, and scope. We will respond with a clear plan and next steps.
-          </p>
-          <div className="mt-6 flex justify-center">
-            <Link to="/contact" className="btn-primary">
-              Start a project
-            </Link>
-          </div>
+      <Section eyebrow="Trusted By" title="Selected partners and institutions" description="We work with organizations that require trust, clarity, and dependable execution.">
+        <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {trustLogos.map((logo) => (
+            <Card key={logo} className="flex items-center justify-center py-8 text-lg font-semibold uppercase tracking-[0.2em] text-slate-200">
+              {logo}
+            </Card>
+          ))}
         </div>
+      </Section>
+
+      <Section eyebrow="Industries" title="Built for high-trust environments" description="We create platforms that support regulated operations, sensitive missions, and long-term growth.">
+        <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          {industries.map((industry) => (
+            <Card key={industry.title}>
+              <h3 className="text-xl font-semibold text-white">{industry.title}</h3>
+              <p className="mt-3 text-sm leading-7 text-slate-400">{industry.description}</p>
+            </Card>
+          ))}
+        </div>
+      </Section>
+
+      <Section eyebrow="Solutions" title="Enterprise systems that reduce friction and increase confidence" description="Every engagement is shaped around operational reality, scalability, and measurable business value.">
+        <div className="mt-12 grid gap-6 lg:grid-cols-2">
+          {solutions.map((solution) => (
+            <Card key={solution.title}>
+              <h3 className="text-xl font-semibold text-white">{solution.title}</h3>
+              <p className="mt-3 text-sm leading-7 text-slate-400">{solution.description}</p>
+              <div className="mt-6 space-y-3 text-sm text-slate-300">
+                <p><span className="font-semibold text-white">Business value:</span> {solution.benefits}</p>
+                <p><span className="font-semibold text-white">Ideal clients:</span> {solution.ideal}</p>
+              </div>
+            </Card>
+          ))}
+        </div>
+      </Section>
+
+      <section className="mx-auto max-w-7xl px-6 py-20 sm:px-8 lg:px-10 lg:py-28">
+        <Card className="overflow-hidden border-sky-400/20 bg-[linear-gradient(135deg,rgba(37,99,235,0.16),rgba(17,24,39,0.95))] p-8 lg:p-12">
+          <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+            <div>
+              <p className="text-sm font-medium uppercase tracking-[0.3em] text-sky-400">Featured Case Study</p>
+              <h2 className="mt-4 text-3xl font-semibold tracking-tight text-white sm:text-4xl">Building the Official Digital Platform for Ogun State So-Safe Corps</h2>
+              <p className="mt-6 text-lg leading-8 text-slate-300">A secure, public-facing platform built to strengthen institutional presence and improve service engagement.</p>
+              <div className="mt-8 flex flex-wrap gap-4">
+                <Button href="/case-study">Read Full Case Study</Button>
+              </div>
+            </div>
+            <div className="rounded-3xl border border-white/10 bg-[#070B14]/80 p-6">
+              <div className="space-y-4 text-sm text-slate-300">
+                <div className="flex justify-between border-b border-white/10 pb-3"><span>Problem</span><span className="text-white">Institutional modernization</span></div>
+                <div className="flex justify-between border-b border-white/10 pb-3"><span>Solution</span><span className="text-white">Secure platform design</span></div>
+                <div className="flex justify-between border-b border-white/10 pb-3"><span>Technology</span><span className="text-white">React + Node</span></div>
+                <div className="flex justify-between"><span>Outcome</span><span className="text-white">Greater public confidence</span></div>
+              </div>
+            </div>
+          </div>
+        </Card>
+      </section>
+
+      <Section eyebrow="Why Codeferd" title="Reasoned delivery for organizations that value precision" description="We combine architecture, product thinking, and execution discipline to create systems that remain dependable over time.">
+        <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          {whyCodeferd.map((item) => (
+            <Card key={item.title}>
+              <h3 className="text-xl font-semibold text-white">{item.title}</h3>
+              <p className="mt-3 text-sm leading-7 text-slate-400">{item.text}</p>
+            </Card>
+          ))}
+        </div>
+      </Section>
+
+      <Section eyebrow="Process" title="A disciplined path from discovery to support" description="Every engagement follows a structured approach that keeps stakeholders aligned and delivery predictable.">
+        <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-5">
+          {processSteps.map((step, index) => (
+            <Card key={step.title}>
+              <p className="text-sm font-medium text-sky-400">0{index + 1}</p>
+              <h3 className="mt-3 text-xl font-semibold text-white">{step.title}</h3>
+              <p className="mt-3 text-sm leading-7 text-slate-400">{step.text}</p>
+            </Card>
+          ))}
+        </div>
+      </Section>
+
+      <Section eyebrow="Technology" title="Modern tooling, carefully applied" description="We use proven technologies that suit the scale, security, and delivery requirements of each platform.">
+        <div className="mt-12 flex flex-wrap gap-3">
+          {technologies.map((tech) => (
+            <span key={tech} className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-slate-300">
+              {tech}
+            </span>
+          ))}
+        </div>
+      </Section>
+
+      <Section eyebrow="FAQ" title="Questions organizations commonly ask" description="Clear answers for teams evaluating a partner for secure digital transformation.">
+        <div className="mt-12 space-y-4">
+          {faqItems.map((item) => (
+            <details key={item.question} className="group rounded-2xl border border-white/10 bg-[#111827] p-6">
+              <summary className="flex cursor-pointer items-center justify-between gap-4 text-left text-lg font-semibold text-white">
+                {item.question}
+                <span className="text-sky-400 transition group-open:rotate-45">+</span>
+              </summary>
+              <p className="mt-4 text-sm leading-7 text-slate-400">{item.answer}</p>
+            </details>
+          ))}
+        </div>
+      </Section>
+
+      <section className="mx-auto max-w-7xl px-6 py-20 sm:px-8 lg:px-10 lg:py-28">
+        <Card className="border-sky-400/20 bg-[#111827] p-8 lg:p-12">
+          <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+            <div className="max-w-2xl">
+              <p className="text-sm font-medium uppercase tracking-[0.3em] text-sky-400">Start a conversation</p>
+              <h2 className="mt-4 text-3xl font-semibold tracking-tight text-white sm:text-4xl">Let’s build something exceptional.</h2>
+              <p className="mt-5 text-lg leading-8 text-slate-400">Whether you need a public platform, secure system, or enterprise portal, we can help you move with confidence.</p>
+            </div>
+            <Button href="/contact" className="w-full justify-center lg:w-auto">Schedule Consultation <ArrowRight className="ml-2 h-4 w-4" /></Button>
+          </div>
+        </Card>
       </section>
     </div>
   );

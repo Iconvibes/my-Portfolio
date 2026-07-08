@@ -1,38 +1,22 @@
 # Codeferd Digital
 
 ## Summary
-A high-end agency website for Codeferd Digital. Built with React, Tailwind CSS, GSAP, and Framer Motion to showcase services, pricing, case studies, and a streamlined contact flow.
+A modern, enterprise-style marketing website for Codeferd Digital. Built with React and Vite to present services, selected work, and a clear path to contact.
 
 ## Tech Stack
 - React (Vite)
 - Tailwind CSS
 - React Router
-- GSAP
 - Framer Motion
 
 ## Key Features
-- Dark and light mode with a subdued light palette.
-- Sticky, blurred-glass navigation with a theme toggle.
-- Hero headline with GSAP text-mask reveal.
-- Services and pricing sections with agency-grade copy.
-- Dedicated services page with detailed training programs and a week-by-week curriculum.
-- Pricing cards that deep-link to the contact form with package details pre-filled.
-- Contact form that supports WhatsApp, email, and social channels.
+- High-contrast launch experience for the agency brand
+- Modular page architecture for services, about, work, and contact
+- Reusable layout and UI primitives for scalable growth
+- Lightweight, production-ready build pipeline
 
 ## Local Development
 1. Install dependencies:
    npm install
 2. Start the dev server:
    npm run dev
-
-## Configuration
-- Pricing packages are defined in `src/data/pricing.js`.
-- Contact details (email, phone, social links) live in `src/components/ContactHead.jsx` and `src/components/Form.jsx`.
-- Package prefill uses the query param format:
-  `/contact?package=custom-website`
-- Place the resume DOCX at `public/resume/FERDINARD ASHONIBARE(Resume).docx` for download.
-- Add a PDF at `public/resume/resume.pdf` to allow in-browser viewing via the “Open PDF” button.
-
-## Notes
-- Update pricing values and currency in `src/data/pricing.js`.
-- The light theme is intentionally soft (not bright) for a premium look.

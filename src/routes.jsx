@@ -1,21 +1,24 @@
-import MainLayout from "./layout/MainLayout";
-import Home from "./Pages/Home";
-import About from "./Pages/About";
-import Projects from "./Pages/Projects";
-import Contact from "./Pages/Contact";
-import Services from "./Pages/Services";
-export { publicRoutePaths } from "./seo/site";
+import MainLayout from './layout/MainLayout';
+import Home from './pages/Home';
+import About from './pages/About';
+import Solutions from './pages/Solutions';
+import CaseStudy from './pages/CaseStudy';
+import Insights from './pages/Insights';
+import Contact from './pages/Contact';
+
+export { publicRoutePaths } from './seo/site';
 
 export const appRoutes = [
   {
-    path: "/",
+    path: '/',
     element: <MainLayout />,
     children: [
       { index: true, element: <Home /> },
-      { path: "services", element: <Services /> },
-      { path: "studio", element: <About /> },
-      { path: "work", element: <Projects /> },
-      { path: "contact", element: <Contact /> }
+      { path: 'about', element: <About /> },
+      { path: 'solutions', element: <Solutions /> },
+      { path: 'case-study', element: <CaseStudy /> },
+      { path: 'insights', element: <Insights /> },
+      { path: 'contact', element: <Contact /> }
     ]
   }
 ];
