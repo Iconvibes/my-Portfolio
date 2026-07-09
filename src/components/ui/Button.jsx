@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 
-const baseClasses = 'inline-flex items-center justify-center rounded-full border px-6 py-3 text-sm font-semibold transition duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950';
+const baseClasses =
+  'inline-flex min-h-12 items-center justify-center rounded-full border px-6 py-3 text-sm font-semibold transition duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950';
 
 const variantClasses = {
   primary: 'border-sky-500 bg-sky-600 text-white hover:bg-sky-500',

@@ -23,9 +23,7 @@ export default defineConfig(({ isSsrBuild }) => ({
       : {
           output: {
             manualChunks: {
-              vendor: ['react', 'react-dom', 'react-router-dom'],
-              gsap: ['gsap'],
-              ogl: ['ogl']
+              vendor: ['react', 'react-dom', 'react-router-dom']
             }
           }
         },

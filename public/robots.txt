@@ -5,4 +5,4 @@ Disallow: /.git
 Disallow: /.env*
 Disallow: /node_modules
 
-Sitemap: https://www.ferdinardashonibare.com/sitemap.xml
+Sitemap: https://www.codeferd.digital/sitemap.xml

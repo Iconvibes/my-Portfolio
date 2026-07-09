@@ -7,13 +7,13 @@ A modern, enterprise-style marketing website for Codeferd Digital. Built with Re
 - React (Vite)
 - Tailwind CSS
 - React Router
-- Framer Motion
+- Netlify static deployment
 
 ## Key Features
-- High-contrast launch experience for the agency brand
-- Modular page architecture for services, about, work, and contact
-- Reusable layout and UI primitives for scalable growth
-- Lightweight, production-ready build pipeline
+- Static prerendered pages for stronger SEO and faster first paint
+- Modular content files for services, industries, insights, and case studies
+- Reusable layout, section, and UI components for scalable growth
+- Accessible responsive navigation and production contact form markup
 
 ## Local Development
 1. Install dependencies:
