@@ -1,7 +1,6 @@
-import { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
-import { navigation } from '../../content';
+import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import Button from '../ui/Button';
 
 const navClass = ({ isActive }) =>
   `rounded-full px-3 py-2 text-sm transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 ${
@@ -11,55 +10,43 @@ const navClass = ({ isActive }) =>
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const closeMenu = () => setIsOpen(false);
+  const location = useLocation();
 
   return (
     <header className="sticky top-0 z-40 border-b border-white/10 bg-slate-950/85 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
-        <Link to="/" onClick={closeMenu} className="text-lg font-semibold uppercase tracking-normal text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400">
+        <Link to="/" onClick={closeMenu} className="text-lg font-semibold uppercase tracking-normal text-white">
           Codeferd
         </Link>
-        <nav className="hidden items-center gap-2 md:flex" aria-label="Primary navigation">
+        <nav className="hidden md:flex space-x-8">
           {navigation.map((item) => (
-            <NavLink key={item.href} to={item.href} className={navClass}>
-              {item.label}
-            </NavLink>
+            <Link key={item.href} to={item.href} className={navClass({ isActive: location.pathname === item.href })}>
+              {item.name}
+            </Link>
           ))}
         </nav>
-        <div className="hidden md:block">
-          <Link to="/contact" className="rounded-full border border-sky-500/40 px-4 py-2 text-sm font-medium text-sky-300 transition hover:border-sky-400 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400">
-            Schedule Consultation
-          </Link>
+        <div className="md:hidden">
+          <button
+            aria-label="Toggle navigation"
+            onClick={() => setIsOpen(!isOpen)}
+            className="text-slate-300 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400"
+          >
+            {isOpen ? 'Close' : 'Menu'}
+          </button>
         </div>
-        <button
-          type="button"
-          className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 text-slate-200 hover:border-sky-400 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 md:hidden"
-          aria-label="Toggle navigation menu"
-          aria-expanded={isOpen}
-          aria-controls="mobile-navigation"
-          onClick={() => setIsOpen((value) => !value)}
-        >
-          {isOpen ? <X className="h-5 w-5" aria-hidden="true" /> : <Menu className="h-5 w-5" aria-hidden="true" />}
-        </button>
+        <Button href="/contact" variant="primary">
+          Book a Consultation
+        </Button>
       </div>
-
-      {isOpen ? (
-        <nav id="mobile-navigation" className="border-t border-white/10 px-6 py-4 md:hidden" aria-label="Mobile navigation">
-          <div className="flex flex-col gap-2">
-            {navigation.map((item) => (
-              <NavLink key={item.href} to={item.href} onClick={closeMenu} className={navClass}>
-                {item.label}
-              </NavLink>
-            ))}
-            <Link
-              to="/contact"
-              onClick={closeMenu}
-              className="mt-2 rounded-full border border-sky-500/40 px-4 py-3 text-center text-sm font-medium text-sky-300 transition hover:border-sky-400 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400"
-            >
-              Schedule Consultation
+      {isOpen && (
+        <nav className="md:hidden flex flex-col p-4 bg-slate-900/85 backdrop-blur-xl border-b border-white/10">
+          {navigation.map((item) => (
+            <Link key={item.href} to={item.href} onClick={closeMenu} className={navClass({ isActive: location.pathname === item.href })}>
+              {item.name}
             </Link>
-          </div>
+          ))}
         </nav>
-      ) : null}
+      )}
     </header>
   );
 };
