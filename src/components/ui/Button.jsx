@@ -9,7 +9,7 @@ const variantClasses = {
   ghost: 'border-transparent bg-transparent text-slate-300 hover:text-white'
 };
 
-export const Button = ({ children, href, variant = 'primary', className = '', ...props }) => {
+const Button = ({ children, href, variant = 'primary', className = '', ...props }) => {
   const classes = `${baseClasses} ${variantClasses[variant]} ${className}`.trim();
 
   if (href) {
@@ -26,3 +26,5 @@ export const Button = ({ children, href, variant = 'primary', className = '', ..
     </button>
   );
 };
+
+export default Button;
