@@ -5,10 +5,17 @@ export const routeMeta = [
     priority: '1.0',
     changefreq: 'weekly',
     seo: {
-      title: 'Codeferd Digital | Secure Digital Platforms',
+      title: 'Ferdinard Ashonibare | Full-Stack Web Developer',
       description:
-        'Codeferd Digital designs secure software for governments, institutions, security organizations, and ambitious businesses.',
-      keywords: ['Codeferd Digital', 'secure software', 'digital transformation', 'enterprise platforms']
+        'Ferdinard Ashonibare is a full-stack web developer in Lagos, Nigeria — building fast, secure web platforms for government, hospitality, and education.',
+      socialDescription:
+        '$ whoami → ferdinand ashonibare · $ cat status.json → { role: "full-stack developer" } · { stack: "react · node · express · mongo" } · { status: "open to work" }',
+      keywords: [
+        'Ferdinard Ashonibare',
+        'full-stack web developer',
+        'React developer Nigeria',
+        'web developer Lagos'
+      ]
     }
   },
   {
@@ -17,22 +24,22 @@ export const routeMeta = [
     priority: '0.8',
     changefreq: 'monthly',
     seo: {
-      title: 'About | Codeferd Digital',
+      title: 'About | Ferdinard Ashonibare',
       description:
-        'Learn how Codeferd Digital delivers secure, high-trust digital platforms with senior execution and disciplined architecture.',
-      keywords: ['about Codeferd Digital', 'enterprise software', 'digital platform partner']
+        'Learn about Ferdinard Ashonibare — a full-stack web developer from Lagos, Nigeria, building secure platforms for government, hospitality, and education.',
+      keywords: ['about Ferdinard Ashonibare', 'full-stack developer', 'Lagos developer']
     }
   },
   {
-    path: '/solutions',
-    label: 'Solutions',
+    path: '/work',
+    label: 'Work',
     priority: '0.9',
     changefreq: 'monthly',
     seo: {
-      title: 'Solutions | Codeferd Digital',
+      title: 'Work | Ferdinard Ashonibare',
       description:
-        'Explore Codeferd Digital solutions for government, security, enterprise, and institutional digital modernization.',
-      keywords: ['solutions', 'government platforms', 'security systems', 'enterprise portals']
+        'Selected projects by Ferdinard Ashonibare — Ogun State So-Safe Corps government platform, Wura Grand Hotel, and the EduTrack web app.',
+      keywords: ['portfolio', 'Ogun State So-Safe Corps', 'Wura Grand Hotel', 'EduTrack']
     }
   },
   {
@@ -41,10 +48,10 @@ export const routeMeta = [
     priority: '0.8',
     changefreq: 'monthly',
     seo: {
-      title: 'Case Study | Codeferd Digital',
+      title: 'Case Study: So-Safe Corps | Ferdinard Ashonibare',
       description:
-        'See how Codeferd Digital delivered a secure digital platform for Ogun State So-Safe Corps.',
-      keywords: ['case study', 'public sector software', 'Ogun State So-Safe Corps']
+        'How Ferdinard Ashonibare built the secure digital platform for Ogun State So-Safe Corps — research, architecture, security, and delivery.',
+      keywords: ['case study', 'government platform', 'Ogun State So-Safe Corps']
     }
   },
   {
@@ -53,10 +60,10 @@ export const routeMeta = [
     priority: '0.7',
     changefreq: 'monthly',
     seo: {
-      title: 'Insights | Codeferd Digital',
+      title: 'Insights | Ferdinard Ashonibare',
       description:
-        'Read professional insights on secure modern software delivery, architecture, and digital transformation.',
-      keywords: ['insights', 'software architecture', 'digital transformation']
+        'Notes on engineering, product, and design from full-stack developer Ferdinard Ashonibare.',
+      keywords: ['insights', 'web development', 'engineering notes']
     }
   },
   {
@@ -65,10 +72,10 @@ export const routeMeta = [
     priority: '0.8',
     changefreq: 'monthly',
     seo: {
-      title: 'Contact | Codeferd Digital',
+      title: 'Contact | Ferdinard Ashonibare',
       description:
-        'Start a conversation with Codeferd Digital about your next secure software or digital platform initiative.',
-      keywords: ['contact Codeferd Digital', 'secure software', 'digital platform']
+        'Get in touch with Ferdinard Ashonibare about a website, web app, or full-time role.',
+      keywords: ['contact Ferdinard Ashonibare', 'hire web developer', 'Lagos developer']
     }
   }
 ];

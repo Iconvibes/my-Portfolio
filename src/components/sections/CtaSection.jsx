@@ -1,25 +1,31 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import { Button } from '../ui/Button';
 
-const CTASection = () => {
-  return (
-    <section className="bg-slate-900 text-white py-24 px-6 sm:px-10 lg:px-20">
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="max-w-4xl mx-auto text-center"
-      >
-        <h2 className="text-3xl font-bold mb-6">Ready to Get Started?</h2>
-        <p className="text-xl mb-8">
-          Let's discuss how we can help your organization achieve its digital goals.
-        </p>
-        <button className="bg-accent text-white px-8 py-4 rounded-full hover:bg-opacity-90 transition duration-300">
-          Contact Us
-        </button>
-      </motion.div>
-    </section>
-  );
-};
+const CtaSection = ({ title = 'Have a project in mind?' }) => (
+  <section className="relative overflow-hidden bg-grid-paper bg-signal text-signal-ink">
+    <div className="mx-auto max-w-7xl px-6 py-20 sm:px-8 lg:px-10 lg:py-24">
+      <div className="flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-end">
+        <div className="max-w-2xl">
+          <p className="mono-label text-signal-ink/60">// available for projects &amp; roles</p>
+          <h2 className="display-ink mt-4 text-4xl sm:text-6xl">{title}</h2>
+          <p className="mt-5 text-lg leading-8 text-signal-ink/75">
+            Tell me what you're building and I'll reply with clear next steps — usually within 24
+            hours.
+          </p>
+        </div>
+        <div className="flex flex-wrap items-center gap-4">
+          <Button href="/contact" variant="paper" icon>
+            Start the conversation
+          </Button>
+          <a
+            href="mailto:hello@codeferd.digital"
+            className="mono-label inline-flex items-center gap-2 rounded-full border border-signal-ink/30 px-6 py-3.5 text-signal-ink transition hover:border-signal-ink hover:bg-signal-ink hover:text-signal"
+          >
+            hello@codeferd.digital
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+);
 
-export default CTASection;
+export default CtaSection;

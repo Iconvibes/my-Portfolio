@@ -9,23 +9,24 @@ const ContactForm = () => (
         Do not fill this out: <input name="company-url" tabIndex="-1" autoComplete="off" />
       </label>
     </p>
+    <p className="eyebrow">// start a project</p>
     <div className="grid gap-5 sm:grid-cols-2">
       <Field id="full-name" name="name" label="Full name" placeholder="Your name" required />
-      <Field id="work-email" name="email" type="email" label="Work email" placeholder="you@organization.com" required />
+      <Field id="work-email" name="email" type="email" label="Email" placeholder="you@company.com" required />
     </div>
-    <Field id="organization" name="organization" label="Organization" placeholder="Institution or company" />
+    <Field id="project-type" name="project-type" label="What are you looking for?" placeholder="e.g. Website, web app, full-time role" />
     <TextareaField
       id="project-details"
       name="message"
       label="Project details"
-      placeholder="Tell us about the platform, audience, and goals."
+      placeholder="Tell me about the project, the audience, and the goal."
       required
     />
-    <div className="flex flex-col gap-4 sm:flex-row sm:flex-wrap">
-      <Button type="submit">Send Inquiry</Button>
-      <Button href="/case-study" variant="secondary">
-        View Case Study
+    <div className="flex flex-col gap-4 pt-2 sm:flex-row sm:items-center">
+      <Button type="submit" icon>
+        Send message
       </Button>
+      <p className="mono-label text-slate-500">no spam — ever</p>
     </div>
   </form>
 );

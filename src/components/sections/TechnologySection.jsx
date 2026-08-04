@@ -1,27 +1,35 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import { technologies } from '../../content';
+import Badge from '../ui/Badge';
+import Reveal from '../ui/Reveal';
+import Section from '../ui/Section';
 
-const TechnologySection = () => {
-  return (
-    <section className="bg-slate-800 text-white py-24 px-6 sm:px-10 lg:px-20">
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="max-w-4xl mx-auto text-center"
-      >
-        <h2 className="text-3xl font-bold mb-6">Our Technologies</h2>
-        <p className="text-xl mb-8">
-          We leverage cutting-edge technologies to build secure and scalable digital platforms.
-        </p>
-        <div className="flex justify-center gap-10 mt-10">
-          <img src="/tech-icon1.png" alt="Tech Icon 1" className="h-16" />
-          <img src="/tech-icon2.png" alt="Tech Icon 2" className="h-16" />
-          <img src="/tech-icon3.png" alt="Tech Icon 3" className="h-16" />
-        </div>
-      </motion.div>
-    </section>
-  );
-};
+const TechnologySection = () => (
+  <Section
+    index="(05)"
+    eyebrow="Stack"
+    title="Tools I reach for"
+    description="A focused, modern full-stack toolkit — and the judgement to pick the right tool for the job rather than the trendiest one."
+  >
+    <div className="mt-14 grid gap-5 md:grid-cols-3">
+      {technologies.map((group, index) => (
+        <Reveal
+          key={group.group}
+          delay={index * 80}
+          className="rounded-2xl border border-line bg-ink-2 p-7"
+        >
+          <p className="eyebrow">
+            <span className="mr-2 text-slate-500">//</span>
+            {group.group}
+          </p>
+          <div className="mt-5 flex flex-wrap gap-2.5">
+            {group.items.map((item) => (
+              <Badge key={item}>{item}</Badge>
+            ))}
+          </div>
+        </Reveal>
+      ))}
+    </div>
+  </Section>
+);
 
 export default TechnologySection;

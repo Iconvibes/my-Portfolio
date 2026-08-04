@@ -1,39 +1,18 @@
 export const industries = [
   {
-    title: 'Government',
-    description:
-      'Secure citizen services, public portals, and modernization programs that operate with reliability and accountability.'
+    title: 'Government & Public Sector',
+    description: 'Public platforms that need to be secure, authoritative, and worthy of public trust.'
   },
   {
-    title: 'Security',
-    description:
-      'Operational command systems and field-facing platforms designed for mission-critical coordination.'
-  },
-  {
-    title: 'Healthcare',
-    description:
-      'Patient and provider experiences built for trust, privacy, and dependable access.'
+    title: 'Hospitality',
+    description: 'Hotel and guest experiences that sell a stay before the first click.'
   },
   {
     title: 'Education',
-    description:
-      'Institutional platforms that support learning, administration, and long-term growth.'
+    description: 'Tools that make teaching, tracking, and learning easier for everyone involved.'
   },
   {
-    title: 'NGOs',
-    description:
-      'Digital tools that connect programs, stakeholders, and impact reporting with clarity.'
-  },
-  {
-    title: 'Faith Organizations',
-    description:
-      'Engaging, secure digital experiences for communities, ministries, and large-scale outreach.'
-  },
-  {
-    title: 'Enterprise',
-    description:
-      'Modern internal and external systems that improve operations without friction.'
+    title: 'Business & Startups',
+    description: 'Websites and apps that help companies move faster and look the part.'
   }
 ];
-
-export const trustLogos = ['Ogun State So-Safe Corps'];

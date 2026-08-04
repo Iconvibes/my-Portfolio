@@ -1,28 +1,29 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import { processSteps } from '../../content';
+import Reveal from '../ui/Reveal';
+import Section from '../ui/Section';
 
-const ProcessSection = () => {
-  return (
-    <section className="bg-slate-900 text-white py-24 px-6 sm:px-10 lg:px-20">
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="max-w-4xl mx-auto text-center"
-      >
-        <h2 className="text-3xl font-bold mb-6">Our Process</h2>
-        <p className="text-xl mb-8">
-          We follow a structured approach to ensure the success of every project.
-        </p>
-        <ul className="list-disc list-inside mt-10 space-y-4">
-          <li>Discovery Phase</li>
-          <li>Design Phase</li>
-          <li>Development Phase</li>
-          <li>Testing and Deployment</li>
-        </ul>
-      </motion.div>
-    </section>
-  );
-};
+const ProcessSection = () => (
+  <Section
+    index="(04)"
+    eyebrow="Process"
+    title="A simple process, executed well"
+    description="No mystery, no jargon. Four clear steps from first call to launched product — and I stay around after go-live."
+  >
+    <ol className="mt-14 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+      {processSteps.map((step, index) => (
+        <Reveal
+          as="li"
+          key={step.number}
+          delay={index * 80}
+          className="relative rounded-2xl border border-line bg-ink-2 p-7 transition-colors duration-300 hover:border-signal/40"
+        >
+          <span className="serif-accent text-4xl text-signal">{step.number}</span>
+          <h3 className="mt-4 text-lg font-semibold text-white">{step.title}</h3>
+          <p className="mt-3 text-sm leading-7 text-slate-400">{step.text}</p>
+        </Reveal>
+      ))}
+    </ol>
+  </Section>
+);
 
 export default ProcessSection;

@@ -1,20 +1,20 @@
 export const insights = [
   {
-    title: 'Modernizing public platforms without losing trust',
-    category: 'Strategy',
-    summary:
-      'The operational and design principles behind secure digital transformation for institutions.'
-  },
-  {
-    title: 'Why architecture matters in high-stakes software delivery',
+    title: 'What building a government platform taught me about trust',
     category: 'Engineering',
     summary:
-      'How a disciplined foundation improves resilience, security, and long-term maintainability.'
+      'Security, performance, and accessibility are not checklist features — they are the product when the public depends on your work.'
   },
   {
-    title: 'Designing for adoption in complex organizations',
+    title: 'Designing hotel websites that actually book rooms',
     category: 'Product',
     summary:
-      'The methods behind intuitive platforms that teams actually use with confidence.'
+      'The difference between a pretty hotel site and one that converts: clarity of journey, speed, and an experience that sells the stay.'
+  },
+  {
+    title: 'A simple checklist for shipping fast web apps',
+    category: 'Engineering',
+    summary:
+      'The habits I repeat on every build — from project setup to production — that keep quality high without slowing delivery.'
   }
 ];

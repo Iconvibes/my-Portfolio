@@ -1,6 +1,6 @@
 import Home from '../pages/Home';
 import About from '../pages/About';
-import Solutions from '../pages/Solutions';
+import Work from '../pages/Work';
 import CaseStudy from '../pages/CaseStudy';
 import Insights from '../pages/Insights';
 import Contact from '../pages/Contact';
@@ -9,7 +9,7 @@ import { routeMeta, publicRoutePaths } from './routeMeta';
 const pageMap = {
   '/': <Home />,
   '/about': <About />,
-  '/solutions': <Solutions />,
+  '/work': <Work />,
   '/case-study': <CaseStudy />,
   '/insights': <Insights />,
   '/contact': <Contact />

@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="800" viewBox="0 0 1280 800" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <linearGradient id="dusk" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7c2d12"/>
+      <stop offset="0.45" stop-color="#451a03"/>
+      <stop offset="1" stop-color="#120b07"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fcd34d"/>
+      <stop offset="1" stop-color="#d97706"/>
+    </linearGradient>
+    <linearGradient id="room" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3a2410"/>
+      <stop offset="1" stop-color="#1c120a"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="800" fill="url(#dusk)"/>
+  <circle cx="1000" cy="150" r="90" fill="#fcd34d" opacity="0.35"/>
+  <circle cx="1000" cy="150" r="60" fill="#fde68a" opacity="0.5"/>
+
+  <!-- Navbar -->
+  <rect x="0" y="0" width="1280" height="76" fill="#120b07" fill-opacity="0.35"/>
+  <text x="48" y="46" font-size="21" font-weight="700" fill="#fde68a" font-family="Georgia, serif">Wura Grand</text>
+  <text x="210" y="46" font-size="13" letter-spacing="4" fill="#e8c98a">H O T E L</text>
+  <text x="760" y="46" font-size="14" fill="#e5d3b3">Rooms &amp; Suites</text>
+  <text x="898" y="46" font-size="14" fill="#e5d3b3">Dining</text>
+  <text x="986" y="46" font-size="14" fill="#e5d3b3">Gallery</text>
+  <text x="1074" y="46" font-size="14" fill="#e5d3b3">Contact</text>
+  <rect x="1130" y="17" width="102" height="42" rx="21" fill="url(#gold)"/>
+  <text x="1150" y="43" font-size="13.5" font-weight="700" fill="#2b1504">Book a Stay</text>
+
+  <!-- Hero -->
+  <text x="48" y="200" font-size="13.5" letter-spacing="5" fill="#e8c98a">WELCOME TO LUXURY</text>
+  <text x="46" y="280" font-size="60" font-weight="700" fill="#fff7e6" font-family="Georgia, serif">Elegance, redefined.</text>
+  <text x="48" y="330" font-size="18" fill="#e5d3b3" font-family="Georgia, serif" font-style="italic">A distinguished address for rest, business &amp; celebration.</text>
+  <rect x="48" y="390" width="430" height="52" rx="26" fill="url(#gold)"/>
+  <text x="120" y="423" font-size="16" font-weight="700" fill="#2b1504">Check availability</text>
+  <rect x="494" y="390" width="200" height="52" rx="26" fill="none" stroke="#e8c98a" stroke-opacity="0.7"/>
+  <text x="548" y="423" font-size="15" fill="#f7ecd4">Explore rooms</text>
+
+  <!-- Room cards -->
+  <rect x="48" y="500" width="384" height="220" rx="16" fill="url(#room)" stroke="#e8c98a" stroke-opacity="0.2"/>
+  <rect x="60" y="512" width="360" height="110" rx="10" fill="#4a2f16"/>
+  <rect x="60" y="512" width="360" height="110" rx="10" fill="#000" opacity="0.25"/>
+  <text x="76" y="660" font-size="19" font-weight="700" fill="#fde68a" font-family="Georgia, serif">Deluxe Room</text>
+  <text x="76" y="686" font-size="13" fill="#cbb391">from ₦45,000 / night</text>
+  <text x="372" y="686" font-size="14" font-weight="700" fill="#fcd34d">Book →</text>
+
+  <rect x="448" y="500" width="384" height="220" rx="16" fill="url(#room)" stroke="#e8c98a" stroke-opacity="0.2"/>
+  <rect x="460" y="512" width="360" height="110" rx="10" fill="#5b3418"/>
+  <rect x="460" y="512" width="360" height="110" rx="10" fill="#000" opacity="0.25"/>
+  <text x="476" y="660" font-size="19" font-weight="700" fill="#fde68a" font-family="Georgia, serif">Executive Suite</text>
+  <text x="476" y="686" font-size="13" fill="#cbb391">from ₦85,000 / night</text>
+  <text x="772" y="686" font-size="14" font-weight="700" fill="#fcd34d">Book →</text>
+
+  <rect x="848" y="500" width="384" height="220" rx="16" fill="url(#room)" stroke="#e8c98a" stroke-opacity="0.2"/>
+  <rect x="860" y="512" width="360" height="110" rx="10" fill="#6b4218"/>
+  <rect x="860" y="512" width="360" height="110" rx="10" fill="#000" opacity="0.25"/>
+  <text x="876" y="660" font-size="19" font-weight="700" fill="#fde68a" font-family="Georgia, serif">Royal Villa</text>
+  <text x="876" y="686" font-size="13" fill="#cbb391">from ₦150,000 / night</text>
+  <text x="1172" y="686" font-size="14" font-weight="700" fill="#fcd34d">Book →</text>
+
+  <!-- Footer bar -->
+  <rect x="0" y="748" width="1280" height="52" fill="#120b07" fill-opacity="0.6"/>
+  <text x="48" y="780" font-size="12.5" fill="#a98d63">Wura Grand Hotel · A place of grace</text>
+</svg>

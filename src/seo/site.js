@@ -21,6 +21,7 @@ export const getSeoConfig = (path = '/') => {
   return {
     title: route.seo.title || siteConfig.defaultTitle,
     description: route.seo.description || siteConfig.defaultDescription,
+    socialDescription: route.seo.socialDescription || route.seo.description || siteConfig.defaultDescription,
     keywords: route.seo.keywords || [],
     robots: 'index,follow',
     canonical,
@@ -29,14 +30,15 @@ export const getSeoConfig = (path = '/') => {
   };
 };
 
-export const buildOrganizationSchema = () => ({
+export const buildPersonSchema = () => ({
   '@context': 'https://schema.org',
-  '@type': 'ProfessionalService',
+  '@type': 'Person',
   name: siteConfig.siteName,
   url: siteConfig.siteUrl,
-  image: `${siteConfig.siteUrl}${siteConfig.defaultImage}`,
+  image: `${siteConfig.siteUrl}${siteConfig.schemaImage || siteConfig.defaultImage}`,
   email: siteConfig.email,
   telephone: siteConfig.phone,
+  jobTitle: 'Full-Stack Web Developer',
   address: {
     '@type': 'PostalAddress',
     addressLocality: siteConfig.addressLocality,
@@ -54,7 +56,7 @@ export const buildWebsiteSchema = () => ({
 
 export const buildSeoHead = (path = '/') => {
   const seo = getSeoConfig(path);
-  const schema = [buildOrganizationSchema(), buildWebsiteSchema()];
+  const schema = [buildPersonSchema(), buildWebsiteSchema()];
 
   return `
 <title>${escapeAttribute(seo.title)}</title>
@@ -65,14 +67,19 @@ export const buildSeoHead = (path = '/') => {
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="${escapeAttribute(siteConfig.siteName)}">
 <meta property="og:title" content="${escapeAttribute(seo.title)}">
-<meta property="og:description" content="${escapeAttribute(seo.description)}">
+<meta property="og:description" content="${escapeAttribute(seo.socialDescription)}">
 <meta property="og:image" content="${seo.image}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:alt" content="${escapeAttribute(seo.socialDescription)}">
 <meta property="og:url" content="${seo.canonical}">
 <meta property="og:locale" content="${siteConfig.locale}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="${escapeAttribute(seo.title)}">
-<meta name="twitter:description" content="${escapeAttribute(seo.description)}">
+<meta name="twitter:description" content="${escapeAttribute(seo.socialDescription)}">
 <meta name="twitter:image" content="${seo.image}">
+<meta name="twitter:image:alt" content="${escapeAttribute(seo.socialDescription)}">
 <link rel="canonical" href="${seo.canonical}">
 <script type="application/ld+json">${JSON.stringify(schema)}</script>
 `;

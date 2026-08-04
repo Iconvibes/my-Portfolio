@@ -1,27 +1,32 @@
 export const faqItems = [
   {
-    question: 'What types of organizations do you work with?',
+    question: 'What kind of projects do you take on?',
     answer:
-      'We support governments, institutions, security organizations, NGOs, and ambitious private-sector teams with mission-critical digital platforms.'
+      'Websites, web applications, dashboards, and APIs — typically full-stack builds with React on the front and Node.js on the back. If it lives in a browser, I can build it.'
   },
   {
-    question: 'How do you approach security?',
+    question: 'How do you price projects?',
     answer:
-      'Security is part of the architecture from the beginning, including access control, secure integrations, and deployment discipline.'
+      'It depends on scope. After a short discovery call I give a fixed price and timeline — no vague estimates, no surprise invoices.'
   },
   {
-    question: 'Can you work with existing systems?',
+    question: 'Can you work with my existing code or team?',
     answer:
-      'Yes. We integrate with current infrastructure where appropriate and modernize the experience around it.'
+      'Yes. I am comfortable stepping into existing codebases, taking over maintenance, or building alongside your team.'
   },
   {
-    question: 'Do you offer ongoing support?',
+    question: 'How do you handle security?',
     answer:
-      'Yes. We support launches, optimization, and continuous product evolution once the platform is live.'
+      'Security is part of the build, not an afterthought — access control, secure data handling, and deployment discipline. My work for Ogun State So-Safe Corps is a live example.'
   },
   {
-    question: 'How quickly can a project begin?',
+    question: 'What does working with you look like?',
     answer:
-      'We usually begin with a focused discovery engagement and can move quickly once the scope is aligned.'
+      'Clear scope, regular updates, and a working product you can see early. You always know what is happening and what comes next.'
+  },
+  {
+    question: 'Are you available for full-time roles?',
+    answer:
+      'Yes — I am open to remote full-time roles and long-term contracts, as well as one-off project work.'
   }
 ];

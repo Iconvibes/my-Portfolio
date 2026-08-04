@@ -1,34 +1,41 @@
-export const whyCodeferd = [
+export const processSteps = [
   {
-    title: 'Enterprise Architecture',
-    text: 'Systems designed for reliability, maintainability, and long-term strategic value.'
+    number: '01',
+    title: 'Listen & scope',
+    text: 'We define the goal, the audience, and what success looks like — before a single line of code.'
   },
   {
-    title: 'Scalable Systems',
-    text: 'Technical foundations that can grow without breaking the experience or operations.'
+    number: '02',
+    title: 'Design & architect',
+    text: 'Clean interface direction and a technical foundation that can grow without getting messy.'
   },
   {
-    title: 'Security First',
-    text: 'Secure-by-design thinking for data handling, access, and deployment confidence.'
+    number: '03',
+    title: 'Build',
+    text: 'Rapid, disciplined development with regular check-ins so nothing ever surprises you.'
   },
   {
-    title: 'Modern Experience',
-    text: 'Interfaces that feel current, precise, and premium across every touchpoint.'
-  },
-  {
-    title: 'Long-Term Partnership',
-    text: 'A delivery model that stays aligned with your roadmap after launch.'
-  },
-  {
-    title: 'Reliable Delivery',
-    text: 'Structured execution with clear communication and disciplined delivery.'
+    number: '04',
+    title: 'Launch & support',
+    text: 'Production deploy, monitoring, and continued improvements long after go-live.'
   }
 ];
 
-export const processSteps = [
-  { title: 'Discover', text: 'Clarify goals, stakeholders, constraints, and success measures.' },
-  { title: 'Design', text: 'Map workflows, create polished interfaces, and define the system model.' },
-  { title: 'Develop', text: 'Build with robust architecture, clean code, and strong engineering discipline.' },
-  { title: 'Deploy', text: 'Prepare for launch, security review, and performance hardening.' },
-  { title: 'Support', text: 'Provide operational support and continuous improvement beyond launch.' }
+export const values = [
+  {
+    title: 'Security first',
+    text: 'I build with security as a default — access control, clean data handling, and hardening at every layer.'
+  },
+  {
+    title: 'Performance matters',
+    text: 'Fast loading, smooth interactions, and quality that holds up under real conditions.'
+  },
+  {
+    title: 'Clarity over jargon',
+    text: 'Plain communication, honest timelines, and work even non-technical stakeholders understand.'
+  },
+  {
+    title: 'Craft & care',
+    text: 'Details are the product. I sweat the small stuff so the whole thing feels premium.'
+  }
 ];

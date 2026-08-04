@@ -1,14 +1,18 @@
 export const siteConfig = {
-  siteName: 'Codeferd Digital',
+  siteName: 'Ferdinard Ashonibare',
+  brandName: 'Codeferd Digital',
   siteUrl: 'https://www.codeferd.digital',
-  defaultTitle: 'Codeferd Digital | Secure Digital Platforms',
+  defaultTitle: 'Ferdinard Ashonibare | Full-Stack Web Developer',
   defaultDescription:
-    'Codeferd Digital builds secure digital platforms for governments, institutions, security organizations, and ambitious businesses.',
-  defaultImage: '/og.png',
+    'Ferdinard Ashonibare is a full-stack web developer in Lagos, Nigeria — building fast, secure web platforms for government, hospitality, and education.',
+  defaultImage: '/og-card.jpg',
+  schemaImage: '/profile.jpg',
   locale: 'en_US',
-  themeColor: '#070B14',
+  themeColor: '#060A12',
   email: 'hello@codeferd.digital',
   phone: '+2349137360986',
+  phoneDisplay: '+234 913 736 0986',
+  location: 'Lagos, Nigeria',
   addressLocality: 'Lagos',
   addressCountry: 'NG',
   socialProfiles: [

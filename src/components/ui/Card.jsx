@@ -1,10 +1,14 @@
 import { createElement } from 'react';
 
-const Card = ({ children, className = '', hover = true, as = 'div' }) =>
+const Card = ({ children, className = '', hover = true, as = 'div', tone = 'ink' }) =>
   createElement(
     as,
     {
-      className: `rounded-xl border border-white/10 bg-slate-900 p-6 shadow-[0_20px_80px_rgba(0,0,0,0.24)] ${hover ? 'transition duration-300 hover:-translate-y-1 hover:border-sky-400/40' : ''} ${className}`.trim()
+      className: `rounded-2xl border ${
+        tone === 'ink' ? 'border-line bg-ink-2' : 'border-signal/20 bg-paper text-ink'
+      } p-6 shadow-[0_24px_80px_rgba(0,0,0,0.28)] ${
+        hover ? 'transition duration-300 hover:-translate-y-1 hover:border-signal/40' : ''
+      } ${className}`.trim()
     },
     children
   );

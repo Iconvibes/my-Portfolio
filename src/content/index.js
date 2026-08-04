@@ -1,9 +1,10 @@
 export { siteConfig } from './site';
 export { navigation } from './navigation';
-export { industries, trustLogos } from './industries';
-export { solutions, technologies } from './solutions';
-export { whyCodeferd, processSteps } from './process';
+export { industries } from './industries';
+export { capabilities, technologies, techMarquee } from './capabilities';
+export { processSteps, values } from './process';
 export { faqItems } from './faq';
 export { insights } from './insights';
+export { projects, featuredProject } from './projects';
 export { featuredCaseStudy } from './caseStudies';
-export { contactChannels } from './contact';
+export { contactChannels, socialLinks } from './contact';

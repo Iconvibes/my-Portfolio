@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="800" viewBox="0 0 1280 800" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <linearGradient id="side" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1e1b4b"/>
+      <stop offset="1" stop-color="#0f0a2e"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#f4f4fb"/>
+    </linearGradient>
+    <linearGradient id="bar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#a78bfa"/>
+      <stop offset="1" stop-color="#7c3aed"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="800" fill="#f1f0f9"/>
+
+  <!-- Sidebar -->
+  <rect width="264" height="800" fill="url(#side)"/>
+  <rect x="24" y="22" width="34" height="34" rx="9" fill="#7c3aed"/>
+  <path d="M37 30v18M37 30l-8 9 8-9 8 9z" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="70" y="44" font-size="18" font-weight="700" fill="#ffffff">EduTrack</text>
+  <text x="70" y="62" font-size="11.5" fill="#a5a3c9">FOR SCHOOLS &amp; EDUCATORS</text>
+
+  <g font-size="13.5">
+    <rect x="16" y="100" width="232" height="44" rx="10" fill="#7c3aed"/>
+    <text x="44" y="126" fill="#ffffff" font-weight="700">▣ Dashboard</text>
+    <text x="44" y="186" fill="#b4b1dd">▢ Students</text>
+    <text x="44" y="240" fill="#b4b1dd">▢ Assignments</text>
+    <text x="44" y="294" fill="#b4b1dd">▢ Attendance</text>
+    <text x="44" y="348" fill="#b4b1dd">▢ Reports</text>
+    <text x="44" y="402" fill="#b4b1dd">▢ Settings</text>
+  </g>
+
+  <!-- Top bar -->
+  <rect x="264" y="0" width="1016" height="72" fill="#ffffff"/>
+  <text x="300" y="45" font-size="19" font-weight="700" fill="#1f1b3d">Good morning, Mrs. Adeyemi</text>
+  <rect x="928" y="18" width="280" height="36" rx="18" fill="#f1f0f9"/>
+  <text x="952" y="41" font-size="13" fill="#8a87ae">Search students, classes…</text>
+  <circle cx="1240" cy="36" r="18" fill="#7c3aed"/>
+  <text x="1233" y="42" font-size="13" font-weight="700" fill="#ffffff">A</text>
+
+  <!-- Stat cards -->
+  <rect x="300" y="104" width="290" height="118" rx="14" fill="url(#card)" stroke="#e2e1f0"/>
+  <text x="326" y="146" font-size="13" fill="#8a87ae">TOTAL STUDENTS</text>
+  <text x="326" y="192" font-size="30" font-weight="700" fill="#1f1b3d">1,248</text>
+  <circle cx="552" cy="140" r="22" fill="#ede9fe"/>
+  <path d="M552 130v20M546 140h12" stroke="#7c3aed" stroke-width="3" stroke-linecap="round"/>
+
+  <rect x="610" y="104" width="290" height="118" rx="14" fill="url(#card)" stroke="#e2e1f0"/>
+  <text x="636" y="146" font-size="13" fill="#8a87ae">ACTIVE ASSIGNMENTS</text>
+  <text x="636" y="192" font-size="30" font-weight="700" fill="#1f1b3d">86</text>
+  <circle cx="862" cy="140" r="22" fill="#ede9fe"/>
+  <rect x="850" y="130" width="8" height="20" rx="3" fill="#7c3aed"/>
+  <rect x="862" y="136" width="8" height="14" rx="3" fill="#a78bfa"/>
+  <rect x="874" y="142" width="8" height="8" rx="3" fill="#c4b5fd"/>
+
+  <rect x="920" y="104" width="324" height="118" rx="14" fill="url(#card)" stroke="#e2e1f0"/>
+  <text x="946" y="146" font-size="13" fill="#8a87ae">AVERAGE CLASS SCORE</text>
+  <text x="946" y="192" font-size="30" font-weight="700" fill="#1f1b3d">82%</text>
+  <text x="1130" y="178" font-size="13" font-weight="700" fill="#059669">▲ 6%</text>
+
+  <!-- Chart -->
+  <rect x="300" y="246" width="648" height="340" rx="14" fill="url(#card)" stroke="#e2e1f0"/>
+  <text x="326" y="284" font-size="15" font-weight="700" fill="#1f1b3d">Weekly performance</text>
+  <g>
+    <rect x="330" y="380" width="56" height="140" rx="8" fill="url(#bar)"/>
+    <rect x="404" y="420" width="56" height="100" rx="8" fill="url(#bar)"/>
+    <rect x="478" y="350" width="56" height="170" rx="8" fill="url(#bar)"/>
+    <rect x="552" y="400" width="56" height="120" rx="8" fill="url(#bar)"/>
+    <rect x="626" y="320" width="56" height="200" rx="8" fill="url(#bar)"/>
+    <rect x="700" y="360" width="56" height="160" rx="8" fill="url(#bar)"/>
+    <rect x="774" y="290" width="56" height="230" rx="8" fill="url(#bar)"/>
+  </g>
+  <g font-size="12.5" fill="#8a87ae" text-anchor="middle">
+    <text x="358" y="548">Mon</text><text x="432" y="548">Tue</text><text x="506" y="548">Wed</text>
+    <text x="580" y="548">Thu</text><text x="654" y="548">Fri</text><text x="728" y="548">Sat</text>
+    <text x="802" y="548">Sun</text>
+  </g>
+
+  <!-- Activity -->
+  <rect x="972" y="246" width="272" height="340" rx="14" fill="url(#card)" stroke="#e2e1f0"/>
+  <text x="996" y="284" font-size="15" font-weight="700" fill="#1f1b3d">Recent activity</text>
+  <g font-size="13">
+    <circle cx="1016" cy="320" r="14" fill="#ede9fe"/><text x="1016" y="325" text-anchor="middle" fill="#7c3aed" font-weight="700">J</text>
+    <text x="1042" y="325" fill="#3c3859">Jide submitted Maths H.W.</text>
+    <circle cx="1016" cy="370" r="14" fill="#ede9fe"/><text x="1016" y="375" text-anchor="middle" fill="#7c3aed" font-weight="700">A</text>
+    <text x="1042" y="375" fill="#3c3859">Amina scored 91 in Physics</text>
+    <circle cx="1016" cy="420" r="14" fill="#ede9fe"/><text x="1016" y="425" text-anchor="middle" fill="#7c3aed" font-weight="700">T</text>
+    <text x="1042" y="425" fill="#3c3859">Term 2 report published</text>
+    <circle cx="1016" cy="470" r="14" fill="#ede9fe"/><text x="1016" y="475" text-anchor="middle" fill="#7c3aed" font-weight="700">K</text>
+    <text x="1042" y="475" fill="#3c3859">Kelechi joined Class 4B</text>
+  </g>
+
+  <!-- Bottom status -->
+  <rect x="300" y="610" width="944" height="112" rx="14" fill="#ffffff" stroke="#e2e1f0"/>
+  <text x="326" y="650" font-size="14" font-weight="700" fill="#1f1b3d">Up next — 2:00 PM</text>
+  <text x="326" y="676" font-size="13" fill="#8a87ae">Integrated Science · SS2A · Practical session</text>
+  <rect x="1100" y="636" width="118" height="42" rx="21" fill="#7c3aed"/>
+  <text x="1124" y="663" font-size="13.5" font-weight="700" fill="#ffffff">Start class</text>
+</svg>

@@ -23,3 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 .aider*
+
+# Local tool state (Freebuff workspace) — never commit
+.freebuff/
