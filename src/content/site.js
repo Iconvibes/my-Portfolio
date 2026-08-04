@@ -1,7 +1,7 @@
 export const siteConfig = {
   siteName: 'Ferdinard Ashonibare',
   brandName: 'Codeferd Digital',
-  siteUrl: 'https://www.codeferd.digital',
+  siteUrl: 'https://ferdinardashonibare.com',
   defaultTitle: 'Ferdinard Ashonibare | Full-Stack Web Developer',
   defaultDescription:
     'Ferdinard Ashonibare is a full-stack web developer in Lagos, Nigeria — building fast, secure web platforms for government, hospitality, and education.',

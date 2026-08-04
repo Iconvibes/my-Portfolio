@@ -50,10 +50,10 @@ especially the first one.
 
 ### The 8-step go-live sequence
 
-- [ ] 1. Deploy to Netlify and make sure the custom domain (`www.codeferd.digital`) is active — the OG tags point at it.
+- [ ] 1. Deploy to Netlify and make sure the custom domain (`ferdinardashonibare.com`) is active — the OG tags point at it.
 - [ ] 2. Verify the tags on the deployed page:
-      `curl -s -A "Twitterbot/1.0" https://www.codeferd.digital/ | grep og:` — confirm they point at `og-card.jpg`.
-- [ ] 3. Confirm the card is reachable: `curl -s -o /dev/null -w "%{http_code}" https://www.codeferd.digital/og-card.jpg` → expect `200`.
+      `curl -s -A "Twitterbot/1.0" https://ferdinardashonibare.com/ | grep og:` — confirm they point at `og-card.jpg`.
+- [ ] 3. Confirm the card is reachable: `curl -s -o /dev/null -w "%{http_code}" https://ferdinardashonibare.com/og-card.jpg` → expect `200`.
 - [ ] 4. **Facebook / WhatsApp / Instagram:** open `developers.facebook.com/tools/debug/`, paste the URL, hit **Scrape Again**.
 - [ ] 5. **WhatsApp:** message yourself the link (your own chat) → check the card. Stale? Delete the message and resend the link with `?v=2` appended.
 - [ ] 6. **X/Twitter:** paste the URL into the tweet composer to preview the card, then tweet the clean link (X has no purge tool; new URL = fresh crawl).
