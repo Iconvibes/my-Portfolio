@@ -17,10 +17,10 @@ const CtaSection = ({ title = 'Have a project in mind?' }) => (
             Start the conversation
           </Button>
           <a
-            href="mailto:hello@codeferd.digital"
+            href="mailto:ferdinardoluwajuwonlo@gmail.com"
             className="mono-label inline-flex items-center gap-2 rounded-full border border-signal-ink/30 px-6 py-3.5 text-signal-ink transition hover:border-signal-ink hover:bg-signal-ink hover:text-signal"
           >
-            hello@codeferd.digital
+            ferdinardoluwajuwonlo@gmail.com
           </a>
         </div>
       </div>

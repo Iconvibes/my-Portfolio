@@ -76,7 +76,7 @@ const FaqSection = () => {
       <Reveal className="mt-10 text-sm text-slate-500">
         Still curious?{' '}
         <a
-          href="mailto:hello@codeferd.digital"
+          href="mailto:ferdinardoluwajuwonlo@gmail.com"
           className="text-signal underline-offset-4 hover:underline"
         >
           Ask me anything

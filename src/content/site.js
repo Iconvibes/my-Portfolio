@@ -9,7 +9,7 @@ export const siteConfig = {
   schemaImage: '/profile.jpg',
   locale: 'en_US',
   themeColor: '#060A12',
-  email: 'hello@codeferd.digital',
+  email: 'ferdinardoluwajuwonlo@gmail.com',
   phone: '+2349137360986',
   phoneDisplay: '+234 913 736 0986',
   location: 'Lagos, Nigeria',
