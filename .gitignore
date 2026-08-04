@@ -23,6 +23,25 @@ dist-ssr
 *.sln
 *.sw?
 .aider*
+.codeferd
+.agents
+
+# Environment files and secrets
+.env
+.env.*
+!.env.example
+!.env.sample
+
+# Local caches and temp build output
+.cache/
+.vite/
+.eslintcache
+.parcel-cache
+.terser-cache/
+coverage/
+*.tsbuildinfo
+.turbo/
+.netlify/
 
 # Local tool state (Freebuff workspace) — never commit
 .freebuff/
