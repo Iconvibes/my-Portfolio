@@ -62,6 +62,67 @@ const CaseStudy = () => (
         ))}
       </div>
 
+      <Card className="mt-6">
+        <p className="eyebrow">// how it's built</p>
+        <h2 className="display-ink mt-4 text-2xl text-white">A full-stack system, end to end</h2>
+        <p className="mt-4 text-sm leading-8 text-slate-400">{featuredCaseStudy.howItBuilt}</p>
+
+        <div className="mt-8 grid gap-4 lg:grid-cols-[1fr_auto_1fr_auto_1fr] lg:items-center">
+          {featuredCaseStudy.architectureLayers.map((layer, index) => (
+            <div key={layer.layer} className="contents">
+              {index > 0 ? (
+                <div className="hidden items-center justify-center lg:flex" aria-hidden="true">
+                  <svg
+                    width="40"
+                    height="20"
+                    viewBox="0 0 40 20"
+                    fill="none"
+                    className="text-signal"
+                  >
+                    <path
+                      d="M2 10h34M29 3l7 7-7 7"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </div>
+              ) : null}
+              <div className="rounded-2xl border border-line bg-ink p-6">
+                <div className="flex items-center justify-between gap-3">
+                  <p className="mono-label text-signal">{layer.layer}</p>
+                  <span className="mono-label text-slate-600">{String(index + 1).padStart(2, '0')}</span>
+                </div>
+                <p className="mt-3 font-semibold text-white">{layer.title}</p>
+                <p className="mt-1 text-sm text-slate-500">{layer.detail}</p>
+                <p className="mt-4 text-sm leading-6 text-slate-400">{layer.note}</p>
+              </div>
+              {index < featuredCaseStudy.architectureLayers.length - 1 ? (
+                <div className="flex items-center justify-center py-2 lg:hidden" aria-hidden="true">
+                  <svg
+                    width="20"
+                    height="32"
+                    viewBox="0 0 20 32"
+                    fill="none"
+                    className="rotate-90 text-signal"
+                  >
+                    <path
+                      d="M2 16h14M13 9l7 7-7 7"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </div>
+              ) : null}
+            </div>
+          ))}
+        </div>
+
+      </Card>
+
       <div className="mt-6 grid gap-6 lg:grid-cols-2">
         <Card>
           <h2 className="display-ink text-xl text-white">Performance</h2>

@@ -1,3 +1,15 @@
-import { routeMeta } from '../utils/routeMeta.js';
+// Primary navigation — pure domain data.
+//
+// The route table (src/utils/routeMeta.js) is plumbing (sitemap priority,
+// changefreq, SEO), so this file deliberately does NOT derive from it.
+// Paths must stay in sync with that table — the parity test in
+// src/utils/routeMeta.test.js enforces the invariant.
 
-export const navigation = routeMeta.map(({ label, path }) => ({ label, href: path }));
+export const navigation = [
+  { label: 'Home', href: '/' },
+  { label: 'About', href: '/about' },
+  { label: 'Work', href: '/work' },
+  { label: 'Case Study', href: '/case-study' },
+  { label: 'Insights', href: '/insights' },
+  { label: 'Contact', href: '/contact' }
+];

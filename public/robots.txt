@@ -5,4 +5,5 @@ Disallow: /.git
 Disallow: /.env*
 Disallow: /node_modules
 
+# AI crawlers: machine-readable site summary
 Sitemap: https://ferdinardashonibare.com/sitemap.xml

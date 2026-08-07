@@ -96,6 +96,7 @@ const CARD_HTML = `<!DOCTYPE html>
         <div class="ln"><span class="p">$</span><span class="hi">cat status.json</span></div>
         <div class="ln dim">↳ { role: "full-stack developer" }</div>
         <div class="ln dim">↳ { stack: "react · node · express · mongo" }</div>
+        <div class="ln dim">↳ { stats: "1 live platform · 3 products · 3 focus sectors + logistics" }</div>
         <div class="ln dim">↳ { base: "lagos, nigeria" }</div>
         <div class="ln"><span class="status">↳ { status: "open to work" }</span><span class="cursor"></span></div>
       </div>

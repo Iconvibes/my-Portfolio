@@ -1,7 +1,8 @@
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { mkdir, readFile, rm, writeFile } from "node:fs/promises";
-import { buildSeoHead, normalizePath, publicRoutePaths, siteConfig, toAbsoluteUrl } from "../src/seo/site.js";
+import { normalizePath, publicRoutePaths, siteConfig, toAbsoluteUrl } from "../src/seo/site.js";
+import { buildSeoHead } from "../src/seo/schemas.js";
 import { routeMeta } from "../src/utils/routeMeta.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -13,11 +14,24 @@ const { renderRoute } = await import(pathToFileURL(ssrEntryPath).href);
 
 const buildHtml = (template, routePath, appHtml) => {
   const normalizedPath = normalizePath(routePath);
-  const preloadLinks = [...appHtml.matchAll(/<link rel="preload"[^>]*\/>/g)].map(
-    ([match]) => match
+  const seoHeadBase = buildSeoHead(normalizedPath);
+
+  // React 19's renderToString emits its own <link rel="preload"> for eager
+  // <img>s (e.g. the hero portrait). Deduplicate against the head builder's
+  // preload links by URL so we never ship two preloads for the same asset.
+  const seoHeadHrefs = new Set(
+    [...seoHeadBase.matchAll(/<link rel="preload"[^>]*href="([^"]+)"/g)].map(
+      ([, href]) => href
+    )
   );
+  const preloadLinks = [...appHtml.matchAll(/<link rel="preload"[^>]*\/>/g)]
+    .map(([match]) => match)
+    .filter((link) => {
+      const href = link.match(/href="([^"]*)"/)?.[1];
+      return !href || !seoHeadHrefs.has(href);
+    });
   const cleanedAppHtml = appHtml.replace(/<link rel="preload"[^>]*\/>/g, "");
-  const seoHead = [buildSeoHead(normalizedPath), ...preloadLinks].join("\n");
+  const seoHead = [seoHeadBase, ...preloadLinks].join("\n");
 
   return template
     .replace("<!--seo-head-->", seoHead)
@@ -67,6 +81,7 @@ Disallow: /.git
 Disallow: /.env*
 Disallow: /node_modules
 
+# AI crawlers: machine-readable site summary
 Sitemap: ${siteConfig.siteUrl}/sitemap.xml
 `;
 

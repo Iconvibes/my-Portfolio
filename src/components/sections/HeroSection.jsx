@@ -8,9 +8,9 @@ import { featuredProject } from '../../content';
 import { useReducedMotion } from '../../hooks/useReducedMotion';
 
 const stats = [
-  { value: '01', label: 'Live government platform' },
-  { value: '02', label: 'Products in the making' },
-  { value: '03', label: 'Sectors I build for' }
+  { value: '1', label: 'Live government platform' },
+  { value: '3', label: 'Products in the making' },
+  { value: '3', label: 'Focus sectors + logistics' }
 ];
 
 const HeroSection = () => {
@@ -86,8 +86,8 @@ const HeroSection = () => {
             ) : (
               <span className="font-semibold text-white">Ogun State So-Safe Corps</span>
             )}{' '}
-            — a state security institution — and I'm currently crafting a hotel website and an
-            edtech app. If it lives in a browser, I can build it.
+            — a state security institution — and I'm currently crafting a hotel website, an
+            edtech app, and a logistics landing page. If it lives in a browser, I can build it.
           </p>
 
           <div className="mt-9 flex flex-wrap items-center gap-4">
@@ -117,7 +117,7 @@ const HeroSection = () => {
           <div className="ring-3d pointer-events-none absolute -top-16 -right-8" aria-hidden="true" />
           <div className="relative z-10 mx-auto mb-8 w-44 sm:w-52 lg:mr-0">
             <TiltCard maxTilt={6}>
-              <ProfilePhoto />
+              <ProfilePhoto priority />
             </TiltCard>
           </div>
           <div className="relative z-10 animate-float">

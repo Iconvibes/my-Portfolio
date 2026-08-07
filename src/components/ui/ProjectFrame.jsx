@@ -1,9 +1,10 @@
-import { ArrowUpRight, Building2, GraduationCap, Lock } from 'lucide-react';
+import { ArrowUpRight, Building2, GraduationCap, Lock, Truck } from 'lucide-react';
 
 const accentStyles = {
   emerald: { from: '#0b2a1e', to: '#0e1a2e', ring: 'rgba(52,211,153,0.35)', icon: <Lock className="h-10 w-10 text-emerald-300" strokeWidth={1.5} /> },
   amber: { from: '#2a1e0b', to: '#1a0f06', ring: 'rgba(251,191,36,0.35)', icon: <Building2 className="h-10 w-10 text-amber-300" strokeWidth={1.5} /> },
-  violet: { from: '#1d1230', to: '#0e0a1e', ring: 'rgba(167,139,250,0.35)', icon: <GraduationCap className="h-10 w-10 text-violet-300" strokeWidth={1.5} /> }
+  violet: { from: '#1d1230', to: '#0e0a1e', ring: 'rgba(167,139,250,0.35)', icon: <GraduationCap className="h-10 w-10 text-violet-300" strokeWidth={1.5} /> },
+  cyan: { from: '#0b2a33', to: '#0a1622', ring: 'rgba(34,211,238,0.35)', icon: <Truck className="h-10 w-10 text-cyan-300" strokeWidth={1.5} /> }
 };
 
 const ProjectFrame = ({ project, className = '' }) => {

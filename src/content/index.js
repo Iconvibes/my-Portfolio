@@ -8,3 +8,4 @@ export { insights } from './insights';
 export { projects, featuredProject } from './projects';
 export { featuredCaseStudy } from './caseStudies';
 export { contactChannels, socialLinks } from './contact';
+export { credentials } from './credentials';

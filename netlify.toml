@@ -3,20 +3,34 @@
   publish = "dist"
 
 [[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+  from = "/solutions"
+  to = "/work"
+  status = 301
 
-# Cache headers for different file types
+# Every route is a real prerendered HTML file (dist/about/index.html, …), so
+# there is NO SPA catch-all — unmatched URLs fall through to /404.html with a
+# proper 404 status instead of soft-404ing to the homepage.
+[[redirects]]
+  from = "/*"
+  to = "/404.html"
+  status = 404
+  force = false
+
+# Catch-all HTML: prerendered pages (/, /about, /work, …) get a short
+# revalidation window with stale-while-revalidate, so crawlers and CDN
+# always converge on fresh content within an hour while users get cached
+# copies. More specific rules below override for assets.
 [[headers]]
-  for = "/"
+  for = "/*"
   [headers.values]
-    Cache-Control = "public, max-age=3600, must-revalidate"
+    Cache-Control = "public, max-age=3600, stale-while-revalidate=86400"
+    X-Robots-Tag = "index, follow"
     X-Content-Type-Options = "nosniff"
     X-Frame-Options = "SAMEORIGIN"
     X-XSS-Protection = "1; mode=block"
     Referrer-Policy = "strict-origin-when-cross-origin"
 
+# Hashed build assets: immutable (Vite content-hashes filenames)
 [[headers]]
   for = "/assets/*"
   [headers.values]
@@ -39,3 +53,27 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
+# Images: revalidate daily — og-card.jpg regenerates on photo changes, so
+# immutable would serve stale social cards. stale-while-revalidate keeps
+# them cheap while still converging.
+[[headers]]
+  for = "*.jpg"
+  [headers.values]
+    Cache-Control = "public, max-age=86400, stale-while-revalidate=2592000"
+
+[[headers]]
+  for = "*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=86400, stale-while-revalidate=2592000"
+
+[[headers]]
+  for = "*.svg"
+  [headers.values]
+    Cache-Control = "public, max-age=86400, stale-while-revalidate=2592000"
+
+# Résumé PDF: short revalidate so an updated résumé propagates quickly
+[[headers]]
+  for = "*.pdf"
+  [headers.values]
+    Cache-Control = "public, max-age=3600, stale-while-revalidate=86400"
+    X-Robots-Tag = "index, follow"

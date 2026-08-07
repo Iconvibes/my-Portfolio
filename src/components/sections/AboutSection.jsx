@@ -14,7 +14,7 @@ const AboutSection = () => (
         <span className="serif-accent text-signal">system people depend on</span>
       </>
     }
-    description="I'm Ferdinard — a full-stack developer from Lagos, Nigeria. I've shipped a live platform for a state security institution, and I'm building a hotel website and an edtech app. Here's how I work."
+    description="I'm Ferdinard — a full-stack developer from Lagos, Nigeria. I've shipped a live platform for a state security institution, and I'm building a hotel website, an edtech app, and a logistics landing page. Here's how I work."
   >
     <div className="mt-14 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
       {values.map((value, index) => (

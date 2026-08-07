@@ -6,7 +6,7 @@ const lines = [
   { text: 'ferdinard ashonibare', dim: false },
   { prompt: '$', text: 'cat status.json', dim: false },
   { text: '{ role: "full-stack developer" }', dim: true },
-  { text: '{ stack: "react · node · express · mongo" }', dim: true },
+  { text: '{ stack: "react · tailwind · node · express · mongo" }', dim: true },
   { text: '{ base: "lagos, nigeria" }', dim: true },
   { text: '{ status: "open to work" }', dim: false }
 ];

@@ -9,7 +9,7 @@ export const routeMeta = [
       description:
         'Ferdinard Ashonibare is a full-stack web developer in Lagos, Nigeria — building fast, secure web platforms for government, hospitality, and education.',
       socialDescription:
-        '$ whoami → ferdinand ashonibare · $ cat status.json → { role: "full-stack developer" } · { stack: "react · node · express · mongo" } · { status: "open to work" }',
+        '$ whoami → ferdinand ashonibare · $ cat status.json → { role: "full-stack developer" } · { live: "1 government platform" } · { building: "3 products" } · { sectors: "3 focus + logistics" } · { status: "open to work" }',
       keywords: [
         'Ferdinard Ashonibare',
         'full-stack web developer',

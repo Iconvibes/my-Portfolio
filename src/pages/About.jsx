@@ -7,9 +7,15 @@ import Card from '../components/ui/Card';
 import ProfilePhoto from '../components/ui/ProfilePhoto';
 import ResumeButton from '../components/ui/ResumeButton';
 import Section from '../components/ui/Section';
-import { contactChannels, featuredProject, industries, projects } from '../content';
+import { contactChannels, credentials, featuredProject, industries, projects } from '../content';
 
-const About = () => (
+const About = () => {
+  const hasEducation = credentials.education.length > 0;
+  const hasCertifications = credentials.certifications.length > 0;
+  const hasCurrentLearning = (credentials.currentlyLearning?.length ?? 0) > 0;
+  const showCredentials = hasEducation || hasCertifications || hasCurrentLearning;
+
+  return (
   <div className="bg-ink text-slate-100">
     <PageShell
       eyebrow="About"
@@ -24,7 +30,7 @@ const About = () => (
     >
       <div className="mt-14 grid gap-6 lg:grid-cols-[0.4fr_0.6fr]">
         <div className="overflow-hidden rounded-2xl border border-line">
-          <ProfilePhoto className="rounded-2xl border-0" />
+          <ProfilePhoto priority className="rounded-2xl border-0" />
         </div>
         <Card>
           <p className="eyebrow">// at a glance</p>
@@ -35,7 +41,7 @@ const About = () => (
             </div>
             <div className="flex flex-wrap items-baseline justify-between gap-2 border-b border-line-soft pb-3">
               <dt className="mono-label text-slate-500">Stack</dt>
-              <dd className="text-white">React · Node · Express · MongoDB</dd>
+              <dd className="text-white">React · Tailwind · Node.js · Express · MongoDB</dd>
             </div>
             <div className="flex flex-wrap items-baseline justify-between gap-2 border-b border-line-soft pb-3">
               <dt className="mono-label text-slate-500">Base</dt>
@@ -58,6 +64,83 @@ const About = () => (
           <p className="mono-label mt-6 text-slate-600">{contactChannels[0].value}</p>
         </Card>
       </div>
+
+      {showCredentials ? (
+        <Card className="mt-6">
+          <p className="eyebrow">// credentials</p>
+          <div className="mt-5 grid gap-8 md:grid-cols-2">
+            {hasEducation ? (
+              <div className={hasCertifications ? '' : 'md:col-span-2'}>
+                <p className="mono-label text-slate-500">Education</p>
+                <ul className="mt-3 space-y-5">
+                  {credentials.education.map((item) => (
+                    <li key={`${item.institution}-${item.degree}`}>
+                      <p className="font-semibold text-white">{item.degree}</p>
+                      <p className="mt-1 text-sm text-slate-400">
+                        {item.institution}
+                        {item.location ? ` · ${item.location}` : ''}
+                        {item.year ? ` · ${item.year}` : ''}
+                      </p>
+                      {item.field ? (
+                        <p className="mono-label mt-1.5 text-slate-500">{item.field}</p>
+                      ) : null}
+                      {item.url ? (
+                        <a
+                          href={item.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="mono-label mt-1.5 inline-block text-signal underline-offset-4 hover:underline"
+                        >
+                          verify
+                        </a>
+                      ) : null}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
+            {hasCertifications ? (
+              <div className={hasEducation ? '' : 'md:col-span-2'}>
+                <p className="mono-label text-slate-500">Certifications</p>
+                <ul className="mt-3 space-y-4">
+                  {credentials.certifications.map((item) => (
+                    <li key={`${item.name}-${item.issuer}`}>
+                      <p className="font-semibold text-white">{item.name}</p>
+                      <p className="mt-1 text-sm text-slate-400">
+                        {item.issuer}
+                        {item.year ? ` · ${item.year}` : ''}
+                      </p>
+                      {item.url ? (
+                        <a
+                          href={item.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="mono-label mt-1 inline-block text-signal underline-offset-4 hover:underline"
+                        >
+                          verify
+                        </a>
+                      ) : null}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
+          </div>
+          {hasCurrentLearning ? (
+            <div className="mt-6 border-t border-line-soft pt-5">
+              <p className="mono-label text-slate-500">// currently learning</p>
+              <ul className="mt-3 space-y-3">
+                {credentials.currentlyLearning.map((item) => (
+                  <li key={item} className="flex items-center gap-2 text-sm text-slate-300">
+                    <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-signal" aria-hidden="true" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
+        </Card>
+      ) : null}
 
       <div className="mt-6 grid gap-6 lg:grid-cols-2">
         <Card>
@@ -87,7 +170,7 @@ const About = () => (
                 </span>
               )}{' '}
               — a state security institution.
-              . That project shaped how I work: security as a default, performance as a given, and
+              That project shaped how I work: security as a default, performance as a given, and
               clarity as a promise.
             </p>
           </div>
@@ -96,7 +179,7 @@ const About = () => (
           <p className="eyebrow">// currently</p>
           <div className="mt-4 space-y-4 text-sm leading-8 text-slate-400">
             <p>
-              Building two more products I'm excited about:
+              Building three products I'm excited about:
             </p>
             <ul className="space-y-3">
               {projects
@@ -156,6 +239,7 @@ const About = () => (
     <TechnologySection />
     <CtaSection title="Let's build something that matters." />
   </div>
-);
+  );
+};
 
 export default About;

@@ -157,8 +157,8 @@ const WorkSection = ({ detailed = false }) => {
               Different worlds. One standard of care.
             </h2>
             <p className="mt-5 text-lg leading-8 text-slate-400">
-              A government platform, a hotel website, and an edtech app — each designed, built,
-              and delivered to the same standard.
+              A government platform, a hotel website, an edtech app, and a logistics landing page
+              — each designed, built, and delivered to the same standard.
             </p>
           </div>
           <div className="mt-16 space-y-20">
@@ -178,7 +178,7 @@ const WorkSection = ({ detailed = false }) => {
         index="(01)"
         eyebrow="Selected Work"
         title="Different worlds. One standard of care."
-        description="A government platform, a hotel website, and an edtech app — each built to the same standard."
+        description="A government platform, a hotel website, an edtech app, and a logistics landing page — each built to the same standard."
       >
         <div className="mt-14 space-y-5">
           {projects.map((project, index) => (

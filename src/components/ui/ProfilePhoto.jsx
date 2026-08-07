@@ -11,7 +11,7 @@ const CANDIDATES = ['/profile.jpg', '/images/profile.jpg'];
  * `public/images/profile.jpg`) and it will render automatically. Until then,
  * an on-brand monogram card is shown instead.
  */
-const ProfilePhoto = ({ className = '' }) => {
+const ProfilePhoto = ({ className = '', priority = false }) => {
   const [status, setStatus] = useState('loading');
   const [srcIndex, setSrcIndex] = useState(0);
   const imgRef = useRef(null);
@@ -60,7 +60,8 @@ const ProfilePhoto = ({ className = '' }) => {
           setStatus('missing');
         }
       }}
-      loading="lazy"
+      loading={priority ? 'eager' : 'lazy'}
+      {...(priority ? { fetchPriority: 'high', decoding: 'sync' } : {})}
       className={`aspect-[4/5] w-full rounded-2xl border border-line object-cover transition-opacity duration-300 ${
         status === 'ok' ? 'opacity-100' : 'opacity-0'
       } ${className}`.trim()}

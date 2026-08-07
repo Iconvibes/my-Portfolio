@@ -20,7 +20,7 @@ export const projects = [
       'Security-first architecture with access control',
       'Responsive, accessible, and performance-tuned'
     ],
-    tech: ['React', 'Node.js', 'Express', 'MongoDB', 'REST APIs'],
+    tech: ['React', 'Tailwind CSS', 'Node.js', 'Express', 'MongoDB', 'REST APIs'],
     status: 'live',
     href: 'https://sosafecorps.og.gov.ng',
     domain: 'sosafecorps.og.gov.ng',
@@ -47,6 +47,26 @@ export const projects = [
     image: '/projects/wura-grand-hotel.svg',
     featured: false,
     accent: 'amber'
+  },
+  {
+    slug: 'tpc-logistics',
+    name: 'TPC Logistics',
+    tagline: 'A logistics landing page built to turn inquiries into WhatsApp leads',
+    sector: 'Logistics',
+    description:
+      'A focused logistics landing page for TPC Logistics — clear service highlights and a WhatsApp lead capture flow that makes it easy to request a pickup or quote on any device.',
+    highlights: [
+      'WhatsApp lead capture flow',
+      'Clear service sections and CTAs',
+      'Mobile-first inquiry funnel'
+    ],
+    tech: ['HTML', 'Tailwind CSS', 'JavaScript'],
+    status: 'coming-soon',
+    href: '',
+    domain: 'Launching soon',
+    image: '/projects/tpc-logistics.svg',
+    featured: false,
+    accent: 'cyan'
   },
   {
     slug: 'edutrack',

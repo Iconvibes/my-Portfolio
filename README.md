@@ -1,75 +1,273 @@
-# Ferdinard Ashonibare — Portfolio
+# Ferdinard Ashonibare — Personal Portfolio
 
-A unique personal portfolio for Ferdinard Ashonibare, a full-stack web developer in Lagos, Nigeria. Built with React, Vite, Tailwind CSS v4, and react-router — with SSR + per-route prerendering for SEO.
+The personal portfolio of **Ferdinard Ashonibare**, a full-stack web developer in Lagos, Nigeria — building fast, secure web platforms for government, hospitality, education, and logistics.
+
+> A personal portfolio — not an agency site. Every page leads with the person: name, story, and shipped work.
+
+![React](https://img.shields.io/badge/React_19-000?logo=react&logoColor=61DAFB) ![Vite](https://img.shields.io/badge/Vite_7-000?logo=vite&logoColor=646CFF) ![Tailwind](https://img.shields.io/badge/Tailwind_v4-000?logo=tailwindcss&logoColor=38BDF8) ![Netlify](https://img.shields.io/badge/Netlify-000?logo=netlify&logoColor=00C7B7)
+
+- **Live site:** [ferdinardashonibare.com](https://ferdinardashonibare.com)
+- **Stack:** React 19 · Vite 7 · Tailwind CSS v4 · React Router 7 · Netlify
+- **Deploy model:** SSR + per-route prerendering — every route ships as a real static HTML file
+
+---
+
+## Table of contents
+
+1. [Overview](#overview)
+2. [Features](#features)
+3. [Tech stack](#tech-stack)
+4. [Getting started](#getting-started)
+5. [Project structure](#project-structure)
+6. [Content management](#content-management)
+7. [SEO & Google indexing](#seo--google-indexing)
+8. [Deployment](#deployment)
+9. [Social sharing cards](#social-sharing-cards)
+10. [Commands](#commands)
+
+---
+
+## Overview
+
+This site is built to stop a recruiter in ten seconds: who Ferdinard is, what he builds, and proof — a live government platform, a hotel website, an edtech app, and a logistics landing page.
+
+The design follows an editorial *"field-tested systems"* identity — restrained command-line details (`$` prompts, numbered sections, mono labels, a terminal status card) paired with warm, human editorial typography. No skill bars, no fake testimonials, no agency copy.
+
+Production concerns are treated as first-class:
+
+- **SEO gate in the build** — a page can never ship without title, description, canonical, social image, or structured data.
+- **Fully prerendered** — no client-only rendering, no SPA catch-all; Google gets real HTML per route.
+- **Accessible & fast** — reduced-motion support, semantic HTML, hashed immutable assets, sensible caching.
+
+### Profile
+
+- **Role:** Full-stack web developer — Lagos, Nigeria (remote worldwide)
+- **Education:** Diploma in Frontend Engineering (Alt School Africa, 2025) · Diploma in Web Design (HIIT Plc, 2024) · S.S.C.E. (Surulere Senior Secondary School, 2021)
+- **Currently learning:** Backend development — deepening Node.js, Express & MongoDB at Ts Academy
+
+---
 
 ## Features
 
-- Editorial "field-tested systems" identity: Syne / Instrument Serif / JetBrains Mono, ink + paper + signal-lime palette
-- Signature hero with terminal status card and lime marquee
-- Three featured projects — So-Safe Corps (live), Wura Grand Hotel and EduTrack (launching soon)
-- Case study, About, Work, Insights, and Contact pages
-- Netlify-ready (form, redirects, robots, sitemap), accessibility + reduced-motion friendly
+- **Editorial design system** — Syne / Instrument Serif / JetBrains Mono; ink `#060A12`, paper `#F2EFE6`, signal lime `#C8F135`
+- **Signature hero** — terminal status card with typewriter effect, 3D-tilt portrait, lime marquee
+- **Four projects** — Ogun State So-Safe Corps (live), Wura Grand Hotel, EduTrack & TPC Logistics (launching soon)
+- **Six pages** — Home, About, Work, Case Study, Insights, Contact
+- **Per-route SEO** — unique title, description, canonical, Open Graph, Twitter card, and JSON-LD schema on every page
+- **AI discovery** — `llms.txt`, sitemap, robots.txt, and a rich structured-data layer
+- **Branded 404** — real 404 status page instead of a soft-404 homepage
+- **Netlify-ready** — forms, redirects, security headers, cache policy
+- **Accessibility** — skip link, focus-visible styles, semantic markup, `prefers-reduced-motion` respected
 
-## Adding live links/screenshots for Wura Grand Hotel & EduTrack
+---
 
-Once a project is hosted, edit `src/content/projects.js`:
+## Tech stack
+
+| Layer | Tools |
+| --- | --- |
+| UI | React 19, React Router 7, Tailwind CSS v4 (theme tokens), lucide-react |
+| Build | Vite 7 (`@tailwindcss/vite`, `@vitejs/plugin-react`), Terser |
+| Rendering | SSR entry (`src/entry-server.jsx`) + per-route prerender script |
+| SEO | `src/seo/site.js` — per-route metadata, schema.org builders, full head injection |
+| Deploy | Netlify — build command, redirects, cache & security headers |
+| Quality | ESLint (flat config), pre-deploy SEO smoke check, node build scripts |
+
+---
+
+## Getting started
+
+Requires **Node 20+** and npm.
+
+```bash
+# Install dependencies
+npm install
+
+# Start the dev server (HMR)
+npm run dev
+
+# Lint
+npm run lint
+
+# Production build: client + SSR bundle + per-route prerender + SEO gate
+npm run build
+
+# Preview the production build locally
+npm run preview
+
+# Regenerate the social share card from the current profile photo
+npm run og-card
+```
+
+The build ends with `scripts/check-seo.mjs`, a pre-deploy gate that **fails the build (exit 1)** if anything is broken. It runs inside Netlify's build, so a broken page can never ship.
+
+---
+
+## Project structure
+
+```
+public/                     # Static assets (copied verbatim to dist/)
+  profile.jpg               #   Portrait — hero & About page (4:5, ~800×1000)
+  resume/resume.pdf         #   Résumé
+  projects/*.svg            #   Project visuals
+  og-card.jpg               #   Social share card (regenerated by scripts/og-card.mjs)
+  404.html                  #   Branded error page
+  llms.txt                  #   Machine-readable site summary for AI crawlers
+  robots.txt · sitemap.xml  #   Also regenerated at build time
+
+src/
+  content/                  # All site content as plain data (edit here, not in JSX)
+    site.js                 #   Name, URLs, email, socials
+    projects.js             #   Projects — one object per project
+    caseStudies.js          #   Case study copy
+    credentials.js          #   Education & certifications (About card + Person schema)
+    faq.js · insights.js · capabilities.js · industries.js · process.js
+  components/
+    layout/                 # Header, Footer, PageShell
+    sections/               # Home page sections (Hero, Work, FAQ, CTA, …)
+    ui/                     # Reusable primitives (Button, Card, Badge, Reveal, …)
+  hooks/                    # useInView, useReducedMotion
+  pages/                    # One component per route
+  routes.jsx                # Route table → react-router
+  seo/site.js               # SEO config, schema builders, head injection
+  utils/routeMeta.js        # Per-route metadata (title, description, priority)
+  styles/globals.css        # Theme tokens + signature styles
+scripts/
+  prerender.mjs             # Renders every route to static HTML + sitemap/robots
+  check-seo.mjs             # Pre-deploy SEO & indexing gate
+  og-card.mjs               # Regenerates og-card.jpg from profile.jpg
+```
+
+---
+
+## Content management
+
+All content lives in `src/content/` as plain data — no JSX edits required for copy changes.
+
+### Add or update a project (`src/content/projects.js`)
+
+Each project is one object: `slug`, `name`, `tagline`, `sector`, `description`, `highlights`, `tech`, `status`, `href`, `image`, `accent`, `featured`.
+
+**When a project goes live:**
 
 1. Set `status: 'live'` and `href: 'https://your-domain'`.
 2. Save a screenshot at `public/projects/{slug}.jpg` and set `image: '/projects/{slug}.jpg'`.
 
-The UI automatically switches from the "Launching soon" badge to the live link.
+The UI automatically switches from the *Launching soon* badge to the live link. Until then, an on-brand browser-frame visual is shown.
 
-## Résumé & profile photo
+> The README documents this flow — it's the single most common content task on this site.
 
-- Résumé: replace `public/resume/resume.pdf` with your latest résumé (keep the same filename).
-  The résumé button opens it in an in-page viewer on desktop and downloads it directly on mobile.
-- Profile photo: save a 4:5 portrait (~800×1000) at `public/profile.jpg` (or `public/images/profile.jpg`)
-  — it appears on the hero and the About page automatically. Until then an on-brand monogram card is shown.
+### Update your photo
+
+Drop a 4:5 portrait (~800×1000) at `public/profile.jpg` (or `public/images/profile.jpg`). It appears on the hero and About page automatically. Until one exists, an on-brand monogram card is shown.
+
+### Update your résumé
+
+Replace `public/resume/resume.pdf` (keep the filename). The résumé button opens an in-page viewer on desktop and downloads directly on mobile.
+
+### Edit copy
+
+FAQ answers → `src/content/faq.js` · Insights → `src/content/insights.js` · Capabilities → `src/content/capabilities.js` · Contact details → `src/content/contact.js` and `src/content/site.js` · **Education & certifications → `src/content/credentials.js`** (drives the About card and the Person schema's `alumniOf`).
+
+---
+
+## SEO & Google indexing
+
+### How indexing works here
+
+Every route is **fully prerendered** at build time (`scripts/prerender.mjs`) into a real static file — `dist/about/index.html`, `dist/work/index.html`, etc. Googlebot gets complete HTML with content, headings, and metadata on the first request. There is **no SPA catch-all**, so unknown URLs return a real 404 instead of serving the homepage with a 200 status (which silently breaks indexing).
+
+Each route carries:
+
+- Unique `<title>` and meta description (from `src/utils/routeMeta.js`)
+- Self-referencing `<link rel="canonical">`
+- Open Graph + Twitter card tags
+- **JSON-LD structured data** built per route in `src/seo/site.js`:
+
+| Route | Schemas |
+| --- | --- |
+| All pages | Person, Organization, WebSite |
+| `/` | + FAQPage |
+| `/about` | + ProfilePage, BreadcrumbList |
+| `/work` | + CollectionPage → ItemList → CreativeWork |
+| `/case-study` | + Article, BreadcrumbList |
+| `/insights` | + BreadcrumbList |
+| `/contact` | + ContactPage → ContactPoint |
+
+### AI discovery
+
+- **`public/llms.txt`** — a machine-readable site summary for AI crawlers, linked from every page via `<link rel="llms.txt">`.
+- **`sitemap.xml`** — generated at build time for all 6 routes.
+- **`robots.txt`** — generated at build time, points at the sitemap.
+
+### Verify Google indexing after deploy
+
+1. **Verify the domain in Google Search Console** — the site moved from `codeferd.digital` to `ferdinardashonibare.com`; Google only honors canonicals for domains it recognizes.
+2. **Submit the sitemap:** Search Console → Sitemaps → `https://ferdinardashonibare.com/sitemap.xml`.
+3. **Request indexing** for each route via URL Inspection: `/`, `/about`, `/work`, `/case-study`, `/insights`, `/contact`.
+4. **If the old domain is still live**, 301-redirect it to the new one so Google transfers existing equity.
+
+The build gate enforces the contract: unique H1 per route, self-referencing canonical, parseable JSON-LD, `404.html` present, and **no `/index.html 200` catch-all** in either `netlify.toml` or `_redirects`.
+
+---
+
+## Deployment
+
+Deploys via **Netlify** — the build command, redirects, and headers are all in `netlify.toml`.
+
+### Redirects
+
+| From | To | Status |
+| --- | --- | --- |
+| `/solutions` | `/work` | 301 |
+| anything unmatched | `/404.html` | 404 |
+
+### Cache policy
+
+| Asset | Cache-Control |
+| --- | --- |
+| HTML pages | `public, max-age=3600, stale-while-revalidate=86400` + `X-Robots-Tag: index, follow` |
+| Hashed JS / CSS / fonts (`/assets/*`) | `public, max-age=31536000, immutable` |
+| Images (jpg / png / svg) | `public, max-age=86400, stale-while-revalidate=2592000` |
+| Résumé PDF | `public, max-age=3600, stale-while-revalidate=86400` |
+
+Security headers (`X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`, …) apply site-wide.
+
+---
+
+## Social sharing cards
+
+`public/og-card.jpg` (1200×630) is the image used by WhatsApp, X/Twitter, Facebook, and LinkedIn previews.
+
+### Regenerate after a photo change
+
+```bash
+npm run og-card
+```
+
+One command: re-renders the card from `profile.jpg` via headless Chrome, converts to a quality-95 JPEG, verifies the 1200×630 size, and confirms it's **under WhatsApp's ~300 KB preview limit** (currently ~87 KB).
+
+### Link-preview cache-busting checklist
+
+Every platform caches previews by exact URL — same URL = cached preview, new URL = fresh crawl. After any deploy that changes the card:
+
+- [ ] **Facebook/WhatsApp/Instagram:** `developers.facebook.com/tools/debug/` → paste URL → **Scrape Again**
+- [ ] **WhatsApp:** message yourself the link; stale? resend with `?v=2` appended
+- [ ] **X/Twitter:** paste into the tweet composer to preview, then tweet the clean link
+- [ ] **LinkedIn:** run `linkedin.com/post-inspector` on the URL
+
+---
 
 ## Commands
 
-```bash
-npm install
-npm run dev      # dev server
-npm run lint     # eslint
-npm run build    # client + SSR + prerender (dist/) + SEO smoke check
-npm run build:seo-check   # run only the SEO smoke check on the current dist/
-npm run og-card  # regenerate public/og-card.jpg from the current profile.jpg
-```
+| Command | Purpose |
+| --- | --- |
+| `npm run dev` | Dev server with HMR |
+| `npm run lint` | ESLint (flat config) |
+| `npm run build` | Client build → SSR build → prerender → SEO gate |
+| `npm run build:seo-check` | Run only the SEO gate against the current `dist/` |
+| `npm run og-card` | Regenerate the social share card |
+| `npm run preview` | Preview the production build |
 
-The build ends with `scripts/check-seo.mjs`, a pre-deploy SEO gate: it fails (exit 1)
-if any of the 6 routes in `dist/` is missing a title, meta description, canonical link,
-og:image, or JSON-LD structured data (or if `sitemap.xml`, `robots.txt`, or the OG card
-are absent). This runs inside Netlify's build, so a broken page can never ship.
+---
 
-## Go-live checklist & link-preview cache-busting
-
-Every platform caches link previews by the exact URL string — same URL = cached preview,
-new URL (even with a query param) = fresh crawl. Use this checklist after any deploy,
-especially the first one.
-
-### The 8-step go-live sequence
-
-- [ ] 1. Deploy to Netlify and make sure the custom domain (`ferdinardashonibare.com`) is active — the OG tags point at it.
-- [ ] 2. Verify the tags on the deployed page:
-      `curl -s -A "Twitterbot/1.0" https://ferdinardashonibare.com/ | grep og:` — confirm they point at `og-card.jpg`.
-- [ ] 3. Confirm the card is reachable: `curl -s -o /dev/null -w "%{http_code}" https://ferdinardashonibare.com/og-card.jpg` → expect `200`.
-- [ ] 4. **Facebook / WhatsApp / Instagram:** open `developers.facebook.com/tools/debug/`, paste the URL, hit **Scrape Again**.
-- [ ] 5. **WhatsApp:** message yourself the link (your own chat) → check the card. Stale? Delete the message and resend the link with `?v=2` appended.
-- [ ] 6. **X/Twitter:** paste the URL into the tweet composer to preview the card, then tweet the clean link (X has no purge tool; new URL = fresh crawl).
-- [ ] 7. **LinkedIn:** run `linkedin.com/post-inspector` on the URL before posting it.
-- [ ] 8. Done — every future share of that URL uses the correct card. Repeat this loop any time the photo or card changes.
-
-### The WhatsApp 300KB image rule
-
-WhatsApp **will not show** a link-preview image larger than ~300 KB. `public/og-card.jpg` is
-currently 87 KB — keep it under 300 KB or WhatsApp silently drops the photo from shares.
-
-### Regenerating the share card after a photo change
-
-1. Replace `public/profile.jpg` (4:5 portrait, ~800×1000).
-2. Run `npm run og-card` — one command re-renders `public/og-card.jpg`
-   (1200×630, quality-95 JPEG, auto-verified under WhatsApp's 300 KB limit).
-   Requires headless Chrome/Edge; on Windows the JPEG conversion is automatic.
-3. Redeploy, then re-run the 8-step cache-busting sequence above (the old card is cached
-   by every platform that has seen the URL).
+Designed & built by **Ferdinard Ashonibare**. © Ferdinard Ashonibare.

@@ -2,8 +2,8 @@ import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { Download, ExternalLink, FileText, X } from 'lucide-react';
 
-const RESUME_URL = '/resume/resume.pdf';
-const RESUME_FILENAME = 'Ferdinard-Ashonibare-Resume.pdf';
+export const RESUME_URL = '/resume/resume.pdf';
+export const RESUME_FILENAME = 'Ferdinard-Ashonibare-Resume.pdf';
 
 const useCoarsePointer = () => {
   const [coarse, setCoarse] = useState(false);

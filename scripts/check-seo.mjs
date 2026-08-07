@@ -20,9 +20,16 @@ const dist = path.join(root, 'dist');
 
 const REQUIRED_TAGS = [
   ['<title>', 'title tag'],
+  ['<meta name="author"', 'meta author'],
   ['<meta name="description"', 'meta description'],
+  ['<meta name="robots"', 'meta robots'],
   ['<link rel="canonical"', 'canonical link'],
+  ['<meta property="og:title"', 'og:title'],
+  ['<meta property="og:description"', 'og:description'],
   ['<meta property="og:image"', 'og:image'],
+  ['<meta property="og:url"', 'og:url'],
+  ['<meta name="twitter:card"', 'twitter:card'],
+  ['<link rel="llms.txt"', 'llms.txt link'],
   ['<script type="application/ld+json"', 'JSON-LD structured data']
 ];
 
@@ -77,11 +84,49 @@ for (const route of publicRoutePaths) {
   const canonical = html.match(/<link rel="canonical" href="([^"]+)"/);
   if (!canonical || !sameOrigin(canonical[1])) {
     missing.push(`absolute canonical on ${siteConfig.siteUrl}`);
+  } else {
+    // Canonical must self-reference this exact route — a homepage-serving
+    // soft-404 regression shows up here before it hurts indexing.
+    const expectedCanonical = `${siteConfig.siteUrl}${route}`;
+    if (canonical[1] !== expectedCanonical) {
+      missing.push(`canonical matching ${expectedCanonical} (got ${canonical[1]})`);
+    }
+  }
+
+  // Each prerendered page must contain its own real content: exactly one H1.
+  const h1Count = (html.match(/<h1[\s\S]*?<\/h1>/g) ?? []).length;
+  if (h1Count !== 1) {
+    missing.push(`exactly one H1 (found ${h1Count})`);
+  } else {
+    const h1 = html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/);
+    if (!h1 || !h1[1].replace(/<[^>]+>/g, '').trim()) {
+      missing.push('non-empty H1');
+    }
   }
 
   const ogImage = html.match(/<meta property="og:image" content="([^"]+)"/);
   if (!ogImage || !sameOrigin(ogImage[1])) {
     missing.push(`absolute og:image on ${siteConfig.siteUrl}`);
+  }
+
+  // Every JSON-LD block must parse as valid JSON — a single broken schema
+  // silently kills all structured data on the page for crawlers.
+  const ldJsonBlocks = html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g) ?? [];
+  if (ldJsonBlocks.length === 0) {
+    missing.push('JSON-LD block');
+  } else {
+    const broken = ldJsonBlocks.filter((block) => {
+      const raw = block.replace(/^<script type="application\/ld\+json">/, '').replace(/<\/script>$/, '');
+      try {
+        JSON.parse(raw);
+        return false;
+      } catch {
+        return true;
+      }
+    });
+    if (broken.length) {
+      missing.push(`${broken.length} unparseable JSON-LD block(s)`);
+    }
   }
 
   if (missing.length) {
@@ -93,11 +138,30 @@ for (const route of publicRoutePaths) {
 }
 
 // Site-level files the SEO contract depends on.
-for (const asset of ['sitemap.xml', 'robots.txt']) {
+for (const asset of ['sitemap.xml', 'robots.txt', 'llms.txt', '404.html']) {
   const file = path.join(dist, asset);
   if (!existsSync(file)) {
     failures.push(`dist/${asset} is missing`);
     report.push(`  ✗ dist/${asset} missing`);
+  }
+}
+
+// The SPA catch-all must never ship: it soft-404s every unknown URL to the
+// homepage and prevents Google from indexing real routes cleanly. Check BOTH
+// redirect sources — netlify.toml takes precedence over dist/_redirects.
+const spaCatchAllPattern = /\/index\.html\s+200/;
+const redirectsFile = path.join(dist, '_redirects');
+const redirectSources = [{ label: 'netlify.toml', file: path.join(root, 'netlify.toml') }];
+
+if (existsSync(redirectsFile)) {
+  redirectSources.push({ label: 'dist/_redirects', file: redirectsFile });
+}
+
+for (const source of redirectSources) {
+  const content = readFileSync(source.file, 'utf8');
+  if (spaCatchAllPattern.test(content)) {
+    failures.push(`SPA catch-all found in ${source.label} (/* /index.html 200) — remove it`);
+    report.push(`  ✗ SPA catch-all found in ${source.label}`);
   }
 }
 

@@ -1,0 +1,54 @@
+# Ferdinard Ashonibare — Full-Stack Web Developer
+
+> Personal portfolio of Ferdinard Ashonibare, a full-stack web developer in Lagos, Nigeria, building fast, secure web platforms for government, hospitality, and education. This is a personal portfolio site — not an agency.
+
+## Key facts
+
+- Name: Ferdinard Ashonibare
+- Role: Full-stack web developer
+- Location: Lagos, Nigeria (works remotely worldwide)
+- Focus sectors: Government & Public Safety, Hospitality, Education, Business, Logistics
+- Studio brand: Codeferd Digital (footnote only — the site's primary identity is the person)
+- Contact email: ferdinardoluwajuwonlo@gmail.com
+- GitHub: https://github.com/Iconvibes
+- LinkedIn: https://www.linkedin.com/in/ferdinard-ashonibare-3a3203369
+
+## Education
+
+- Diploma in Frontend Engineering — Alt School Africa, Lagos, Nigeria (2025). Core: full-cycle web development, HTML, CSS, JavaScript, React.js
+- Diploma in Web Design — HIIT Plc, Lagos, Nigeria (2024). Core: responsive web design, UI/UX principles
+- Senior Secondary School Certificate (S.S.C.E.) — Surulere Senior Secondary School, Lagos, Nigeria (2021)
+
+## Currently learning
+
+- Backend development — deepening Node.js, Express & MongoDB at Ts Academy
+
+## Proof of work
+
+- Ogun State So-Safe Corps — official digital platform for a state security institution. Live: https://sosafecorps.og.gov.ng
+- Wura Grand Hotel — premium hotel website (launching soon)
+- EduTrack — education web app for tracking student progress (launching soon)
+- TPC Logistics — logistics landing page with a WhatsApp lead capture flow (launching soon)
+
+## Services
+
+- Websites & brand sites
+- Web applications (portals, dashboards, tools)
+- APIs & backends (REST, Node.js, Express, MongoDB)
+- Security & performance hardening
+- End-to-end delivery and ongoing maintenance
+
+## Tech stack
+
+React, Node.js, Express, MongoDB, Tailwind CSS, JavaScript, Vite, REST APIs, Git, Netlify
+
+## Key pages
+
+- [Home](https://ferdinardashonibare.com/): introduction, capabilities, selected work, process, FAQ
+- [About](https://ferdinardashonibare.com/about): profile, sectors, currently building
+- [Work](https://ferdinardashonibare.com/work): selected projects
+- [Case Study](https://ferdinardashonibare.com/case-study): Ogun State So-Safe Corps platform story
+- [Insights](https://ferdinardashonibare.com/insights): engineering, product, and design notes
+- [Contact](https://ferdinardashonibare.com/contact): inquiry form and direct channels
+
+Sitemap: https://ferdinardashonibare.com/sitemap.xml

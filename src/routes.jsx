@@ -9,8 +9,8 @@ export const appRoutes = [
     element: <MainLayout />,
     children: routeConfig.map((route) =>
       route.path === '/'
-        ? { index: true, element: route.element }
-        : { path: route.path.slice(1), element: route.element }
+        ? { index: true, lazy: route.lazy }
+        : { path: route.path.slice(1), lazy: route.lazy }
     )
   }
 ];
