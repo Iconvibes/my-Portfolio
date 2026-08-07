@@ -57,11 +57,6 @@
     Cache-Control = "public, max-age=86400, stale-while-revalidate=2592000"
     Content-Type = "font/woff2"
 
-[[headers]]
-  for = "*.woff2"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
 # Images: revalidate daily — og-card.jpg regenerates on photo changes, so
 # immutable would serve stale social cards. stale-while-revalidate keeps
 # them cheap while still converging.
