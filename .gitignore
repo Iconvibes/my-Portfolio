@@ -22,9 +22,16 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Local AI-assistant tooling — never commit (would leak that the repo is AI-maintained)
 .aider*
-.codeferd
-.agents
+.agents/
+.codeferd/
+.claude/
+.cursor/
+.windsurf/
+CLINE.md
+AI_CONTEXT.md
 
 # Environment files and secrets
 .env
