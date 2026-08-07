@@ -48,6 +48,15 @@
     Cache-Control = "public, max-age=31536000, immutable"
     Content-Type = "text/css; charset=utf-8"
 
+# Self-hosted fonts (public/fonts): revalidate daily with a month of
+# stale-while-revalidate so a font update propagates quickly without making
+# repeat visits re-download fonts.
+[[headers]]
+  for = "*.woff2"
+  [headers.values]
+    Cache-Control = "public, max-age=86400, stale-while-revalidate=2592000"
+    Content-Type = "font/woff2"
+
 [[headers]]
   for = "*.woff2"
   [headers.values]

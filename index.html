@@ -9,6 +9,14 @@
       content="Ferdinard Ashonibare is a full-stack web developer in Lagos, Nigeria — building fast, secure web platforms for government, hospitality, and education."
     />
     <link rel="icon" type="image/png" href="/fav.png" />
+    <!-- Fonts are self-hosted (public/fonts) with unicode-range @font-face rules
+         in globals.css — no third-party requests. Only the LCP font (the hero's
+         Syne display face) is preloaded: it has a single @font-face rule, so the
+         browser consumes the preload cleanly. Inter is used at several weights
+         from one file and Chromium re-fetches fonts declared in multiple faces
+         rather than reusing a preload — so preloading it would waste a download.
+         The crossorigin attribute is required for font preloads. -->
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/syne-latin-700.woff2" crossorigin />
     <noscript>
       <style>
         .reveal {
