@@ -14,6 +14,7 @@ import { fileURLToPath } from 'node:url';
 
 import { publicRoutePaths } from '../src/utils/routeMeta.js';
 import { siteConfig } from '../src/content/site.js';
+import { toAbsoluteUrl } from '../src/seo/site.js';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const dist = path.join(root, 'dist');
@@ -86,10 +87,21 @@ for (const route of publicRoutePaths) {
     missing.push(`absolute canonical on ${siteConfig.siteUrl}`);
   } else {
     // Canonical must self-reference this exact route — a homepage-serving
-    // soft-404 regression shows up here before it hurts indexing.
-    const expectedCanonical = `${siteConfig.siteUrl}${route}`;
+    // soft-404 regression shows up here before it hurts indexing. Reuse
+    // toAbsoluteUrl so the gate can never drift from the URL builder, and
+    // sanity-check the shape since the gate now derives its expectation
+    // from the same function that emits the tag.
+    const expectedCanonical = toAbsoluteUrl(route);
     if (canonical[1] !== expectedCanonical) {
       missing.push(`canonical matching ${expectedCanonical} (got ${canonical[1]})`);
+    }
+    const canonicalPath = new URL(canonical[1]).pathname;
+    if (
+      canonicalPath.includes('//') ||
+      (route !== '/' && !canonical[1].endsWith('/')) ||
+      (route === '/' && canonical[1] !== `${siteConfig.siteUrl}/`)
+    ) {
+      missing.push(`well-formed canonical (got ${canonical[1]})`);
     }
   }
 
