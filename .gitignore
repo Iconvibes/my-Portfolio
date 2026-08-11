@@ -52,3 +52,8 @@ coverage/
 
 # Local tool state (Freebuff workspace) — never commit
 .freebuff/
+
+# SEO working documents — local-only, never commit
+searchqualityevaluatorguidelines.pdf
+SEO_MANUAL_TASKS.md
+tmp-sqeg.txt

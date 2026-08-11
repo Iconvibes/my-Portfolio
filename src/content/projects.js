@@ -24,7 +24,7 @@ export const projects = [
     status: 'live',
     href: 'https://sosafecorps.og.gov.ng',
     domain: 'sosafecorps.og.gov.ng',
-    image: '/projects/so-safe-corps.svg',
+    image: '/projects/so-safe-corps.jpg',
     featured: true,
     accent: 'emerald'
   },

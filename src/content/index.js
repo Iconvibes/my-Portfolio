@@ -7,5 +7,6 @@ export { faqItems } from './faq';
 export { insights } from './insights';
 export { projects, featuredProject } from './projects';
 export { featuredCaseStudy } from './caseStudies';
+export { testimonials } from './testimonials';
 export { contactChannels, socialLinks } from './contact';
 export { credentials } from './credentials';

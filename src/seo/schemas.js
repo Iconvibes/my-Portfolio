@@ -14,6 +14,7 @@ import { featuredCaseStudy } from '../content/caseStudies.js';
 import { contactChannels } from '../content/contact.js';
 import { capabilities, techMarquee } from '../content/capabilities.js';
 import { credentials } from '../content/credentials.js';
+import { testimonials } from '../content/testimonials.js';
 
 const SITE_URL = siteConfig.siteUrl;
 const PERSON_ID = `${SITE_URL}/#person`;
@@ -193,11 +194,47 @@ export const buildBreadcrumbListSchema = (path = '/') => {
   };
 };
 
+// Real, consensual client quotes rendered as schema.org Review blocks pointed
+// at the Person (@id). Returns null while testimonials is empty so the head
+// never ships fake reputation data (guidelines §3.3.2, §4.4).
+export const buildTestimonialsSchema = () => {
+  if (testimonials.length === 0) {
+    return null;
+  }
+
+  return testimonials.map((testimonial, index) => ({
+    '@context': 'https://schema.org',
+    '@type': 'Review',
+    '@id': `${SITE_URL}/#review-${index + 1}`,
+    itemReviewed: { '@id': PERSON_ID },
+    reviewBody: testimonial.quote,
+    author: {
+      '@type': 'Person',
+      name: testimonial.name,
+      ...(testimonial.href ? { url: testimonial.href } : {})
+    },
+    ...(testimonial.reviewRating
+      ? {
+          reviewRating: {
+            '@type': 'Rating',
+            ratingValue: testimonial.reviewRating,
+            bestRating: 5
+          }
+        }
+      : {})
+  }));
+};
+
 const baseSchemas = () => [buildPersonSchema(), buildOrganizationSchema(), buildWebsiteSchema()];
 
 export const buildStructuredData = (path = '/') => {
   const normalized = normalizePath(path);
   const schemas = baseSchemas();
+
+  const testimonialSchemas = buildTestimonialsSchema();
+  if (testimonialSchemas) {
+    schemas.push(...testimonialSchemas);
+  }
 
   switch (normalized) {
     case '/':

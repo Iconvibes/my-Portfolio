@@ -6,6 +6,7 @@ import AboutSection from '../components/sections/AboutSection';
 import ProcessSection from '../components/sections/ProcessSection';
 import TechnologySection from '../components/sections/TechnologySection';
 import FaqSection from '../components/sections/FaqSection';
+import TestimonialsSection from '../components/sections/TestimonialsSection';
 import CtaSection from '../components/sections/CtaSection';
 import { techMarquee } from '../content';
 
@@ -19,6 +20,7 @@ const Home = () => (
     <ProcessSection />
     <TechnologySection />
     <FaqSection />
+    <TestimonialsSection />
     <CtaSection />
   </>
 );
