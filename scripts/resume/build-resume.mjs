@@ -1,14 +1,17 @@
 // Regenerates public/resume/resume.pdf from scripts/resume/resume.html.
 // Usage: npm run resume:build   (or: node scripts/resume/build-resume.mjs)
+// Optional args (paths relative to project root):
+//   node scripts/resume/build-resume.mjs scripts/resume/resume-v2.html Ferdinard_Ashonibare_Fullstack_Engineer_v2.pdf
 // Set CHROME_PATH to override the browser executable.
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { existsSync, statSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 
+const args = process.argv.slice(2);
 const root = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
-const htmlPath = join(root, 'scripts', 'resume', 'resume.html');
-const outPath = join(root, 'public', 'resume', 'resume.pdf');
+const htmlPath = join(root, args[0] || 'scripts/resume/resume.html');
+const outPath = join(root, args[1] || 'public/resume/resume.pdf');
 
 if (!existsSync(htmlPath)) {
   console.error(`Source HTML not found: ${htmlPath}`);
