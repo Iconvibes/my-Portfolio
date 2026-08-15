@@ -7,10 +7,15 @@
  *
  *   1. robots.txt access verdict per crawler (RFC 9309 semantics, shared with
  *      the pre-deploy gate in scripts/check-robots.mjs)
- *   2. llms.txt / llms-full.txt / sitemap.xml presence, size, and coverage
+ *   2. llms.txt / llms-full.txt / sitemap.xml presence, size, and coverage,
+ *      plus every llms.txt link target and every sitemap URL resolving to
+ *      HTTP 200
  *   3. every public page: HTTP status, content-type, title/description/
- *      canonical vs the intended config, H1 count, JSON-LD health, and a
- *      word count that proves the page is prerendered, not a JS shell
+ *      canonical vs the intended config, og:title / og:url /
+ *      og:description, twitter card tags, og:image / twitter:image
+ *      resolving to HTTP 200, H1 count, JSON-LD health, and a word count
+ *      that proves the page is prerendered, not a JS shell
+ *   4. every internal link found on any page resolving to HTTP 200
  *
  * Requests are sent with a real crawler user-agent (GPTBot's by default) so
  * the response is what the bot would actually get. Pages are validated against
@@ -82,14 +87,37 @@ const pageWordCount = (html) => {
 
 // --- assets ----------------------------------------------------------------
 
-const checkAsset = async (pathname) => {
-  const url = `${BASE}${pathname}`;
+const fetchUrl = async (url) => {
   try {
-    const res = await fetchText(url);
-    return { pathname, ...res };
+    return await fetchText(url);
   } catch (error) {
-    return { pathname, status: 0, type: '', body: '', error: error.message };
+    return { status: 0, type: '', body: '', error: error.message };
   }
+};
+
+const checkAsset = async (pathname) => ({
+  pathname,
+  ...(await fetchUrl(`${BASE}${pathname}`))
+});
+
+// og:image / twitter:image resolution — one fetch per unique URL, shared
+// across every page so the same social card isn't re-requested per route.
+const imageChecks = new Map();
+const verifyImage = (url) => {
+  if (!imageChecks.has(url)) {
+    imageChecks.set(url, fetchUrl(url).then((res) => ({ status: res.status, error: res.error })));
+  }
+  return imageChecks.get(url);
+};
+
+// Internal link resolution — same dedupe pattern: shared nav links appear on
+// every page but are fetched exactly once.
+const linkChecks = new Map();
+const verifyLink = (url) => {
+  if (!linkChecks.has(url)) {
+    linkChecks.set(url, fetchUrl(url).then((res) => ({ status: res.status, error: res.error })));
+  }
+  return linkChecks.get(url);
 };
 
 // --- pages -----------------------------------------------------------------
@@ -138,9 +166,77 @@ const checkPage = async (routePath) => {
   const h1Count = (body.match(/<h1[\s\S]*?<\/h1>/g) ?? []).length;
   if (h1Count !== 1) issues.push(`H1 count ${h1Count}`);
 
+  const ogTitle = decodeHtml((body.match(/<meta property="og:title" content="([^"]*)"/)?.[1] ?? '').trim());
+  if (!ogTitle) {
+    issues.push('missing og:title');
+  } else if (ogTitle !== expected.title) {
+    issues.push(`og:title mismatch: "${ogTitle}"`);
+  }
+
+  const ogDescription = decodeHtml(
+    (body.match(/<meta property="og:description" content="([^"]*)"/)?.[1] ?? '').trim()
+  );
+  if (ogDescription !== expected.socialDescription) {
+    issues.push(ogDescription ? 'og:description mismatch' : 'missing og:description');
+  }
+
+  const ogUrl = (body.match(/<meta property="og:url" content="([^"]+)"/)?.[1] ?? '').trim();
+  if (ogUrl !== expectedCanonical) {
+    issues.push(`og:url: ${ogUrl || '(missing)'}`);
+  }
+
   const ogImage = (body.match(/<meta property="og:image" content="([^"]+)"/)?.[1] ?? '').trim();
   if (!ogImage.startsWith(`${siteConfig.siteUrl}/`)) {
     issues.push('og:image not on production origin');
+  } else {
+    void verifyImage(ogImage);
+  }
+
+  const twitterCard = (body.match(/<meta name="twitter:card" content="([^"]+)"/)?.[1] ?? '').trim();
+  if (twitterCard !== 'summary_large_image') {
+    issues.push(`twitter:card: ${twitterCard || '(missing)'}`);
+  }
+
+  const twitterTitle = decodeHtml(
+    (body.match(/<meta name="twitter:title" content="([^"]*)"/)?.[1] ?? '').trim()
+  );
+  if (twitterTitle !== expected.title) {
+    issues.push(twitterTitle ? `twitter:title mismatch: "${twitterTitle}"` : 'missing twitter:title');
+  }
+
+  const twitterDescription = decodeHtml(
+    (body.match(/<meta name="twitter:description" content="([^"]*)"/)?.[1] ?? '').trim()
+  );
+  if (twitterDescription !== expected.socialDescription) {
+    issues.push(
+      twitterDescription ? 'twitter:description mismatch' : 'missing twitter:description'
+    );
+  }
+
+  const twitterImage = (body.match(/<meta name="twitter:image" content="([^"]+)"/)?.[1] ?? '').trim();
+  if (twitterImage !== ogImage) {
+    issues.push(`twitter:image: ${twitterImage || '(missing)'} (≠ og:image)`);
+  } else if (twitterImage.startsWith(`${siteConfig.siteUrl}/`)) {
+    void verifyImage(twitterImage);
+  }
+
+  // Internal links an agent could follow from this page. Fragments, mailto/tel,
+  // and external URLs are excluded (external targets are covered by the llms.txt
+  // check). Root-relative and same-origin links register once in the shared map
+  // so the nav links shared by every page aren't re-fetched per route.
+  for (const rawHref of body.matchAll(/<a\s+[^>]*?\bhref="([^"]*)"/gi)) {
+    const href = rawHref[1].split('#')[0].trim();
+    if (!href || href.startsWith('mailto:') || href.startsWith('tel:')) continue;
+    let url;
+    if (href.startsWith('http://') || href.startsWith('https://')) {
+      if (!href.startsWith(siteConfig.siteUrl)) continue; // external
+      url = href;
+    } else if (href.startsWith('/')) {
+      url = `${BASE}${href}`;
+    } else {
+      continue; // prerendered pages only use root-relative paths
+    }
+    void verifyLink(url);
   }
 
   const blocks = [...body.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)];
@@ -167,7 +263,18 @@ const checkPage = async (routePath) => {
   const words = pageWordCount(body);
   if (words < 100) issues.push(`only ${words} words (JS shell?)`);
 
-  notes = `${title === expected.title ? 'title ✓' : 'no title'} · ${h1Count === 1 ? '1 H1 ✓' : 'H1 ✗'} · ${blocks.length} JSON-LD · ${words.toLocaleString('en-US')} words`;
+  const ogOk =
+    ogTitle === expected.title &&
+    ogDescription === expected.socialDescription &&
+    ogUrl === expectedCanonical &&
+    ogImage.startsWith(`${siteConfig.siteUrl}/`);
+  const twOk =
+    twitterCard === 'summary_large_image' &&
+    twitterTitle === expected.title &&
+    twitterDescription === expected.socialDescription &&
+    twitterImage === ogImage;
+
+  notes = `${title === expected.title ? 'title ✓' : 'no title'} · ${ogOk ? 'og ✓' : 'og ✗'} · ${twOk ? 'twitter ✓' : 'twitter ✗'} · ${h1Count === 1 ? '1 H1 ✓' : 'H1 ✗'} · ${blocks.length} JSON-LD · ${words.toLocaleString('en-US')} words`;
   if (article) {
     const headlineInBody = body.includes(article.title);
     const headlineInJsonLd = parsed.some(
@@ -223,6 +330,26 @@ const run = async () => {
   const links = (llms.body.match(/\[[^\]]+\]\(https?:\/\/[^)]+\)/g) ?? []).length;
   if (llms.status === 200 && llms.body.includes('llms-full.txt')) {
     line(`llms.txt      ${llms.status} · ${llms.type.split(';')[0]} · ${(llms.body.length / 1024).toFixed(1)} KB · ${links} links · → llms-full.txt ✓`);
+
+    // Every target an agent would follow from llms.txt must actually resolve:
+    // markdown links plus the bare Sitemap: URL it carries.
+    const linkTargets = [...llms.body.matchAll(/\[[^\]]+\]\((https?:\/\/[^)\s]+)\)/g)].map(
+      (match) => match[1]
+    );
+    const sitemapTarget = llms.body.match(/(?:^|\n)Sitemap:\s*(https?:\/\/\S+)/)?.[1];
+    const targets = [...new Set([...linkTargets, ...(sitemapTarget ? [sitemapTarget] : [])])];
+    const results = await Promise.all(
+      targets.map(async (url) => ({ url, res: await fetchUrl(url) }))
+    );
+    const broken = results.filter(({ res }) => res.status !== 200);
+    if (broken.length === 0) {
+      line(`llms.txt targets ${targets.length} — all resolve ✓`);
+    } else {
+      failures += broken.length;
+      for (const { url, res } of broken) {
+        line(`  ✗ llms.txt target ${url} — HTTP ${res.status}${res.error ? ` (${res.error})` : ''}`);
+      }
+    }
   } else {
     failures += 1;
     line(`✗ llms.txt ${llms.error ? `(fetch failed: ${llms.error})` : `HTTP ${llms.status}${llms.body.includes('llms-full.txt') ? '' : ' — no llms-full.txt link'}`}`);
@@ -245,6 +372,23 @@ const run = async () => {
     failures += 1;
     line(`✗ sitemap.xml ${sitemap.error ? `(fetch failed: ${sitemap.error})` : `HTTP ${sitemap.status} · ${locs}/${allPublicPaths.length} URLs`}`);
   }
+
+  // Every URL the sitemap advertises must actually serve the page.
+  const sitemapUrls = [...sitemap.body.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
+  if (sitemap.status === 200 && sitemapUrls.length > 0) {
+    const sitemapResults = await Promise.all(
+      sitemapUrls.map(async (url) => ({ url, res: await fetchUrl(url) }))
+    );
+    const brokenSitemap = sitemapResults.filter(({ res }) => res.status !== 200);
+    if (brokenSitemap.length === 0) {
+      line(`sitemap URLs ${sitemapUrls.length} — all resolve ✓`);
+    } else {
+      failures += brokenSitemap.length;
+      for (const { url, res } of brokenSitemap) {
+        line(`  ✗ sitemap URL ${url} — HTTP ${res.status}${res.error ? ` (${res.error})` : ''}`);
+      }
+    }
+  }
   line('');
 
   // 3. Pages
@@ -263,8 +407,42 @@ const run = async () => {
       line(`      ✗ ${issue}`);
     }
   }
-
   line('');
+
+  // 3b. Social card images
+  line('Social card images (og:image / twitter:image targets):');
+  if (imageChecks.size === 0) {
+    line('  (no og:image registered on any page)');
+  }
+  for (const [url, promise] of imageChecks) {
+    const { status, error } = await promise;
+    if (status === 200) {
+      line(`  ✓ ${url} — HTTP ${status}`);
+    } else {
+      failures += 1;
+      line(`  ✗ ${url} — HTTP ${status}${error ? ` (${error})` : ''}`);
+    }
+  }
+  line('');
+
+  // 3c. Internal links — every anchor a bot would follow within the site
+  line('Internal links (deduped across all pages):');
+  if (linkChecks.size === 0) {
+    line('  (no internal links found on any page)');
+  }
+  const linkResults = await Promise.all(
+    [...linkChecks].map(async ([url, promise]) => ({ url, res: await promise }))
+  );
+  for (const { url, res } of linkResults.sort((a, b) => a.url.localeCompare(b.url))) {
+    if (res.status === 200) {
+      line(`  ✓ ${url.startsWith(BASE) ? url.slice(BASE.length) || '/' : url} — HTTP ${res.status}`);
+    } else {
+      failures += 1;
+      line(`  ✗ ${url} — HTTP ${res.status}${res.error ? ` (${res.error})` : ''}`);
+    }
+  }
+  line('');
+
   if (failures === 0) {
     const allowed = FOCUS_BOTS.join(', ');
     line(
