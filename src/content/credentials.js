@@ -35,5 +35,5 @@ export const credentials = {
     }
   ],
   certifications: [],
-  currentlyLearning: ['Backend development — deepening Node.js, Express & MongoDB at Ts Academy']
+  currentlyLearning: ['Deepening backend engineering — Node.js, Express & MongoDB at Ts Academy']
 };

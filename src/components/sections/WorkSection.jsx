@@ -157,8 +157,8 @@ const WorkSection = ({ detailed = false }) => {
               Different worlds. One standard of care.
             </h2>
             <p className="mt-5 text-lg leading-8 text-slate-400">
-              A government platform live in production, plus a hotel website, an edtech app, and a
-              logistics landing page — built to the same standard and launching soon.
+              A government platform and a logistics landing page live in production, plus a hotel
+              website, an edtech app, and a multi-vendor e-commerce store — built to the same standard and launching soon.
             </p>
           </div>
           <div className="mt-16 space-y-20">
@@ -178,7 +178,7 @@ const WorkSection = ({ detailed = false }) => {
         index="(01)"
         eyebrow="Selected Work"
         title="Different worlds. One standard of care."
-        description="A government platform, a hotel website, an edtech app, and a logistics landing page — each built to the same standard."
+        description="A government platform, a logistics landing page, a hotel website, an edtech app, and a multi-vendor e-commerce store — each built to the same standard."
       >
         <div className="mt-14 space-y-5">
           {projects.map((project, index) => (
@@ -189,7 +189,7 @@ const WorkSection = ({ detailed = false }) => {
           <Button href="/work" variant="paper" icon>
             Explore the work
           </Button>
-          <p className="mono-label text-ink/50">So-Safe Corps is live — the rest are on the way</p>
+          <p className="mono-label text-ink/50">So-Safe Corps and TPC Logistics are live — the rest are on the way</p>
         </Reveal>
       </Section>
     </section>

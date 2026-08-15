@@ -1,13 +1,13 @@
 # Ferdinard Ashonibare — Full-Stack Web Developer
 
-> Personal portfolio of Ferdinard Ashonibare, a full-stack web developer in Lagos, Nigeria, building fast, secure web platforms for government, hospitality, and education. This is a personal portfolio site — not an agency.
+> Personal portfolio of Ferdinard Ashonibare, a full-stack web developer in Lagos, Nigeria, building fast, secure web platforms for government, hospitality, education, and beyond. This is a personal portfolio site — not an agency.
 
 ## Key facts
 
 - Name: Ferdinard Ashonibare
 - Role: Full-stack web developer
 - Location: Lagos, Nigeria (works remotely worldwide)
-- Focus sectors: Government & Public Safety, Hospitality, Education, Business, Logistics
+- Focus sectors: Government & Public Sector, Hospitality, Education, Business & Startups, Logistics
 - Studio brand: Codeferd Digital (footnote only — the site's primary identity is the person)
 - Contact email: ferdinardoluwajuwonlo@gmail.com
 - GitHub: https://github.com/Iconvibes
@@ -19,16 +19,17 @@
 - Diploma in Web Design — HIIT Plc, Lagos, Nigeria (2024). Core: responsive web design, UI/UX principles
 - Senior Secondary School Certificate (S.S.C.E.) — Surulere Senior Secondary School, Lagos, Nigeria (2021)
 
-## Currently learning
+## Currently deepening
 
-- Backend development — deepening Node.js, Express & MongoDB at Ts Academy
+- Deepening backend engineering — Node.js, Express & MongoDB at Ts Academy
 
 ## Proof of work
 
 - Ogun State So-Safe Corps — official digital platform for a state security institution. Live: https://sosafecorps.og.gov.ng
 - Wura Grand Hotel — premium hotel website (launching soon)
 - EduTrack — education web app for tracking student progress (launching soon)
-- TPC Logistics — logistics landing page with a WhatsApp lead capture flow (launching soon)
+- E-Commerce Store — multi-vendor e-commerce storefront (launching soon)
+- TPC Logistics — logistics landing page with a WhatsApp lead capture flow. Live: https://tpc-logistics-test.onrender.com
 
 ## Services
 
@@ -50,5 +51,15 @@ React, Node.js, Express, MongoDB, Tailwind CSS, JavaScript, Vite, REST APIs, Git
 - [Case Study](https://ferdinardashonibare.com/case-study): Ogun State So-Safe Corps platform story
 - [Insights](https://ferdinardashonibare.com/insights): engineering, product, and design notes
 - [Contact](https://ferdinardashonibare.com/contact): inquiry form and direct channels
+
+## Essays
+
+- [What building a government platform taught me about trust](https://ferdinardashonibare.com/insights/government-platform-trust): Security, performance, and accessibility are the product when the public depends on your work
+- [Designing hotel websites that actually book rooms](https://ferdinardashonibare.com/insights/hotel-websites-that-book): Clarity of journey, speed, and an experience that sells the stay
+- [A simple checklist for shipping fast web apps](https://ferdinardashonibare.com/insights/fast-web-app-checklist): The habits that keep quality high without slowing delivery
+
+## Full content
+
+- [llms-full.txt](https://ferdinardashonibare.com/llms-full.txt): complete, up-to-date text of every page for agents that need the whole site in one file
 
 Sitemap: https://ferdinardashonibare.com/sitemap.xml

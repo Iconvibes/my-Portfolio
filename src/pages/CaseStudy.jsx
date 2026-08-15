@@ -40,7 +40,7 @@ const CaseStudy = () => (
         <Card>
           <p className="eyebrow">// at a glance</p>
           <dl className="mt-6 space-y-4">
-            {featuredCaseStudy.metrics.map((metric) => (
+            {featuredCaseStudy.atAGlance.map((metric) => (
               <div
                 key={metric.label}
                 className="flex flex-col gap-1 border-b border-line-soft pb-3 last:border-b-0 last:pb-0 sm:flex-row sm:justify-between"
@@ -51,6 +51,22 @@ const CaseStudy = () => (
             ))}
           </dl>
         </Card>
+      </div>
+
+      <div className="mt-6 rounded-2xl border border-line bg-ink-2 px-7 py-8 sm:px-10">
+        <div className="flex items-baseline justify-between gap-4">
+          <p className="eyebrow">// measured outcomes</p>
+          <span className="mono-label hidden text-slate-600 sm:block">verified · not estimates</span>
+        </div>
+        <dl className="mt-6 grid gap-x-10 gap-y-6 md:grid-cols-2 xl:grid-cols-4">
+          {featuredCaseStudy.outcomes.map((outcome) => (
+            <div key={outcome.label}>
+              <dt className="mono-label text-slate-500">{outcome.label}</dt>
+              <dd className="mt-2 text-sm font-medium text-white">{outcome.value}</dd>
+              <dd className="mt-1.5 text-xs leading-6 text-slate-500">{outcome.detail}</dd>
+            </div>
+          ))}
+        </dl>
       </div>
 
       <div className="mt-6 grid gap-6 lg:grid-cols-2">

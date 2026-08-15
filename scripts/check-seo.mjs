@@ -12,7 +12,7 @@ import { existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import { publicRoutePaths } from '../src/utils/routeMeta.js';
+import { allPublicPaths } from '../src/utils/routeMeta.js';
 import { siteConfig } from '../src/content/site.js';
 import { toAbsoluteUrl } from '../src/seo/site.js';
 
@@ -50,12 +50,12 @@ const sameOrigin = (url) => {
   }
 };
 
-if (publicRoutePaths.length === 0) {
+if (allPublicPaths.length === 0) {
   failures.push('routeMeta exposes no routes — nothing to check');
   report.push('  ✗ routeMeta exposes no routes');
 }
 
-for (const route of publicRoutePaths) {
+for (const route of allPublicPaths) {
   const file = pageFile(route);
   const label = route === '/' ? '/' : route;
 
@@ -150,12 +150,35 @@ for (const route of publicRoutePaths) {
 }
 
 // Site-level files the SEO contract depends on.
-for (const asset of ['sitemap.xml', 'robots.txt', 'llms.txt', '404.html']) {
+for (const asset of ['sitemap.xml', 'robots.txt', 'llms.txt', 'llms-full.txt', '404.html']) {
   const file = path.join(dist, asset);
   if (!existsSync(file)) {
     failures.push(`dist/${asset} is missing`);
     report.push(`  ✗ dist/${asset} missing`);
   }
+}
+
+// llms-full.txt must cover every public route and be discoverable from the
+// curated llms.txt summary — a full-text file that is stale or unreachable
+// defeats its purpose for agentic fetching.
+const llmsFullFile = path.join(dist, 'llms-full.txt');
+if (existsSync(llmsFullFile)) {
+  const llmsFull = readFileSync(llmsFullFile, 'utf8');
+  const pageHeadings = (llmsFull.match(/^# /gm) ?? []).length;
+  if (pageHeadings < allPublicPaths.length) {
+    failures.push(
+      `llms-full.txt covers ${pageHeadings} page(s), expected ${allPublicPaths.length}`
+    );
+    report.push(
+      `  ✗ llms-full.txt covers ${pageHeadings}/${allPublicPaths.length} pages`
+    );
+  }
+}
+
+const llmsTxtFile = path.join(dist, 'llms.txt');
+if (existsSync(llmsTxtFile) && !readFileSync(llmsTxtFile, 'utf8').includes('llms-full.txt')) {
+  failures.push('llms.txt does not reference llms-full.txt');
+  report.push('  ✗ llms.txt missing llms-full.txt link');
 }
 
 // The SPA catch-all must never ship: it soft-404s every unknown URL to the
@@ -193,4 +216,4 @@ if (failures.length) {
 }
 
 console.log('\n✅ SEO smoke check passed:' + report.join(''));
-console.log(`All ${publicRoutePaths.length} routes carry title, description, canonical, og:image and JSON-LD.\n`);
+console.log(`All ${allPublicPaths.length} routes carry title, description, canonical, og:image and JSON-LD.\n`);

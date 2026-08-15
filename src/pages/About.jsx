@@ -7,7 +7,17 @@ import Card from '../components/ui/Card';
 import ProfilePhoto from '../components/ui/ProfilePhoto';
 import ResumeButton from '../components/ui/ResumeButton';
 import Section from '../components/ui/Section';
-import { contactChannels, credentials, featuredProject, industries, projects } from '../content';
+import FactList from '../components/ui/FactList';
+import { contactChannels, credentials, facts, featuredProject, industries, projects } from '../content';
+
+// The at-a-glance card is sourced from the shared facts module (same data as
+// the home FactSheet) — curated to the profile-card essentials. Keeping the
+// filter order-stable so the rows render in the module's canonical order.
+const glanceFacts = facts.filter((fact) =>
+  ['Who', 'Availability', 'Stats', 'Stack'].includes(fact.label)
+);
+
+const buildingProjects = projects.filter((project) => project.status !== 'live');
 
 const About = () => {
   const hasEducation = credentials.education.length > 0;
@@ -34,27 +44,12 @@ const About = () => {
         </div>
         <Card>
           <p className="eyebrow">// at a glance</p>
-          <dl className="mt-5 space-y-4 text-sm">
-            <div className="flex flex-wrap items-baseline justify-between gap-2 border-b border-line-soft pb-3">
-              <dt className="mono-label text-slate-500">Role</dt>
-              <dd className="text-white">Full-stack web developer</dd>
-            </div>
-            <div className="flex flex-wrap items-baseline justify-between gap-2 border-b border-line-soft pb-3">
-              <dt className="mono-label text-slate-500">Stack</dt>
-              <dd className="text-white">React · Tailwind · Node.js · Express · MongoDB</dd>
-            </div>
-            <div className="flex flex-wrap items-baseline justify-between gap-2 border-b border-line-soft pb-3">
-              <dt className="mono-label text-slate-500">Base</dt>
-              <dd className="text-white">Lagos, Nigeria — remote worldwide</dd>
-            </div>
-            <div className="flex flex-wrap items-baseline justify-between gap-2">
-              <dt className="mono-label text-slate-500">Status</dt>
-              <dd className="flex items-center gap-2 text-white">
-                <span className="h-2 w-2 rounded-full bg-signal" aria-hidden="true" />
-                Open to projects &amp; roles
-              </dd>
-            </div>
-          </dl>
+          <FactList
+            facts={glanceFacts}
+            rows
+            ddClassName="mt-1.5 text-sm leading-6 text-slate-300"
+            className="mt-5"
+          />
           <div className="mt-7 flex flex-wrap gap-3">
             <ResumeButton />
             <Button href="/contact" variant="outline">
@@ -128,7 +123,7 @@ const About = () => {
           </div>
           {hasCurrentLearning ? (
             <div className="mt-6 border-t border-line-soft pt-5">
-              <p className="mono-label text-slate-500">// currently learning</p>
+              <p className="mono-label text-slate-500">// currently deepening</p>
               <ul className="mt-3 space-y-3">
                 {credentials.currentlyLearning.map((item) => (
                   <li key={item} className="flex items-center gap-2 text-sm text-slate-300">
@@ -149,9 +144,9 @@ const About = () => {
             <p>
               I build web software end to end — the interface people see, the systems underneath
               it, and the deployment that keeps it alive. My work spans{' '}
-              <span className="text-slate-200">government, hospitality, and education</span>,
-              because I care less about the industry and more about building things that genuinely
-              work for the people using them.
+              <span className="text-slate-200">government, hospitality, education, business, and
+              logistics</span> — because I care less about the industry and more about building
+              things that genuinely work for the people using them.
             </p>
             <p>
               The most significant build so far is{' '}
@@ -179,12 +174,10 @@ const About = () => {
           <p className="eyebrow">// currently</p>
           <div className="mt-4 space-y-4 text-sm leading-8 text-slate-400">
             <p>
-              Building three products I'm excited about:
+              Building {buildingProjects.length} product{buildingProjects.length === 1 ? '' : 's'} I'm excited about:
             </p>
             <ul className="space-y-3">
-              {projects
-                .filter((project) => !project.featured)
-                .map((project) => (
+              {buildingProjects.map((project) => (
                   <li key={project.slug} className="rounded-xl border border-line bg-ink px-4 py-3">
                     <div className="flex items-center justify-between gap-3">
                       <span className="font-semibold text-white">{project.name}</span>
@@ -207,8 +200,8 @@ const About = () => {
     <Section
       index="(02)"
       eyebrow="Sectors"
-      title="Where I've shipped"
-      description="Different worlds, same standards: secure, fast, and built for the people who depend on them."
+      title="Where I work"
+      description="Different worlds, same standards — focus areas, not limits. If it lives in a browser, I can build it."
     >
       <div className="mt-12 grid gap-5 md:grid-cols-2">
         {industries.map((industry) => (

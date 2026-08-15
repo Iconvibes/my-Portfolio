@@ -10,21 +10,30 @@ const pageLoaders = {
   '/work': () => import('../pages/Work'),
   '/case-study': () => import('../pages/CaseStudy'),
   '/insights': () => import('../pages/Insights'),
+  '/insights/:slug': () => import('../pages/InsightArticle'),
   '/contact': () => import('../pages/Contact')
+};
+
+const toLazy = (loader) => async () => {
+  const module = await loader();
+  return { Component: module.default };
 };
 
 // A route-level `lazy` module must expose a named `Component` — the pages
 // default-export their component, so map it explicitly.
 export const routeConfig = routeMeta.map((route) => ({
   ...route,
-  lazy: async () => {
-    const module = await pageLoaders[route.path]();
-    return { Component: module.default };
-  }
+  lazy: toLazy(pageLoaders[route.path])
 }));
+
+// Essays render through one dynamic route; the concrete /insights/{slug} URLs
+// match it during SSR (prerender) and on the client.
+export const dynamicRoutes = [
+  { path: '/insights/:slug', lazy: toLazy(pageLoaders['/insights/:slug']) }
+];
 
 export { publicRoutePaths };
 
 // Path → loader map. Keep it as the parallel-table source for the parity
-// tests: keys must exactly match routeMeta paths.
+// tests: keys must cover the routeMeta paths plus the dynamic essay route.
 export const pageMap = pageLoaders;

@@ -28,5 +28,10 @@ export const faqItems = [
     question: 'Are you available for full-time roles?',
     answer:
       'Yes — I am open to remote full-time roles and long-term contracts, as well as one-off project work.'
+  },
+  {
+    question: 'Do you only work in certain industries?',
+    answer:
+      'No — the focus sectors are where I have shipped or am actively building, not a ceiling. I have delivered live work for government and logistics, and I am building for hospitality, education, and business right now. If it lives in a browser, I can build it.'
   }
 ];

@@ -4,13 +4,22 @@ import ProfilePhoto from '../ui/ProfilePhoto';
 import ResumeButton from '../ui/ResumeButton';
 import TiltCard from '../ui/TiltCard';
 import TerminalCard from './TerminalCard';
-import { featuredProject } from '../../content';
+import { featuredProject, projects } from '../../content';
 import { useReducedMotion } from '../../hooks/useReducedMotion';
 
+// Derived from the projects module so the counts can never drift from the
+// content that defines them.
+const liveProjects = projects.filter((project) => project.status === 'live');
+const inProgressProjects = projects.filter((project) => project.status !== 'live');
+const liveSectors = new Set(liveProjects.map((project) => project.sector)).size;
+
 const stats = [
-  { value: '1', label: 'Live government platform' },
-  { value: '3', label: 'Products in the making' },
-  { value: '3', label: 'Focus sectors + logistics' }
+  { value: String(liveProjects.length), label: liveProjects.length === 1 ? 'Live platform' : 'Live platforms' },
+  {
+    value: String(inProgressProjects.length),
+    label: inProgressProjects.length === 1 ? 'Product in the making' : 'Products in the making'
+  },
+  { value: String(liveSectors), label: liveSectors === 1 ? 'Sector live' : 'Sectors live' }
 ];
 
 const HeroSection = () => {
@@ -69,7 +78,7 @@ const HeroSection = () => {
 
           <p className="mt-6 max-w-xl text-xl leading-9 text-slate-300 sm:text-2xl sm:leading-10">
             I design &amp; build <span className="font-semibold text-white">fast, secure web platforms</span>{' '}
-            for government, hospitality, and education — from idea to launch, end to end.
+            for government, hospitality, education, and beyond — from idea to launch, end to end.
           </p>
 
           <p className="mt-5 max-w-xl text-base leading-7 text-slate-400">
@@ -87,7 +96,7 @@ const HeroSection = () => {
               <span className="font-semibold text-white">Ogun State So-Safe Corps</span>
             )}{' '}
             — a state security institution — and I'm currently crafting a hotel website, an
-            edtech app, and a logistics landing page. If it lives in a browser, I can build it.
+            edtech app, and a multi-vendor e-commerce store. If it lives in a browser, I can build it.
           </p>
 
           <div className="mt-9 flex flex-wrap items-center gap-4">

@@ -14,5 +14,9 @@ export const industries = [
   {
     title: 'Business & Startups',
     description: 'Websites and apps that help companies move faster and look the part.'
+  },
+  {
+    title: 'Logistics',
+    description: 'Fast, mobile-first websites that help logistics and delivery businesses turn inquiries into bookings.'
   }
 ];

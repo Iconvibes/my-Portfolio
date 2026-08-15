@@ -7,8 +7,9 @@
 
 import { siteConfig } from '../content/site.js';
 import { getSeoConfig, normalizePath, toAbsoluteUrl } from './site.js';
-import { routeMeta } from '../utils/routeMeta.js';
+import { allRouteMeta } from '../utils/routeMeta.js';
 import { faqItems } from '../content/faq.js';
+import { getInsightBySlug, insights } from '../content/insights.js';
 import { projects } from '../content/projects.js';
 import { featuredCaseStudy } from '../content/caseStudies.js';
 import { contactChannels } from '../content/contact.js';
@@ -145,6 +146,10 @@ export const buildCollectionPageSchema = () => ({
   }
 });
 
+// Measurable outcomes ride along as PropertyValue mentions — real numbers the
+// case study text actually contains, so engines can cite them as facts. Only
+// non-empty entries ship; the content guard in caseStudies.js forbids
+// fabricated metrics, mirroring the testimonials rule.
 export const buildArticleSchema = () => ({
   '@context': 'https://schema.org',
   '@type': 'Article',
@@ -155,7 +160,16 @@ export const buildArticleSchema = () => ({
   author: { '@id': PERSON_ID },
   publisher: { '@id': ORGANIZATION_ID },
   mainEntityOfPage: toAbsoluteUrl('/case-study'),
-  about: featuredCaseStudy.client
+  about: featuredCaseStudy.client,
+  mentions: featuredCaseStudy.outcomes
+    .filter((outcome) => outcome.value)
+    .map((outcome) => ({
+      '@type': 'PropertyValue',
+      name: outcome.label,
+      value: outcome.value,
+      ...(outcome.detail ? { description: outcome.detail } : {}),
+      ...(outcome.propertyID ? { propertyID: outcome.propertyID } : {})
+    }))
 });
 
 export const buildContactPageSchema = () => {
@@ -179,18 +193,28 @@ export const buildContactPageSchema = () => {
 
 export const buildBreadcrumbListSchema = (path = '/') => {
   const normalized = normalizePath(path);
-  const route = routeMeta.find((item) => item.path === normalized);
+  const route = allRouteMeta.find((item) => item.path === normalized);
   if (!route || normalized === '/') {
     return null;
   }
 
+  // Essays sit under the Insights listing: Home > Insights > Article.
+  const isArticle = normalized.startsWith('/insights/');
+  const itemListElement = isArticle
+    ? [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+        { '@type': 'ListItem', position: 2, name: 'Insights', item: toAbsoluteUrl('/insights') },
+        { '@type': 'ListItem', position: 3, name: route.label, item: toAbsoluteUrl(route.path) }
+      ]
+    : [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+        { '@type': 'ListItem', position: 2, name: route.label, item: toAbsoluteUrl(route.path) }
+      ];
+
   return {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
-      { '@type': 'ListItem', position: 2, name: route.label, item: toAbsoluteUrl(route.path) }
-    ]
+    itemListElement
   };
 };
 
@@ -225,6 +249,39 @@ export const buildTestimonialsSchema = () => {
   }));
 };
 
+// Essay pages: Article schema with real publication metadata so engines can
+// cite the piece as a dated, authored original (E-E-A-T / GEO).
+export const buildInsightArticleSchema = (insight) => ({
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: insight.title,
+  description: insight.summary,
+  url: toAbsoluteUrl(`/insights/${insight.slug}`),
+  image: `${SITE_URL}${siteConfig.defaultImage}`,
+  datePublished: insight.published,
+  dateModified: insight.published,
+  author: { '@id': PERSON_ID },
+  publisher: { '@id': ORGANIZATION_ID },
+  mainEntityOfPage: toAbsoluteUrl(`/insights/${insight.slug}`),
+  articleSection: insight.category,
+  inLanguage: 'en',
+  keywords: [insight.category, 'web development', 'Ferdinard Ashonibare'].join(', ')
+});
+
+// The /insights listing as an ItemList pointing at each essay.
+export const buildInsightsCollectionSchema = () => ({
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Insights — Ferdinard Ashonibare',
+  url: toAbsoluteUrl('/insights'),
+  itemListElement: insights.map((insight, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: insight.title,
+    url: toAbsoluteUrl(`/insights/${insight.slug}`)
+  }))
+});
+
 const baseSchemas = () => [buildPersonSchema(), buildOrganizationSchema(), buildWebsiteSchema()];
 
 export const buildStructuredData = (path = '/') => {
@@ -249,11 +306,23 @@ export const buildStructuredData = (path = '/') => {
     case '/case-study':
       schemas.push(buildArticleSchema());
       break;
+    case '/insights':
+      schemas.push(buildInsightsCollectionSchema());
+      break;
     case '/contact':
       schemas.push(buildContactPageSchema());
       break;
-    default:
+    default: {
+      // Essay URLs: /insights/{slug} → Article schema.
+      const slug = normalized.startsWith('/insights/')
+        ? normalized.slice('/insights/'.length)
+        : null;
+      const insight = slug ? getInsightBySlug(slug) : null;
+      if (insight) {
+        schemas.push(buildInsightArticleSchema(insight));
+      }
       break;
+    }
   }
 
   const breadcrumb = buildBreadcrumbListSchema(normalized);

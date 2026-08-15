@@ -6,12 +6,17 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "npm test && vite build && vite build --ssr src/entry-server.jsx --outDir dist-ssr && node scripts/prerender.mjs && node scripts/check-seo.mjs",
+    "build": "npm test && vite build && vite build --ssr src/entry-server.jsx --outDir dist-ssr && node scripts/prerender.mjs && node scripts/generate-llms-full.mjs && node scripts/check-seo.mjs && node scripts/check-robots.mjs",
     "lint": "eslint .",
     "test": "vitest run",
     "build:seo-check": "node scripts/check-seo.mjs",
-    "og-card": "node scripts/og-card.mjs",
-    "preview": "vite preview"
+    "build:llms-full": "node scripts/generate-llms-full.mjs",
+    "build:robots-check": "node scripts/check-robots.mjs",
+    "verify:live": "node scripts/check-live.mjs",
+    "verify:metrics": "node scripts/check-metrics.mjs",
+  "og-card": "node scripts/og-card.mjs",
+  "resume:build": "node scripts/resume/build-resume.mjs",
+  "preview": "vite preview"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.16",

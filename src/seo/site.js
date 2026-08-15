@@ -6,9 +6,11 @@
 // prerender scripts).
 
 import { siteConfig } from '../content/site.js';
-import { publicRoutePaths, routeMeta } from '../utils/routeMeta.js';
+import { allRouteMeta, publicRoutePaths } from '../utils/routeMeta.js';
 
 export { siteConfig, publicRoutePaths };
+
+export { allRouteMeta, allPublicPaths } from '../utils/routeMeta.js';
 
 export const normalizePath = (path = '/') => (path === '/' ? '/' : path.replace(/\/$/, ''));
 
@@ -23,7 +25,7 @@ export const toAbsoluteUrl = (path = '/') => {
 
 export const getSeoConfig = (path = '/') => {
   const normalizedPath = normalizePath(path);
-  const route = routeMeta.find((item) => item.path === normalizedPath) ?? routeMeta[0];
+  const route = allRouteMeta.find((item) => item.path === normalizedPath) ?? allRouteMeta[0];
   const canonical = toAbsoluteUrl(route.path);
 
   return {

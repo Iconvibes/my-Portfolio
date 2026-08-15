@@ -14,7 +14,7 @@ const AboutSection = () => (
         <span className="serif-accent text-signal">system people depend on</span>
       </>
     }
-    description="I'm Ferdinard — a full-stack developer from Lagos, Nigeria. I've shipped a live platform for a state security institution, and I'm building a hotel website, an edtech app, and a logistics landing page. Here's how I work."
+    description="I'm Ferdinard — a full-stack developer from Lagos, Nigeria. I've shipped two live platforms — a state security institution's site and a logistics landing page — and I'm building a hotel website, an edtech app, and a multi-vendor e-commerce store. Here's how I work."
   >
     <div className="mt-14 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
       {values.map((value, index) => (
@@ -35,7 +35,7 @@ const AboutSection = () => (
     <Reveal className="mt-12 flex flex-wrap items-center gap-5 rounded-2xl border border-line bg-ink-2 px-7 py-6">
       <p className="flex-1 text-sm leading-7 text-slate-300">
         <span className="mono-label mr-2 text-signal">$ whoami</span>
-        Full-stack developer · Lagos, Nigeria · building for government, hospitality &amp; education
+        Full-stack developer · Lagos, Nigeria · building for government, hospitality, education &amp; more
       </p>
       <Button href="/about" variant="outline" icon>
         More about me

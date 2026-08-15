@@ -1,8 +1,9 @@
+import { Link } from 'react-router-dom';
 import PageShell from '../components/layout/PageShell';
 import CtaSection from '../components/sections/CtaSection';
 import Badge from '../components/ui/Badge';
 import Card from '../components/ui/Card';
-import { insights } from '../content';
+import { insightDate, insights, readingTime } from '../content';
 
 const Insights = () => (
   <div className="bg-ink text-slate-100">
@@ -14,14 +15,31 @@ const Insights = () => (
     >
       <div className="mt-12 grid gap-6 lg:grid-cols-3">
         {insights.map((item, index) => (
-          <Card key={item.title} as="article" className="flex flex-col">
-            <div className="flex items-center justify-between">
+          <Card key={item.slug} as="article" className="flex flex-col">
+            <div className="flex items-center justify-between gap-3">
               <Badge>{item.category}</Badge>
-              <span className="mono-label text-slate-600">0{index + 1}</span>
+              <span className="mono-label text-slate-600">{insightDate(item.published)}</span>
             </div>
-            <h2 className="mt-5 text-xl font-semibold leading-8 text-white">{item.title}</h2>
+            <h2 className="mt-5 text-xl font-semibold leading-8 text-white">
+              <Link
+                to={`/insights/${item.slug}`}
+                className="underline-offset-4 transition hover:text-signal hover:underline"
+              >
+                {item.title}
+              </Link>
+            </h2>
             <p className="mt-3 flex-1 text-sm leading-7 text-slate-400">{item.summary}</p>
-            <p className="mono-label mt-6 text-slate-600">coming soon</p>
+            <div className="mt-6 flex items-center justify-between border-t border-line-soft pt-5">
+              <span className="mono-label text-slate-600">
+                {String(index + 1).padStart(2, '0')} · {readingTime(item)} min read
+              </span>
+              <Link
+                to={`/insights/${item.slug}`}
+                className="mono-label text-signal underline-offset-4 transition hover:underline"
+              >
+                read →
+              </Link>
+            </div>
           </Card>
         ))}
       </div>

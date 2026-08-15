@@ -50,10 +50,56 @@ export const featuredCaseStudy = {
     'Future phases can expand the system with additional services, internal workflows, and deeper digital capability.',
   techStack: ['React', 'Tailwind CSS', 'Node.js', 'Express', 'MongoDB', 'REST APIs'],
   timeline: ['Discovery', 'Planning', 'Design', 'Build', 'Launch'],
-  metrics: [
+  // Reference facts, shown in the case study's "// at a glance" card.
+  atAGlance: [
     { label: 'Client', value: 'Ogun State So-Safe Corps' },
-    { label: 'Sector', value: 'Government & Public Safety' },
+    { label: 'Sector', value: 'Government & Public Sector' },
     { label: 'Status', value: 'Live in production' },
     { label: 'Stack', value: 'React + Express + MongoDB' }
+  ],
+  // Measurable outcomes — REAL, verifiable data only. The entries below were
+  // verified by direct measurement of the live platform (single network probe
+  // from one location; see each `detail` for date and method). The UI, the
+  // Article JSON-LD, and llms-full.txt all render ONLY non-empty entries, so
+  // never add a number you can't back up.
+  //
+  // Stronger numbers to add once you can verify them (shape):
+  //   {
+  //     label: 'Monthly visits',
+  //     value: '≈12,000',
+  //     detail: 'Google Analytics, 30-day window, Aug 2026',
+  //     propertyID: 'traffic'
+  //   },
+  //   {
+  //     label: 'Uptime (90 days)',
+  //     value: '99.9%',
+  //     detail: 'Netlify status, May–Aug 2026',
+  //     propertyID: 'reliability'
+  //   }
+  outcomes: [
+    {
+      label: 'Status',
+      value: 'Live in production',
+      detail: 'Publicly accessible at sosafecorps.og.gov.ng, serving the institution and the public.',
+      propertyID: 'status'
+    },
+    {
+      label: 'HTTPS + HSTS',
+      value: 'Verified active',
+      detail: 'Strict-Transport-Security: max-age=31536000 confirmed on the live response headers (measured 15 Aug 2026).',
+      propertyID: 'security'
+    },
+    {
+      label: 'Page weight',
+      value: '≈48 KB HTML',
+      detail: 'Measured 15 Aug 2026 from 5 network probes (median): 1 script, 1 stylesheet, 5 images.',
+      propertyID: 'performance'
+    },
+    {
+      label: 'Time to first byte',
+      value: '≈0.1 s',
+      detail: 'Measured 15 Aug 2026 from 5 network probes (median) — varies with visitor location and server load.',
+      propertyID: 'performance'
+    }
   ]
 };

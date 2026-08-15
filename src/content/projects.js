@@ -12,7 +12,7 @@ export const projects = [
     slug: 'so-safe-corps',
     name: 'Ogun State So-Safe Corps',
     tagline: 'The official digital platform of a state security institution',
-    sector: 'Government & Public Safety',
+    sector: 'Government & Public Sector',
     description:
       'A secure, public-facing platform for Ogun State So-Safe Corps — a state security organization — built to strengthen public trust, streamline engagement, and reflect institutional authority online.',
     highlights: [
@@ -61,10 +61,10 @@ export const projects = [
       'Mobile-first inquiry funnel'
     ],
     tech: ['HTML', 'Tailwind CSS', 'JavaScript'],
-    status: 'coming-soon',
-    href: '',
-    domain: 'Launching soon',
-    image: '/projects/tpc-logistics.svg',
+    status: 'live',
+    href: 'https://tpc-logistics-test.onrender.com',
+    domain: 'tpc-logistics-test.onrender.com',
+    image: '/projects/tpc.png',
     featured: false,
     accent: 'cyan'
   },
@@ -72,7 +72,7 @@ export const projects = [
     slug: 'edutrack',
     name: 'EduTrack',
     tagline: 'A web app that keeps learning on track',
-    sector: 'Education & SaaS',
+    sector: 'Education',
     description:
       'An education web application that helps educators and institutions manage and track student progress — assignments, performance, and insights in one clean, fast interface.',
     highlights: [
@@ -87,6 +87,26 @@ export const projects = [
     image: '/projects/edutrack.svg',
     featured: false,
     accent: 'violet'
+  },
+  {
+    slug: 'ecommerce-store',
+    name: 'E-Commerce Store',
+    tagline: 'A multi-vendor storefront built to turn browsers into buyers',
+    sector: 'Business & Startups',
+    description:
+      'A fully responsive multi-vendor e-commerce site designed to improve digital presence and drive conversions for businesses — from the storefront UI to product and vendor flows, built for a seamless experience across desktop and mobile.',
+    highlights: [
+      'Multi-vendor storefront with product and vendor flows',
+      'Mobile-first, conversion-focused design',
+      'Seamless experience across desktop and mobile'
+    ],
+    tech: ['MongoDB', 'Express', 'React', 'Node.js', 'Tailwind CSS'],
+    status: 'coming-soon',
+    href: '',
+    domain: 'Launching soon',
+    image: '/projects/ecommerce-store.svg',
+    featured: false,
+    accent: 'rose'
   }
 ];
 

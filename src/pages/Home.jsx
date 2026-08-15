@@ -1,4 +1,5 @@
 import HeroSection from '../components/sections/HeroSection';
+import FactSheet from '../components/sections/FactSheet';
 import Marquee from '../components/sections/Marquee';
 import WorkSection from '../components/sections/WorkSection';
 import CapabilitiesSection from '../components/sections/CapabilitiesSection';
@@ -13,6 +14,7 @@ import { techMarquee } from '../content';
 const Home = () => (
   <>
     <HeroSection />
+    <FactSheet />
     <Marquee items={techMarquee} />
     <WorkSection />
     <CapabilitiesSection />

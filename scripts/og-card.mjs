@@ -17,6 +17,11 @@ import { copyFileSync, existsSync, readFileSync, rmSync, writeFileSync } from 'n
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
+import { industries } from '../src/content/industries.js';
+import { projects } from '../src/content/projects.js';
+
+const liveCount = projects.filter((p) => p.status === 'live').length;
+const buildingCount = projects.filter((p) => p.status !== 'live').length;
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const publicDir = path.join(root, 'public');
@@ -147,7 +152,7 @@ const CARD_HTML = `<!DOCTYPE html>
         <div class="ln"><span class="p">$</span><span class="hi">cat status.json</span></div>
         <div class="ln dim">↳ { role: "full-stack developer" }</div>
         <div class="ln dim">↳ { stack: "react · node · express · mongo" }</div>
-        <div class="ln dim">↳ { stats: "1 live platform · 3 products · 3 focus sectors + logistics" }</div>
+        <div class="ln dim">↳ { stats: "${liveCount} live platforms · ${buildingCount} products · ${industries.length} focus sectors" }</div>
         <div class="ln dim">↳ { base: "lagos, nigeria" }</div>
         <div class="ln"><span class="status">↳ { status: "open to work" }</span><span class="cursor"></span></div>
       </div>

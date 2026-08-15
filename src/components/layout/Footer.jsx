@@ -28,7 +28,7 @@ const Footer = () => (
           </Link>
           <p className="mt-5 max-w-sm text-sm leading-7 text-slate-400">
             Full-stack web developer building fast, secure platforms for government, hospitality,
-            and education. Based in Lagos, working worldwide.
+            education, and beyond. Based in Lagos, working worldwide.
           </p>
           <div className="mt-6 flex gap-3">
             {socialLinks.map((social) => (

@@ -1,3 +1,10 @@
+import { insights } from '../content/insights.js';
+import { industries } from '../content/industries.js';
+import { projects } from '../content/projects.js';
+
+const liveCount = projects.filter((p) => p.status === 'live').length;
+const buildingCount = projects.filter((p) => p.status !== 'live').length;
+
 export const routeMeta = [
   {
     path: '/',
@@ -7,9 +14,9 @@ export const routeMeta = [
     seo: {
       title: 'Ferdinard Ashonibare | Full-Stack Web Developer',
       description:
-        'Ferdinard Ashonibare is a full-stack web developer in Lagos, Nigeria — building fast, secure web platforms for government, hospitality, and education.',
+        'Ferdinard Ashonibare is a full-stack web developer in Lagos, Nigeria — building fast, secure web platforms for government, hospitality, education, and beyond.',
       socialDescription:
-        '$ whoami → ferdinand ashonibare · $ cat status.json → { role: "full-stack developer" } · { live: "1 government platform" } · { building: "3 products" } · { sectors: "3 focus + logistics" } · { status: "open to work" }',
+        `$ whoami → ferdinand ashonibare · $ cat status.json → { role: "full-stack developer" } · { live: "${liveCount} platforms" } · { building: "${buildingCount} products" } · { sectors: "${industries.length} focus" } · { status: "open to work" }`,
       keywords: [
         'Ferdinard Ashonibare',
         'full-stack web developer',
@@ -26,7 +33,7 @@ export const routeMeta = [
     seo: {
       title: 'About | Ferdinard Ashonibare',
       description:
-        'Learn about Ferdinard Ashonibare — a full-stack web developer from Lagos, Nigeria, building secure platforms for government, hospitality, and education.',
+        'Learn about Ferdinard Ashonibare — a full-stack web developer from Lagos, Nigeria, building secure platforms for government, hospitality, education, and beyond.',
       keywords: ['about Ferdinard Ashonibare', 'full-stack developer', 'Lagos developer']
     }
   },
@@ -80,4 +87,27 @@ export const routeMeta = [
   }
 ];
 
+// Essay routes derived from the insights content module — same shape as the
+// table above so sitemap, prerender, breadcrumbs, and the SEO gate can treat
+// them uniformly. `lastmod` carries the publish date so the sitemap reports
+// real freshness instead of "today".
+export const articleRoutes = insights.map((insight) => ({
+  path: `/insights/${insight.slug}`,
+  label: insight.title,
+  priority: '0.6',
+  changefreq: 'monthly',
+  lastmod: insight.published,
+  seo: {
+    title: `${insight.title} | Ferdinard Ashonibare`,
+    description: insight.summary,
+    keywords: ['insights', insight.category, insight.title]
+  }
+}));
+
+// Primary navigation stays exactly the six table routes above; essays are an
+// additional content dimension (reachable from /insights, the footer, and
+// sitemap).
 export const publicRoutePaths = routeMeta.map((route) => route.path);
+
+export const allRouteMeta = [...routeMeta, ...articleRoutes];
+export const allPublicPaths = allRouteMeta.map((route) => route.path);
