@@ -94,7 +94,7 @@ const MainLayout = () => {
       >
         Skip to main content
       </a>
-      <div className="relative isolate overflow-hidden">
+      <div className="relative isolate overflow-x-clip">
         <div
           className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_right,rgba(200,241,53,0.06),transparent_34%),radial-gradient(circle_at_bottom_left,rgba(56,130,246,0.07),transparent_40%)]"
           aria-hidden="true"

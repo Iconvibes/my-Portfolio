@@ -51,7 +51,7 @@ Production concerns are treated as first-class:
 
 - **Editorial design system** — Syne / Instrument Serif / JetBrains Mono; ink `#060A12`, paper `#F2EFE6`, signal lime `#C8F135`
 - **Signature hero** — terminal status card with typewriter effect, 3D-tilt portrait, lime marquee
-- **Five projects** — Ogun State So-Safe Corps & TPC Logistics (live), Wura Grand Hotel, EduTrack & E-Commerce Store (launching soon)
+- **Five projects** — Ogun State So-Safe Corps, TPC Logistics & Wura Grand Hotel (live), EduTrack & E-Commerce Store (launching soon)
 - **Six pages** — Home, About, Work, Case Study, Insights, Contact
 - **Per-route SEO** — unique title, description, canonical, Open Graph, Twitter card, and JSON-LD schema on every page
 - **AI discovery** — `llms.txt`, sitemap, robots.txt, and a rich structured-data layer

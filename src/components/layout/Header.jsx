@@ -1,8 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { navigation } from '../../content';
-import { Button } from '../ui/Button';
 import ResumeButton from '../ui/ResumeButton';
 
 const navClass = ({ isActive }) =>
@@ -13,15 +12,36 @@ const navClass = ({ isActive }) =>
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isHidden, setIsHidden] = useState(false);
+  const prevY = useRef(0);
   const closeMenu = () => setIsOpen(false);
   const location = useLocation();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
+    const onScroll = () => {
+      const y = window.scrollY;
+      setScrolled(y > 12);
+
+      // Keep the header visible while the mobile menu is open.
+      if (isOpen) {
+        prevY.current = y;
+        return;
+      }
+
+      // Hide while scrolling down (past a small threshold), reveal on any
+      // scroll back up so the nav is always one upward swipe away.
+      if (y > prevY.current && y > 160) {
+        setIsHidden(true);
+      } else if (y < prevY.current) {
+        setIsHidden(false);
+      }
+
+      prevY.current = y;
+    };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+  }, [isOpen]);
 
   useEffect(() => {
     closeMenu();
@@ -29,7 +49,9 @@ const Header = () => {
 
   return (
     <header
-      className={`sticky top-0 z-40 border-b transition-colors duration-300 ${
+      className={`sticky top-0 z-40 border-b transition-[translate,background-color,border-color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+        isHidden ? '-translate-y-full' : 'translate-y-0'
+      } ${
         scrolled || isOpen
           ? 'border-line bg-ink/90 backdrop-blur-xl'
           : 'border-transparent bg-ink/60 backdrop-blur-sm'
@@ -64,10 +86,7 @@ const Header = () => {
         </nav>
 
         <div className="flex items-center gap-3">
-          <ResumeButton className="hidden lg:inline-flex">Résumé</ResumeButton>
-          <Button href="/contact" className="hidden !px-5 md:inline-flex">
-            Let&rsquo;s talk
-          </Button>
+          <ResumeButton>Résumé</ResumeButton>
           <button
             aria-label={isOpen ? 'Close navigation' : 'Open navigation'}
             aria-expanded={isOpen}
@@ -99,12 +118,6 @@ const Header = () => {
                 {item.label}
               </Link>
             ))}
-            <div className="mt-3 flex flex-col gap-2">
-              <ResumeButton className="w-full">Download résumé</ResumeButton>
-              <Button href="/contact" className="w-full">
-                Let&rsquo;s talk
-              </Button>
-            </div>
           </div>
         </nav>
       ) : null}

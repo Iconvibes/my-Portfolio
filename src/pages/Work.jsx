@@ -9,7 +9,7 @@ const Work = () => (
       eyebrow="Work"
       index="(01)"
       title="Different worlds. One standard of care."
-      intro="Two live in production — a government platform and a logistics landing page. Plus a hotel website, an edtech app, and a multi-vendor e-commerce store, built and launching soon."
+      intro="Three live in production — a government platform, a logistics landing page, and a hotel website. Plus an edtech app and a multi-vendor e-commerce store, built and launching soon."
     />
     <WorkSection detailed />
     <TestimonialsSection index="(02)" />

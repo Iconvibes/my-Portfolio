@@ -41,10 +41,10 @@ export const projects = [
       'Booking-focused user journeys'
     ],
     tech: ['React', 'Tailwind CSS', 'Node.js'],
-    status: 'coming-soon',
-    href: '',
-    domain: 'Launching soon',
-    image: '/projects/wura-grand-hotel.svg',
+    status: 'live',
+    href: 'https://wura-y0y5.onrender.com',
+    domain: 'wura-y0y5.onrender.com',
+    image: '/projects/wura.jpg',
     featured: false,
     accent: 'amber'
   },

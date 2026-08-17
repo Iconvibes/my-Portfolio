@@ -157,8 +157,8 @@ const WorkSection = ({ detailed = false }) => {
               Different worlds. One standard of care.
             </h2>
             <p className="mt-5 text-lg leading-8 text-slate-400">
-              A government platform and a logistics landing page live in production, plus a hotel
-              website, an edtech app, and a multi-vendor e-commerce store — built to the same standard and launching soon.
+              A government platform, a logistics landing page, and a hotel website live in production, plus an edtech
+              app and a multi-vendor e-commerce store — built to the same standard and launching soon.
             </p>
           </div>
           <div className="mt-16 space-y-20">
@@ -189,7 +189,7 @@ const WorkSection = ({ detailed = false }) => {
           <Button href="/work" variant="paper" icon>
             Explore the work
           </Button>
-          <p className="mono-label text-ink/50">So-Safe Corps and TPC Logistics are live — the rest are on the way</p>
+          <p className="mono-label text-ink/50">So-Safe Corps, TPC Logistics, and Wura Grand Hotel are live — the rest are on the way</p>
         </Reveal>
       </Section>
     </section>
