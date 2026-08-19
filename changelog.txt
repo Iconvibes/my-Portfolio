@@ -179,3 +179,70 @@ WHEN EduTrack / StackForge SHIP PUBLICLY — add their links (~2 min):
         python scripts/resume/build-resume-docx.py scripts/resume/resume-v3.html Ferdinard_Ashonibare_Fullstack_Engineer_v2.docx
    3. Verify the PDF is still exactly 1 page (page count check), then publish or
       hand off.
+
+NaijaMart Rename, Real Estate Platform & SSR Fix (Aug 19):
+==========================================================
+
+1. E-Commerce Store renamed to NaijaMart:
+   - src/content/projects.js: name updated to 'NaijaMart'
+   - Image updated from /projects/ecommerce-store.svg to /projects/naijamart.png
+   - All references updated across: README.md, llms.txt, WorkSection.jsx,
+     HeroSection.jsx, AboutSection.jsx, About.jsx, Work.jsx, routeMeta.js,
+     and resume.html
+   - WorkSection descriptions updated to say 'NaijaMart' instead of
+     'multi-vendor e-commerce store'
+
+2. Real Estate Platform added as a new project:
+   - src/content/projects.js: slug 'real-estate', status 'soon',
+     image '/projects/estate.png', accent 'cyan', sector 'Real Estate'
+   - Featured on: Home page project list, Work page, About page
+     ("currently" card and sectors list), HeroSection tagline
+   - Industries list (src/content/industries.js) updated with Real Estate
+   - No case study URL (only live projects get case studies)
+   - SEO metadata in routeMeta.js updated for /work page description/keywords
+
+3. All sector lists updated to include 'real estate':
+   - HeroSection tagline: "government, hospitality, education, real estate, and beyond"
+   - About page bio: "government, hospitality, education, real estate, business, and logistics"
+   - llms.txt focus sectors: added Real Estate
+   - industries.js: added Real Estate entry
+
+4. SEO metadata and social sharing updated:
+   - src/utils/routeMeta.js: /work page description and keywords now mention NaijaMart
+   - src/content/site.js: defaultDescription updated to include real estate
+
+5. SSR portal fix (pre-existing bug resolved):
+   - src/components/ui/ProjectPreview.jsx: added 'typeof document === undefined'
+     guard to prevent createPortal from crashing during server-side rendering
+
+6. Parameterized route filtering for prerender/sitemap:
+   - src/utils/routeMeta.js: added prerenderablePaths export that filters out
+     ':slug' parameterized routes from prerendering and sitemap generation
+   - src/seo/site.js: re-exported prerenderablePaths
+   - scripts/prerender.mjs: uses prerenderablePaths instead of allPublicPaths
+   - scripts/check-seo.mjs: uses prerenderablePaths for SEO validation
+   - scripts/check-live.mjs: uses prerenderablePaths for live site checks
+
+7. Full build now passes completely:
+   - 9/9 tests pass
+   - Client build, SSR build, prerender, SEO gate, robots gate all green
+
+Files modified (18 total):
+  - src/content/projects.js (NaijaMart rename + Real Estate Platform added)
+  - src/content/industries.js (Real Estate sector added)
+  - src/content/site.js (defaultDescription updated)
+  - src/seo/site.js (prerenderablePaths re-export)
+  - src/utils/routeMeta.js (prerenderablePaths + SEO metadata)
+  - src/components/ui/ProjectPreview.jsx (SSR portal fix)
+  - src/components/sections/HeroSection.jsx (updated mentions)
+  - src/components/sections/WorkSection.jsx (updated mentions)
+  - src/components/sections/AboutSection.jsx (updated mentions)
+  - src/pages/Work.jsx (updated intro)
+  - src/pages/About.jsx (updated sectors list)
+  - README.md (updated project count and descriptions)
+  - public/llms.txt (updated focus sectors and proof of work)
+  - scripts/resume/resume.html (NaijaMart rename)
+  - scripts/prerender.mjs (prerenderablePaths)
+  - scripts/check-seo.mjs (prerenderablePaths)
+  - scripts/check-live.mjs (prerenderablePaths)
+  - changelog.txt (this file)

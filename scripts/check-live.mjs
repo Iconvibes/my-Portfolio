@@ -32,7 +32,7 @@
 import { evaluateCrawlers } from './robots.mjs';
 import { siteConfig } from '../src/content/site.js';
 import { getSeoConfig, toAbsoluteUrl } from '../src/seo/site.js';
-import { allPublicPaths } from '../src/utils/routeMeta.js';
+import { prerenderablePaths } from '../src/utils/routeMeta.js';
 import { insights } from '../src/content/insights.js';
 
 const args = process.argv.slice(2);
@@ -357,20 +357,20 @@ const run = async () => {
 
   const llmsFull = await checkAsset('/llms-full.txt');
   const fullHeadings = (llmsFull.body.match(/^# /gm) ?? []).length;
-  if (llmsFull.status === 200 && fullHeadings >= allPublicPaths.length) {
-    line(`llms-full.txt ${llmsFull.status} · ${llmsFull.type.split(';')[0]} · ${(llmsFull.body.length / 1024).toFixed(1)} KB · ${fullHeadings} pages (≥ ${allPublicPaths.length}) ✓`);
+  if (llmsFull.status === 200 && fullHeadings >= prerenderablePaths.length) {
+    line(`llms-full.txt ${llmsFull.status} · ${llmsFull.type.split(';')[0]} · ${(llmsFull.body.length / 1024).toFixed(1)} KB · ${fullHeadings} pages (≥ ${prerenderablePaths.length}) ✓`);
   } else {
     failures += 1;
-    line(`✗ llms-full.txt ${llmsFull.error ? `(fetch failed: ${llmsFull.error})` : `HTTP ${llmsFull.status} · ${fullHeadings}/${allPublicPaths.length} pages`}`);
+    line(`✗ llms-full.txt ${llmsFull.error ? `(fetch failed: ${llmsFull.error})` : `HTTP ${llmsFull.status} · ${fullHeadings}/${prerenderablePaths.length} pages`}`);
   }
 
   const sitemap = await checkAsset('/sitemap.xml');
   const locs = (sitemap.body.match(/<loc>/g) ?? []).length;
-  if (sitemap.status === 200 && locs === allPublicPaths.length) {
+  if (sitemap.status === 200 && locs === prerenderablePaths.length) {
     line(`sitemap.xml   ${sitemap.status} · ${sitemap.type.split(';')[0]} · ${locs} URLs ✓`);
   } else {
     failures += 1;
-    line(`✗ sitemap.xml ${sitemap.error ? `(fetch failed: ${sitemap.error})` : `HTTP ${sitemap.status} · ${locs}/${allPublicPaths.length} URLs`}`);
+    line(`✗ sitemap.xml ${sitemap.error ? `(fetch failed: ${sitemap.error})` : `HTTP ${sitemap.status} · ${locs}/${prerenderablePaths.length} URLs`}`);
   }
 
   // Every URL the sitemap advertises must actually serve the page.
@@ -392,8 +392,8 @@ const run = async () => {
   line('');
 
   // 3. Pages
-  line(`Pages (${allPublicPaths.length}) — what each allowed bot would fetch:`);
-  for (const routePath of allPublicPaths) {
+  line(`Pages (${prerenderablePaths.length}) — what each allowed bot would fetch:`);
+  for (const routePath of prerenderablePaths) {
     const page = await checkPage(routePath);
     if (page.fatal) {
       failures += 1;
@@ -446,7 +446,7 @@ const run = async () => {
   if (failures === 0) {
     const allowed = FOCUS_BOTS.join(', ');
     line(
-      `✅ PASS — ${allowed} are allowed and would receive ${allPublicPaths.length} prerendered pages` +
+      `✅ PASS — ${allowed} are allowed and would receive ${prerenderablePaths.length} prerendered pages` +
         ' with correct SEO heads and structured data, plus llms.txt, llms-full.txt, and sitemap.xml.'
     );
   } else {

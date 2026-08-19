@@ -144,7 +144,7 @@ const About = () => {
             <p>
               I build web software end to end — the interface people see, the systems underneath
               it, and the deployment that keeps it alive. My work spans{' '}
-              <span className="text-slate-200">government, hospitality, education, business, and
+              <span className="text-slate-200">government, hospitality, education, real estate, business, and
               logistics</span> — because I care less about the industry and more about building
               things that genuinely work for the people using them.
             </p>

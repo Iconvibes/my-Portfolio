@@ -12,7 +12,7 @@ import { existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import { allPublicPaths } from '../src/utils/routeMeta.js';
+import { prerenderablePaths } from '../src/utils/routeMeta.js';
 import { siteConfig } from '../src/content/site.js';
 import { toAbsoluteUrl } from '../src/seo/site.js';
 
@@ -50,12 +50,12 @@ const sameOrigin = (url) => {
   }
 };
 
-if (allPublicPaths.length === 0) {
+if (prerenderablePaths.length === 0) {
   failures.push('routeMeta exposes no routes — nothing to check');
   report.push('  ✗ routeMeta exposes no routes');
 }
 
-for (const route of allPublicPaths) {
+for (const route of prerenderablePaths) {
   const file = pageFile(route);
   const label = route === '/' ? '/' : route;
 
@@ -165,12 +165,12 @@ const llmsFullFile = path.join(dist, 'llms-full.txt');
 if (existsSync(llmsFullFile)) {
   const llmsFull = readFileSync(llmsFullFile, 'utf8');
   const pageHeadings = (llmsFull.match(/^# /gm) ?? []).length;
-  if (pageHeadings < allPublicPaths.length) {
+  if (pageHeadings < prerenderablePaths.length) {
     failures.push(
-      `llms-full.txt covers ${pageHeadings} page(s), expected ${allPublicPaths.length}`
+      `llms-full.txt covers ${pageHeadings} page(s), expected ${prerenderablePaths.length}`
     );
     report.push(
-      `  ✗ llms-full.txt covers ${pageHeadings}/${allPublicPaths.length} pages`
+      `  ✗ llms-full.txt covers ${pageHeadings}/${prerenderablePaths.length} pages`
     );
   }
 }
@@ -216,4 +216,4 @@ if (failures.length) {
 }
 
 console.log('\n✅ SEO smoke check passed:' + report.join(''));
-console.log(`All ${allPublicPaths.length} routes carry title, description, canonical, og:image and JSON-LD.\n`);
+console.log(`All ${prerenderablePaths.length} routes carry title, description, canonical, og:image and JSON-LD.\n`);

@@ -94,7 +94,7 @@ export const projects = [
   },
   {
     slug: 'ecommerce-store',
-    name: 'E-Commerce Store',
+    name: 'NaijaMart',
     tagline: 'A multi-vendor storefront built to turn browsers into buyers',
     sector: 'Business & Startups',
     description:
@@ -109,9 +109,30 @@ export const projects = [
     href: '',
     caseStudyUrl: '',
     domain: 'Launching soon',
-    image: '/projects/ecommerce-store.svg',
+    image: '/projects/naijamart.png',
     featured: false,
     accent: 'rose'
+  },
+  {
+    slug: 'real-estate',
+    name: 'Real Estate Platform',
+    tagline: 'A modern real estate platform built to showcase and connect properties with buyers',
+    sector: 'Real Estate',
+    description:
+      'A comprehensive real estate platform designed to showcase properties, streamline listings, and connect buyers with their dream homes — featuring intuitive search, detailed property views, and a clean, modern interface.',
+    highlights: [
+      'Property listings with detailed views and filtering',
+      'Modern, search-first interface optimized for discovery',
+      'Clean, responsive design for seamless browsing across devices'
+    ],
+    tech: ['React', 'Tailwind CSS', 'Node.js'],
+    status: 'soon',
+    href: '',
+    caseStudyUrl: '',
+    domain: 'Launching soon',
+    image: '/projects/estate.png',
+    featured: false,
+    accent: 'cyan'
   }
 ];
 

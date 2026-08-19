@@ -214,7 +214,7 @@ const WorkSection = ({ detailed = false }) => {
             </h2>
             <p className="mt-5 text-lg leading-8 text-slate-400">
               A government platform, a logistics landing page, and a hotel website live in production, plus an edtech
-              app and a multi-vendor e-commerce store — built to the same standard and launching soon.
+              app, NaijaMart, and a real estate platform — built to the same standard and launching soon.
             </p>
           </div>
 
@@ -258,7 +258,7 @@ const WorkSection = ({ detailed = false }) => {
         index="(01)"
         eyebrow="Selected Work"
         title="Different worlds. One standard of care."
-        description="A government platform, a logistics landing page, a hotel website, an edtech app, and a multi-vendor e-commerce store — each built to the same standard."
+        description="A government platform, a logistics landing page, a hotel website, an edtech app, NaijaMart, and a real estate platform — each built to the same standard."
       >
         <div className="mt-14 space-y-5">
           {projects.map((project, index) => (
@@ -269,7 +269,7 @@ const WorkSection = ({ detailed = false }) => {
           <Button href="/work" variant="paper" icon>
             Explore the work
           </Button>
-          <p className="mono-label text-ink/50">So-Safe Corps, TPC Logistics, and Wura Grand Hotel are live — the rest are on the way</p>
+          <p className="mono-label text-ink/50">So-Safe Corps, TPC Logistics, and Wura Grand Hotel are live — EduTrack, NaijaMart & Real Estate Platform are on the way</p>
         </Reveal>
       </Section>
     </section>

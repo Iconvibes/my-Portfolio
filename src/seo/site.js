@@ -10,7 +10,7 @@ import { allRouteMeta, publicRoutePaths } from '../utils/routeMeta.js';
 
 export { siteConfig, publicRoutePaths };
 
-export { allRouteMeta, allPublicPaths } from '../utils/routeMeta.js';
+export { allRouteMeta, allPublicPaths, prerenderablePaths } from '../utils/routeMeta.js';
 
 export const normalizePath = (path = '/') => (path === '/' ? '/' : path.replace(/\/$/, ''));
 

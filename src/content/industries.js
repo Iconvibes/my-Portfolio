@@ -18,5 +18,9 @@ export const industries = [
   {
     title: 'Logistics',
     description: 'Fast, mobile-first websites that help logistics and delivery businesses turn inquiries into bookings.'
+  },
+  {
+    title: 'Real Estate',
+    description: 'Modern property platforms that help buyers discover homes and agents close deals.'
   }
 ];

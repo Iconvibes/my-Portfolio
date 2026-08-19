@@ -7,7 +7,7 @@
 - Name: Ferdinard Ashonibare
 - Role: Full-stack web developer
 - Location: Lagos, Nigeria (works remotely worldwide)
-- Focus sectors: Government & Public Sector, Hospitality, Education, Business & Startups, Logistics
+- Focus sectors: Government & Public Sector, Hospitality, Education, Business & Startups, Logistics, Real Estate
 - Studio brand: Codeferd Digital (footnote only — the site's primary identity is the person)
 - Contact email: ferdinardoluwajuwonlo@gmail.com
 - GitHub: https://github.com/Iconvibes
@@ -28,8 +28,9 @@
 - Ogun State So-Safe Corps — official digital platform for a state security institution. Live: https://sosafecorps.og.gov.ng
 - Wura Grand Hotel — premium hotel website. Live: https://wura-y0y5.onrender.com
 - EduTrack — education web app for tracking student progress (launching soon)
-- E-Commerce Store — multi-vendor e-commerce storefront (launching soon)
+- NaijaMart — multi-vendor storefront built to turn browsers into buyers (launching soon)
 - TPC Logistics — logistics landing page with a WhatsApp lead capture flow. Live: https://tpc-logistics-test.onrender.com
+- Real Estate Platform — modern real estate platform for showcasing properties (launching soon)
 
 ## Services
 

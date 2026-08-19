@@ -78,7 +78,7 @@ const HeroSection = () => {
 
           <p className="mt-6 max-w-xl text-xl leading-9 text-slate-300 sm:text-2xl sm:leading-10">
             I design &amp; build <span className="font-semibold text-white">fast, secure web platforms</span>{' '}
-            for government, hospitality, education, and beyond — from idea to launch, end to end.
+            for government, hospitality, education, real estate, and beyond — from idea to launch, end to end.
           </p>
 
           <p className="mt-5 max-w-xl text-base leading-7 text-slate-400">
@@ -96,7 +96,7 @@ const HeroSection = () => {
               <span className="font-semibold text-white">Ogun State So-Safe Corps</span>
             )}{' '}
             — a state security institution — and I'm currently crafting a hotel website, an
-            edtech app, and a multi-vendor e-commerce store. If it lives in a browser, I can build it.
+            edtech app, NaijaMart, and a real estate platform. If it lives in a browser, I can build it.
           </p>
 
           <div className="mt-9 flex flex-wrap items-center gap-4">

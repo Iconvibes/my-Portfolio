@@ -3,9 +3,13 @@ import { createPortal } from 'react-dom';
 /**
  * Floating image preview that follows the cursor on project row hover.
  * Renders through a React portal so it's never clipped by parent overflow.
+ * Returns null during SSR since document.body is unavailable on the server.
  */
 const ProjectPreview = ({ src, alt, visible, x, y }) => {
   if (!src) return null;
+
+  // Guard against SSR — document is unavailable on the server.
+  if (typeof document === 'undefined') return null;
 
   return createPortal(
     <div

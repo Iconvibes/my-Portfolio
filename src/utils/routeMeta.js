@@ -48,8 +48,8 @@ export const routeMeta = [
     seo: {
       title: 'Work | Ferdinard Ashonibare',
       description:
-        'Selected projects by Ferdinard Ashonibare — Ogun State So-Safe Corps government platform, Wura Grand Hotel, and the EduTrack web app.',
-      keywords: ['portfolio', 'Ogun State So-Safe Corps', 'Wura Grand Hotel', 'EduTrack']
+        'Selected projects by Ferdinard Ashonibare — Ogun State So-Safe Corps government platform, Wura Grand Hotel, NaijaMart, and more.',
+      keywords: ['portfolio', 'Ogun State So-Safe Corps', 'Wura Grand Hotel', 'NaijaMart', 'EduTrack']
     }
   },
   {
@@ -127,3 +127,6 @@ export const publicRoutePaths = routeMeta.map((route) => route.path);
 
 export const allRouteMeta = [...routeMeta, ...articleRoutes];
 export const allPublicPaths = allRouteMeta.map((route) => route.path);
+// Concrete paths only (no parameterized ':slug' patterns) — used by the
+// prerender script and sitemap generator.
+export const prerenderablePaths = allPublicPaths.filter((path) => !path.includes(':'));

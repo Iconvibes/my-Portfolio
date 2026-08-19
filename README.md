@@ -29,7 +29,7 @@ The personal portfolio of **Ferdinard Ashonibare**, a full-stack web developer i
 
 ## Overview
 
-This site is built to stop a recruiter in ten seconds: who Ferdinard is, what he builds, and proof — a live government platform, a logistics landing page, a hotel website, an edtech app, and a multi-vendor e-commerce store.
+This site is built to stop a recruiter in ten seconds: who Ferdinard is, what he builds, and proof — a live government platform, a logistics landing page, a hotel website, an edtech app, NaijaMart, and a real estate platform.
 
 The design follows an editorial *"field-tested systems"* identity — restrained command-line details (`$` prompts, numbered sections, mono labels, a terminal status card) paired with warm, human editorial typography. No skill bars, no fake testimonials, no agency copy.
 
@@ -51,7 +51,7 @@ Production concerns are treated as first-class:
 
 - **Editorial design system** — Syne / Instrument Serif / JetBrains Mono; ink `#060A12`, paper `#F2EFE6`, signal lime `#C8F135`
 - **Signature hero** — terminal status card with typewriter effect, 3D-tilt portrait, lime marquee
-- **Five projects** — Ogun State So-Safe Corps, TPC Logistics & Wura Grand Hotel (live), EduTrack & E-Commerce Store (launching soon)
+- **Six projects** — Ogun State So-Safe Corps, TPC Logistics & Wura Grand Hotel (live), EduTrack, NaijaMart & Real Estate Platform (launching soon)
 - **Six pages** — Home, About, Work, Case Study, Insights, Contact
 - **Per-route SEO** — unique title, description, canonical, Open Graph, Twitter card, and JSON-LD schema on every page
 - **AI discovery** — `llms.txt`, sitemap, robots.txt, and a rich structured-data layer

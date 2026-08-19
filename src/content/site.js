@@ -4,7 +4,7 @@ export const siteConfig = {
   siteUrl: 'https://ferdinardashonibare.com',
   defaultTitle: 'Ferdinard Ashonibare | Full-Stack Web Developer',
   defaultDescription:
-    'Ferdinard Ashonibare is a full-stack web developer in Lagos, Nigeria — building fast, secure web platforms for government, hospitality, education, and beyond.',
+    'Ferdinard Ashonibare is a full-stack web developer in Lagos, Nigeria — building fast, secure web platforms for government, hospitality, education, real estate, and beyond.',
   defaultImage: '/og-card.jpg',
   schemaImage: '/profile.jpg',
   locale: 'en_US',
