@@ -6,7 +6,7 @@ export { processSteps, values } from './process';
 export { faqItems } from './faq';
 export { facts } from './facts';
 export { getInsightBySlug, insightDate, insights, readingTime } from './insights';
-export { projects, featuredProject } from './projects';
+export { projects, featuredProject, getProjectBySlug } from './projects';
 export { featuredCaseStudy } from './caseStudies';
 export { testimonials } from './testimonials';
 export { contactChannels, socialLinks } from './contact';

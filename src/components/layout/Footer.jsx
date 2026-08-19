@@ -38,7 +38,7 @@ const Footer = () => (
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={social.label}
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-line bg-white/[0.03] text-slate-300 transition hover:border-signal/60 hover:text-signal"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-line bg-white/3 text-slate-300 transition hover:border-signal/60 hover:text-signal"
               >
                 {socialIcon[social.label]}
               </a>
@@ -107,7 +107,7 @@ const Footer = () => (
 
       <div className="mt-14 flex flex-col items-start justify-between gap-4 border-t border-line pt-8 sm:flex-row sm:items-center">
         <p className="text-xs text-slate-500">
-          © {year} Ferdinard Ashonibare. Designed &amp; built by me, in the open.
+          © {year} Ferdinard Ashonibare. Designed &amp; built by me.
         </p>
         <a
           href="#main-content"

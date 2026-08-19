@@ -8,8 +8,6 @@
 export const navigation = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
-  { label: 'Work', href: '/work' },
-  { label: 'Case Study', href: '/case-study' },
-  { label: 'Insights', href: '/insights' },
+  { label: 'Projects', href: '/work' },
   { label: 'Contact', href: '/contact' }
 ];

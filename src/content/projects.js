@@ -23,6 +23,7 @@ export const projects = [
     tech: ['React', 'Tailwind CSS', 'Node.js', 'Express', 'MongoDB', 'REST APIs'],
     status: 'live',
     href: 'https://sosafecorps.og.gov.ng',
+    caseStudyUrl: '/case-study/so-safe-corps',
     domain: 'sosafecorps.og.gov.ng',
     image: '/projects/so-safe-corps.jpg',
     featured: true,
@@ -43,6 +44,7 @@ export const projects = [
     tech: ['React', 'Tailwind CSS', 'Node.js'],
     status: 'live',
     href: 'https://wura-y0y5.onrender.com',
+    caseStudyUrl: '/case-study/wura-grand-hotel',
     domain: 'wura-y0y5.onrender.com',
     image: '/projects/wura.jpg',
     featured: false,
@@ -63,6 +65,7 @@ export const projects = [
     tech: ['HTML', 'Tailwind CSS', 'JavaScript'],
     status: 'live',
     href: 'https://tpc-logistics-test.onrender.com',
+    caseStudyUrl: '/case-study/tpc-logistics',
     domain: 'tpc-logistics-test.onrender.com',
     image: '/projects/tpc.png',
     featured: false,
@@ -81,9 +84,10 @@ export const projects = [
       'Built for real educators, not jargon'
     ],
     tech: ['React', 'Node.js', 'Express', 'MongoDB'],
-    status: 'coming-soon',
+    status: 'production',
     href: '',
-    domain: 'Launching soon',
+    caseStudyUrl: '',
+    domain: 'In Production',
     image: '/projects/edutrack.svg',
     featured: false,
     accent: 'violet'
@@ -101,8 +105,9 @@ export const projects = [
       'Seamless experience across desktop and mobile'
     ],
     tech: ['MongoDB', 'Express', 'React', 'Node.js', 'Tailwind CSS'],
-    status: 'coming-soon',
+    status: 'soon',
     href: '',
+    caseStudyUrl: '',
     domain: 'Launching soon',
     image: '/projects/ecommerce-store.svg',
     featured: false,
@@ -111,3 +116,5 @@ export const projects = [
 ];
 
 export const featuredProject = projects.find((project) => project.featured) ?? projects[0];
+
+export const getProjectBySlug = (slug) => projects.find((project) => project.slug === slug) ?? null;

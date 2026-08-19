@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { Button } from '../ui/Button';
 import ProfilePhoto from '../ui/ProfilePhoto';
 import ResumeButton from '../ui/ResumeButton';
+import TextReveal from '../ui/TextReveal';
 import TiltCard from '../ui/TiltCard';
 import TerminalCard from './TerminalCard';
 import { featuredProject, projects } from '../../content';
@@ -70,10 +71,9 @@ const HeroSection = () => {
         <div className="animate-enter">
           <p className="eyebrow">// full-stack web developer — lagos, nigeria</p>
 
-          <h1 className="display-ink mt-6 text-[clamp(3rem,9vw,5.75rem)] text-white">
-            Ferdinard
-            <br />
-            <span className="serif-accent text-signal">Ashonibare</span>
+          <h1 className="mt-6 text-[clamp(3rem,9vw,5.75rem)] text-white" aria-label="Ferdinard Ashonibare">
+            <TextReveal text="Ferdinard" as="span" className="display-ink block" />
+            <TextReveal text="Ashonibare" as="span" className="serif-accent text-signal block" />
           </h1>
 
           <p className="mt-6 max-w-xl text-xl leading-9 text-slate-300 sm:text-2xl sm:leading-10">

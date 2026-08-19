@@ -1,11 +1,20 @@
+import { useRef, useState } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import { projects } from '../../content';
 import Badge from '../ui/Badge';
 import Button from '../ui/Button';
 import ProjectFrame from '../ui/ProjectFrame';
+import ProjectPreview from '../ui/ProjectPreview';
 import Reveal from '../ui/Reveal';
 import Section from '../ui/Section';
 import TiltCard from '../ui/TiltCard';
+
+const filterButtons = [
+  { key: 'all', label: 'All' },
+  { key: 'live', label: 'Live' },
+  { key: 'production', label: 'In Production' },
+  { key: 'soon', label: 'Launching Soon' }
+];
 
 const StatusBadge = ({ status }) =>
   status === 'live' ? (
@@ -22,12 +31,30 @@ const StatusBadge = ({ status }) =>
 
 /* ---------- Compact "index" rows (Home) ---------- */
 
+const PREVIEW_OFFSET_X = 20;
+const PREVIEW_OFFSET_Y = -80;
+
 const ProjectRow = ({ project, index }) => {
   const isLive = project.status === 'live';
   const linkable = isLive && project.href;
+  const rowRef = useRef(null);
+  const [preview, setPreview] = useState({ visible: false, x: 0, y: 0 });
+
+  const onRowMouseMove = (event) => {
+    setPreview({ visible: true, x: event.clientX + PREVIEW_OFFSET_X, y: event.clientY + PREVIEW_OFFSET_Y });
+  };
+
+  const onRowMouseLeave = () => {
+    setPreview((prev) => ({ ...prev, visible: false }));
+  };
 
   const inner = (
-    <div className="group grid items-center gap-x-8 gap-y-3 rounded-2xl border border-ink/10 bg-white/40 px-6 py-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-ink hover:bg-ink hover:shadow-[0_24px_60px_rgba(26,38,0,0.18)] sm:grid-cols-[auto_auto_1fr_auto] sm:px-8 sm:py-5">
+    <div
+      ref={rowRef}
+      onMouseMove={onRowMouseMove}
+      onMouseLeave={onRowMouseLeave}
+      className="group grid items-center gap-x-8 gap-y-3 rounded-2xl border border-ink/10 bg-white/40 px-6 py-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-ink hover:bg-ink hover:shadow-[0_24px_60px_rgba(26,38,0,0.18)] sm:grid-cols-[auto_auto_1fr_auto] sm:px-8 sm:py-5"
+    >
       <span className="mono-label hidden text-ink/40 transition-colors duration-300 group-hover:text-signal sm:block">
         (0{index + 1})
       </span>
@@ -84,6 +111,13 @@ const ProjectRow = ({ project, index }) => {
       ) : (
         <div className="block">{inner}</div>
       )}
+      <ProjectPreview
+        src={project.image}
+        alt={`${project.name} preview`}
+        visible={preview.visible}
+        x={preview.x}
+        y={preview.y}
+      />
     </Reveal>
   );
 };
@@ -92,6 +126,7 @@ const ProjectRow = ({ project, index }) => {
 
 const ProjectDetail = ({ project, index }) => {
   const isLive = project.status === 'live';
+  const isSoon = project.status === 'soon';
   const reversed = index % 2 === 1;
 
   return (
@@ -100,10 +135,10 @@ const ProjectDetail = ({ project, index }) => {
       delay={index * 80}
       className={`grid items-center gap-10 lg:grid-cols-2 ${reversed ? 'lg:[&>*:first-child]:order-2' : ''}`}
     >
-      <TiltCard maxTilt={7}>
+      <TiltCard maxTilt={7} className={isSoon ? 'opacity-60' : ''}>
         <ProjectFrame project={project} />
       </TiltCard>
-      <div>
+      <div className={isSoon ? 'opacity-60' : ''}>
         <p className="eyebrow">
           <span className="mr-2 text-slate-500">(0{index + 1})</span>
           {project.sector}
@@ -127,12 +162,27 @@ const ProjectDetail = ({ project, index }) => {
           ))}
         </div>
 
+        {isSoon && (
+          <div className="mt-5">
+            <Badge tone="signal">
+              <span className="h-1.5 w-1.5 rounded-full bg-signal" aria-hidden="true" />
+              Launching Soon
+            </Badge>
+          </div>
+        )}
+
         <div className="mt-8 flex flex-wrap items-center gap-4">
-          {isLive && project.href ? (
+          {project.href ? (
             <Button href={project.href} external icon>
-              Visit live site
+              View Live
             </Button>
-          ) : (
+          ) : null}
+          {project.caseStudyUrl ? (
+            <Button href={project.caseStudyUrl} variant="outline" icon>
+              Case Study
+            </Button>
+          ) : null}
+          {!project.href && !project.caseStudyUrl && (
             <Badge tone="signal">
               <span className="h-1.5 w-1.5 rounded-full bg-signal" aria-hidden="true" />
               Launching soon — check back
@@ -147,7 +197,13 @@ const ProjectDetail = ({ project, index }) => {
 /* ---------- Section ---------- */
 
 const WorkSection = ({ detailed = false }) => {
+  const [activeFilter, setActiveFilter] = useState('all');
+
   if (detailed) {
+    const filteredProjects = projects.filter(
+      (p) => activeFilter === 'all' || p.status === activeFilter
+    );
+
     return (
       <div className="bg-ink text-white">
         <div className="mx-auto max-w-7xl px-6 py-20 sm:px-8 lg:px-10 lg:py-24">
@@ -161,11 +217,35 @@ const WorkSection = ({ detailed = false }) => {
               app and a multi-vendor e-commerce store — built to the same standard and launching soon.
             </p>
           </div>
+
+          {/* Filter buttons */}
+          <div className="mt-10 flex flex-wrap gap-3">
+            {filterButtons.map((btn) => (
+              <button
+                key={btn.key}
+                onClick={() => setActiveFilter(btn.key)}
+                className={`rounded-full px-5 py-2 text-sm font-medium transition focus-visible:outline-none ${
+                  activeFilter === btn.key
+                    ? 'bg-signal/10 text-signal border border-signal/30'
+                    : 'border border-white/10 bg-white/[0.03] text-slate-400 hover:border-white/20 hover:text-white'
+                }`}
+              >
+                {btn.label}
+              </button>
+            ))}
+          </div>
+
           <div className="mt-16 space-y-20">
-            {projects.map((project, index) => (
+            {filteredProjects.map((project, index) => (
               <ProjectDetail key={project.slug} project={project} index={index} />
             ))}
           </div>
+
+          {filteredProjects.length === 0 && (
+            <p className="mt-16 text-center text-lg text-slate-500">
+              No projects match this filter yet.
+            </p>
+          )}
         </div>
       </div>
     );

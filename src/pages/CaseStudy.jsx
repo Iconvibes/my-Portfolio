@@ -1,9 +1,11 @@
+import { useParams } from 'react-router-dom';
 import PageShell from '../components/layout/PageShell';
 import CtaSection from '../components/sections/CtaSection';
 import Badge from '../components/ui/Badge';
 import Button from '../components/ui/Button';
 import Card from '../components/ui/Card';
 import { featuredCaseStudy } from '../content';
+import { getProjectBySlug } from '../content/projects';
 
 const storySections = [
   ['Research', 'research'],
@@ -14,7 +16,9 @@ const storySections = [
   ['Security', 'security']
 ];
 
-const CaseStudy = () => (
+/* ---------- Full case study (So-Safe Corps) ---------- */
+
+const FullCaseStudy = () => (
   <div className="bg-ink text-slate-100">
     <PageShell
       eyebrow="Case Study"
@@ -171,5 +175,119 @@ const CaseStudy = () => (
     <CtaSection title="Need a platform with institutional standards?" />
   </div>
 );
+
+/* ---------- Project-specific case study ---------- */
+
+const ProjectCaseStudy = ({ project }) => (
+  <div className="bg-ink text-slate-100">
+    <PageShell
+      eyebrow="Case Study"
+      title={project.name}
+      intro={project.description}
+    >
+      <div className="mt-6 flex flex-wrap items-center gap-4">
+        {project.href ? (
+          <Button href={project.href} external icon>
+            Visit the live platform
+          </Button>
+        ) : null}
+        <Button href="/work" variant="outline">
+          Back to all work
+        </Button>
+      </div>
+
+      <div className="mt-12 grid gap-6 lg:grid-cols-2">
+        <Card>
+          <p className="eyebrow">// overview</p>
+          <p className="mt-4 text-sm leading-8 text-slate-400">{project.description}</p>
+          <p className="mt-5 text-sm leading-8 text-slate-400">
+            {project.sector} — {project.tagline}
+          </p>
+        </Card>
+        <Card>
+          <p className="eyebrow">// at a glance</p>
+          <dl className="mt-6 space-y-4">
+            <div className="flex flex-col gap-1 border-b border-line-soft pb-3 sm:flex-row sm:justify-between">
+              <dt className="mono-label text-slate-500">Client</dt>
+              <dd className="text-sm font-medium text-white">{project.name}</dd>
+            </div>
+            <div className="flex flex-col gap-1 border-b border-line-soft pb-3 sm:flex-row sm:justify-between">
+              <dt className="mono-label text-slate-500">Sector</dt>
+              <dd className="text-sm font-medium text-white">{project.sector}</dd>
+            </div>
+            <div className="flex flex-col gap-1 border-b border-line-soft pb-3 sm:flex-row sm:justify-between">
+              <dt className="mono-label text-slate-500">Status</dt>
+              <dd className="text-sm font-medium text-white">
+                {project.status === 'live' ? 'Live in production' : project.status === 'production' ? 'In production' : 'Launching soon'}
+              </dd>
+            </div>
+            <div className="flex flex-col gap-1 pb-0 sm:flex-row sm:justify-between">
+              <dt className="mono-label text-slate-500">Stack</dt>
+              <dd className="text-sm font-medium text-white">{project.tech.join(', ')}</dd>
+            </div>
+          </dl>
+        </Card>
+      </div>
+
+      <Card className="mt-6">
+        <p className="eyebrow">// highlights</p>
+        <ul className="mt-6 space-y-2.5">
+          {project.highlights.map((highlight) => (
+            <li key={highlight} className="flex items-start gap-3 text-sm leading-6 text-slate-400">
+              <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-signal" aria-hidden="true" />
+              {highlight}
+            </li>
+          ))}
+        </ul>
+      </Card>
+
+      <Card className="mt-6 border-signal/25">
+        <p className="eyebrow">// technology</p>
+        <div className="mt-6 flex flex-wrap gap-2.5">
+          {project.tech.map((tech) => (
+            <Badge key={tech}>{tech}</Badge>
+          ))}
+        </div>
+      </Card>
+
+      {project.href ? (
+        <div className="mt-6">
+          <Button href={project.href} external icon>
+            See it live — {project.href.replace('https://', '')}
+          </Button>
+        </div>
+      ) : null}
+    </PageShell>
+
+    <CtaSection title="Need a platform built to this standard?" />
+  </div>
+);
+
+/* ---------- Page entry ---------- */
+
+const CaseStudy = () => {
+  const { slug } = useParams();
+
+  // Default /case-study (no slug) or so-safe-corps → full detailed case study
+  if (!slug || slug === 'so-safe-corps') {
+    return <FullCaseStudy />;
+  }
+
+  const project = getProjectBySlug(slug);
+
+  if (!project) {
+    return (
+      <div className="mx-auto max-w-3xl px-6 py-24 text-center sm:px-8">
+        <h1 className="display-ink text-3xl text-white">Case study not found</h1>
+        <p className="mt-4 text-slate-400">That case study does not exist — yet.</p>
+        <div className="mt-8">
+          <Button href="/work">Back to projects</Button>
+        </div>
+      </div>
+    );
+  }
+
+  return <ProjectCaseStudy project={project} />;
+};
 
 export default CaseStudy;

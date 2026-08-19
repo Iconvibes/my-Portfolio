@@ -9,6 +9,7 @@ export const routeMeta = [
   {
     path: '/',
     label: 'Home',
+    nav: true,
     priority: '1.0',
     changefreq: 'weekly',
     seo: {
@@ -28,6 +29,7 @@ export const routeMeta = [
   {
     path: '/about',
     label: 'About',
+    nav: true,
     priority: '0.8',
     changefreq: 'monthly',
     seo: {
@@ -39,7 +41,8 @@ export const routeMeta = [
   },
   {
     path: '/work',
-    label: 'Work',
+    label: 'Projects',
+    nav: true,
     priority: '0.9',
     changefreq: 'monthly',
     seo: {
@@ -62,6 +65,18 @@ export const routeMeta = [
     }
   },
   {
+    path: '/case-study/:slug',
+    label: 'Case Study',
+    priority: '0.6',
+    changefreq: 'monthly',
+    seo: {
+      title: 'Case Study | Ferdinard Ashonibare',
+      description:
+        'In-depth case studies of web platforms built by Ferdinard Ashonibare.',
+      keywords: ['case study', 'web developer', 'Ferdinard Ashonibare']
+    }
+  },
+  {
     path: '/insights',
     label: 'Insights',
     priority: '0.7',
@@ -76,6 +91,7 @@ export const routeMeta = [
   {
     path: '/contact',
     label: 'Contact',
+    nav: true,
     priority: '0.8',
     changefreq: 'monthly',
     seo: {

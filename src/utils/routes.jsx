@@ -9,6 +9,7 @@ const pageLoaders = {
   '/about': () => import('../pages/About'),
   '/work': () => import('../pages/Work'),
   '/case-study': () => import('../pages/CaseStudy'),
+  '/case-study/:slug': () => import('../pages/CaseStudy'),
   '/insights': () => import('../pages/Insights'),
   '/insights/:slug': () => import('../pages/InsightArticle'),
   '/contact': () => import('../pages/Contact')
@@ -26,9 +27,11 @@ export const routeConfig = routeMeta.map((route) => ({
   lazy: toLazy(pageLoaders[route.path])
 }));
 
-// Essays render through one dynamic route; the concrete /insights/{slug} URLs
-// match it during SSR (prerender) and on the client.
+// Dynamic routes: case studies and essays each render through a parameterised
+// path; concrete /case-study/{slug} and /insights/{slug} URLs match during
+// SSR (prerender) and on the client.
 export const dynamicRoutes = [
+  { path: '/case-study/:slug', lazy: toLazy(pageLoaders['/case-study/:slug']) },
   { path: '/insights/:slug', lazy: toLazy(pageLoaders['/insights/:slug']) }
 ];
 

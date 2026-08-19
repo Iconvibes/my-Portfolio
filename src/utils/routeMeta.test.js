@@ -89,14 +89,16 @@ describe('route table ↔ page map parity', () => {
 // on route plumbing. This test lives in src/utils/ because it is the seam that
 // keeps the two copies honest in both directions.
 describe('navigation ↔ route table parity', () => {
-  it('navigation hrefs exactly match the public route paths', () => {
+  it('navigation hrefs exactly match the nav-flagged route paths', () => {
+    const navRoutes = routeMeta.filter((route) => route.nav);
     const navPaths = navigation.map((item) => item.href).sort();
-    expect(navPaths).toEqual([...publicRoutePaths].sort());
+    expect(navPaths).toEqual(navRoutes.map((route) => route.path).sort());
   });
 
-  it('navigation labels match the route table labels', () => {
+  it('navigation labels match the nav-flagged route labels', () => {
+    const navRoutes = routeMeta.filter((route) => route.nav);
     const navLabels = navigation.map((item) => item.label).sort();
-    const tableLabels = routeMeta.map((route) => route.label).sort();
+    const tableLabels = navRoutes.map((route) => route.label).sort();
     expect(navLabels).toEqual(tableLabels);
   });
 });

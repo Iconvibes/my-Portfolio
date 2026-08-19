@@ -404,6 +404,73 @@ textarea {
   }
 }
 
+/* ---------- Text reveal (character-by-character) ---------- */
+
+.text-reveal {
+  overflow: hidden;
+}
+
+.text-reveal-char {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+}
+
+.text-reveal-char > span {
+  display: inline-block;
+  animation: charReveal 500ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes charReveal {
+  from {
+    opacity: 0;
+    transform: translateY(110%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.text-reveal-reduced > span {
+  animation: none !important;
+}
+
+/* ---------- Magnetic button ---------- */
+
+.magnetic-btn {
+  will-change: transform;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .magnetic-btn {
+    transition: none !important;
+  }
+}
+
+/* ---------- Project hover preview ---------- */
+
+.project-preview {
+  opacity: 0;
+  scale: 0.92;
+  transition:
+    opacity 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    scale 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.project-preview--visible {
+  opacity: 1;
+  scale: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-preview {
+    transition: opacity 0.1s ease !important;
+    scale: none !important;
+  }
+}
+
 /* ---------- Custom cursor companion (fine pointers only) ----------
 
    The native cursor stays visible; this is a decorative reticle that sits
