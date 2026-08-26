@@ -10,7 +10,7 @@ import { getSeoConfig, normalizePath, toAbsoluteUrl } from './site.js';
 import { allRouteMeta } from '../utils/routeMeta.js';
 import { faqItems } from '../content/faq.js';
 import { getInsightBySlug, insights } from '../content/insights.js';
-import { projects } from '../content/projects.js';
+import { getProjectBySlug, projects } from '../content/projects.js';
 import { featuredCaseStudy } from '../content/caseStudies.js';
 import { contactChannels } from '../content/contact.js';
 import { capabilities, techMarquee } from '../content/capabilities.js';
@@ -199,17 +199,29 @@ export const buildBreadcrumbListSchema = (path = '/') => {
   }
 
   // Essays sit under the Insights listing: Home > Insights > Article.
+  // Case studies sit under the Work listing: Home > Work > Case Study.
   const isArticle = normalized.startsWith('/insights/');
-  const itemListElement = isArticle
-    ? [
-        { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
-        { '@type': 'ListItem', position: 2, name: 'Insights', item: toAbsoluteUrl('/insights') },
-        { '@type': 'ListItem', position: 3, name: route.label, item: toAbsoluteUrl(route.path) }
-      ]
-    : [
-        { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
-        { '@type': 'ListItem', position: 2, name: route.label, item: toAbsoluteUrl(route.path) }
-      ];
+  const isCaseStudy = normalized.startsWith('/case-study/');
+  let itemListElement;
+
+  if (isArticle) {
+    itemListElement = [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+      { '@type': 'ListItem', position: 2, name: 'Insights', item: toAbsoluteUrl('/insights') },
+      { '@type': 'ListItem', position: 3, name: route.label, item: toAbsoluteUrl(route.path) }
+    ];
+  } else if (isCaseStudy) {
+    itemListElement = [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+      { '@type': 'ListItem', position: 2, name: 'Work', item: toAbsoluteUrl('/work') },
+      { '@type': 'ListItem', position: 3, name: route.label, item: toAbsoluteUrl(route.path) }
+    ];
+  } else {
+    itemListElement = [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+      { '@type': 'ListItem', position: 2, name: route.label, item: toAbsoluteUrl(route.path) }
+    ];
+  }
 
   return {
     '@context': 'https://schema.org',
@@ -248,6 +260,26 @@ export const buildTestimonialsSchema = () => {
       : {})
   }));
 };
+
+// Individual project case-study pages: CreativeWork schema with measurable
+// outcomes — real, verifiable data only.
+export const buildProjectCaseStudySchema = (project) => ({
+  '@context': 'https://schema.org',
+  '@type': 'CreativeWork',
+  name: `Case Study: ${project.name}`,
+  description: project.tagline || project.description,
+  url: toAbsoluteUrl(project.caseStudyUrl),
+  image: project.image ? `${SITE_URL}${project.image}` : `${SITE_URL}${siteConfig.defaultImage}`,
+  author: { '@id': PERSON_ID },
+  publisher: { '@id': ORGANIZATION_ID },
+  mainEntityOfPage: toAbsoluteUrl(project.caseStudyUrl),
+  about: project.name,
+  keywords: [project.name, project.sector, 'case study', 'Ferdinard Ashonibare'].join(', '),
+  inLanguage: 'en',
+  ...(project.status === 'live' && project.href
+    ? { usageInfo: project.href }
+    : {})
+});
 
 // Essay pages: Article schema with real publication metadata so engines can
 // cite the piece as a dated, authored original (E-E-A-T / GEO).
@@ -313,6 +345,15 @@ export const buildStructuredData = (path = '/') => {
       schemas.push(buildContactPageSchema());
       break;
     default: {
+      // Individual case-study URLs: /case-study/{slug} → CreativeWork schema.
+      if (normalized.startsWith('/case-study/')) {
+        const slug = normalized.slice('/case-study/'.length);
+        const project = getProjectBySlug(slug);
+        if (project && project.caseStudyUrl) {
+          schemas.push(buildProjectCaseStudySchema(project));
+        }
+        break;
+      }
       // Essay URLs: /insights/{slug} → Article schema.
       const slug = normalized.startsWith('/insights/')
         ? normalized.slice('/insights/'.length)

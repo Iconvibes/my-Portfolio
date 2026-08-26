@@ -22,9 +22,14 @@ const toLazy = (loader) => async () => {
 
 // A route-level `lazy` module must expose a named `Component` — the pages
 // default-export their component, so map it explicitly.
+// Concrete case-study paths (/case-study/so-safe-corps, etc.) are now
+// derived from the projects content (routeMeta.caseStudyRoutes) and share
+// the same page loader as the parameterised pattern.
+const loaderForPath = (path) => pageLoaders[path] ?? pageLoaders['/case-study/:slug'];
+
 export const routeConfig = routeMeta.map((route) => ({
   ...route,
-  lazy: toLazy(pageLoaders[route.path])
+  lazy: toLazy(loaderForPath(route.path))
 }));
 
 // Dynamic routes: case studies and essays each render through a parameterised

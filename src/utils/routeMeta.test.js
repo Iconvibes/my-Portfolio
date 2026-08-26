@@ -3,12 +3,14 @@ import {
   allPublicPaths,
   allRouteMeta,
   articleRoutes,
+  caseStudyRoutes,
   publicRoutePaths,
   routeMeta
 } from './routeMeta.js';
 import { dynamicRoutes, pageMap, routeConfig } from './routes.jsx';
 import { navigation } from '../content/navigation.js';
 import { insights } from '../content/insights.js';
+import { projects } from '../content/projects.js';
 
 describe('route table integrity', () => {
   it('exposes at least the six public routes', () => {
@@ -43,8 +45,8 @@ describe('route table integrity', () => {
       expect(route.seo?.title).toBeTruthy();
       expect(route.seo?.description).toBeTruthy();
     }
-    // Primary + articles, no overlap.
-    expect(allRouteMeta.length).toBe(routeMeta.length + articleRoutes.length);
+    // Primary + case studies + articles, no overlap.
+    expect(allRouteMeta.length).toBe(routeMeta.length + caseStudyRoutes.length + articleRoutes.length);
     expect(allPublicPaths).toEqual(allRouteMeta.map((route) => route.path));
   });
 });
@@ -100,5 +102,71 @@ describe('navigation ↔ route table parity', () => {
     const navLabels = navigation.map((item) => item.label).sort();
     const tableLabels = navRoutes.map((route) => route.label).sort();
     expect(navLabels).toEqual(tableLabels);
+  });
+});
+
+describe('case-study routes derived from projects', () => {
+  it('derives a case-study route for every project with a non-empty caseStudyUrl', () => {
+    const expected = projects
+      .filter((project) => project.caseStudyUrl)
+      .map((project) => project.caseStudyUrl)
+      .sort();
+    const actual = caseStudyRoutes.map((route) => route.path).sort();
+    expect(actual).toEqual(expected);
+  });
+
+  it('every case-study route has SEO metadata', () => {
+    for (const route of caseStudyRoutes) {
+      expect(route.path).toMatch(/^\/case-study\/[a-z0-9-]+$/);
+      expect(route.label).toBeTruthy();
+      expect(route.seo?.title).toBeTruthy();
+      expect(route.seo?.description).toBeTruthy();
+    }
+  });
+
+  it('every case-study route appears in allRouteMeta and prerenderable paths', () => {
+    for (const route of caseStudyRoutes) {
+      expect(allRouteMeta).toContainEqual(expect.objectContaining({ path: route.path }));
+      expect(allPublicPaths).toContain(route.path);
+    }
+  });
+
+  it('every concrete case-study route has a matching router route', () => {
+    const concrete = new Set(routeConfig.map((route) => route.path));
+    for (const route of caseStudyRoutes) {
+      // Should match either as an exact path in routeConfig or via the dynamic pattern
+      const covered =
+        concrete.has(route.path) ||
+        dynamicRoutes.some(({ path: pattern }) => {
+          const staticPrefix = pattern.slice(0, pattern.indexOf('/:'));
+          return route.path.startsWith(staticPrefix);
+        });
+      expect(covered, `no router route for case study ${route.path}`).toBe(true);
+    }
+  });
+
+  it('no case-study route collides with the base /case-study path', () => {
+    const caseStudyPath = routeMeta.find((r) => r.path === '/case-study');
+    expect(caseStudyPath).toBeTruthy();
+    for (const route of caseStudyRoutes) {
+      expect(route.path).not.toBe('/case-study');
+    }
+  });
+
+  it('every case-study route resolves to a Component via dynamic router pattern', async () => {
+    // Concrete case-study paths resolve through the /case-study/:slug dynamic
+    // route — they do not need their own entry in routeConfig.
+    const dynamicCaseStudy = dynamicRoutes.find((r) => r.path === '/case-study/:slug');
+    expect(dynamicCaseStudy).toBeTruthy();
+    expect(dynamicCaseStudy.lazy).toBeTypeOf('function');
+    const mod = await dynamicCaseStudy.lazy();
+    expect(mod.Component).toBeTypeOf('function');
+  });
+
+  it('does not generate a route for projects without caseStudyUrl', () => {
+    const noCaseStudy = projects.filter((project) => !project.caseStudyUrl);
+    for (const project of noCaseStudy) {
+      expect(caseStudyRoutes.find((r) => r.path === project.caseStudyUrl)).toBeUndefined();
+    }
   });
 });

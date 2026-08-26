@@ -342,11 +342,45 @@ const buildArticle = (insight) => {
   return lines.join("\n");
 };
 
+// One page per concrete case-study route — agents that fetch llms-full.txt
+// need the same coverage as the sitemap and the prerenderer.
+const buildProjectCaseStudyPage = (project) => {
+  const lines = [];
+  lines.push(`# Case Study: ${project.name}`);
+  lines.push("");
+  lines.push(toAbsoluteUrl(project.caseStudyUrl));
+  lines.push("");
+  lines.push(`Client: ${project.name}`);
+  lines.push(`Sector: ${project.sector}`);
+  lines.push(`Status: ${project.status === "live" ? "Live in production" : project.status === "production" ? "In production" : "Launching soon"}`);
+  if (project.href) {
+    lines.push(`Live URL: ${project.href}`);
+  }
+  lines.push("");
+  lines.push(project.description);
+  lines.push("");
+  lines.push(project.tagline);
+  lines.push("");
+
+  section(lines, "Highlights");
+  project.highlights.forEach((highlight) => lines.push(`- ${highlight}`));
+  lines.push("");
+
+  section(lines, "Technology");
+  lines.push(project.tech.join(", "));
+  lines.push("");
+
+  return lines.join("\n");
+};
+
 const pages = [
   buildHome(),
   buildAbout(),
   buildWork(),
   buildCaseStudy(),
+  ...projects
+    .filter((project) => project.caseStudyUrl)
+    .map(buildProjectCaseStudyPage),
   buildInsights(),
   buildContact(),
   ...insights.map(buildArticle)

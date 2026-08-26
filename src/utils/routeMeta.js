@@ -120,12 +120,30 @@ export const articleRoutes = insights.map((insight) => ({
   }
 }));
 
-// Primary navigation stays exactly the six table routes above; essays are an
-// additional content dimension (reachable from /insights, the footer, and
-// sitemap).
+// Concrete case-study routes derived from the projects content module — one
+// source of truth: a project with a non-empty `caseStudyUrl` gets a real,
+// prerendered route. The slug is extracted from the URL so projects, router,
+// prerenderer, sitemap, breadcrumbs, and structured data all agree.
+export const caseStudyRoutes = projects
+  .filter((project) => project.caseStudyUrl)
+  .map((project) => ({
+    path: project.caseStudyUrl,
+    label: project.name,
+    priority: '0.6',
+    changefreq: 'monthly',
+    seo: {
+      title: `Case Study: ${project.name} | Ferdinard Ashonibare`,
+      description: `${project.tagline} — an in-depth case study by Ferdinard Ashonibare on the ${project.name} ${project.sector.toLowerCase()} project.`,
+      keywords: ['case study', project.name, project.sector, 'Ferdinard Ashonibare']
+    }
+  }));
+
+// Primary navigation stays exactly the six table routes above; essays and
+// case studies are additional content dimensions (reachable from /work, the
+// footer, and sitemap).
 export const publicRoutePaths = routeMeta.map((route) => route.path);
 
-export const allRouteMeta = [...routeMeta, ...articleRoutes];
+export const allRouteMeta = [...routeMeta, ...caseStudyRoutes, ...articleRoutes];
 export const allPublicPaths = allRouteMeta.map((route) => route.path);
 // Concrete paths only (no parameterized ':slug' patterns) — used by the
 // prerender script and sitemap generator.
