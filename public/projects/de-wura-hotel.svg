@@ -21,7 +21,7 @@
 
   <!-- Navbar -->
   <rect x="0" y="0" width="1280" height="76" fill="#120b07" fill-opacity="0.35"/>
-  <text x="48" y="46" font-size="21" font-weight="700" fill="#fde68a" font-family="Georgia, serif">Wura Grand</text>
+  <text x="48" y="46" font-size="21" font-weight="700" fill="#fde68a" font-family="Georgia, serif">De Wura</text>
   <text x="210" y="46" font-size="13" letter-spacing="4" fill="#e8c98a">H O T E L</text>
   <text x="760" y="46" font-size="14" fill="#e5d3b3">Rooms &amp; Suites</text>
   <text x="898" y="46" font-size="14" fill="#e5d3b3">Dining</text>
@@ -63,5 +63,5 @@
 
   <!-- Footer bar -->
   <rect x="0" y="748" width="1280" height="52" fill="#120b07" fill-opacity="0.6"/>
-  <text x="48" y="780" font-size="12.5" fill="#a98d63">Wura Grand Hotel · A place of grace</text>
+  <text x="48" y="780" font-size="12.5" fill="#a98d63">De Wura Hotel · A place of grace</text>
 </svg>

@@ -209,9 +209,9 @@ const WorkSection = ({ detailed = false }) => {
         <div className="mx-auto max-w-7xl px-6 py-20 sm:px-8 lg:px-10 lg:py-24">
           <div className="max-w-3xl">
             <p className="eyebrow">(01) — Selected Work</p>
-            <h2 className="display-ink mt-4 text-4xl text-white sm:text-5xl">
+            <h1 className="display-ink mt-4 text-4xl text-white sm:text-5xl">
               Different worlds. One standard of care.
-            </h2>
+            </h1>
             <p className="mt-5 text-lg leading-8 text-slate-400">
               A government platform, a logistics landing page, and a hotel website live in production, plus an edtech
               app, NaijaMart, and a real estate platform — built to the same standard and launching soon.
@@ -269,7 +269,7 @@ const WorkSection = ({ detailed = false }) => {
           <Button href="/work" variant="paper" icon>
             Explore the work
           </Button>
-          <p className="mono-label text-ink/50">So-Safe Corps, TPC Logistics, and Wura Grand Hotel are live — EduTrack, NaijaMart & Real Estate Platform are on the way</p>
+          <p className="mono-label text-ink/50">So-Safe Corps, TPC Logistics, and De Wura Hotel are live — EduTrack, NaijaMart & Real Estate Platform are on the way</p>
         </Reveal>
       </Section>
     </section>

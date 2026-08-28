@@ -171,7 +171,7 @@ Derived from projects with a non-empty `caseStudyUrl` in `src/content/projects.j
 | Path | Project |
 |------|---------|
 | `/case-study/so-safe-corps` | Ogun State So-Safe Corps |
-| `/case-study/wura-grand-hotel` | Wura Grand Hotel |
+| `/case-study/wura-grand-hotel` | De Wura Hotel |
 | `/case-study/tpc-logistics` | TPC Logistics |
 
 Adding a new project with a `caseStudyUrl` value automatically generates its prerendered HTML, sitemap entry, canonical URL, JSON-LD `CreativeWork` schema, breadcrumb schema, and `llms-full.txt` coverage.

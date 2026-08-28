@@ -48,8 +48,8 @@ export const routeMeta = [
     seo: {
       title: 'Work | Ferdinard Ashonibare',
       description:
-        'Selected projects by Ferdinard Ashonibare — Ogun State So-Safe Corps government platform, Wura Grand Hotel, NaijaMart, and more.',
-      keywords: ['portfolio', 'Ogun State So-Safe Corps', 'Wura Grand Hotel', 'NaijaMart', 'EduTrack']
+        'Selected projects by Ferdinard Ashonibare — Ogun State So-Safe Corps government platform, De Wura Hotel, NaijaMart, and more.',
+      keywords: ['portfolio', 'Ogun State So-Safe Corps', 'De Wura Hotel', 'NaijaMart', 'EduTrack']
     }
   },
   {

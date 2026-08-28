@@ -26,7 +26,7 @@
 ## Proof of work
 
 - Ogun State So-Safe Corps — official digital platform for a state security institution. Live: https://sosafecorps.og.gov.ng
-- Wura Grand Hotel — premium hotel website. Live: https://wura-y0y5.onrender.com
+- De Wura Hotel — premium hotel website. Live: https://wura-xi.vercel.app/
 - EduTrack — education web app for tracking student progress (launching soon)
 - NaijaMart — multi-vendor storefront built to turn browsers into buyers (launching soon)
 - TPC Logistics — logistics landing page with a WhatsApp lead capture flow. Live: https://tpc-logistics-test.onrender.com

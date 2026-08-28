@@ -31,11 +31,11 @@ export const projects = [
   },
   {
     slug: 'wura-grand-hotel',
-    name: 'Wura Grand Hotel',
+    name: 'De Wura Hotel',
     tagline: 'A premium digital experience for a distinguished hotel',
     sector: 'Hospitality',
     description:
-      'A refined hotel website for Wura Grand Hotel — elegant brand-led design, room and suite showcases, and booking journeys built to turn first impressions into reservations.',
+      'A refined hotel website for De Wura Hotel — elegant brand-led design, room and suite showcases, and booking journeys built to turn first impressions into reservations.',
     highlights: [
       'Premium, brand-led design system',
       'Rooms, suites, and gallery showcases',
@@ -43,9 +43,9 @@ export const projects = [
     ],
     tech: ['React', 'Tailwind CSS', 'Node.js'],
     status: 'live',
-    href: 'https://wura-y0y5.onrender.com',
+    href: 'https://wura-xi.vercel.app/',
     caseStudyUrl: '/case-study/wura-grand-hotel',
-    domain: 'wura-y0y5.onrender.com',
+    domain: 'wura-xi.vercel.app',
     image: '/projects/wura.jpg',
     featured: false,
     accent: 'amber'
