@@ -57,3 +57,6 @@ coverage/
 searchqualityevaluatorguidelines.pdf
 SEO_MANUAL_TASKS.md
 tmp-sqeg.txt
+
+# Private navigation guide — never commit
+NAVIGATION.md
