@@ -96,6 +96,51 @@ export const buildOrganizationSchema = () => ({
   }
 });
 
+
+// ProfessionalService schema for GEO and local search visibility.
+export const buildProfessionalServiceSchema = () => ({
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  '@id': `${SITE_URL}/#service`,
+  name: 'Ferdinard Ashonibare — Full-Stack Web Developer',
+  alternateName: ['Ferdinand Ashonibare Developer', 'Ashonibare Web Developer', 'Ferdinard Developer Lagos'],
+  url: SITE_URL,
+  description: 'Full-stack web developer in Lagos, Nigeria building fast, secure web platforms for government, hospitality, education, and real estate.',
+  image: `${SITE_URL}${siteConfig.schemaImage || siteConfig.defaultImage}`,
+  email: siteConfig.email,
+  telephone: siteConfig.phone,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: siteConfig.addressLocality,
+    addressRegion: 'Lagos',
+    addressCountry: siteConfig.addressCountry
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: '6.5244',
+    longitude: '3.3792'
+  },
+  areaServed: [
+    { '@type': 'City', name: 'Lagos', containedInPlace: { '@type': 'Country', name: 'Nigeria' } },
+    { '@type': 'Country', name: 'Nigeria' },
+    { '@type': 'Place', name: 'Worldwide' }
+  ],
+  serviceType: ['Web Development', 'Full-Stack Development', 'React Development', 'Node.js Development', 'Web Applications', 'APIs & Backends', 'Landing Pages', 'E-commerce Development'],
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Web Development Services',
+    itemListElement: [
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Websites & Brand Sites' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Web Applications' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'APIs & Backends' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Security & Performance' } }
+    ]
+  },
+  priceRange: '$$',
+  sameAs: siteConfig.socialProfiles,
+  knowsLanguage: ['en']
+});
+
 export const buildWebsiteSchema = () => ({
   '@context': 'https://schema.org',
   '@type': 'WebSite',
@@ -103,7 +148,15 @@ export const buildWebsiteSchema = () => ({
   name: siteConfig.siteName,
   url: SITE_URL,
   publisher: { '@id': ORGANIZATION_ID },
-  inLanguage: 'en'
+  inLanguage: 'en',
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: {
+      '@type': 'EntryPoint',
+      urlTemplate: '${SITE_URL}/?s={search_term_string}'
+    },
+    'query-input': 'required name=search_term_string'
+  }
 });
 
 export const buildFaqSchema = () => ({
@@ -314,7 +367,7 @@ export const buildInsightsCollectionSchema = () => ({
   }))
 });
 
-const baseSchemas = () => [buildPersonSchema(), buildOrganizationSchema(), buildWebsiteSchema()];
+const baseSchemas = () => [buildPersonSchema(), buildOrganizationSchema(), buildWebsiteSchema(), buildProfessionalServiceSchema()];
 
 export const buildStructuredData = (path = '/') => {
   const normalized = normalizePath(path);
@@ -412,6 +465,7 @@ export const buildSeoHead = (path = '/') => {
 <meta name="twitter:image" content="${seo.image}">
 <meta name="twitter:image:alt" content="${escapeAttribute(seo.socialDescription)}">
 <link rel="canonical" href="${seo.canonical}">
+<link rel="alternate" hreflang="en" href="${seo.canonical}">
 <link rel="llms.txt" href="${SITE_URL}/llms.txt">
 ${preload}${structuredData}
 `;

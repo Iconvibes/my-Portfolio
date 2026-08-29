@@ -13,16 +13,26 @@ export const routeMeta = [
     priority: '1.0',
     changefreq: 'weekly',
     seo: {
-      title: 'Ferdinard Ashonibare | Full-Stack Web Developer',
+      title: 'Ferdinard Ashonibare | Full-Stack Web Developer — Lagos, Nigeria',
       description:
-        'Ferdinard Ashonibare is a full-stack web developer in Lagos, Nigeria — building fast, secure web platforms for government, hospitality, education, and beyond.',
+        'Ferdinard Ashonibare is a full-stack web developer in Lagos, Nigeria building fast, secure web platforms for government, hospitality, education, and real estate. Hire Ferdinand Ashonibare for React, Node.js, and full-stack development.',
       socialDescription:
-        `$ whoami → ferdinand ashonibare · $ cat status.json → { role: "full-stack developer" } · { live: "${liveCount} platforms" } · { building: "${buildingCount} products" } · { sectors: "${industries.length} focus" } · { status: "open to work" }`,
+        'Ferdinard Ashonibare — a developer who treats every product like a system people depend on. Full-stack web developer in Lagos, Nigeria building fast, secure platforms for government, hospitality, education, and real estate.',
       keywords: [
         'Ferdinard Ashonibare',
+        'Ferdinand Ashonibare',
+        'Ferdinard',
+        'Ferdinand',
+        'Ashonibare',
         'full-stack web developer',
+        'web developer Lagos',
         'React developer Nigeria',
-        'web developer Lagos'
+        'Node.js developer Lagos',
+        'website developer Nigeria',
+        'hire web developer',
+        'Lagos web developer',
+        'Nigeria full-stack developer',
+        'Codeferd Digital'
       ]
     }
   },
@@ -33,10 +43,10 @@ export const routeMeta = [
     priority: '0.8',
     changefreq: 'monthly',
     seo: {
-      title: 'About | Ferdinard Ashonibare',
+      title: 'About Ferdinard Ashonibare | Full-Stack Web Developer — Lagos, Nigeria',
       description:
-        'Learn about Ferdinard Ashonibare — a full-stack web developer from Lagos, Nigeria, building secure platforms for government, hospitality, education, and beyond.',
-      keywords: ['about Ferdinard Ashonibare', 'full-stack developer', 'Lagos developer']
+        'Learn about Ferdinard Ashonibare (Ferdinand Ashonibare) — a full-stack web developer from Lagos, Nigeria building secure platforms for government, hospitality, education, and real estate.',
+      keywords: ['about Ferdinard Ashonibare', 'Ferdinand Ashonibare', 'full-stack developer', 'Lagos developer', 'Nigeria web developer', 'Ashonibare developer']
     }
   },
   {
@@ -46,10 +56,10 @@ export const routeMeta = [
     priority: '0.9',
     changefreq: 'monthly',
     seo: {
-      title: 'Work | Ferdinard Ashonibare',
+      title: 'Work & Projects | Ferdinard Ashonibare — Full-Stack Developer',
       description:
-        'Selected projects by Ferdinard Ashonibare — Ogun State So-Safe Corps government platform, De Wura Hotel, NaijaMart, and more.',
-      keywords: ['portfolio', 'Ogun State So-Safe Corps', 'De Wura Hotel', 'NaijaMart', 'EduTrack']
+        'Selected projects by Ferdinard Ashonibare — Ogun State So-Safe Corps government platform, De Wura Hotel, Verdant Estates, and more live platforms.',
+      keywords: ['portfolio', 'Ferdinard Ashonibare projects', 'Ogun State So-Safe Corps', 'De Wura Hotel', 'NaijaMart', 'EduTrack', 'Verdant Estates', 'web developer portfolio Lagos']
     }
   },
   {
@@ -58,10 +68,10 @@ export const routeMeta = [
     priority: '0.8',
     changefreq: 'monthly',
     seo: {
-      title: 'Case Study: So-Safe Corps | Ferdinard Ashonibare',
+      title: 'Case Study: So-Safe Corps | Ferdinard Ashonibare — Full-Stack Developer',
       description:
         'How Ferdinard Ashonibare built the secure digital platform for Ogun State So-Safe Corps — research, architecture, security, and delivery.',
-      keywords: ['case study', 'government platform', 'Ogun State So-Safe Corps']
+      keywords: ['case study', 'government platform', 'Ogun State So-Safe Corps', 'Ferdinard Ashonibare', 'web developer case study']
     }
   },
   {
@@ -70,10 +80,10 @@ export const routeMeta = [
     priority: '0.6',
     changefreq: 'monthly',
     seo: {
-      title: 'Case Study | Ferdinard Ashonibare',
+      title: 'Case Studies | Ferdinard Ashonibare — Full-Stack Developer',
       description:
-        'In-depth case studies of web platforms built by Ferdinard Ashonibare.',
-      keywords: ['case study', 'web developer', 'Ferdinard Ashonibare']
+        'In-depth case studies of web platforms built by Ferdinard Ashonibare — government, hospitality, and real estate projects.',
+      keywords: ['case study', 'web developer', 'Ferdinard Ashonibare', 'Ferdinand Ashonibare', 'project case study']
     }
   },
   {
@@ -82,10 +92,10 @@ export const routeMeta = [
     priority: '0.7',
     changefreq: 'monthly',
     seo: {
-      title: 'Insights | Ferdinard Ashonibare',
+      title: 'Insights & Articles | Ferdinard Ashonibare — Full-Stack Developer',
       description:
-        'Notes on engineering, product, and design from full-stack developer Ferdinard Ashonibare.',
-      keywords: ['insights', 'web development', 'engineering notes']
+        'Notes on engineering, product, and design from full-stack developer Ferdinard Ashonibare — web development insights and tutorials.',
+      keywords: ['insights', 'web development', 'engineering notes', 'Ferdinard Ashonibare', 'developer blog']
     }
   },
   {
@@ -95,10 +105,10 @@ export const routeMeta = [
     priority: '0.8',
     changefreq: 'monthly',
     seo: {
-      title: 'Contact | Ferdinard Ashonibare',
+      title: 'Contact Ferdinard Ashonibare | Hire Full-Stack Developer — Lagos, Nigeria',
       description:
-        'Get in touch with Ferdinard Ashonibare about a website, web app, or full-time role.',
-      keywords: ['contact Ferdinard Ashonibare', 'hire web developer', 'Lagos developer']
+        'Get in touch with Ferdinard Ashonibare (Ferdinand Ashonibare) — hire a full-stack web developer in Lagos, Nigeria for websites, web apps, and projects.',
+      keywords: ['contact Ferdinard Ashonibare', 'hire web developer', 'Lagos developer', 'Ferdinand Ashonibare contact', 'Nigeria developer for hire']
     }
   }
 ];

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowUp, Github, Linkedin, Mail, MapPin, Phone } from 'lucide-react';
-import { navigation, siteConfig, contactChannels, socialLinks, projects } from '../../content';
+import { navigation, siteConfig, contactChannels, socialLinks } from '../../content';
+import PreferredSourceButton from '../ui/PreferredSourceButton';
 
 const year = new Date().getFullYear();
 
@@ -18,7 +19,7 @@ const contactIcon = {
 const Footer = () => (
   <footer className="border-t border-line bg-ink">
     <div className="mx-auto max-w-7xl px-6 py-16 lg:px-10">
-      <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
+      <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1.2fr]">
         <div>
           <Link to="/" className="group inline-flex items-center gap-3">
             <span className="display-ink flex h-9 w-9 items-center justify-center rounded-lg bg-signal text-sm text-signal-ink transition-transform duration-300 group-hover:-rotate-6">
@@ -59,23 +60,7 @@ const Footer = () => (
           </ul>
         </nav>
 
-        <div>
-          <p className="mono-label mb-4 text-slate-500">Selected work</p>
-          <ul className="space-y-3 text-sm">
-            {projects.map((project) => (
-              <li key={project.slug}>
-                <Link to="/work" className="text-slate-400 transition hover:text-signal">
-                  {project.name}
-                </Link>
-              </li>
-            ))}
-            <li>
-              <Link to="/case-study" className="text-slate-400 transition hover:text-signal">
-                Case study: So-Safe Corps
-              </Link>
-            </li>
-          </ul>
-        </div>
+
 
         <div>
           <p className="mono-label mb-4 text-slate-500">Contact</p>
@@ -102,6 +87,7 @@ const Footer = () => (
           <p className="mt-5 text-xs leading-6 text-slate-600">
             Studio: {siteConfig.brandName} · {siteConfig.siteUrl.replace('https://', '')}
           </p>
+          <PreferredSourceButton theme="dark" />
         </div>
       </div>
 
