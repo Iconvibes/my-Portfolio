@@ -81,23 +81,7 @@ const HeroSection = () => {
             for government, hospitality, education, real estate, and beyond — from idea to launch, end to end.
           </p>
 
-          <p className="mt-5 max-w-xl text-base leading-7 text-slate-400">
-            I recently had the opportunity to build the official web platform for{' '}
-            {featuredProject.href ? (
-              <a
-                href={featuredProject.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-semibold text-white underline-offset-4 hover:text-signal hover:underline"
-              >
-                Ogun State So-Safe Corps
-              </a>
-            ) : (
-              <span className="font-semibold text-white">Ogun State So-Safe Corps</span>
-            )}{' '}
-            — a state security institution — and I'm currently crafting a hotel website, an
-            edtech app, NaijaMart, and a real estate platform. If it lives in a browser, I can build it.
-          </p>
+
 
           <div className="mt-9 flex flex-wrap items-center gap-4">
             <Button href="/work" icon>

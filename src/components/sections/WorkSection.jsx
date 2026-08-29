@@ -213,8 +213,8 @@ const WorkSection = ({ detailed = false }) => {
               Different worlds. One standard of care.
             </h1>
             <p className="mt-5 text-lg leading-8 text-slate-400">
-              A government platform, a logistics landing page, and a hotel website live in production, plus an edtech
-              app, NaijaMart, and a real estate platform — built to the same standard and launching soon.
+              A government platform, a logistics landing page, a hotel website, and Verdant Estates live in production, plus an edtech
+              app and NaijaMart — built to the same standard and launching soon.
             </p>
           </div>
 
@@ -269,7 +269,7 @@ const WorkSection = ({ detailed = false }) => {
           <Button href="/work" variant="paper" icon>
             Explore the work
           </Button>
-          <p className="mono-label text-ink/50">So-Safe Corps, TPC Logistics, and De Wura Hotel are live — EduTrack, NaijaMart & Real Estate Platform are on the way</p>
+          <p className="mono-label text-ink/50">So-Safe Corps, TPC Logistics, De Wura Hotel, and Verdant Estates are live — EduTrack & NaijaMart are on the way</p>
         </Reveal>
       </Section>
     </section>

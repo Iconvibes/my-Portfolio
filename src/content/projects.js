@@ -114,8 +114,8 @@ export const projects = [
     accent: 'rose'
   },
   {
-    slug: 'real-estate',
-    name: 'Real Estate Platform',
+    slug: 'verdant-estates',
+    name: 'Verdant Estates',
     tagline: 'A modern real estate platform built to showcase and connect properties with buyers',
     sector: 'Real Estate',
     description:
@@ -126,11 +126,11 @@ export const projects = [
       'Clean, responsive design for seamless browsing across devices'
     ],
     tech: ['React', 'Tailwind CSS', 'Node.js'],
-    status: 'soon',
-    href: '',
+    status: 'live',
+    href: 'https://verdant-estates-alpha.vercel.app/',
     caseStudyUrl: '',
-    domain: 'Launching soon',
-    image: '/projects/estate.png',
+    domain: 'verdant-estates-alpha.vercel.app',
+    image: '/projects/verdant-estates.jpg',
     featured: false,
     accent: 'cyan'
   }

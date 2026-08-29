@@ -20,7 +20,7 @@ export const industries = [
     description: 'Fast, mobile-first websites that help logistics and delivery businesses turn inquiries into bookings.'
   },
   {
-    title: 'Real Estate',
-    description: 'Modern property platforms that help buyers discover homes and agents close deals.'
+    title: 'Verdant Estates',
+    description: 'Modern real estate platform that helps buyers discover homes and agents close deals.'
   }
 ];

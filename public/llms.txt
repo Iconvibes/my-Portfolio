@@ -30,7 +30,7 @@
 - EduTrack — education web app for tracking student progress (launching soon)
 - NaijaMart — multi-vendor storefront built to turn browsers into buyers (launching soon)
 - TPC Logistics — logistics landing page with a WhatsApp lead capture flow. Live: https://tpc-client.vercel.app/
-- Real Estate Platform — modern real estate platform for showcasing properties (launching soon)
+- Verdant Estates — modern real estate platform for showcasing properties. Live: https://verdant-estates-alpha.vercel.app/
 
 ## Services
 
