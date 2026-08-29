@@ -64,9 +64,9 @@ export const projects = [
     ],
     tech: ['HTML', 'Tailwind CSS', 'JavaScript'],
     status: 'live',
-    href: 'https://tpc-logistics-test.onrender.com',
+    href: 'https://tpc-client.vercel.app/',
     caseStudyUrl: '/case-study/tpc-logistics',
-    domain: 'tpc-logistics-test.onrender.com',
+    domain: 'tpc-client.vercel.app',
     image: '/projects/tpc.png',
     featured: false,
     accent: 'cyan'
