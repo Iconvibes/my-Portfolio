@@ -12,6 +12,7 @@
 //     quote: string,
 //     name: string,
 //     role: string,
+//     photo?: string,
 //     href?: string,
 //     reviewRating?: number
 //   }]
@@ -19,8 +20,9 @@
 export const testimonials = [
   {
     quote:
-      'Ferdinard delivered our platform on time and treated security like a first-class requirement from day one. Working with him was clear and dependable.',
-    name: 'Project Lead',
-    role: 'Ogun State So-Safe Corps'
+      'Ferdinard delivered our platform on time and treated security like a first-class requirement from day one. He works fast without cutting corners, integrated seamlessly with our team, and kept communication clear throughout the build and after launch. Working with him was straightforward and dependable.',
+    name: 'Adegunwa Adewale Adegbuyi',
+    role: 'DIPR, Ogun State So-Safe Corps',
+    photo: '/dipr.jpg'
   }
 ];

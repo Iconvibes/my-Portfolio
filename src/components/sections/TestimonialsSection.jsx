@@ -22,9 +22,20 @@ const TestimonialsSection = ({ index = '(07)' }) => {
                 <p className="text-sm leading-7 text-slate-300">&ldquo;{testimonial.quote}&rdquo;</p>
               </blockquote>
               <figcaption className="mt-6 flex items-end justify-between gap-3 border-t border-line-soft pt-4">
-                <div>
-                  <p className="font-semibold text-white">{testimonial.name}</p>
-                  <p className="mono-label mt-1 text-slate-500">{testimonial.role}</p>
+                <div className="flex items-center gap-3">
+                  {testimonial.photo ? (
+                    <img
+                      src={testimonial.photo}
+                      alt={testimonial.name}
+                      width={40}
+                      height={40}
+                      className="h-10 w-10 shrink-0 rounded-full border border-line object-cover"
+                    />
+                  ) : null}
+                  <div>
+                    <p className="font-semibold text-white">{testimonial.name}</p>
+                    <p className="mono-label mt-1 text-slate-500">{testimonial.role}</p>
+                  </div>
                 </div>
                 {testimonial.href ? (
                   <a
