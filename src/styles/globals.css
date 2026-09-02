@@ -323,6 +323,21 @@ textarea {
   animation-play-state: paused;
 }
 
+/* ---------- Hero entrance animation ---------- */
+
+@keyframes heroReveal {
+  from {
+    opacity: 0;
+    transform: translateY(60px) scale(0.96);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
 /* ---------- Reduced motion ---------- */
 
 @media (prefers-reduced-motion: reduce) {

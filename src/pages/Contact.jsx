@@ -3,6 +3,7 @@ import PageShell from '../components/layout/PageShell';
 import ContactForm from '../components/sections/ContactForm';
 import Card from '../components/ui/Card';
 import ResumeButton from '../components/ui/ResumeButton';
+import ScrollReveal from '../components/ui/ScrollReveal';
 import { contactChannels, socialLinks } from '../content';
 
 const channelIcon = {
@@ -37,6 +38,7 @@ const Contact = () => (
       title="Let's build something worth shipping"
       intro="Whether it's a website, a web app, or a full-time role. Tell me what you have in mind and I'll reply with clear next steps, usually within 24 hours."
     >
+      <ScrollReveal>
       <div className="mt-8 grid gap-6 sm:mt-12 sm:gap-8 lg:grid-cols-[0.95fr_1.05fr]">
         <div className="space-y-6">
           <Card>
@@ -120,6 +122,7 @@ const Contact = () => (
           <ContactForm />
         </Card>
       </div>
+      </ScrollReveal>
     </PageShell>
   </div>
 );

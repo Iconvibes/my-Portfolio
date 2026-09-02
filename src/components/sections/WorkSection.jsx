@@ -4,6 +4,7 @@ import { projects } from '../../content';
 import Badge from '../ui/Badge';
 import Button from '../ui/Button';
 import ProjectFrame from '../ui/ProjectFrame';
+import ScrollReveal from '../ui/ScrollReveal';
 import Section from '../ui/Section';
 
 const filterButtons = [
@@ -163,7 +164,9 @@ const WorkSection = ({ detailed = false }) => {
 
           <div className="mt-10 space-y-12 sm:mt-16 sm:space-y-20">
             {filteredProjects.map((project, index) => (
-              <ProjectDetail key={project.slug} project={project} index={index} />
+              <ScrollReveal key={project.slug} delay={index * 120}>
+                <ProjectDetail project={project} index={index} />
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -180,25 +183,33 @@ const WorkSection = ({ detailed = false }) => {
     >
       {/* Verdant Estates leads, then the rest (skip featured) */}
       <div className="mt-10 sm:mt-14">
-        <ProjectCard project={projects[5]} large />
+        <ScrollReveal>
+          <ProjectCard project={projects[5]} large />
+        </ScrollReveal>
       </div>
 
       <div className="mt-8 grid gap-6 sm:mt-10 sm:grid-cols-2 sm:gap-8">
-        {projects.slice(1, 3).map((project) => (
-          <ProjectCard key={project.slug} project={project} />
+        {projects.slice(1, 3).map((project, i) => (
+          <ScrollReveal key={project.slug} delay={i * 150}>
+            <ProjectCard project={project} />
+          </ScrollReveal>
         ))}
       </div>
 
       <div className="mt-6 grid gap-6 sm:mt-8 sm:grid-cols-2 sm:gap-8">
-        {projects.slice(3, 5).map((project) => (
-          <ProjectCard key={project.slug} project={project} />
+        {projects.slice(3, 5).map((project, i) => (
+          <ScrollReveal key={project.slug} delay={i * 150}>
+            <ProjectCard project={project} />
+          </ScrollReveal>
         ))}
       </div>
 
       <div className="mt-8 sm:mt-10">
-        <Button href="/work" variant="outline" icon>
-          View all projects
-        </Button>
+        <ScrollReveal delay={200}>
+          <Button href="/work" variant="outline" icon>
+            View all projects
+          </Button>
+        </ScrollReveal>
       </div>
     </Section>
   );

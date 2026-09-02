@@ -6,6 +6,7 @@ import Button from '../components/ui/Button';
 import Card from '../components/ui/Card';
 import ProfilePhoto from '../components/ui/ProfilePhoto';
 import ResumeButton from '../components/ui/ResumeButton';
+import ScrollReveal from '../components/ui/ScrollReveal';
 import Section from '../components/ui/Section';
 import FactList from '../components/ui/FactList';
 import { contactChannels, credentials, facts, featuredProject, industries, projects } from '../content';
@@ -190,6 +191,7 @@ const About = () => {
       </div>
     </PageShell>
 
+    <ScrollReveal>
     <Section
       index="(02)"
       eyebrow="Sectors"
@@ -205,7 +207,9 @@ const About = () => {
         ))}
       </div>
     </Section>
+    </ScrollReveal>
 
+    <ScrollReveal delay={50}>
     <Section
       index="(03)"
       eyebrow="Work"
@@ -221,9 +225,14 @@ const About = () => {
         </Button>
       </div>
     </Section>
+    </ScrollReveal>
 
-    <TechnologySection />
-    <CtaSection title="Let's build something that matters." />
+    <ScrollReveal>
+      <TechnologySection />
+    </ScrollReveal>
+    <ScrollReveal>
+      <CtaSection title="Let's build something that matters." />
+    </ScrollReveal>
   </div>
   );
 };
