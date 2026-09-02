@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useNavigate } from 'react-router-dom';
-import { Command, CornerDownLeft } from 'lucide-react';
+import { CommandLineIcon, ArrowLongLeftIcon } from '@heroicons/react/24/outline';
 import { contactChannels } from '../../content';
 import { RESUME_URL } from '../ui/ResumeButton';
 import { useReducedMotion } from '../../hooks/useReducedMotion';
@@ -13,7 +13,6 @@ const copyToClipboard = async (text) => {
     await navigator.clipboard.writeText(text);
     return true;
   } catch {
-    // Fallback for non-secure contexts (older Safari / http).
     const textarea = document.createElement('textarea');
     textarea.value = text;
     textarea.style.position = 'fixed';
@@ -81,7 +80,7 @@ const CommandPalette = () => {
       },
       {
         name: 'resume',
-        hint: 'open the résumé (new tab)',
+        hint: 'open the resume (new tab)',
         run: () => window.open(RESUME_URL, '_blank', 'noopener,noreferrer')
       },
       {
@@ -90,27 +89,27 @@ const CommandPalette = () => {
         keepsOpen: true,
         run: async () => {
           const ok = await copyToClipboard(EMAIL);
-          setOutput(ok ? `email copied → ${EMAIL}` : `email: ${EMAIL}`);
+          setOutput(ok ? `email copied -> ${EMAIL}` : `email: ${EMAIL}`);
         }
       },
       {
         name: 'whoami',
         hint: 'identity check',
         keepsOpen: true,
-        run: () => setOutput('ferdinard ashonibare — full-stack web developer, lagos')
+        run: () => setOutput('ferdinard ashonibare, full-stack web developer, lagos')
       },
       {
         name: 'status',
         hint: 'availability',
         keepsOpen: true,
-        run: () => setOutput('{ status: "open to work", scope: "projects & roles" }')
+        run: () => setOutput('{ status: "open to work", scope: "projects and roles" }')
       },
       {
         name: 'help',
         hint: 'list available commands',
         keepsOpen: true,
         run: () =>
-          setOutput('home · work · about · case-study · insights · contact · resume · email · whoami · status · clear')
+          setOutput('home, work, about, case-study, insights, contact, resume, email, whoami, status, clear')
       },
       {
         name: 'clear',
@@ -140,7 +139,6 @@ const CommandPalette = () => {
   };
 
   const runCommand = (command) => {
-    // Navigation + resume close the palette; terminal-style commands keep it open.
     if (command.keepsOpen) {
       command.run();
       return;
@@ -149,7 +147,6 @@ const CommandPalette = () => {
     command.run();
   };
 
-  // Global shortcut: ⌘K / Ctrl+K (uses openRef so the listener stays mounted once).
   useEffect(() => {
     const onKeyDown = (event) => {
       if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') {
@@ -165,7 +162,6 @@ const CommandPalette = () => {
     return () => window.removeEventListener('keydown', onKeyDown);
   }, []);
 
-  // Focus + scroll-lock while open; restore on close.
   useEffect(() => {
     if (!open) {
       return undefined;
@@ -182,7 +178,6 @@ const CommandPalette = () => {
     };
   }, [open]);
 
-  // Keep the active option visible while navigating the list.
   useEffect(() => {
     const active = listRef.current?.querySelector('[data-active="true"]');
     active?.scrollIntoView({ block: 'nearest' });
@@ -218,7 +213,6 @@ const CommandPalette = () => {
       return;
     }
 
-    // Minimal focus trap: Tab cycles within the palette.
     if (event.key === 'Tab') {
       const focusables = dialogRef.current?.querySelectorAll(
         'input, button:not([disabled])'
@@ -252,12 +246,12 @@ const CommandPalette = () => {
         onClick={openPalette}
         aria-label="Open command palette"
         aria-haspopup="dialog"
-        title="Command palette (⌘K)"
-        className="fixed bottom-6 right-6 z-40 flex h-12 w-12 items-center justify-center rounded-full border border-line bg-ink-2/90 text-signal shadow-[0_16px_40px_rgba(0,0,0,0.45)] backdrop-blur transition hover:border-signal/60 hover:text-signal-ink hover:bg-signal focus-visible:outline-none"
+        title="Command palette (Cmd+K)"
+        className="fixed bottom-5 right-5 z-40 flex h-11 w-11 items-center justify-center rounded-full border border-line bg-ink-2 text-signal shadow-[0_16px_40px_rgba(0,0,0,0.45)] transition duration-150 hover:border-signal/60 hover:text-signal-ink hover:bg-signal focus-visible:outline-none sm:bottom-6 sm:right-6 sm:h-12 sm:w-12"
       >
-        <Command className="h-5 w-5" aria-hidden="true" />
+        <CommandLineIcon className="h-5 w-5" aria-hidden="true" />
         <span className="mono-label absolute -top-2 -right-2 rounded-full border border-line bg-ink px-1.5 py-0.5 text-[0.55rem] text-slate-400">
-          ⌘K
+          Cmd+K
         </span>
       </button>
 
@@ -270,29 +264,25 @@ const CommandPalette = () => {
               aria-label="Command palette"
             >
               <div
-                className="absolute inset-0 bg-ink/85 backdrop-blur-sm"
+                className="absolute inset-0 bg-ink/85"
                 onClick={close}
                 aria-hidden="true"
               />
               <div
                 ref={dialogRef}
                 onKeyDown={onPaletteKeyDown}
-                className={`relative w-full max-w-lg overflow-hidden rounded-2xl border border-line bg-ink-2/95 shadow-[0_40px_120px_rgba(0,0,0,0.65)] backdrop-blur ${
-                  reduced ? '' : 'animate-enter'
-                }`}
+                className="relative w-full max-w-lg overflow-hidden rounded-2xl border border-line bg-ink-2 shadow-[0_40px_120px_rgba(0,0,0,0.65)]"
               >
-                {/* Terminal chrome */}
                 <div className="flex items-center gap-2 border-b border-line-soft px-4 py-3">
                   <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
                   <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
                   <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
-                  <span className="mono-label ml-2 text-slate-500">ferdinard — palette</span>
+                  <span className="mono-label ml-2 text-slate-500">ferdinard, palette</span>
                   <kbd className="mono-label ml-auto rounded-md border border-line bg-ink px-1.5 py-0.5 text-[0.6rem] text-slate-400">
                     esc
                   </kbd>
                 </div>
 
-                {/* Prompt */}
                 <div className="flex items-center gap-3 border-b border-line-soft px-4">
                   <span className="font-mono text-sm text-signal" aria-hidden="true">
                     $
@@ -304,7 +294,7 @@ const CommandPalette = () => {
                       setQuery(event.target.value);
                       setActiveIndex(0);
                     }}
-                    placeholder="type a command…"
+                    placeholder="type a command..."
                     aria-label="Command"
                     role="combobox"
                     aria-expanded="true"
@@ -316,7 +306,6 @@ const CommandPalette = () => {
                   />
                 </div>
 
-                {/* Results */}
                 <div
                   ref={listRef}
                   id="command-palette-list"
@@ -341,7 +330,7 @@ const CommandPalette = () => {
                           data-active={active}
                           onMouseEnter={() => setActiveIndex(index)}
                           onClick={() => runCommand(command)}
-                          className={`flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left transition ${
+                          className={`flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left transition duration-150 ${
                             active ? 'bg-signal/10' : 'hover:bg-white/5'
                           }`}
                         >
@@ -361,26 +350,23 @@ const CommandPalette = () => {
                   )}
                 </div>
 
-                {/* Terminal output */}
                 {output ? (
                   <div className="border-t border-line-soft bg-ink/60 px-4 py-2.5">
                     <p className="font-mono text-xs text-slate-400">
-                      <span className="mr-2 text-signal">↳</span>
+                      <span className="mr-2 text-signal">&rarr;</span>
                       {output}
                     </p>
                   </div>
                 ) : null}
 
-                {/* Footer hints */}
                 <div className="flex items-center gap-4 border-t border-line-soft px-4 py-2.5">
                   <span className="mono-label flex items-center gap-1.5 text-[0.6rem] text-slate-500">
-                    <CornerDownLeft className="h-3 w-3" aria-hidden="true" /> run
+                    <ArrowLongLeftIcon className="h-3 w-3 rotate-90" aria-hidden="true" /> run
                   </span>
-                  <span className="mono-label text-[0.6rem] text-slate-500">↑↓ navigate</span>
+                  <span className="mono-label text-[0.6rem] text-slate-500">up/down navigate</span>
                   <span className="mono-label text-[0.6rem] text-slate-500">esc close</span>
                 </div>
-              </div>
-            </div>,
+              </div>            </div>,
             document.body
           )
         : null}
@@ -389,3 +375,4 @@ const CommandPalette = () => {
 };
 
 export default CommandPalette;
+

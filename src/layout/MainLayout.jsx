@@ -1,10 +1,8 @@
 import { Outlet, useLocation } from 'react-router-dom';
-import { useEffect, useRef } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { useEffect, useRef, useState } from 'react';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
 import CommandPalette from '../components/layout/CommandPalette';
-import CustomCursor from '../components/layout/CustomCursor';
 import { useReducedMotion } from '../hooks/useReducedMotion';
 import { getSeoConfig } from '../seo/site';
 
@@ -16,8 +14,6 @@ const setMetaContent = (attribute, key, value) => {
   }
 };
 
-// Lightweight tag sync — no extra network: getSeoConfig needs only the route
-// table + site config, which are already in the shared bundle.
 const syncBaseTags = (pathname) => {
   const seo = getSeoConfig(pathname);
 
@@ -35,10 +31,6 @@ const syncBaseTags = (pathname) => {
   }
 };
 
-// JSON-LD swap needs the schema builders, which pull in content modules — keep
-// them in a lazily loaded chunk (src/seo/schemas.js) so the first paint never
-// pays for them. First load is skipped entirely: the prerendered head already
-// carries this route's structured data.
 const syncJsonLd = async (pathname, token) => {
   try {
     const { buildStructuredData } = await import('../seo/schemas');
@@ -56,8 +48,7 @@ const syncJsonLd = async (pathname, token) => {
       document.head.appendChild(script);
     });
   } catch {
-    // Chunk failed to load — the prerendered (or previously swapped) tags stay;
-    // the next navigation retries.
+    // Chunk failed to load, prerendered or previously swapped tags stay.
   }
 };
 
@@ -74,8 +65,6 @@ const MainLayout = () => {
       return undefined;
     }
 
-    // Cancel any in-flight swap from a previous navigation so rapid clicks
-    // can't apply a stale route's structured data.
     const token = { cancelled: false };
     syncJsonLd(location.pathname, token);
     return () => {
@@ -95,32 +84,14 @@ const MainLayout = () => {
       >
         Skip to main content
       </a>
-      <div className="relative isolate overflow-x-clip">
-        <div
-          className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_right,rgba(200,241,53,0.06),transparent_34%),radial-gradient(circle_at_bottom_left,rgba(56,130,246,0.07),transparent_40%)]"
-          aria-hidden="true"
-        />
+      <div className="relative isolate overflow-x-hidden">
         <Header />
         <main id="main-content" className="flex-1">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={location.pathname}
-              initial={prefersReducedMotion ? false : { opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={prefersReducedMotion ? undefined : { opacity: 0, y: -8 }}
-              transition={{
-                duration: 0.3,
-                ease: [0.22, 1, 0.36, 1]
-              }}
-            >
-              <Outlet />
-            </motion.div>
-          </AnimatePresence>
+          <Outlet />
         </main>
         <Footer />
       </div>
       <CommandPalette />
-      <CustomCursor />
     </div>
   );
 };

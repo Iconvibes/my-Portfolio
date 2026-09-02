@@ -24,7 +24,7 @@ const FullCaseStudy = () => (
       eyebrow="Case Study"
       index="(01)"
       title={featuredCaseStudy.title}
-      intro={`A secure, public-facing platform for ${featuredCaseStudy.client} — live at ${featuredCaseStudy.liveUrl.replace('https://', '')}.`}
+      intro={`A secure, public-facing platform for ${featuredCaseStudy.client}, live at ${featuredCaseStudy.liveUrl.replace('https://', '')}.`}
     >
       <div className="mt-6 flex flex-wrap items-center gap-4">
         <Button href={featuredCaseStudy.liveUrl} external icon>
@@ -35,7 +35,7 @@ const FullCaseStudy = () => (
         </Button>
       </div>
 
-      <div className="mt-12 grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
+      <div className="mt-8 grid gap-5 sm:mt-12 sm:grid-cols-2 sm:gap-6 lg:grid-cols-[1.05fr_0.95fr]">
         <Card>
           <p className="eyebrow">// overview</p>
           <p className="mt-4 text-sm leading-8 text-slate-400">{featuredCaseStudy.overview}</p>
@@ -73,7 +73,7 @@ const FullCaseStudy = () => (
         </dl>
       </div>
 
-      <div className="mt-6 grid gap-6 lg:grid-cols-2">
+      <div className="mt-5 grid gap-4 sm:mt-6 sm:grid-cols-2 sm:gap-6">
         {storySections.map(([label, key]) => (
           <Card key={key}>
             <h2 className="display-ink text-xl text-white">{label}</h2>
@@ -143,7 +143,7 @@ const FullCaseStudy = () => (
 
       </Card>
 
-      <div className="mt-6 grid gap-6 lg:grid-cols-2">
+      <div className="mt-5 grid gap-4 sm:mt-6 sm:grid-cols-2 sm:gap-6">
         <Card>
           <h2 className="display-ink text-xl text-white">Performance</h2>
           <p className="mt-4 text-sm leading-7 text-slate-400">{featuredCaseStudy.performance}</p>
@@ -166,7 +166,7 @@ const FullCaseStudy = () => (
         </div>
         <div className="mt-8">
           <Button href={featuredCaseStudy.liveUrl} external icon>
-            See it live — {featuredCaseStudy.liveUrl.replace('https://', '')}
+            See it live. {featuredCaseStudy.liveUrl.replace('https://', '')}
           </Button>
         </div>
       </Card>
@@ -201,7 +201,7 @@ const ProjectCaseStudy = ({ project }) => (
           <p className="eyebrow">// overview</p>
           <p className="mt-4 text-sm leading-8 text-slate-400">{project.description}</p>
           <p className="mt-5 text-sm leading-8 text-slate-400">
-            {project.sector} — {project.tagline}
+            {project.sector}. {project.tagline}
           </p>
         </Card>
         <Card>
@@ -253,7 +253,7 @@ const ProjectCaseStudy = ({ project }) => (
       {project.href ? (
         <div className="mt-6">
           <Button href={project.href} external icon>
-            See it live — {project.href.replace('https://', '')}
+            See it live. {project.href.replace('https://', '')}
           </Button>
         </div>
       ) : null}
@@ -279,7 +279,7 @@ const CaseStudy = () => {
     return (
       <div className="mx-auto max-w-3xl px-6 py-24 text-center sm:px-8">
         <h1 className="display-ink text-3xl text-white">Case study not found</h1>
-        <p className="mt-4 text-slate-400">That case study does not exist — yet.</p>
+        <p className="mt-4 text-slate-400">That case study does not exist, yet.</p>
         <div className="mt-8">
           <Button href="/work">Back to projects</Button>
         </div>

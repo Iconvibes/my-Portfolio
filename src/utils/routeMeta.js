@@ -13,11 +13,11 @@ export const routeMeta = [
     priority: '1.0',
     changefreq: 'weekly',
     seo: {
-      title: 'Ferdinard Ashonibare | Full-Stack Web Developer — Lagos, Nigeria',
+      title: 'Ferdinard Ashonibare. I built the So-Safe Corps platform.',
       description:
-        'Ferdinard Ashonibare is a full-stack web developer in Lagos, Nigeria building fast, secure web platforms for government, hospitality, education, and real estate. Hire Ferdinand Ashonibare for React, Node.js, and full-stack development.',
+        'Ferdinard Ashonibare built the official digital platform for Ogun State So-Safe Corps, a state security institution. Full-stack web developer in Lagos, Nigeria. Live in production.',
       socialDescription:
-        'Ferdinard Ashonibare — a developer who treats every product like a system people depend on. Full-stack web developer in Lagos, Nigeria building fast, secure platforms for government, hospitality, education, and real estate.',
+        'I built the digital platform for a state security institution. Live in production. Ferdinard Ashonibare, full-stack web developer in Lagos, Nigeria.',
       keywords: [
         'Ferdinard Ashonibare',
         'Ferdinand Ashonibare',

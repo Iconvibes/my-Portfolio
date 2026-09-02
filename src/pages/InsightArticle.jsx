@@ -41,7 +41,7 @@ const InsightArticle = () => {
     return (
       <div className="mx-auto max-w-3xl px-6 py-24 text-center sm:px-8">
         <h1 className="display-ink text-3xl text-white">Essay not found</h1>
-        <p className="mt-4 text-slate-400">That article does not exist — yet.</p>
+        <p className="mt-4 text-slate-400">That article does not exist, yet.</p>
         <div className="mt-8">
           <Button href="/insights">Back to insights</Button>
         </div>
@@ -51,7 +51,7 @@ const InsightArticle = () => {
 
   return (
     <div className="bg-ink text-slate-100">
-      <article className="mx-auto max-w-3xl px-6 py-16 sm:px-8 lg:py-24">
+      <article className="mx-auto max-w-3xl px-5 py-12 sm:px-6 sm:py-16 md:px-8 lg:py-24">
         <Link
           to="/insights"
           className="mono-label text-slate-500 underline-offset-4 transition hover:text-signal hover:underline"

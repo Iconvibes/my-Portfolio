@@ -19,13 +19,14 @@
     <meta name="keywords" content="Ferdinard Ashonibare, Ferdinand Ashonibare, full-stack web developer, web developer Lagos, React developer Nigeria, Node.js developer, hire web developer, Lagos Nigeria developer, Ashonibare developer" />
     <link rel="icon" type="image/png" href="/fav.png" />
     <!-- Fonts are self-hosted (public/fonts) with unicode-range @font-face rules
-         in globals.css — no third-party requests. Only the LCP font (the hero's
-         Syne display face) is preloaded: it has a single @font-face rule, so the
-         browser consumes the preload cleanly. Inter is used at several weights
-         from one file and Chromium re-fetches fonts declared in multiple faces
-         rather than reusing a preload — so preloading it would waste a download.
+         in globals.css — no third-party requests. Preload the two critical fonts
+         so the browser fetches them immediately instead of discovering them from CSS.
+         Manrope 800 is the hero display face. DM Sans 400 is the body font.
          The crossorigin attribute is required for font preloads. -->
-    <link rel="preload" as="font" type="font/woff2" href="/fonts/syne-latin-700.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/manrope-latin.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/dm-sans-latin.woff2" crossorigin />
+    <!-- Preload the hero image (LCP element) so it starts downloading immediately -->
+    <link rel="preload" as="image" href="/projects/so-safe-corps-sm.jpg" />
     <script async src="https://news.google.com/swg/js/v1/publisher.js"></script>
     <noscript>
       <style>

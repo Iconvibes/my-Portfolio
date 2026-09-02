@@ -26,7 +26,7 @@ const ContactForm = () => (
       <Button type="submit" icon>
         Send message
       </Button>
-      <p className="mono-label text-slate-500">no spam — ever</p>
+      <p className="mono-label text-slate-500">no spam, ever</p>
     </div>
   </form>
 );

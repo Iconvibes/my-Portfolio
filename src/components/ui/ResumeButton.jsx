@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { Download, ExternalLink, FileText, X } from 'lucide-react';
+import { ArrowDownTrayIcon, ArrowTopRightOnSquareIcon, DocumentTextIcon, XMarkIcon } from '@heroicons/react/24/outline';
 
 export const RESUME_URL = '/resume/resume.pdf';
 export const RESUME_FILENAME = 'Ferdinard-Ashonibare-Resume.pdf';
@@ -26,10 +26,10 @@ const useCoarsePointer = () => {
 const variantClasses = {
   outline:
     'border-white/15 bg-white/[0.03] text-white hover:border-signal/60 hover:text-signal',
-  primary: 'border-signal bg-signal text-signal-ink hover:bg-transparent hover:text-signal'
+  primary: 'border-signal bg-signal text-signal-ink hover:bg-signal/90'
 };
 
-const ResumeButton = ({ variant = 'outline', className = '', children = 'View my résumé' }) => {
+const ResumeButton = ({ variant = 'outline', className = '', children = 'View my resume' }) => {
   const coarse = useCoarsePointer();
   const [open, setOpen] = useState(false);
   const dialogRef = useRef(null);
@@ -79,13 +79,12 @@ const ResumeButton = ({ variant = 'outline', className = '', children = 'View my
     };
   }, [open]);
 
-  const classes = `inline-flex min-h-11 items-center justify-center gap-2 rounded-full border px-5 py-2.5 text-sm font-semibold transition duration-200 ${variantClasses[variant]} ${className}`.trim();
+  const classes = `inline-flex min-h-11 items-center justify-center gap-2 rounded-full border px-5 py-2.5 text-sm font-semibold transition duration-150 ${variantClasses[variant]} ${className}`.trim();
 
-  // Mobile / touch devices: download the PDF straight away.
   if (coarse) {
     return (
       <a href={RESUME_URL} download={RESUME_FILENAME} className={classes}>
-        <FileText className="h-4 w-4" aria-hidden="true" />
+        <DocumentTextIcon className="h-4 w-4" aria-hidden="true" />
         {children}
       </a>
     );
@@ -100,7 +99,7 @@ const ResumeButton = ({ variant = 'outline', className = '', children = 'View my
         aria-haspopup="dialog"
         className={classes}
       >
-        <FileText className="h-4 w-4" aria-hidden="true" />
+        <DocumentTextIcon className="h-4 w-4" aria-hidden="true" />
         {children}
       </button>
 
@@ -110,10 +109,10 @@ const ResumeButton = ({ variant = 'outline', className = '', children = 'View my
               className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8"
               role="dialog"
               aria-modal="true"
-              aria-label="Résumé preview"
+              aria-label="Resume preview"
             >
               <div
-                className="absolute inset-0 bg-ink/85 backdrop-blur-sm"
+                className="absolute inset-0 bg-ink/85"
                 onClick={() => setOpen(false)}
                 aria-hidden="true"
               />
@@ -122,40 +121,39 @@ const ResumeButton = ({ variant = 'outline', className = '', children = 'View my
                 className="relative flex h-[86vh] w-full max-w-4xl flex-col overflow-hidden rounded-2xl border border-line bg-ink-2 shadow-[0_40px_120px_rgba(0,0,0,0.65)]"
               >
                 <div className="flex flex-wrap items-center justify-between gap-3 border-b border-line-soft px-5 py-3">
-                  <p className="mono-label text-slate-400">// résumé — ferdinard ashonibare</p>
+                  <p className="mono-label text-slate-400">// resume, Ferdinard Ashonibare</p>
                   <div className="flex items-center gap-2">
                     <a
                       href={RESUME_URL}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mono-label inline-flex items-center gap-1.5 rounded-full border border-line px-3 py-1.5 text-slate-300 transition hover:border-signal/60 hover:text-signal"
+                      className="mono-label inline-flex items-center gap-1.5 rounded-full border border-line px-3 py-1.5 text-slate-300 transition duration-150 hover:border-signal/60 hover:text-signal"
                     >
-                      Open in new tab <ExternalLink className="h-3 w-3" aria-hidden="true" />
+                      Open in new tab <ArrowTopRightOnSquareIcon className="h-3 w-3" aria-hidden="true" />
                     </a>
                     <a
                       href={RESUME_URL}
                       download={RESUME_FILENAME}
-                      className="mono-label inline-flex items-center gap-1.5 rounded-full border border-signal/50 bg-signal/10 px-3 py-1.5 text-signal transition hover:bg-signal hover:text-signal-ink"
+                      className="mono-label inline-flex items-center gap-1.5 rounded-full border border-signal/50 bg-signal/10 px-3 py-1.5 text-signal transition duration-150 hover:bg-signal hover:text-signal-ink"
                     >
-                      Download <Download className="h-3 w-3" aria-hidden="true" />
+                      Download <ArrowDownTrayIcon className="h-3 w-3" aria-hidden="true" />
                     </a>
                     <button
                       type="button"
                       onClick={() => setOpen(false)}
-                      aria-label="Close résumé preview"
-                      className="flex h-8 w-8 items-center justify-center rounded-full border border-line text-slate-300 transition hover:border-signal/60 hover:text-signal"
+                      aria-label="Close resume preview"
+                      className="flex h-8 w-8 items-center justify-center rounded-full border border-line text-slate-300 transition duration-150 hover:border-signal/60 hover:text-signal"
                     >
-                      <X className="h-4 w-4" aria-hidden="true" />
+                      <XMarkIcon className="h-4 w-4" aria-hidden="true" />
                     </button>
                   </div>
                 </div>
                 <iframe
                   src={RESUME_URL}
-                  title="Ferdinard Ashonibare résumé"
+                  title="Ferdinard Ashonibare resume"
                   className="h-full w-full border-0 bg-white"
                 />
-              </div>
-            </div>,
+              </div>            </div>,
             document.body
           )
         : null}
@@ -164,3 +162,4 @@ const ResumeButton = ({ variant = 'outline', className = '', children = 'View my
 };
 
 export default ResumeButton;
+

@@ -1,46 +1,46 @@
-import { values } from '../../content';
 import Button from '../ui/Button';
-import Reveal from '../ui/Reveal';
 import Section from '../ui/Section';
-import TiltCard from '../ui/TiltCard';
 
 const AboutSection = () => (
   <Section
-    index="(03)"
     eyebrow="About"
-    title={
-      <>
-        A developer who treats every product like a{' '}
-        <span className="serif-accent text-signal">system people depend on</span>
-      </>
-    }
-    description="I'm Ferdinard — a full-stack developer from Lagos, Nigeria. I've shipped four live platforms — a state security institution's site, a logistics landing page, a hotel website, and Verdant Estates — and I'm building an edtech app and NaijaMart. Here's how I work."
+    title="Why I build what I build"
   >
-    <div className="mt-14 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-      {values.map((value, index) => (
-        <TiltCard key={value.title} maxTilt={5} className="h-full">
-          <Reveal
-            as="article"
-            delay={index * 70}
-            className="h-full rounded-2xl border border-line bg-ink-2 p-7 transition-colors duration-300 hover:border-signal/40"
-          >
-          <p className="mono-label text-slate-500">0{index + 1}</p>
-          <h3 className="mt-4 text-lg font-semibold text-white">{value.title}</h3>
-          <p className="mt-3 text-sm leading-7 text-slate-400">{value.text}</p>
-          </Reveal>
-        </TiltCard>
-      ))}
-    </div>
+    <div className="mt-8 max-w-3xl sm:mt-12">
+      <div className="space-y-5 text-base leading-7 text-slate-300 sm:text-lg sm:leading-8">
+        <p>
+          I started building websites because I wanted to prove that a developer in Lagos
+          could ship work that competes with anyone in the world. So far, the evidence is
+          encouraging.
+        </p>
+        <p>
+          The most significant thing I've built is the official platform for Ogun State So-Safe
+          Corps. A state security institution. Real citizens depend on it. It handles sensitive
+          data. It loads in 0.1 seconds. It's the kind of project that makes you take security
+          personally.
+        </p>
+        <p>
+          That project changed how I work. Security became a default, not an afterthought.
+          Performance became a promise, not a nice-to-have. And clarity, the kind that
+          non-technical stakeholders can understand, became part of the deliverable.
+        </p>
+        <p>
+          Since then I've shipped a hotel website that actually books rooms, a logistics
+          landing page that turns WhatsApp into leads, a real estate platform, and an
+          edtech app that helps educators track student progress. Different industries,
+          same standard.
+        </p>
+      </div>
 
-    <Reveal className="mt-12 flex flex-wrap items-center gap-5 rounded-2xl border border-line bg-ink-2 px-7 py-6">
-      <p className="flex-1 text-sm leading-7 text-slate-300">
-        <span className="mono-label mr-2 text-signal">$ whoami</span>
-        Full-stack developer · Lagos, Nigeria · building for government, hospitality, education &amp; more
-      </p>
-      <Button href="/about" variant="outline" icon>
-        More about me
-      </Button>
-    </Reveal>
+      <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
+        <Button href="/about" icon>
+          Read the full story
+        </Button>
+        <Button href="/work" variant="outline">
+          See the work
+        </Button>
+      </div>
+    </div>
   </Section>
 );
 

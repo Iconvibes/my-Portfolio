@@ -1,15 +1,14 @@
 import { createElement } from 'react';
-import { useInView } from '../../hooks/useInView';
 
-const Reveal = ({ children, delay = 0, className = '', as = 'div', ...props }) => {
-  const [ref, inView] = useInView();
-
+/**
+ * Reveal has been removed per design requirements (no fade-in on scroll animations).
+ * This is a passthrough wrapper for backward compatibility.
+ */
+const Reveal = ({ children, delay, className = '', as = 'div', ...props }) => {
   return createElement(
     as,
     {
-      ref,
-      style: { transitionDelay: delay ? `${delay}ms` : undefined },
-      className: `reveal ${inView ? 'reveal-in' : ''} ${className}`.trim(),
+      className: className.trim(),
       ...props
     },
     children

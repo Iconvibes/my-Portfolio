@@ -60,3 +60,21 @@ tmp-sqeg.txt
 
 # Private navigation guide — never commit
 NAVIGATION.md
+
+# Resume deliverables — output artifacts, not source
+*.pdf
+*.docx
+Ferdinard_Ashonibare_*
+
+# Changelog (development notes)
+changelog.txt
+
+# Unreferenced project images (keep only what the code references)
+public/projects/estate.png
+public/projects/so-safe-corps.svg
+public/projects/de-wura-hotel.svg
+public/projects/tpc-logistics.svg
+public/projects/ecommerce-store.svg
+
+# Resume script artifacts
+scripts/resume/resume-v3.html

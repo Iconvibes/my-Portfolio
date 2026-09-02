@@ -37,13 +37,13 @@ export const facts = [
     label: 'Who',
     statement: joinParts([
       `${siteConfig.siteName} is a full-stack web developer in ${siteConfig.location},`, 
-      'working remotely worldwide — designing and building fast, secure web platforms for government, hospitality, education, and beyond — from idea to launch, end to end.'
+      'working remotely worldwide, designing and building fast, secure web platforms for government, hospitality, education, and beyond, from idea to launch, end to end.'
     ])
   },
   {
     label: 'Availability',
     statement: availabilityAnswer
-      ? `Open to ${availabilityAnswer.replace(/^yes\s*[—–-]\s*i\s*am\s*open\s*to\s*/i, '')}`
+      ? `Open to ${availabilityAnswer.replace(/^yes\s*[\p{P}\p{S}]\s*i\s*am\s*open\s*to\s*/iu, '')}`
       : 'Open to remote full-time roles, long-term contracts, and one-off project work.'
   },
   {
@@ -57,8 +57,8 @@ export const facts = [
     label: 'Shipped',
     statement:
       liveProjects.length > 0
-        ? `${liveProjects.map((project) => `${project.name} (${project.domain})`).join(', ')} — ${liveProjects.length === 1 ? 'a live production platform' : 'live in production'}.`
-        : 'No live production project yet — the current builds are listed under Building.'
+        ? `${liveProjects.map((project) => project.name).join(', ')}. ${liveProjects.length === 1 ? 'A live production platform.' : 'Live in production.'}`
+        : 'No live production project yet. The current builds are listed under Building.'
   },
   {
     label: 'Building',

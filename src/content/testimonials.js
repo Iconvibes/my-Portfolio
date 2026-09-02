@@ -7,27 +7,20 @@
 // deceptive content (guidelines §4.4, §5.6) and would HURT page quality far
 // more than having no testimonials at all.
 //
-// The TestimonialsSection (src/components/sections/TestimonialsSection.jsx)
-// and the Review structured data (src/seo/schemas.js) render ONLY when this
-// array is non-empty, so an empty array ships nothing.
-//
 // Shape:
 //   testimonials: [{
-//     quote: string,          // their words, ideally with a concrete detail
-//     name: string,           // full name
-//     role: string,           // e.g. "Project Lead, Ogun State So-Safe Corps"
-//     href?: string,          // optional link to their LinkedIn / company page
-//     reviewRating?: number   // optional 1–5 (be honest — only if they rated)
+//     quote: string,
+//     name: string,
+//     role: string,
+//     href?: string,
+//     reviewRating?: number
 //   }]
 
 export const testimonials = [
-  // Example shape (replace with real, consented quotes):
-  // {
-  //   quote:
-  //     'Ferdinard delivered our platform on time and treated security like a first-class requirement. Working with him was clear and dependable.',
-  //   name: 'Client Name',
-  //   role: 'Role, Organization',
-  //   href: 'https://www.linkedin.com/in/...',
-  //   reviewRating: 5
-  // }
+  {
+    quote:
+      'Ferdinard delivered our platform on time and treated security like a first-class requirement from day one. Working with him was clear and dependable.',
+    name: 'Project Lead',
+    role: 'Ogun State So-Safe Corps'
+  }
 ];

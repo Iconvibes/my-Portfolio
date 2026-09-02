@@ -1,26 +1,26 @@
 export const industries = [
   {
-    title: 'Government & Public Sector',
-    description: 'Public platforms that need to be secure, authoritative, and worthy of public trust.'
+    title: 'Government',
+    description: 'Public platforms that need to be secure, authoritative, and worthy of public trust. The So-Safe Corps platform is my flagship.'
   },
   {
     title: 'Hospitality',
-    description: 'Hotel and guest experiences that sell a stay before the first click.'
+    description: 'Hotel websites that actually book rooms, not just show pretty pictures. De Wura Hotel is live.'
   },
   {
     title: 'Education',
-    description: 'Tools that make teaching, tracking, and learning easier for everyone involved.'
+    description: 'Tools that make teaching and tracking easier. EduTrack helps educators manage student progress.'
   },
   {
-    title: 'Business & Startups',
-    description: 'Websites and apps that help companies move faster and look the part.'
+    title: 'Business and Startups',
+    description: 'Websites and apps that help companies move faster. From logistics to e-commerce.'
+  },
+  {
+    title: 'Real Estate',
+    description: 'Modern platforms that connect properties with buyers. Verdant Estates is live.'
   },
   {
     title: 'Logistics',
-    description: 'Fast, mobile-first websites that help logistics and delivery businesses turn inquiries into bookings.'
-  },
-  {
-    title: 'Verdant Estates',
-    description: 'Modern real estate platform that helps buyers discover homes and agents close deals.'
+    description: 'Mobile-first sites that turn inquiries into WhatsApp leads. TPC Logistics is live.'
   }
 ];

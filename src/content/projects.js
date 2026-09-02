@@ -1,11 +1,11 @@
 /**
  * Portfolio projects.
  *
- * Images: each project ships with an on-brand SVG visual in public/projects/.
- * To use real screenshots once a project is hosted:
- *   1. set `href` to the deployed URL and `status` to 'live'
- *   2. save a screenshot at public/projects/{slug}.jpg and set `image: '/projects/{slug}.jpg'`
- * The UI renders a "Launching soon" badge and no link while href is empty.
+ * Images are optimized for web delivery:
+ *   - image: desktop-optimized JPG (~159-532KB)
+ *   - imageSm: mobile-optimized JPG at 800px wide (~41-63KB)
+ *   - imageWebp: WebP variant for modern browsers (~64-96KB)
+ *   - width/height: intrinsic dimensions for CLS prevention
  */
 export const projects = [
   {
@@ -14,7 +14,7 @@ export const projects = [
     tagline: 'The official digital platform of a state security institution',
     sector: 'Government & Public Sector',
     description:
-      'A secure, public-facing platform for Ogun State So-Safe Corps — a state security organization — built to strengthen public trust, streamline engagement, and reflect institutional authority online.',
+      'A secure, public-facing platform for Ogun State So-Safe Corps, a state security organization, built to strengthen public trust, streamline engagement, and reflect institutional authority online.',
     highlights: [
       'Public-facing government platform, live in production',
       'Security-first architecture with access control',
@@ -26,6 +26,10 @@ export const projects = [
     caseStudyUrl: '/case-study/so-safe-corps',
     domain: 'sosafecorps.og.gov.ng',
     image: '/projects/so-safe-corps.jpg',
+    imageSm: '/projects/so-safe-corps-sm.jpg',
+    imageWebp: '/projects/so-safe-corps.webp',
+    imageWidth: 1600,
+    imageHeight: 734,
     featured: true,
     accent: 'emerald'
   },
@@ -35,7 +39,7 @@ export const projects = [
     tagline: 'A premium digital experience for a distinguished hotel',
     sector: 'Hospitality',
     description:
-      'A refined hotel website for De Wura Hotel — elegant brand-led design, room and suite showcases, and booking journeys built to turn first impressions into reservations.',
+      'A refined hotel website for De Wura Hotel. Elegant brand-led design, room and suite showcases, and booking journeys built to turn first impressions into reservations.',
     highlights: [
       'Premium, brand-led design system',
       'Rooms, suites, and gallery showcases',
@@ -47,6 +51,10 @@ export const projects = [
     caseStudyUrl: '/case-study/wura-grand-hotel',
     domain: 'wura-xi.vercel.app',
     image: '/projects/wura.jpg',
+    imageSm: '/projects/wura-sm.jpg',
+    imageWebp: '/projects/wura.webp',
+    imageWidth: 1600,
+    imageHeight: 814,
     featured: false,
     accent: 'amber'
   },
@@ -56,7 +64,7 @@ export const projects = [
     tagline: 'A logistics landing page built to turn inquiries into WhatsApp leads',
     sector: 'Logistics',
     description:
-      'A focused logistics landing page for TPC Logistics — clear service highlights and a WhatsApp lead capture flow that makes it easy to request a pickup or quote on any device.',
+      'A focused logistics landing page for TPC Logistics. Clear service highlights and a WhatsApp lead capture flow that makes it easy to request a pickup or quote on any device.',
     highlights: [
       'WhatsApp lead capture flow',
       'Clear service sections and CTAs',
@@ -67,7 +75,10 @@ export const projects = [
     href: 'https://tpc-client.vercel.app/',
     caseStudyUrl: '/case-study/tpc-logistics',
     domain: 'tpc-client.vercel.app',
-    image: '/projects/tpc.png',
+    image: '/projects/tpc.jpg',
+    imageSm: '/projects/tpc-sm.jpg',
+    imageWidth: 1200,
+    imageHeight: 656,
     featured: false,
     accent: 'cyan'
   },
@@ -77,7 +88,7 @@ export const projects = [
     tagline: 'A web app that keeps learning on track',
     sector: 'Education',
     description:
-      'An education web application that helps educators and institutions manage and track student progress — assignments, performance, and insights in one clean, fast interface.',
+      'An education web application that helps educators and institutions manage and track student progress. Assignments, performance, and insights in one clean, fast interface.',
     highlights: [
       'Student progress and assignment tracking',
       'Clean, fast, classroom-first interface',
@@ -89,6 +100,8 @@ export const projects = [
     caseStudyUrl: '',
     domain: 'In Production',
     image: '/projects/edutrack.svg',
+    imageWidth: 600,
+    imageHeight: 375,
     featured: false,
     accent: 'violet'
   },
@@ -98,7 +111,7 @@ export const projects = [
     tagline: 'A multi-vendor storefront built to turn browsers into buyers',
     sector: 'Business & Startups',
     description:
-      'A fully responsive multi-vendor e-commerce site designed to improve digital presence and drive conversions for businesses — from the storefront UI to product and vendor flows, built for a seamless experience across desktop and mobile.',
+      'A fully responsive multi-vendor e-commerce site designed to improve digital presence and drive conversions for businesses. From the storefront UI to product and vendor flows, built for a seamless experience across desktop and mobile.',
     highlights: [
       'Multi-vendor storefront with product and vendor flows',
       'Mobile-first, conversion-focused design',
@@ -109,7 +122,10 @@ export const projects = [
     href: '',
     caseStudyUrl: '',
     domain: 'Launching soon',
-    image: '/projects/naijamart.png',
+    image: '/projects/naijamart.jpg',
+    imageSm: '/projects/naijamart-sm.jpg',
+    imageWidth: 1200,
+    imageHeight: 656,
     featured: false,
     accent: 'rose'
   },
@@ -119,7 +135,7 @@ export const projects = [
     tagline: 'A modern real estate platform built to showcase and connect properties with buyers',
     sector: 'Real Estate',
     description:
-      'A comprehensive real estate platform designed to showcase properties, streamline listings, and connect buyers with their dream homes — featuring intuitive search, detailed property views, and a clean, modern interface.',
+      'A comprehensive real estate platform designed to showcase properties, streamline listings, and connect buyers with their dream homes. Featuring intuitive search, detailed property views, and a clean, modern interface.',
     highlights: [
       'Property listings with detailed views and filtering',
       'Modern, search-first interface optimized for discovery',
@@ -131,6 +147,9 @@ export const projects = [
     caseStudyUrl: '',
     domain: 'verdant-estates-alpha.vercel.app',
     image: '/projects/verdant-estates.jpg',
+    imageSm: '/projects/verdant-estates-sm.jpg',
+    imageWidth: 1200,
+    imageHeight: 738,
     featured: false,
     accent: 'cyan'
   }

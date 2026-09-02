@@ -8,9 +8,9 @@ import FactList from '../ui/FactList';
 const FactSheet = () => (
   <section
     aria-labelledby="key-facts-heading"
-    className="mx-auto max-w-7xl px-6 pt-14 sm:px-8 lg:px-10"
+    className="mx-auto max-w-7xl px-5 pt-10 sm:px-6 sm:pt-14 md:px-8 lg:px-10"
   >
-    <div className="rounded-2xl border border-line bg-ink-2 px-7 py-8 sm:px-10">
+    <div className="rounded-2xl border border-line bg-ink-2 px-5 py-6 sm:px-7 sm:py-8 md:px-10">
       <div className="flex items-baseline justify-between gap-4">
         <p className="eyebrow">// key facts</p>
         <span className="mono-label hidden text-slate-600 sm:block">quotable · verifiable</span>

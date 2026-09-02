@@ -6,7 +6,7 @@ const lines = [
   { text: 'ferdinard ashonibare', dim: false },
   { prompt: '$', text: 'cat status.json', dim: false },
   { text: '{ role: "full-stack developer" }', dim: true },
-  { text: '{ stack: "react · tailwind · node · express · mongo" }', dim: true },
+  { text: '{ stack: "react, tailwind, node, express, mongo" }', dim: true },
   { text: '{ base: "lagos, nigeria" }', dim: true },
   { text: '{ status: "open to work" }', dim: false }
 ];
@@ -43,7 +43,6 @@ const TerminalCard = () => {
   const total = lines.reduce((sum, line) => sum + line.text.length, 0);
   const { count } = useTypewriter({ total, reduced });
 
-  // Distribute the typed character budget across lines, per line.
   let budget = count;
   let activeIndex = 0;
   const rendered = lines.map((line, index) => {
@@ -57,26 +56,24 @@ const TerminalCard = () => {
   });
 
   const done = count >= total;
-  // Cursor rides the active line while typing is in progress — and stays put on a
-  // freshly completed line so it never blinks out for a frame between lines.
   const isActiveLine = (index) => index === activeIndex && (done || count < total);
 
   return (
     <div
-      className="w-full max-w-md overflow-hidden rounded-2xl border border-line bg-ink-2/90 shadow-[0_32px_80px_rgba(0,0,0,0.5)] backdrop-blur"
+      className="w-full max-w-md overflow-hidden rounded-2xl border border-line bg-ink-2 shadow-[0_32px_80px_rgba(0,0,0,0.5)]"
       aria-hidden="true"
     >
       <div className="flex items-center gap-2 border-b border-line-soft px-4 py-3">
         <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
         <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
         <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
-        <span className="mono-label ml-2 text-slate-500">ferdinard — status</span>
+        <span className="mono-label ml-2 text-slate-500">ferdinard, status</span>
       </div>
       <div className="min-h-[15.5rem] space-y-1.5 px-5 py-5 font-mono text-[0.8rem] leading-6">
         {lines.map((line, index) => (
           <p key={index} className={line.dim ? 'text-slate-500' : 'text-slate-200'}>
             {rendered[index].showPrefix ? (
-              <span className="mr-2 text-signal">{line.prompt ?? '↳'}</span>
+              <span className="mr-2 text-signal">{line.prompt ?? '\u21B3'}</span>
             ) : (
               <span className="mr-2" aria-hidden="true" />
             )}

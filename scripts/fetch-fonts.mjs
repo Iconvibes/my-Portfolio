@@ -2,12 +2,11 @@
 /**
  * Refresh the self-hosted fonts.
  *
- * Downloads the latin + latin-ext woff2 subsets for the four families the
- * design system uses (Syne, Inter, Instrument Serif, JetBrains Mono) into
- * public/fonts/, dedupes the files Google serves once per family across
- * weights (Inter/JetBrains Mono share a single file for 400/500/600), and
- * rewrites the @font-face block in src/styles/globals.css between the
- * "self-hosted-fonts" marker comments.
+ * Downloads the latin + latin-ext woff2 subsets for the three families the
+ * design system uses (Manrope, DM Sans, JetBrains Mono) into public/fonts/,
+ * dedupes the files Google serves once per family across weights (Manrope
+ * and DM Sans share a single file per weight), and rewrites the @font-face
+ * block in src/styles/globals.css between the "self-hosted-fonts" markers.
  *
  *     node scripts/fetch-fonts.mjs
  *
@@ -23,7 +22,7 @@ import { fileURLToPath } from 'node:url';
 const UA =
   'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36';
 const CSS_URL =
-  'https://fonts.googleapis.com/css2?family=Syne:wght@700&family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap';
+  'https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap';
 const KEEP = ['latin', 'latin-ext'];
 const START_MARKER = '/* <self-hosted-fonts> */';
 const END_MARKER = '/* </self-hosted-fonts> */';
@@ -93,14 +92,7 @@ for (const [, it] of hashToItem) {
         const orig = items.find(
           (x) => x.family === family && x.weight === w && x.style === s && x.subset === sub
         );
-        rules.push(`@font-face {
-  font-family: '${family}';
-  font-style: ${s};
-  font-weight: ${w};
-  font-display: swap;
-  src: url(/fonts/${fname}) format('woff2');
-  unicode-range: ${orig?.unicodeRange};
-}`);
+        rules.push(`@font-face {\n  font-family: '${family}';\n  font-style: ${s};\n  font-weight: ${w};\n  font-display: swap;\n  src: url(/fonts/${fname}) format('woff2');\n  unicode-range: ${orig?.unicodeRange};\n}`);
       }
     }
   }
@@ -114,7 +106,7 @@ let cssText = readFileSync(globalsCss, 'utf8');
 const start = cssText.indexOf(START_MARKER);
 const end = cssText.indexOf(END_MARKER);
 if (start === -1 || end === -1) {
-  throw new Error('globals.css markers not found — re-add /* <self-hosted-fonts> */ … /* </self-hosted-fonts> */');
+  throw new Error('globals.css markers not found — re-add /* <self-hosted-fonts> */ ... /* </self-hosted-fonts> */');
 }
 cssText =
   cssText.slice(0, start + START_MARKER.length) +

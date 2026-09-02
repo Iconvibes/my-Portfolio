@@ -11,9 +11,9 @@ const Insights = () => (
       eyebrow="Insights"
       index="(01)"
       title="Notes from the field"
-      intro="Short, practical writing on engineering, product, and design — learned the hard way, shared the easy way."
+      intro="Short, practical writing on engineering, product, and design. Learned the hard way, shared the easy way."
     >
-      <div className="mt-12 grid gap-6 lg:grid-cols-3">
+      <div className="mt-8 grid gap-5 sm:mt-12 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
         {insights.map((item, index) => (
           <Card key={item.slug} as="article" className="flex flex-col">
             <div className="flex items-center justify-between gap-3">

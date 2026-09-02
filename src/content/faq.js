@@ -2,12 +2,12 @@ export const faqItems = [
   {
     question: 'What kind of projects do you take on?',
     answer:
-      'Websites, web applications, dashboards, and APIs — typically full-stack builds with React on the front and Node.js on the back. If it lives in a browser, I can build it.'
+      'Websites, web applications, dashboards, and APIs. Typically full-stack builds with React on the front and Node.js on the back. If it lives in a browser, I can build it.'
   },
   {
     question: 'How do you price projects?',
     answer:
-      'It depends on scope. After a short discovery call I give a fixed price and timeline — no vague estimates, no surprise invoices.'
+      'It depends on scope. After a short discovery call I give a fixed price and timeline. No vague estimates, no surprise invoices.'
   },
   {
     question: 'Can you work with my existing code or team?',
@@ -17,7 +17,7 @@ export const faqItems = [
   {
     question: 'How do you handle security?',
     answer:
-      'Security is part of the build, not an afterthought — access control, secure data handling, and deployment discipline. My work for Ogun State So-Safe Corps is a live example.'
+      'Security is part of the build, not an afterthought. Access control, secure data handling, and deployment discipline. My work for Ogun State So-Safe Corps is a live example.'
   },
   {
     question: 'What does working with you look like?',
@@ -27,11 +27,11 @@ export const faqItems = [
   {
     question: 'Are you available for full-time roles?',
     answer:
-      'Yes — I am open to remote full-time roles and long-term contracts, as well as one-off project work.'
+      'Yes. I am open to remote full-time roles and long-term contracts, as well as one-off project work.'
   },
   {
     question: 'Do you only work in certain industries?',
     answer:
-      'No — the focus sectors are where I have shipped or am actively building, not a ceiling. I have delivered live work for government and logistics, and I am building for hospitality, education, and business right now. If it lives in a browser, I can build it.'
+      'No. The focus sectors are where I have shipped or am actively building, not a ceiling. I have delivered live work for government and logistics, and I am building for hospitality, education, and business right now. If it lives in a browser, I can build it.'
   }
 ];

@@ -1,46 +1,46 @@
 export const capabilities = [
   {
-    title: 'Websites & Brand Sites',
+    title: 'Websites that work',
     description:
-      'Fast, premium marketing sites and brand experiences that tell a clear story and turn visitors into customers.',
-    items: ['Business & hotel websites', 'Landing pages', 'Brand-led design systems']
+      'Not just pretty pages. Fast, accessible sites that turn visitors into customers or citizens into users.',
+    items: ['Business and hotel websites', 'Landing pages', 'Government platforms']
   },
   {
-    title: 'Web Applications',
+    title: 'Web applications',
     description:
-      'Full-stack apps built around real workflows — dashboards, portals, and tools people actually use every day.',
-    items: ['Portals & dashboards', 'Admin tools', 'Data-driven interfaces']
+      'Full-stack apps built around real workflows. Dashboards, portals, and tools that people actually use every day.',
+    items: ['Portals and dashboards', 'Admin tools', 'Edtech apps']
   },
   {
-    title: 'APIs & Backends',
+    title: 'APIs and backends',
     description:
-      'Clean, documented APIs and backend services that power your product reliably and securely.',
-    items: ['REST APIs', 'Authentication & access control', 'MongoDB data modeling']
+      'Clean, documented APIs that power your product reliably. Node.js, Express, MongoDB, deployed and monitored.',
+    items: ['REST APIs', 'Authentication and access control', 'Database design']
   },
   {
-    title: 'Security & Performance',
+    title: 'Security and performance',
     description:
-      'Security-first habits and performance discipline at every layer — platforms that matter cannot be slow or unsafe.',
-    items: ['Security review & hardening', 'Access control', 'Core Web Vitals & speed']
+      'Security-first habits and performance discipline. The So-Safe Corps platform loads in 0.1 seconds and ships 48KB of HTML.',
+    items: ['Security review and hardening', 'Core Web Vitals', 'Production monitoring']
   },
   {
-    title: 'End-to-End Delivery',
+    title: 'End-to-end delivery',
     description:
-      'From first sketch to production deploy — I design, build, test, and launch, with support after go-live.',
-    items: ['UI/UX & responsive design', 'Deployment & hosting', 'Ongoing maintenance']
+      'From first conversation to production deploy. I design, build, test, launch, and support. No handoffs.',
+    items: ['UI/UX and responsive design', 'Deployment and hosting', 'Ongoing maintenance']
   },
   {
-    title: 'Product Thinking',
+    title: 'Product thinking',
     description:
       'Every project starts with the goal, not the tech. Clear scope, honest timelines, and software that solves the real problem.',
-    items: ['Discovery & scoping', 'Roadmap planning', 'Plain-language communication']
+    items: ['Discovery and scoping', 'Roadmap planning', 'Plain-language updates']
   }
 ];
 
 export const technologies = [
   { group: 'Frontend', items: ['React', 'JavaScript', 'Tailwind CSS', 'Vite'] },
-  { group: 'Backend', items: ['Node.js', 'Express', 'REST APIs', 'Auth & security'] },
-  { group: 'Data & Ops', items: ['MongoDB', 'Git & GitHub', 'Netlify', 'SEO & SSR'] }
+  { group: 'Backend', items: ['Node.js', 'Express', 'REST APIs', 'Auth and security'] },
+  { group: 'Data and Ops', items: ['MongoDB', 'Git and GitHub', 'Netlify', 'SEO and SSR'] }
 ];
 
 export const techMarquee = [

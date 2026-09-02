@@ -36,11 +36,11 @@ const ProfilePhoto = ({ className = '', priority = false }) => {
   if (status === 'missing') {
     return (
       <div
-        className={`relative flex aspect-[4/5] w-full items-center justify-center overflow-hidden rounded-2xl border border-line bg-gradient-to-br from-ink-3 to-ink ${className}`.trim()}
+        className={`relative flex aspect-[4/5] w-full items-center justify-center overflow-hidden rounded-2xl border border-line bg-ink-2 ${className}`.trim()}
       >
         <div className="bg-grid-ink absolute inset-0 opacity-40" aria-hidden="true" />
         <div className="relative flex flex-col items-center gap-3">
-          <span className="serif-accent text-7xl text-signal">FA</span>
+          <span className="display-ink text-7xl text-signal">FA</span>
           <span className="mono-label text-slate-500">Ferdinard Ashonibare</span>
         </div>
       </div>

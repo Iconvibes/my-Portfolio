@@ -10,9 +10,6 @@ import Section from '../components/ui/Section';
 import FactList from '../components/ui/FactList';
 import { contactChannels, credentials, facts, featuredProject, industries, projects } from '../content';
 
-// The at-a-glance card is sourced from the shared facts module (same data as
-// the home FactSheet) — curated to the profile-card essentials. Keeping the
-// filter order-stable so the rows render in the module's canonical order.
 const glanceFacts = facts.filter((fact) =>
   ['Who', 'Availability', 'Stats', 'Stack'].includes(fact.label)
 );
@@ -31,14 +28,11 @@ const About = () => {
       eyebrow="About"
       index="(01)"
       title={
-        <>
-          A developer who treats every product like a{' '}
-          <span className="serif-accent text-signal">system people depend on</span>
-        </>
+        'A developer who treats every product like a system people depend on'
       }
-      intro="I'm Ferdinard Ashonibare — a full-stack web developer based in Lagos, Nigeria. I design and build complete web products: secure platforms for institutions, polished sites for businesses, and practical tools for educators."
+      intro="I'm Ferdinard Ashonibare, a full-stack web developer based in Lagos, Nigeria. I design and build complete web products: secure platforms for institutions, polished sites for businesses, and practical tools for educators."
     >
-      <div className="mt-14 grid gap-6 lg:grid-cols-[0.4fr_0.6fr]">
+      <div className="mt-10 grid gap-5 sm:mt-14 sm:gap-6 lg:grid-cols-[0.4fr_0.6fr]">
         <div className="overflow-hidden rounded-2xl border border-line">
           <ProfilePhoto priority className="rounded-2xl border-0" />
         </div>
@@ -137,15 +131,15 @@ const About = () => {
         </Card>
       ) : null}
 
-      <div className="mt-6 grid gap-6 lg:grid-cols-2">
+      <div className="mt-5 grid gap-4 sm:mt-6 sm:gap-6 lg:grid-cols-2">
         <Card>
           <p className="eyebrow">// the short version</p>
           <div className="mt-4 space-y-4 text-sm leading-8 text-slate-400">
             <p>
-              I build web software end to end — the interface people see, the systems underneath
+              I build web software end to end. The interface people see, the systems underneath
               it, and the deployment that keeps it alive. My work spans{' '}
               <span className="text-slate-200">government, hospitality, education, real estate, business, and
-              logistics</span> — because I care less about the industry and more about building
+              logistics</span> because I care less about the industry and more about building
               things that genuinely work for the people using them.
             </p>
             <p>
@@ -163,8 +157,7 @@ const About = () => {
                 <span className="font-semibold text-slate-200">
                   the official platform for Ogun State So-Safe Corps
                 </span>
-              )}{' '}
-              — a state security institution.
+              )}, a state security institution.
               That project shaped how I work: security as a default, performance as a given, and
               clarity as a promise.
             </p>
@@ -188,7 +181,7 @@ const About = () => {
                 ))}
             </ul>
             <p>
-              And I'm always open to the next challenge — whether that's a{' '}
+              And I'm always open to the next challenge, whether that's a{' '}
               <span className="text-slate-200">full-time role</span> or a{' '}
               <span className="text-slate-200">project worth building well</span>.
             </p>
@@ -201,7 +194,7 @@ const About = () => {
       index="(02)"
       eyebrow="Sectors"
       title="Where I work"
-      description="Different worlds, same standards — focus areas, not limits. If it lives in a browser, I can build it."
+      description="Different worlds, same standards. Focus areas, not limits. If it lives in a browser, I can build it."
     >
       <div className="mt-12 grid gap-5 md:grid-cols-2">
         {industries.map((industry) => (
@@ -217,7 +210,7 @@ const About = () => {
       index="(03)"
       eyebrow="Work"
       title="Want to see the proof?"
-      description="Selected work, built end to end — including a live government platform."
+      description="Selected work, built end to end, including a live government platform."
     >
       <div className="mt-10 flex flex-wrap items-center gap-4">
         <Button href="/work" icon>

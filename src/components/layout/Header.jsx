@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { navigation } from '../../content';
 import ResumeButton from '../ui/ResumeButton';
 
@@ -22,14 +22,11 @@ const Header = () => {
       const y = window.scrollY;
       setScrolled(y > 12);
 
-      // Keep the header visible while the mobile menu is open.
       if (isOpen) {
         prevY.current = y;
         return;
       }
 
-      // Hide while scrolling down (past a small threshold), reveal on any
-      // scroll back up so the nav is always one upward swipe away.
       if (y > prevY.current && y > 160) {
         setIsHidden(true);
       } else if (y < prevY.current) {
@@ -49,12 +46,12 @@ const Header = () => {
 
   return (
     <header
-      className={`sticky top-0 z-40 border-b transition-[translate,background-color,border-color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+      className={`sticky top-0 z-40 border-b transition-[translate,border-color] duration-300 ease-out ${
         isHidden ? '-translate-y-full' : 'translate-y-0'
       } ${
         scrolled || isOpen
-          ? 'border-line bg-ink/90 backdrop-blur-xl'
-          : 'border-transparent bg-ink/60 backdrop-blur-sm'
+          ? 'border-line bg-ink'
+          : 'border-transparent bg-ink/80'
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-4 lg:px-10">
@@ -62,9 +59,9 @@ const Header = () => {
           to="/"
           onClick={closeMenu}
           className="group flex items-center gap-3 focus-visible:outline-none"
-          aria-label="Ferdinard Ashonibare — home"
+          aria-label="Ferdinard Ashonibare, home"
         >
-          <span className="display-ink flex h-9 w-9 items-center justify-center rounded-lg bg-signal text-sm text-signal-ink transition-transform duration-300 group-hover:-rotate-6">
+          <span className="display-ink flex h-11 w-11 items-center justify-center rounded-lg bg-signal text-sm text-signal-ink transition-transform duration-150 group-hover:-rotate-3">
             FA
           </span>
           <span className="hidden flex-col leading-tight sm:flex">
@@ -86,21 +83,25 @@ const Header = () => {
         </nav>
 
         <div className="flex items-center gap-3">
-          <ResumeButton>Résumé</ResumeButton>
+          <ResumeButton>Resume</ResumeButton>
           <button
             aria-label={isOpen ? 'Close navigation' : 'Open navigation'}
             aria-expanded={isOpen}
             onClick={() => setIsOpen((open) => !open)}
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-line bg-white/[0.03] text-slate-200 hover:border-signal/50 hover:text-signal lg:hidden"
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-line bg-white/[0.03] text-slate-200 hover:border-signal/50 hover:text-signal lg:hidden"
           >
-            {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            {isOpen ? (
+              <XMarkIcon className="h-5 w-5" />
+            ) : (
+              <Bars3Icon className="h-5 w-5" />
+            )}
           </button>
         </div>
       </div>
 
       {isOpen ? (
         <nav
-          className="border-t border-line bg-ink/95 px-6 py-4 backdrop-blur-xl lg:hidden"
+          className="border-t border-line bg-ink px-6 py-4 lg:hidden"
           aria-label="Mobile"
         >
           <div className="flex flex-col gap-1">
