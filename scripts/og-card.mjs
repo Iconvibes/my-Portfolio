@@ -36,115 +36,99 @@ const CARD_HTML = `<!DOCTYPE html>
 <head>
 <meta charset="utf-8" />
 <style>
-  /* Self-hosted fonts (public/fonts) — the temp HTML lives in public/, so the
-     relative fonts/ paths resolve. Same files the site serves; Google maps
-     JetBrains Mono 400/600/700 and Syne 600/800 to single files. */
+  /* Self-hosted fonts — Manrope (headings) + DM Sans (body) + JetBrains Mono (terminal) */
   @font-face {
-    font-family: 'JetBrains Mono';
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url(fonts/jetbrains-mono-latin.woff2) format('woff2');
-  }
-  @font-face {
-    font-family: 'JetBrains Mono';
-    font-style: normal;
-    font-weight: 600;
-    font-display: swap;
-    src: url(fonts/jetbrains-mono-latin.woff2) format('woff2');
-  }
-  @font-face {
-    font-family: 'JetBrains Mono';
+    font-family: 'Manrope';
     font-style: normal;
     font-weight: 700;
     font-display: swap;
-    src: url(fonts/jetbrains-mono-latin.woff2) format('woff2');
+    src: url(fonts/manrope-latin.woff2) format('woff2');
   }
   @font-face {
-    font-family: 'Syne';
-    font-style: normal;
-    font-weight: 600;
-    font-display: swap;
-    src: url(fonts/syne-latin-700.woff2) format('woff2');
-  }
-  @font-face {
-    font-family: 'Syne';
+    font-family: 'Manrope';
     font-style: normal;
     font-weight: 800;
     font-display: swap;
-    src: url(fonts/syne-latin-700.woff2) format('woff2');
+    src: url(fonts/manrope-latin.woff2) format('woff2');
   }
   @font-face {
-    font-family: 'Instrument Serif';
-    font-style: italic;
-    font-weight: 400;
-    font-display: swap;
-    src: url(fonts/instrument-serif-latin-400-italic.woff2) format('woff2');
-  }
-  @font-face {
-    font-family: 'Instrument Serif';
+    font-family: 'DM Sans';
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url(fonts/instrument-serif-latin-400.woff2) format('woff2');
+    src: url(fonts/dm-sans-latin.woff2) format('woff2');
+  }
+  @font-face {
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url(fonts/dm-sans-latin.woff2) format('woff2');
+  }
+  @font-face {
+    font-family: 'JetBrains Mono';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(fonts/jetbrains-mono-latin.woff2) format('woff2');
+  }
+  @font-face {
+    font-family: 'JetBrains Mono';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url(fonts/jetbrains-mono-latin.woff2) format('woff2');
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { width: ${WIDTH}px; height: ${HEIGHT}px; }
   body {
     background: #060a12; color: #e2e8f0; overflow: hidden; position: relative;
-    font-family: 'JetBrains Mono', ui-monospace, Consolas, monospace;
-    /* Note: -webkit-font-smoothing is a no-op on Windows Chrome (DirectWrite
-       always uses subpixel AA), so the JPEG conversion preserves the exact
-       render. Harmless to keep for macOS/other renderers. */
+    font-family: 'DM Sans', 'Segoe UI', sans-serif;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
-  .grid { position: absolute; inset: 0;
-    background-image: linear-gradient(to right, rgba(148,163,184,.05) 1px, transparent 1px),
-                      linear-gradient(to bottom, rgba(148,163,184,.05) 1px, transparent 1px);
-    background-size: 40px 40px; }
-  .glow { position: absolute; inset: 0;
-    background: radial-gradient(ellipse at 18% 0%, rgba(200,241,53,.15), transparent 46%),
-                radial-gradient(ellipse at 100% 100%, rgba(56,130,246,.13), transparent 52%); }
+  .grid-bg { position: absolute; inset: 0;
+    background-image: linear-gradient(to right, rgba(148,163,184,.04) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(148,163,184,.04) 1px, transparent 1px);
+    background-size: 64px 64px; }
   .card { position: absolute; inset: 0; display: flex; align-items: center;
-    padding: 54px 62px; gap: 46px; }
+    padding: 54px 62px; gap: 50px; }
   .left { flex: 1; min-width: 0; }
-  .eyebrow { color: #c8f135; font-size: 18px; font-weight: 600;
-    letter-spacing: .22em; text-transform: uppercase; margin-bottom: 16px; }
-  .term { background: rgba(11,18,32,.94); border: 1px solid rgba(148,163,184,.22);
-    border-radius: 16px; padding: 20px 26px; width: 590px;
-    box-shadow: 0 26px 64px rgba(0,0,0,.45); }
+  .eyebrow { color: #c8f135; font-family: 'JetBrains Mono', monospace; font-size: 14px;
+    font-weight: 600; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 20px; }
+  .term { background: #0c1320; border: 1px solid rgba(148,163,184,.12);
+    border-radius: 16px; padding: 20px 26px; width: 580px;
+    box-shadow: 0 24px 60px rgba(0,0,0,.4); }
   .bar { display: flex; gap: 8px; align-items: center; padding-bottom: 13px;
-    margin-bottom: 12px; border-bottom: 1px solid rgba(148,163,184,.14); }
+    margin-bottom: 12px; border-bottom: 1px solid rgba(148,163,184,.06); }
   .bar i { width: 12px; height: 12px; border-radius: 99px; display: inline-block; }
   .bar i:nth-child(1) { background: #ff5f57; }
   .bar i:nth-child(2) { background: #febc2e; }
   .bar i:nth-child(3) { background: #28c840; }
-  .bar span { margin-left: auto; color: #64748b; font-size: 13px;
-    letter-spacing: .18em; text-transform: uppercase; }
-  .ln { font-size: 20px; line-height: 1.95; white-space: nowrap; }
+  .bar span { margin-left: auto; color: #64748b; font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; letter-spacing: .14em; text-transform: uppercase; }
+  .ln { font-family: 'JetBrains Mono', monospace; font-size: 18px; line-height: 1.95; white-space: nowrap; }
   .p { color: #c8f135; margin-right: 10px; }
   .hi { color: #f8fafc; font-weight: 600; }
   .dim { color: #64748b; }
   .status { color: #c8f135; font-weight: 700; }
-  .cursor { display: inline-block; width: 10px; height: 21px; background: #c8f135;
+  .cursor { display: inline-block; width: 10px; height: 20px; background: #c8f135;
     vertical-align: -3px; margin-left: 5px; border-radius: 2px; }
-  .name { font-family: 'Syne', 'Segoe UI', sans-serif; font-weight: 800;
-    font-size: 46px; line-height: 1.05; color: #f8fafc; margin-top: 24px;
-    letter-spacing: -.01em; }
-  .name em { font-family: 'Instrument Serif', Georgia, serif; font-style: italic;
-    font-weight: 400; color: #c8f135; }
-  .right .photo { width: 306px; height: 382px; border-radius: 22px; object-fit: cover;
-    object-position: center top; border: 1px solid rgba(148,163,184,.3);
-    box-shadow: 0 30px 70px rgba(0,0,0,.5); }
+  .name { font-family: 'Manrope', 'Segoe UI', sans-serif; font-weight: 800;
+    font-size: 44px; line-height: 1.05; color: #f8fafc; margin-top: 24px;
+    letter-spacing: -.025em; }
+  .name .accent { color: #c8f135; }
+  .right { display: flex; align-items: center; }
+  .photo { width: 320px; height: 400px; border-radius: 18px; object-fit: cover;
+    object-position: center top; border: 1px solid rgba(148,163,184,.15);
+    box-shadow: 0 24px 60px rgba(0,0,0,.5); }
 </style>
 </head>
 <body>
-  <div class="grid"></div>
-  <div class="glow"></div>
+  <div class="grid-bg"></div>
   <div class="card">
     <div class="left">
-      <div class="eyebrow">// ferdinand — status</div>
+      <div class="eyebrow">// ferdinard — status</div>
       <div class="term">
         <div class="bar"><i></i><i></i><i></i><span>ferdinard — status</span></div>
         <div class="ln"><span class="p">$</span><span class="hi">whoami</span></div>
@@ -156,7 +140,7 @@ const CARD_HTML = `<!DOCTYPE html>
         <div class="ln dim">↳ { base: "lagos, nigeria" }</div>
         <div class="ln"><span class="status">↳ { status: "open to work" }</span><span class="cursor"></span></div>
       </div>
-      <div class="name">Ferdinard <em>Ashonibare</em></div>
+      <div class="name">Ferdinard <span class="accent">Ashonibare</span></div>
     </div>
     <div class="right">
       <img class="photo" src="profile.jpg" alt="Ferdinard Ashonibare" />

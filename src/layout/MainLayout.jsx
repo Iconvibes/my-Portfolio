@@ -86,7 +86,7 @@ const MainLayout = () => {
       </a>
       <div className="relative isolate overflow-x-hidden">
         <Header />
-        <main id="main-content" className="flex-1">
+        <main id="main-content" className="flex-1 pt-[72px]">
           <Outlet />
         </main>
         <Footer />

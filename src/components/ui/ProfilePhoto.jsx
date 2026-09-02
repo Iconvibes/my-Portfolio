@@ -1,36 +1,20 @@
 import { useEffect, useRef, useState } from 'react';
 
-// The photo is picked up from either location — `public/profile.jpg` is the
-// canonical spot, but a photo placed in `public/images/` works too.
-const CANDIDATES = ['/profile.jpg', '/images/profile.jpg'];
-
 /**
  * Profile photo slot.
  *
- * Drop a 4:5 portrait (~800×1000) into `public/profile.jpg` (or
- * `public/images/profile.jpg`) and it will render automatically. Until then,
- * an on-brand monogram card is shown instead.
+ * Renders the portrait from /profile.jpg with a responsive fallback at /profile-sm.jpg.
+ * Falls back to an on-brand monogram card if no image is found.
  */
 const ProfilePhoto = ({ className = '', priority = false }) => {
   const [status, setStatus] = useState('loading');
-  const [srcIndex, setSrcIndex] = useState(0);
   const imgRef = useRef(null);
 
-  // If the image is already cached (loaded before hydration), onLoad may never fire
-  // again — check the element's completed state on mount so the photo never stays
-  // stuck invisible.
   useEffect(() => {
     const img = imgRef.current;
     if (img && img.complete) {
-      if (img.naturalWidth > 0) {
-        setStatus('ok');
-      } else if (srcIndex < CANDIDATES.length - 1) {
-        setSrcIndex(srcIndex + 1);
-      } else {
-        setStatus('missing');
-      }
+      setStatus(img.naturalWidth > 0 ? 'ok' : 'missing');
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (status === 'missing') {
@@ -48,24 +32,30 @@ const ProfilePhoto = ({ className = '', priority = false }) => {
   }
 
   return (
-    <img
-      ref={imgRef}
-      src={CANDIDATES[srcIndex]}
-      alt="Portrait of Ferdinard Ashonibare"
-      onLoad={() => setStatus('ok')}
-      onError={() => {
-        if (srcIndex < CANDIDATES.length - 1) {
-          setSrcIndex(srcIndex + 1);
-        } else {
-          setStatus('missing');
-        }
-      }}
-      loading={priority ? 'eager' : 'lazy'}
-      {...(priority ? { fetchPriority: 'high', decoding: 'sync' } : {})}
-      className={`aspect-[4/5] w-full rounded-2xl border border-line object-cover transition-opacity duration-300 ${
-        status === 'ok' ? 'opacity-100' : 'opacity-0'
-      } ${className}`.trim()}
-    />
+    <div className={`relative ${className}`.trim()}>
+      {/* Subtle glow behind the photo */}
+      <div
+        className="absolute -inset-3 rounded-3xl opacity-30 blur-2xl"
+        style={{ background: 'radial-gradient(ellipse at center, rgba(200,241,53,0.15), transparent 70%)' }}
+        aria-hidden="true"
+      />
+      <img
+        ref={imgRef}
+        src="/profile.jpg"
+        srcSet="/profile-sm.jpg 600w, /profile.jpg 900w"
+        sizes="(max-width: 1024px) 280px, 360px"
+        alt="Portrait of Ferdinard Ashonibare"
+        width={768}
+        height={1024}
+        onLoad={() => setStatus('ok')}
+        onError={() => setStatus('missing')}
+        loading={priority ? 'eager' : 'lazy'}
+        {...(priority ? { fetchPriority: 'high', decoding: 'async' } : {})}
+        className={`relative aspect-[3/4] w-full rounded-2xl border border-line object-cover transition-opacity duration-300 ${
+          status === 'ok' ? 'opacity-100' : 'opacity-0'
+        }`}
+      />
+    </div>
   );
 };
 

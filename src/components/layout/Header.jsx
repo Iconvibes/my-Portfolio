@@ -11,8 +11,8 @@ const navClass = ({ isActive }) =>
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [visible, setVisible] = useState(true);
   const [scrolled, setScrolled] = useState(false);
-  const [isHidden, setIsHidden] = useState(false);
   const prevY = useRef(0);
   const closeMenu = () => setIsOpen(false);
   const location = useLocation();
@@ -22,19 +22,19 @@ const Header = () => {
       const y = window.scrollY;
       setScrolled(y > 12);
 
-      if (isOpen) {
-        prevY.current = y;
-        return;
-      }
-
-      if (y > prevY.current && y > 160) {
-        setIsHidden(true);
-      } else if (y < prevY.current) {
-        setIsHidden(false);
+      // Always show at the very top
+      if (y < 10) {
+        setVisible(true);
+      } else if (isOpen) {
+        setVisible(true);
+      } else {
+        // Any upward scroll → show. Downward → hide.
+        setVisible(y <= prevY.current);
       }
 
       prevY.current = y;
     };
+
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
@@ -46,12 +46,12 @@ const Header = () => {
 
   return (
     <header
-      className={`sticky top-0 z-40 border-b transition-[translate,border-color] duration-300 ease-out ${
-        isHidden ? '-translate-y-full' : 'translate-y-0'
+      className={`fixed top-0 left-0 right-0 z-40 border-b transition-[transform,border-color,background-color] duration-200 ease-out ${
+        visible ? 'translate-y-0' : '-translate-y-full'
       } ${
         scrolled || isOpen
-          ? 'border-line bg-ink'
-          : 'border-transparent bg-ink/80'
+          ? 'border-line bg-ink/95 backdrop-blur-sm'
+          : 'border-transparent bg-transparent'
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-4 lg:px-10">
