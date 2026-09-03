@@ -83,3 +83,89 @@ export const featuredCaseStudy = {
     }
   ]
 };
+
+export const verdantEstatesCaseStudy = {
+  client: 'Verdant Estates',
+  liveUrl: 'https://verdant-estates-alpha.vercel.app/',
+  title: 'A modern real estate platform built to showcase properties and connect buyers',
+  overview:
+    'A comprehensive real estate platform designed to showcase properties, streamline listings, and connect buyers with their dream homes. Featuring intuitive search, detailed property views, and a clean, modern interface built for discovery.',
+  challenge:
+    'Real estate buyers expect fast, visual property discovery — not clunky directories or slow-loading galleries. The platform needed to feel effortless on every device, presenting properties in a way that encouraged exploration without overwhelming the user.',
+  research:
+    'We studied how buyers search for properties online: scanning listing grids, comparing details, and filtering by preferences. The patterns were clear — people want to see properties quickly, narrow results with minimal effort, and get to the details that matter without friction.',
+  planning:
+    'The delivery plan prioritized a search-first architecture: a fast, responsive frontend paired with a lightweight Node.js backend. Every decision was filtered through one question — does this make it easier for a buyer to find the right property?',
+  design:
+    'A clean, modern interface built around property imagery and structured listings. The design system emphasizes whitespace, clear typography, and responsive layouts that adapt from desktop browsing to mobile scrolling without compromise.',
+  architecture:
+    'A full-stack build: a React single-page application styled with Tailwind CSS, served by a Node.js backend. The frontend handles property rendering, search filtering, and responsive layouts. The backend serves property data through a clean API layer. Lightweight, fast, and built to scale.',
+  howItBuilt:
+    'A request on this platform travels from the React SPA to the Node.js backend and back. The frontend renders property listings, handles search and filtering, and presents detailed views. The backend serves property data through structured endpoints. Every layer runs in production today.',
+  architectureLayers: [
+    {
+      layer: 'Client',
+      title: 'React SPA',
+      detail: 'Tailwind CSS, property grid, search filtering',
+      note: 'The public-facing frontend: property cards, search interface, detailed views, and a responsive layout optimized for browsing properties across devices.'
+    },
+    {
+      layer: 'API',
+      title: 'Node.js Backend',
+      detail: 'REST endpoints, property data',
+      note: 'The application layer: serves property listings and details through clean, structured endpoints that the frontend consumes.'
+    },
+    {
+      layer: 'Presentation',
+      title: 'Property Display',
+      detail: 'Responsive grid, image optimization',
+      note: 'The rendering layer: optimized property cards, detail views, and filtering that adapts seamlessly from desktop to mobile.'
+    }
+  ],
+  development:
+    'Implementation focused on clean data flow, responsive property grids, and fast page loads. Every component was built to render property information clearly without unnecessary complexity.',
+  security:
+    'The platform prioritizes safe public browsing — no sensitive data exposure, clean API responses, and standard web security practices for a public-facing property showcase.',
+  performance:
+    'Performance was achieved through efficient component rendering, optimized property images, and a lean backend that serves data without unnecessary overhead.',
+  lessons:
+    'Real estate platforms succeed when they reduce friction in discovery. The key is making search feel effortless and property details feel immediate — not buried behind clicks or slow transitions.',
+  outcome:
+    'A clean, fast property platform that showcases listings effectively and makes it easy for buyers to discover and explore properties across any device.',
+  future:
+    'Future phases can expand the platform with saved searches, property alerts, map-based discovery, and deeper integration with real estate listing workflows.',
+  techStack: ['React', 'Tailwind CSS', 'Node.js'],
+  timeline: ['Discovery', 'Planning', 'Design', 'Build', 'Launch'],
+  atAGlance: [
+    { label: 'Client', value: 'Verdant Estates' },
+    { label: 'Sector', value: 'Real Estate' },
+    { label: 'Status', value: 'Live in production' },
+    { label: 'Stack', value: 'React + Tailwind CSS + Node.js' }
+  ],
+  outcomes: [
+    {
+      label: 'Status',
+      value: 'Live in production',
+      detail: 'Publicly accessible at verdant-estates-alpha.vercel.app, showcasing properties to buyers.',
+      propertyID: 'status'
+    },
+    {
+      label: 'Responsive design',
+      value: 'Mobile-first',
+      detail: 'Fully responsive property grids and detail views across desktop, tablet, and mobile.',
+      propertyID: 'design'
+    },
+    {
+      label: 'Search-first interface',
+      value: 'Optimized for discovery',
+      detail: 'Property filtering and search designed to reduce friction in finding the right listing.',
+      propertyID: 'ux'
+    },
+    {
+      label: 'Clean architecture',
+      value: 'Full-stack React + Node.js',
+      detail: 'Lean, maintainable stack with clear separation between frontend rendering and backend data serving.',
+      propertyID: 'architecture'
+    }
+  ]
+};

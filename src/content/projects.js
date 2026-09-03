@@ -144,7 +144,7 @@ export const projects = [
     tech: ['React', 'Tailwind CSS', 'Node.js'],
     status: 'live',
     href: 'https://verdant-estates-alpha.vercel.app/',
-    caseStudyUrl: '',
+    caseStudyUrl: '/case-study/verdant-estates',
     domain: 'verdant-estates-alpha.vercel.app',
     image: '/projects/verdant-estates.jpg',
     imageSm: '/projects/verdant-estates-sm.jpg',

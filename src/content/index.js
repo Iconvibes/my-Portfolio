@@ -7,7 +7,7 @@ export { faqItems } from './faq';
 export { facts } from './facts';
 export { getInsightBySlug, insightDate, insights, readingTime } from './insights';
 export { projects, featuredProject, getProjectBySlug } from './projects';
-export { featuredCaseStudy } from './caseStudies';
+export { featuredCaseStudy, verdantEstatesCaseStudy } from './caseStudies';
 export { testimonials } from './testimonials';
 export { contactChannels, socialLinks } from './contact';
 export { credentials } from './credentials';

@@ -4,7 +4,7 @@ import CtaSection from '../components/sections/CtaSection';
 import Badge from '../components/ui/Badge';
 import Button from '../components/ui/Button';
 import Card from '../components/ui/Card';
-import { featuredCaseStudy } from '../content';
+import { featuredCaseStudy, verdantEstatesCaseStudy } from '../content';
 import { getProjectBySlug } from '../content/projects';
 
 const storySections = [
@@ -16,18 +16,18 @@ const storySections = [
   ['Security', 'security']
 ];
 
-/* ---------- Full case study (So-Safe Corps) ---------- */
+/* ---------- Full case study ---------- */
 
-const FullCaseStudy = () => (
+const FullCaseStudy = ({ cs }) => (
   <div className="bg-ink text-slate-100">
     <PageShell
       eyebrow="Case Study"
       index="(01)"
-      title={featuredCaseStudy.title}
-      intro={`A secure, public-facing platform for ${featuredCaseStudy.client}, live at ${featuredCaseStudy.liveUrl.replace('https://', '')}.`}
+      title={cs.title}
+      intro={`A ${cs.client === 'Verdant Estates' ? 'modern real estate platform' : 'secure, public-facing platform'} for ${cs.client}, live at ${cs.liveUrl.replace('https://', '')}.`}
     >
       <div className="mt-6 flex flex-wrap items-center gap-4">
-        <Button href={featuredCaseStudy.liveUrl} external icon>
+        <Button href={cs.liveUrl} external icon>
           Visit the live platform
         </Button>
         <Button href="/work" variant="outline">
@@ -38,13 +38,13 @@ const FullCaseStudy = () => (
       <div className="mt-8 grid gap-5 sm:mt-12 sm:grid-cols-2 sm:gap-6 lg:grid-cols-[1.05fr_0.95fr]">
         <Card>
           <p className="eyebrow">// overview</p>
-          <p className="mt-4 text-sm leading-8 text-slate-400">{featuredCaseStudy.overview}</p>
-          <p className="mt-6 text-sm leading-8 text-slate-400">{featuredCaseStudy.challenge}</p>
+          <p className="mt-4 text-sm leading-8 text-slate-400">{cs.overview}</p>
+          <p className="mt-6 text-sm leading-8 text-slate-400">{cs.challenge}</p>
         </Card>
         <Card>
           <p className="eyebrow">// at a glance</p>
           <dl className="mt-6 space-y-4">
-            {featuredCaseStudy.atAGlance.map((metric) => (
+            {cs.atAGlance.map((metric) => (
               <div
                 key={metric.label}
                 className="flex flex-col gap-1 border-b border-line-soft pb-3 last:border-b-0 last:pb-0 sm:flex-row sm:justify-between"
@@ -63,7 +63,7 @@ const FullCaseStudy = () => (
           <span className="mono-label hidden text-slate-600 sm:block">verified · not estimates</span>
         </div>
         <dl className="mt-6 grid gap-x-10 gap-y-6 md:grid-cols-2 xl:grid-cols-4">
-          {featuredCaseStudy.outcomes.map((outcome) => (
+          {cs.outcomes.map((outcome) => (
             <div key={outcome.label}>
               <dt className="mono-label text-slate-500">{outcome.label}</dt>
               <dd className="mt-2 text-sm font-medium text-white">{outcome.value}</dd>
@@ -77,7 +77,7 @@ const FullCaseStudy = () => (
         {storySections.map(([label, key]) => (
           <Card key={key}>
             <h2 className="display-ink text-xl text-white">{label}</h2>
-            <p className="mt-4 text-sm leading-7 text-slate-400">{featuredCaseStudy[key]}</p>
+            <p className="mt-4 text-sm leading-7 text-slate-400">{cs[key]}</p>
           </Card>
         ))}
       </div>
@@ -85,10 +85,10 @@ const FullCaseStudy = () => (
       <Card className="mt-6">
         <p className="eyebrow">// how it's built</p>
         <h2 className="display-ink mt-4 text-2xl text-white">A full-stack system, end to end</h2>
-        <p className="mt-4 text-sm leading-8 text-slate-400">{featuredCaseStudy.howItBuilt}</p>
+        <p className="mt-4 text-sm leading-8 text-slate-400">{cs.howItBuilt}</p>
 
         <div className="mt-8 grid gap-4 lg:grid-cols-[1fr_auto_1fr_auto_1fr] lg:items-center">
-          {featuredCaseStudy.architectureLayers.map((layer, index) => (
+          {cs.architectureLayers.map((layer, index) => (
             <div key={layer.layer} className="contents">
               {index > 0 ? (
                 <div className="hidden items-center justify-center lg:flex" aria-hidden="true">
@@ -118,7 +118,7 @@ const FullCaseStudy = () => (
                 <p className="mt-1 text-sm text-slate-500">{layer.detail}</p>
                 <p className="mt-4 text-sm leading-6 text-slate-400">{layer.note}</p>
               </div>
-              {index < featuredCaseStudy.architectureLayers.length - 1 ? (
+              {index < cs.architectureLayers.length - 1 ? (
                 <div className="flex items-center justify-center py-2 lg:hidden" aria-hidden="true">
                   <svg
                     width="20"
@@ -146,27 +146,27 @@ const FullCaseStudy = () => (
       <div className="mt-5 grid gap-4 sm:mt-6 sm:grid-cols-2 sm:gap-6">
         <Card>
           <h2 className="display-ink text-xl text-white">Performance</h2>
-          <p className="mt-4 text-sm leading-7 text-slate-400">{featuredCaseStudy.performance}</p>
+          <p className="mt-4 text-sm leading-7 text-slate-400">{cs.performance}</p>
         </Card>
         <Card>
           <h2 className="display-ink text-xl text-white">Lessons learned</h2>
-          <p className="mt-4 text-sm leading-7 text-slate-400">{featuredCaseStudy.lessons}</p>
+          <p className="mt-4 text-sm leading-7 text-slate-400">{cs.lessons}</p>
         </Card>
       </div>
 
       <Card className="mt-6 border-signal/25">
         <p className="eyebrow">// outcome</p>
         <h2 className="display-ink mt-4 text-2xl text-white">What shipped</h2>
-        <p className="mt-4 text-sm leading-8 text-slate-400">{featuredCaseStudy.outcome}</p>
-        <p className="mt-4 text-sm leading-8 text-slate-400">{featuredCaseStudy.future}</p>
+        <p className="mt-4 text-sm leading-8 text-slate-400">{cs.outcome}</p>
+        <p className="mt-4 text-sm leading-8 text-slate-400">{cs.future}</p>
         <div className="mt-8 flex flex-wrap gap-2.5">
-          {featuredCaseStudy.techStack.map((stack) => (
+          {cs.techStack.map((stack) => (
             <Badge key={stack}>{stack}</Badge>
           ))}
         </div>
         <div className="mt-8">
-          <Button href={featuredCaseStudy.liveUrl} external icon>
-            See it live. {featuredCaseStudy.liveUrl.replace('https://', '')}
+          <Button href={cs.liveUrl} external icon>
+            See it live. {cs.liveUrl.replace('https://', '')}
           </Button>
         </div>
       </Card>
@@ -268,9 +268,14 @@ const ProjectCaseStudy = ({ project }) => (
 const CaseStudy = () => {
   const { slug } = useParams();
 
-  // Default /case-study (no slug) or so-safe-corps → full detailed case study
+  // Default /case-study (no slug) → So-Safe Corps featured case study
   if (!slug || slug === 'so-safe-corps') {
-    return <FullCaseStudy />;
+    return <FullCaseStudy cs={featuredCaseStudy} />;
+  }
+
+  // Verdant Estates → full detailed case study
+  if (slug === 'verdant-estates') {
+    return <FullCaseStudy cs={verdantEstatesCaseStudy} />;
   }
 
   const project = getProjectBySlug(slug);

@@ -1,6 +1,7 @@
 import { insights } from '../content/insights.js';
 import { industries } from '../content/industries.js';
 import { projects } from '../content/projects.js';
+import { siteConfig } from '../content/site.js';
 
 const liveCount = projects.filter((p) => p.status === 'live').length;
 const buildingCount = projects.filter((p) => p.status !== 'live').length;
@@ -18,6 +19,7 @@ export const routeMeta = [
         'Ferdinard Ashonibare built the official digital platform for Ogun State So-Safe Corps, a state security institution. Full-stack web developer in Lagos, Nigeria. Live in production.',
       socialDescription:
         'I built the digital platform for a state security institution. Live in production. Ferdinard Ashonibare, full-stack web developer in Lagos, Nigeria.',
+      ogImage: '/og-home.jpg',
       keywords: [
         'Ferdinard Ashonibare',
         'Ferdinand Ashonibare',
@@ -46,6 +48,7 @@ export const routeMeta = [
       title: 'About Ferdinard Ashonibare | Full-Stack Web Developer — Lagos, Nigeria',
       description:
         'Learn about Ferdinard Ashonibare (Ferdinand Ashonibare) — a full-stack web developer from Lagos, Nigeria building secure platforms for government, hospitality, education, and real estate.',
+      ogImage: '/og-about.jpg',
       keywords: ['about Ferdinard Ashonibare', 'Ferdinand Ashonibare', 'full-stack developer', 'Lagos developer', 'Nigeria web developer', 'Ashonibare developer']
     }
   },
@@ -59,6 +62,7 @@ export const routeMeta = [
       title: 'Work & Projects | Ferdinard Ashonibare — Full-Stack Developer',
       description:
         'Selected projects by Ferdinard Ashonibare — Ogun State So-Safe Corps government platform, De Wura Hotel, Verdant Estates, and more live platforms.',
+      ogImage: '/og-work.jpg',
       keywords: ['portfolio', 'Ferdinard Ashonibare projects', 'Ogun State So-Safe Corps', 'De Wura Hotel', 'NaijaMart', 'EduTrack', 'Verdant Estates', 'web developer portfolio Lagos']
     }
   },
@@ -71,6 +75,7 @@ export const routeMeta = [
       title: 'Case Study: So-Safe Corps | Ferdinard Ashonibare — Full-Stack Developer',
       description:
         'How Ferdinard Ashonibare built the secure digital platform for Ogun State So-Safe Corps — research, architecture, security, and delivery.',
+      ogImage: '/projects/so-safe-corps.jpg',
       keywords: ['case study', 'government platform', 'Ogun State So-Safe Corps', 'Ferdinard Ashonibare', 'web developer case study']
     }
   },
@@ -95,6 +100,7 @@ export const routeMeta = [
       title: 'Insights & Articles | Ferdinard Ashonibare — Full-Stack Developer',
       description:
         'Notes on engineering, product, and design from full-stack developer Ferdinard Ashonibare — web development insights and tutorials.',
+      ogImage: '/og-work.jpg',
       keywords: ['insights', 'web development', 'engineering notes', 'Ferdinard Ashonibare', 'developer blog']
     }
   },
@@ -108,6 +114,7 @@ export const routeMeta = [
       title: 'Contact Ferdinard Ashonibare | Hire Full-Stack Developer — Lagos, Nigeria',
       description:
         'Get in touch with Ferdinard Ashonibare (Ferdinand Ashonibare) — hire a full-stack web developer in Lagos, Nigeria for websites, web apps, and projects.',
+      ogImage: '/og-contact.jpg',
       keywords: ['contact Ferdinard Ashonibare', 'hire web developer', 'Lagos developer', 'Ferdinand Ashonibare contact', 'Nigeria developer for hire']
     }
   }
@@ -126,6 +133,7 @@ export const articleRoutes = insights.map((insight) => ({
   seo: {
     title: `${insight.title} | Ferdinard Ashonibare`,
     description: insight.summary,
+    ogImage: '/og-work.jpg',
     keywords: ['insights', insight.category, insight.title]
   }
 }));
@@ -144,6 +152,7 @@ export const caseStudyRoutes = projects
     seo: {
       title: `Case Study: ${project.name} | Ferdinard Ashonibare`,
       description: `${project.tagline} — an in-depth case study by Ferdinard Ashonibare on the ${project.name} ${project.sector.toLowerCase()} project.`,
+      ogImage: project.image || siteConfig.defaultImage,
       keywords: ['case study', project.name, project.sector, 'Ferdinard Ashonibare']
     }
   }));

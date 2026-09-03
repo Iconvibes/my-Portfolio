@@ -35,7 +35,7 @@ export const getSeoConfig = (path = '/') => {
     keywords: route.seo.keywords || [],
     robots: 'index,follow',
     canonical,
-    image: `${siteConfig.siteUrl}${siteConfig.defaultImage}`,
+    image: `${siteConfig.siteUrl}${route.seo.ogImage || siteConfig.defaultImage}`,
     path: route.path
   };
 };
