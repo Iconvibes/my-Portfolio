@@ -75,7 +75,7 @@ export const routeMeta = [
       title: 'Case Study: So-Safe Corps | Ferdinard Ashonibare — Full-Stack Developer',
       description:
         'How Ferdinard Ashonibare built the secure digital platform for Ogun State So-Safe Corps — research, architecture, security, and delivery.',
-      ogImage: '/projects/so-safe-corps.jpg',
+      ogImage: '/og-cs-so-safe-corps.jpg',
       keywords: ['case study', 'government platform', 'Ogun State So-Safe Corps', 'Ferdinard Ashonibare', 'web developer case study']
     }
   },
@@ -142,6 +142,11 @@ export const articleRoutes = insights.map((insight) => ({
 // source of truth: a project with a non-empty `caseStudyUrl` gets a real,
 // prerendered route. The slug is extracted from the URL so projects, router,
 // prerenderer, sitemap, breadcrumbs, and structured data all agree.
+const csOgImages = {
+  'so-safe-corps': '/og-cs-so-safe-corps.jpg',
+  'verdant-estates': '/og-cs-verdant-estates.jpg',
+};
+
 export const caseStudyRoutes = projects
   .filter((project) => project.caseStudyUrl)
   .map((project) => ({
@@ -152,7 +157,7 @@ export const caseStudyRoutes = projects
     seo: {
       title: `Case Study: ${project.name} | Ferdinard Ashonibare`,
       description: `${project.tagline} — an in-depth case study by Ferdinard Ashonibare on the ${project.name} ${project.sector.toLowerCase()} project.`,
-      ogImage: project.image || siteConfig.defaultImage,
+      ogImage: csOgImages[project.slug] || project.image || siteConfig.defaultImage,
       keywords: ['case study', project.name, project.sector, 'Ferdinard Ashonibare']
     }
   }));

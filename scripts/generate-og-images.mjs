@@ -83,22 +83,36 @@ const baseStyles = `
 const cards = {
   'og-home': {
     html: `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><style>${baseStyles}
-      .card-inner { display: flex; align-items: center; gap: 50px; }
-      .left { flex: 1; }
-      .right { display: flex; align-items: center; }
-      .photo { width: 280px; height: 360px; border-radius: 18px; object-fit: cover;
-        object-position: center top; border: 1px solid rgba(148,163,184,.15);
-        box-shadow: 0 24px 60px rgba(0,0,0,.5); }
+      .card-inner { display: grid; grid-template-columns: 1fr 280px; align-items: center; gap: 40px; }
+      .photo-wrap { position: relative; justify-self: end; }
+      .photo-glow { position: absolute; inset: -10px; border-radius: 22px;
+        background: radial-gradient(ellipse at center, rgba(200,241,53,.10), transparent 70%);
+        filter: blur(18px); }
+      .photo { width: 260px; height: 400px; border-radius: 14px; object-fit: cover;
+        object-position: center 15%; border: 1px solid rgba(148,163,184,.12);
+        box-shadow: 0 30px 80px rgba(0,0,0,.55); position: relative; z-index: 1; }
+      .tagline { font-family: 'DM Sans', sans-serif; font-size: 16px; line-height: 1.6;
+        color: #94a3b8; margin-top: 12px; max-width: 500px; }
+      .stats-row { display: flex; gap: 28px; margin-top: 22px; }
+      .stat-item { display: flex; flex-direction: column; }
+      .stat-val { font-family: 'Manrope', sans-serif; font-weight: 800; font-size: 24px; color: #c8f135; }
+      .stat-key { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #64748b;
+        letter-spacing: .08em; text-transform: uppercase; margin-top: 2px; }
     </style></head><body>
       <div class="grid-bg"></div>
       <div class="card-inner">
-        <div class="left">
-          <div class="eyebrow">// full-stack developer — Lagos, Nigeria</div>
+        <div>
+          <div class="eyebrow">// full-stack developer</div>
           <div class="title">Ferdinard <span class="accent">Ashonibare</span></div>
-          <div class="subtitle">Building fast, secure web platforms for government, hospitality, education, and real estate. So-Safe Corps platform — live in production.</div>
-          <div class="badge">Open to work</div>
+          <div class="tagline">Building fast, secure web platforms for government, hospitality, education, and real estate. So-Safe Corps — live in production.</div>
+          <div class="stats-row">
+            <div class="stat-item"><span class="stat-val">2</span><span class="stat-key">Live platforms</span></div>
+            <div class="stat-item"><span class="stat-val">4</span><span class="stat-key">Industries</span></div>
+            <div class="stat-item"><span class="stat-val">6</span><span class="stat-key">Core tech</span></div>
+          </div>
         </div>
-        <div class="right">
+        <div class="photo-wrap">
+          <div class="photo-glow"></div>
           <img class="photo" src="profile.jpg" alt="Ferdinard Ashonibare"/>
         </div>
       </div>
@@ -108,21 +122,41 @@ const cards = {
 
   'og-about': {
     html: `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><style>${baseStyles}
-      .stats { display: flex; gap: 32px; margin-top: 28px; }
-      .stat { text-align: left; }
-      .stat-num { font-family: 'Manrope', sans-serif; font-weight: 800; font-size: 36px; color: #c8f135; }
-      .stat-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #64748b;
-        letter-spacing: .1em; text-transform: uppercase; margin-top: 4px; }
+      .card-inner { display: grid; grid-template-columns: 280px 1fr; align-items: center; gap: 40px; }
+      .photo-wrap { position: relative; justify-self: start; }
+      .photo-glow { position: absolute; inset: -10px; border-radius: 22px;
+        background: radial-gradient(ellipse at center, rgba(200,241,53,.08), transparent 70%);
+        filter: blur(18px); }
+      .photo { width: 260px; height: 400px; border-radius: 14px; object-fit: cover;
+        object-position: center 15%; border: 1px solid rgba(148,163,184,.12);
+        box-shadow: 0 24px 60px rgba(0,0,0,.5); position: relative; z-index: 1; }
+      .about-text { font-family: 'DM Sans', sans-serif; font-size: 16px; line-height: 1.65;
+        color: #94a3b8; margin-top: 12px; max-width: 520px; }
+      .tech-row { display: flex; gap: 8px; margin-top: 20px; flex-wrap: wrap; }
+      .tech-pill { background: rgba(200,241,53,.08); border: 1px solid rgba(200,241,53,.15);
+        color: #c8f135; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600;
+        padding: 5px 12px; border-radius: 99px; letter-spacing: .04em; }
+      .loc-tag { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #64748b;
+        letter-spacing: .08em; margin-top: 16px; }
     </style></head><body>
       <div class="grid-bg"></div>
       <div class="card-inner">
-        <div class="eyebrow">// about</div>
-        <div class="title">Ferdinard <span class="accent">Ashonibare</span></div>
-        <div class="subtitle">Full-stack web developer in Lagos, Nigeria. React, Node.js, Express, MongoDB — building platforms that serve real users in production.</div>
-        <div class="stats">
-          <div class="stat"><div class="stat-num">4</div><div class="stat-label">Focus Sectors</div></div>
-          <div class="stat"><div class="stat-num">6</div><div class="stat-label">Core Technologies</div></div>
-          <div class="stat"><div class="stat-num">2</div><div class="stat-label">Live Platforms</div></div>
+        <div class="photo-wrap">
+          <div class="photo-glow"></div>
+          <img class="photo" src="profile.jpg" alt="Ferdinard Ashonibare"/>
+        </div>
+        <div>
+          <div class="eyebrow">// about</div>
+          <div class="title">Ferdinard <span class="accent">Ashonibare</span></div>
+          <div class="about-text">Full-stack web developer in Lagos, Nigeria. I design and build complete web products — secure platforms for institutions, polished sites for businesses, and practical tools for educators.</div>
+          <div class="tech-row">
+            <span class="tech-pill">React</span>
+            <span class="tech-pill">Node.js</span>
+            <span class="tech-pill">MongoDB</span>
+            <span class="tech-pill">Express</span>
+            <span class="tech-pill">Tailwind</span>
+          </div>
+          <div class="loc-tag">📍 Lagos, Nigeria — working worldwide</div>
         </div>
       </div>
       <div class="site-url">ferdinardashonibare.com/about</div>
@@ -180,6 +214,112 @@ const cards = {
         </div>
       </div>
       <div class="site-url">ferdinardashonibare.com/contact</div>
+    </body></html>`
+  },
+
+  'og-cs-so-safe-corps': {
+    html: `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><style>${baseStyles}
+      .card-inner { display: grid; grid-template-columns: 1fr 420px; align-items: center; gap: 36px; }
+      .cs-eyebrow {
+        font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600;
+        letter-spacing: .14em; text-transform: uppercase; color: #c8f135; margin-bottom: 16px;
+        display: flex; align-items: center; gap: 10px;
+      }
+      .cs-eyebrow::before { content: ''; display: inline-block; width: 28px; height: 2px; background: #c8f135; }
+      .cs-sector {
+        font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #64748b;
+        letter-spacing: .08em; text-transform: uppercase; margin-top: 12px;
+      }
+      .cs-stats { display: flex; gap: 24px; margin-top: 24px; }
+      .cs-stat { display: flex; flex-direction: column; }
+      .cs-stat-val { font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 15px; color: #f8fafc; }
+      .cs-stat-key { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #64748b;
+        letter-spacing: .06em; text-transform: uppercase; margin-top: 2px; }
+      .browser { background: #0c1320; border-radius: 12px; overflow: hidden;
+        border: 1px solid rgba(148,163,184,.12); box-shadow: 0 20px 60px rgba(0,0,0,.5); }
+      .browser-bar { display: flex; align-items: center; gap: 6px; padding: 10px 14px;
+        background: #0f1729; border-bottom: 1px solid rgba(148,163,184,.08); }
+      .dot { width: 8px; height: 8px; border-radius: 50%; }
+      .dot-r { background: #ef4444; } .dot-y { background: #eab308; } .dot-g { background: #22c55e; }
+      .browser-url { flex: 1; margin-left: 10px; font-family: 'JetBrains Mono', monospace;
+        font-size: 10px; color: #64748b; letter-spacing: .04em; }
+      .browser-img { width: 100%; height: 260px; object-fit: cover; object-position: center top;
+        display: block; }
+    </style></head><body>
+      <div class="grid-bg"></div>
+      <div class="card-inner">
+        <div>
+          <div class="cs-eyebrow">Case Study</div>
+          <div class="title" style="font-size:38px;">Ogun State <span class="accent">So-Safe Corps</span></div>
+          <div class="cs-sector">Government &amp; Public Sector</div>
+          <div class="cs-stats">
+            <div class="cs-stat"><span class="cs-stat-val">Live</span><span class="cs-stat-key">In production</span></div>
+            <div class="cs-stat"><span class="cs-stat-val">≈48 KB</span><span class="cs-stat-key">Page weight</span></div>
+            <div class="cs-stat"><span class="cs-stat-val">≈0.1 s</span><span class="cs-stat-key">TTFB</span></div>
+          </div>
+        </div>
+        <div class="browser">
+          <div class="browser-bar">
+            <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
+            <span class="browser-url">sosafecorps.og.gov.ng</span>
+          </div>
+          <img class="browser-img" src="../projects/so-safe-corps.jpg" alt="So-Safe Corps platform"/>
+        </div>
+      </div>
+      <div class="site-url">ferdinardashonibare.com/case-study/so-safe-corps</div>
+    </body></html>`
+  },
+
+  'og-cs-verdant-estates': {
+    html: `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><style>${baseStyles}
+      .card-inner { display: grid; grid-template-columns: 1fr 420px; align-items: center; gap: 36px; }
+      .cs-eyebrow {
+        font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600;
+        letter-spacing: .14em; text-transform: uppercase; color: #22d3ee; margin-bottom: 16px;
+        display: flex; align-items: center; gap: 10px;
+      }
+      .cs-eyebrow::before { content: ''; display: inline-block; width: 28px; height: 2px; background: #22d3ee; }
+      .cs-sector {
+        font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #64748b;
+        letter-spacing: .08em; text-transform: uppercase; margin-top: 12px;
+      }
+      .cs-stats { display: flex; gap: 24px; margin-top: 24px; }
+      .cs-stat { display: flex; flex-direction: column; }
+      .cs-stat-val { font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 15px; color: #f8fafc; }
+      .cs-stat-key { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #64748b;
+        letter-spacing: .06em; text-transform: uppercase; margin-top: 2px; }
+      .browser { background: #0c1320; border-radius: 12px; overflow: hidden;
+        border: 1px solid rgba(148,163,184,.12); box-shadow: 0 20px 60px rgba(0,0,0,.5); }
+      .browser-bar { display: flex; align-items: center; gap: 6px; padding: 10px 14px;
+        background: #0f1729; border-bottom: 1px solid rgba(148,163,184,.08); }
+      .dot { width: 8px; height: 8px; border-radius: 50%; }
+      .dot-r { background: #ef4444; } .dot-y { background: #eab308; } .dot-g { background: #22c55e; }
+      .browser-url { flex: 1; margin-left: 10px; font-family: 'JetBrains Mono', monospace;
+        font-size: 10px; color: #64748b; letter-spacing: .04em; }
+      .browser-img { width: 100%; height: 260px; object-fit: cover; object-position: center top;
+        display: block; }
+    </style></head><body>
+      <div class="grid-bg"></div>
+      <div class="card-inner">
+        <div>
+          <div class="cs-eyebrow">Case Study</div>
+          <div class="title" style="font-size:38px;"><span style="color:#22d3ee;">Verdant</span> Estates</div>
+          <div class="cs-sector">Real Estate</div>
+          <div class="cs-stats">
+            <div class="cs-stat"><span class="cs-stat-val">Live</span><span class="cs-stat-key">In production</span></div>
+            <div class="cs-stat"><span class="cs-stat-val">Mobile-first</span><span class="cs-stat-key">Responsive</span></div>
+            <div class="cs-stat"><span class="cs-stat-val">Search-first</span><span class="cs-stat-key">Discovery UX</span></div>
+          </div>
+        </div>
+        <div class="browser">
+          <div class="browser-bar">
+            <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
+            <span class="browser-url">verdant-estates-alpha.vercel.app</span>
+          </div>
+          <img class="browser-img" src="../projects/verdant-estates.jpg" alt="Verdant Estates platform"/>
+        </div>
+      </div>
+      <div class="site-url">ferdinardashonibare.com/case-study/verdant-estates</div>
     </body></html>`
   }
 };
@@ -266,10 +406,20 @@ const results = [];
 for (const [name, { html }] of Object.entries(cards)) {
   const outputPath = path.join(publicDir, `${name}.jpg`);
   const tmpHtml = path.join(publicDir, `.og-${name}-${process.pid}.html`);
-  const tmpPng = path.join(tmpdir(), `og-${name}-${process.pid}.png`);
+  const tmpPng = path.join(tmpdir(), `og-${name}-${process.pid}.png`);  try {
+    // Inline project screenshots as base64 data URIs for case study cards
+    let processedHtml = html;
+    const imgRegex = /src="\.\.\/projects\/([^"]+)"/g;
+    let match;
+    while ((match = imgRegex.exec(html)) !== null) {
+      const imgFile = path.join(publicDir, 'projects', match[1]);
+      if (existsSync(imgFile)) {
+        const b64 = readFileSync(imgFile).toString('base64');
+        processedHtml = processedHtml.replace(match[0], `src="data:image/jpeg;base64,${b64}"`);
+      }
+    }
 
-  try {
-    writeFileSync(tmpHtml, html, 'utf8');
+    writeFileSync(tmpHtml, processedHtml, 'utf8');
 
     const shot = spawnSync(
       chrome,
