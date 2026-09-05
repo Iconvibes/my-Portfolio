@@ -71,7 +71,6 @@ const ProjectCard = ({ project, large = false }) => {
 /* ---------- Work page: detailed view ---------- */
 
 const ProjectDetail = ({ project, index }) => {
-  const isLive = project.status === 'live';
   const isSoon = project.status === 'soon';
   const reversed = index % 2 === 1;
 

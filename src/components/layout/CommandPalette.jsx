@@ -247,7 +247,7 @@ const CommandPalette = () => {
         aria-label="Open command palette"
         aria-haspopup="dialog"
         title="Command palette (Cmd+K)"
-        className="fixed bottom-5 right-5 z-40 flex h-11 w-11 items-center justify-center rounded-full border border-line bg-ink-2 text-signal shadow-[0_16px_40px_rgba(0,0,0,0.45)] transition duration-150 hover:border-signal/60 hover:text-signal-ink hover:bg-signal focus-visible:outline-none sm:bottom-6 sm:right-6 sm:h-12 sm:w-12"
+        className={`fixed bottom-5 right-5 z-40 flex h-11 w-11 items-center justify-center rounded-full border border-line bg-ink-2 text-signal shadow-[0_16px_40px_rgba(0,0,0,0.45)] transition${reduced ? '' : ' duration-150'} hover:border-signal/60 hover:text-signal-ink hover:bg-signal focus-visible:outline-none sm:bottom-6 sm:right-6 sm:h-12 sm:w-12`}
       >
         <CommandLineIcon className="h-5 w-5" aria-hidden="true" />
         <span className="mono-label absolute -top-2 -right-2 rounded-full border border-line bg-ink px-1.5 py-0.5 text-[0.55rem] text-slate-400">
@@ -330,9 +330,9 @@ const CommandPalette = () => {
                           data-active={active}
                           onMouseEnter={() => setActiveIndex(index)}
                           onClick={() => runCommand(command)}
-                          className={`flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left transition duration-150 ${
+                          className={`flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left transition${reduced ? '' : ' duration-150'} ${
                             active ? 'bg-signal/10' : 'hover:bg-white/5'
-                          }`}
+                          }}`}
                         >
                           <span
                             className={`font-mono text-sm ${
@@ -375,4 +375,3 @@ const CommandPalette = () => {
 };
 
 export default CommandPalette;
-

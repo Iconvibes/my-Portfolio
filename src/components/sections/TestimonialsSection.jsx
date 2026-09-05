@@ -16,7 +16,7 @@ const TestimonialsSection = ({ index = '(07)' }) => {
         description="Working with clients is a relationship, not a transaction. Here's what they say about it."
       >
         <div className="mt-8 grid gap-4 sm:mt-12 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
-          {testimonials.map((testimonial, index) => (
+          {testimonials.map((testimonial) => (
             <Card key={testimonial.name} as="figure" hover={false} className="flex h-full flex-col">
               <blockquote>
                 <p className="text-sm leading-7 text-slate-300">&ldquo;{testimonial.quote}&rdquo;</p>
