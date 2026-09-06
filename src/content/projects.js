@@ -152,6 +152,30 @@ export const projects = [
     imageHeight: 738,
     featured: false,
     accent: 'cyan'
+  },
+  {
+    slug: 'ego-pay',
+    name: 'Ego Pay',
+    tagline: 'A focused mobile money experience for everyday transfers',
+    sector: 'Fintech',
+    description:
+      'A mobile-first fintech experience designed to make sending money, checking balances, and reviewing transaction activity feel clear and dependable.',
+    highlights: [
+      'Mobile-first wallet dashboard',
+      'Clear balance and transaction states',
+      'Fast access to everyday money actions'
+    ],
+    tech: ['React', 'Tailwind CSS', 'Node.js'],
+    status: 'production',
+    href: '',
+    caseStudyUrl: '',
+    domain: 'In Production',
+    image: '/egopay.png',
+    imageWidth: 864,
+    imageHeight: 1792,
+    imageFit: 'contain',
+    featured: false,
+    accent: 'cyan'
   }
 ];
 

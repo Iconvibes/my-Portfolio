@@ -43,7 +43,7 @@ const ProjectFrame = ({ project, eager = false, className = '' }) => {
       </div>
 
       {/* Scene: real image when available, designed visual otherwise */}
-      <div className="relative aspect-[16/10] overflow-hidden bg-ink">
+      <div className={`relative aspect-16/10 overflow-hidden bg-ink ${project.imageFit === 'contain' ? 'flex items-center justify-center' : ''}`}>
         {hasImage ? (
           hasWebp ? (
             /* Modern browsers: serve WebP via picture element with responsive sizes */
@@ -60,7 +60,7 @@ const ProjectFrame = ({ project, eager = false, className = '' }) => {
                 loading={eager ? 'eager' : 'lazy'}
                 decoding="async"
                 fetchPriority={eager ? 'high' : 'auto'}
-                className="absolute inset-0 h-full w-full object-cover object-top"
+                className={`h-full w-full ${project.imageFit === 'contain' ? 'object-contain' : 'absolute inset-0 object-cover object-top'}`}
               />
             </picture>
           ) : (
@@ -75,7 +75,7 @@ const ProjectFrame = ({ project, eager = false, className = '' }) => {
               loading={eager ? 'eager' : 'lazy'}
               decoding="async"
               fetchPriority={eager ? 'high' : 'auto'}
-              className="absolute inset-0 h-full w-full object-cover object-top"
+              className={`h-full w-full ${project.imageFit === 'contain' ? 'object-contain' : 'absolute inset-0 object-cover object-top'}`}
             />
           )
         ) : (
