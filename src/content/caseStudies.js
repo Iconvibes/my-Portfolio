@@ -84,6 +84,95 @@ export const featuredCaseStudy = {
   ]
 };
 
+export const egopayCaseStudy = {
+  client: 'EgoPay',
+  liveUrl: 'https://egopay-5opk.vercel.app/',
+  intro:
+    'A backend banking-system simulation built for a training assignment, connected to the simulated NibssByPhoenix NIBSS API. It is not production banking infrastructure and uses synthetic test identities only.',
+  visitLabel: 'Visit the hosted demo',
+  title: 'A banking-system simulation where ownership and uncertainty stay explicit',
+  overview:
+    'EgoPay exposes a REST API for registration, BVN/NIN KYC verification, account creation, balance checks, name enquiry, intra-bank and inter-bank transfers, transaction status, and transaction history. All banking operations are delegated to NibssByPhoenix, the simulated NIBSS sandbox API.',
+  challenge:
+    'The training assignment required a complete customer journey while keeping customer data isolated and avoiding guesses about external transaction outcomes. The README explicitly frames the result as a simulation exercise, not production banking infrastructure.',
+  research:
+    'The project is structured around the sandbox contract: customer registration and KYC precede account creation, name enquiry precedes transfers, and the upstream TSQ endpoint supplies later transaction status. BVN and NIN flows use the sandbox identity store and synthetic test identities.',
+  planning:
+    'The backend uses a modular-monolith shape: Express routers forward to controllers, services hold business rules, the NibssByPhoenix client is the only module that calls the external API, and Prisma with PostgreSQL handles persistence.',
+  design:
+    'The companion frontend is a React and Vite web app with an OPay-inspired mobile interface. This case study focuses on the backend contract and the rules that keep the customer journey scoped to the authenticated customer.',
+  architecture:
+    'Node.js and strict TypeScript power an Express 5 API. Zod validates input, Prisma persists records in PostgreSQL, and a dedicated NibssByPhoenix client normalizes upstream responses into typed contracts. JWT authenticates customers while a separate fintech JWT authenticates EgoPay to the sandbox.',
+  howItBuilt:
+    'Requests move from Express routers to controllers and services. Services apply ownership and transaction rules, then use the NibssByPhoenix client for KYC, account, balance, name-enquiry, transfer, and TSQ calls. Prisma records the local customer, account, and transaction state.',
+  architectureLayers: [
+    {
+      layer: 'HTTP',
+      title: 'Express 5 API',
+      detail: 'Routes, controllers, Zod validation',
+      note: 'The API boundary handles request validation, authentication middleware, rate limiting, error handling, and customer-scoped endpoints.'
+    },
+    {
+      layer: 'Rules',
+      title: 'Service layer',
+      detail: 'Ownership, transfers, reconciliation',
+      note: 'Business rules derive identity from the verified JWT, record transfer state before external calls, and reconcile incoming ledger changes.'
+    },
+    {
+      layer: 'Integration',
+      title: 'NibssByPhoenix client',
+      detail: 'Typed sandbox API contracts',
+      note: 'One client owns external HTTP calls, fintech-token refresh, timeout handling, and normalization of inconsistent upstream response shapes.'
+    }
+  ],
+  development:
+    'The implementation separates transport from business logic and persistence. The sender for every transfer comes from the authenticated session; the request body accepts the recipient, amount, and narration rather than a client-selected source account.',
+  security:
+    'Customer identity comes exclusively from the verified JWT, and ownership-scoped queries prevent cross-customer access. One account per customer is enforced by a database unique constraint. Passwords use bcrypt, inputs use Zod, and Helmet, a CORS allowlist, rate limiting, request limits, and Pino sensitive-field redaction are part of the security boundary. KYC numbers are masked in responses, and only synthetic test identities are used.',
+  performance:
+    'External calls use timeouts and normalized error handling. A transfer is recorded locally as PENDING before the upstream call and changes to SUCCESS or FAILED only from the upstream response; a timeout remains PENDING because its outcome is unknown. Incoming payments are found by polling and reconciling the live ledger against the local balance cache.',
+  lessons:
+    'The project demonstrates why ownership should be derived server-side, why uncertain external outcomes should remain explicit, and why balance reconciliation is needed when an upstream API provides no incoming-transactions webhook or listing.',
+  outcome:
+    'A documented training exercise that connects a customer-facing banking journey to a simulated NIBSS sandbox while keeping account ownership, transaction state, and synthetic-identity boundaries explicit.',
+  future:
+    'The README lists known sandbox limitations, including transient upstream failures, in-memory rate limits, and the lack of webhooks for incoming payments. These constraints are part of the simulation framing, not claims about a production banking deployment.',
+  techStack: ['Node.js', 'TypeScript', 'Express 5', 'PostgreSQL', 'Prisma', 'Zod', 'JWT', 'bcrypt', 'Helmet', 'Pino'],
+  timeline: ['Assignment', 'Architecture', 'Integration', 'Verification'],
+  atAGlance: [
+    { label: 'Project', value: 'EgoPay backend simulation' },
+    { label: 'Context', value: 'Training assignment' },
+    { label: 'External API', value: 'Simulated NibssByPhoenix NIBSS API' },
+    { label: 'Persistence', value: 'PostgreSQL via Prisma' }
+  ],
+  outcomes: [
+    {
+      label: 'Sender ownership',
+      value: 'Server-derived',
+      detail: 'The authenticated session determines the debited account; client-supplied from/account identifiers are not trusted.',
+      propertyID: 'security'
+    },
+    {
+      label: 'Transfer state',
+      value: 'PENDING first',
+      detail: 'Timeouts remain pending until the upstream TSQ status can establish the outcome.',
+      propertyID: 'reliability'
+    },
+    {
+      label: 'Incoming payments',
+      value: 'Ledger reconciliation',
+      detail: 'Polling compares the live ledger with the local cache to detect credits the app did not initiate.',
+      propertyID: 'architecture'
+    },
+    {
+      label: 'Account cardinality',
+      value: 'One per customer',
+      detail: 'A database unique constraint backs the service-level check.',
+      propertyID: 'data'
+    }
+  ]
+};
+
 export const verdantEstatesCaseStudy = {
   client: 'Verdant Estates',
   liveUrl: 'https://verdant-estates-alpha.vercel.app/',

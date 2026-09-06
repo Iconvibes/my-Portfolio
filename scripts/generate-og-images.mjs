@@ -321,6 +321,59 @@ const cards = {
       </div>
       <div class="site-url">ferdinardashonibare.com/case-study/verdant-estates</div>
     </body></html>`
+  },
+
+  'og-cs-egopay': {
+    html: `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><style>${baseStyles}
+      .card-inner { display: grid; grid-template-columns: 1fr 420px; align-items: center; gap: 36px; }
+      .cs-eyebrow {
+        font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600;
+        letter-spacing: .14em; text-transform: uppercase; color: #fbbf24; margin-bottom: 16px;
+        display: flex; align-items: center; gap: 10px;
+      }
+      .cs-eyebrow::before { content: ''; display: inline-block; width: 28px; height: 2px; background: #fbbf24; }
+      .cs-sector {
+        font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #64748b;
+        letter-spacing: .08em; text-transform: uppercase; margin-top: 12px;
+      }
+      .cs-stats { display: flex; gap: 24px; margin-top: 24px; }
+      .cs-stat { display: flex; flex-direction: column; }
+      .cs-stat-val { font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 15px; color: #f8fafc; }
+      .cs-stat-key { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #64748b;
+        letter-spacing: .06em; text-transform: uppercase; margin-top: 2px; }
+      .system { background: #0c1320; border-radius: 12px; overflow: hidden;
+        border: 1px solid rgba(148,163,184,.12); box-shadow: 0 20px 60px rgba(0,0,0,.5); padding: 28px; }
+      .system-bar { display: flex; align-items: center; gap: 6px; padding-bottom: 24px; border-bottom: 1px solid rgba(148,163,184,.08); }
+      .dot { width: 8px; height: 8px; border-radius: 50%; }
+      .dot-r { background: #ef4444; } .dot-y { background: #eab308; } .dot-g { background: #22c55e; }
+      .system-label { flex: 1; margin-left: 10px; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #64748b; letter-spacing: .04em; }
+      .flow { display: grid; gap: 10px; margin-top: 24px; }
+      .flow-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; border: 1px solid rgba(251,191,36,.16); border-radius: 8px; padding: 12px 14px; }
+      .flow-name { font-family: 'Manrope', sans-serif; font-size: 13px; color: #f8fafc; }
+      .flow-state { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #fbbf24; text-transform: uppercase; }
+    </style></head><body>
+      <div class="grid-bg"></div>
+      <div class="card-inner">
+        <div>
+          <div class="cs-eyebrow">Case Study</div>
+          <div class="title" style="font-size:38px;"><span class="accent">EgoPay</span> backend</div>
+          <div class="cs-sector">Fintech training &amp; simulation</div>
+          <div class="cs-stats">
+            <div class="cs-stat"><span class="cs-stat-val">PENDING</span><span class="cs-stat-key">Unknown outcomes stay explicit</span></div>
+            <div class="cs-stat"><span class="cs-stat-val">JWT</span><span class="cs-stat-key">Session-derived ownership</span></div>
+          </div>
+        </div>
+        <div class="system">
+          <div class="system-bar"><span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span><span class="system-label">egopay-5opk.vercel.app · simulated sandbox</span></div>
+          <div class="flow">
+            <div class="flow-row"><span class="flow-name">Authenticated session</span><span class="flow-state">owner</span></div>
+            <div class="flow-row"><span class="flow-name">Transfer record</span><span class="flow-state">pending</span></div>
+            <div class="flow-row"><span class="flow-name">Ledger reconciliation</span><span class="flow-state">polling</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="site-url">ferdinardashonibare.com/case-study/egopay</div>
+    </body></html>`
   }
 };
 
