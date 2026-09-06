@@ -4,7 +4,7 @@ import CtaSection from '../components/sections/CtaSection';
 import Badge from '../components/ui/Badge';
 import Button from '../components/ui/Button';
 import Card from '../components/ui/Card';
-import { featuredCaseStudy, verdantEstatesCaseStudy } from '../content';
+import { egopayCaseStudy, featuredCaseStudy, verdantEstatesCaseStudy } from '../content';
 import { getProjectBySlug } from '../content/projects';
 
 const storySections = [
@@ -24,11 +24,11 @@ const FullCaseStudy = ({ cs }) => (
       eyebrow="Case Study"
       index="(01)"
       title={cs.title}
-      intro={`A ${cs.client === 'Verdant Estates' ? 'modern real estate platform' : 'secure, public-facing platform'} for ${cs.client}, live at ${cs.liveUrl.replace('https://', '')}.`}
+      intro={cs.intro ?? `A ${cs.client === 'Verdant Estates' ? 'modern real estate platform' : 'secure, public-facing platform'} for ${cs.client}, live at ${cs.liveUrl.replace('https://', '')}.`}
     >
       <div className="mt-6 flex flex-wrap items-center gap-4">
         <Button href={cs.liveUrl} external icon>
-          Visit the live platform
+          {cs.visitLabel ?? 'Visit the live platform'}
         </Button>
         <Button href="/work" variant="outline">
           Back to all work
@@ -166,7 +166,7 @@ const FullCaseStudy = ({ cs }) => (
         </div>
         <div className="mt-8">
           <Button href={cs.liveUrl} external icon>
-            See it live. {cs.liveUrl.replace('https://', '')}
+            {cs.visitLabel ?? 'See it live.'} {cs.liveUrl.replace('https://', '')}
           </Button>
         </div>
       </Card>
@@ -276,6 +276,10 @@ const CaseStudy = () => {
   // Verdant Estates → full detailed case study
   if (slug === 'verdant-estates') {
     return <FullCaseStudy cs={verdantEstatesCaseStudy} />;
+  }
+
+  if (slug === 'egopay') {
+    return <FullCaseStudy cs={egopayCaseStudy} />;
   }
 
   const project = getProjectBySlug(slug);

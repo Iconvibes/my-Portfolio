@@ -181,6 +181,7 @@ export const articleRoutes = insights.map((insight) => ({
 // prerenderer, sitemap, breadcrumbs, and structured data all agree.
 const csOgImages = {
   "so-safe-corps": "/og-cs-so-safe-corps.jpg",
+  "egopay": "/og-cs-egopay.jpg",
   "verdant-estates": "/og-cs-verdant-estates.jpg",
 };
 

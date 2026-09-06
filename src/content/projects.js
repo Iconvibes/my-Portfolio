@@ -9,6 +9,29 @@
  */
 export const projects = [
   {
+    slug: 'egopay',
+    name: 'EgoPay',
+    tagline: 'A backend banking-system simulation built around strict ownership and transaction state',
+    sector: 'Fintech Training & Simulation',
+    description:
+      'A backend banking system built for a training assignment. It integrates with the simulated NibssByPhoenix NIBSS API for KYC, account creation, transfers, and transaction history. It is not production banking infrastructure and uses synthetic test identities only.',
+    highlights: [
+      'Server-derived sender identity prevents client-selected debits',
+      'PENDING transactions preserve unknown outcomes after timeouts',
+      'Ledger reconciliation detects incoming payments, not only app-created transfers',
+      'Live screenshot pending owner-supplied asset'
+    ],
+    tech: ['Node.js', 'TypeScript', 'Express 5', 'PostgreSQL', 'Prisma', 'Zod'],
+    status: 'live',
+    href: 'https://egopay-5opk.vercel.app/',
+    caseStudyUrl: '/case-study/egopay',
+    domain: 'egopay-5opk.vercel.app',
+    imageWidth: 1200,
+    imageHeight: 750,
+    featured: false,
+    accent: 'amber'
+  },
+  {
     slug: 'so-safe-corps',
     name: 'Ogun State So-Safe Corps',
     tagline: 'The official digital platform of a state security institution',

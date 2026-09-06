@@ -126,6 +126,10 @@ const ProjectDetail = ({ project, index }) => {
 
 const WorkSection = ({ detailed = false }) => {
   const [activeFilter, setActiveFilter] = useState('all');
+  const leadProject = projects.find((project) => project.slug === 'verdant-estates') ?? projects[0];
+  const supportingProjects = projects
+    .filter((project) => project.slug !== leadProject?.slug && !project.featured)
+    .slice(0, 4);
 
   if (detailed) {
     const filteredProjects = projects.filter(
@@ -183,12 +187,12 @@ const WorkSection = ({ detailed = false }) => {
       {/* Verdant Estates leads, then the rest (skip featured) */}
       <div className="mt-10 sm:mt-14">
         <ScrollReveal>
-          <ProjectCard project={projects[5]} large />
+          <ProjectCard project={leadProject} large />
         </ScrollReveal>
       </div>
 
       <div className="mt-8 grid gap-6 sm:mt-10 sm:grid-cols-2 sm:gap-8">
-        {projects.slice(1, 3).map((project, i) => (
+        {supportingProjects.slice(0, 2).map((project, i) => (
           <ScrollReveal key={project.slug} delay={i * 150}>
             <ProjectCard project={project} />
           </ScrollReveal>
@@ -196,7 +200,7 @@ const WorkSection = ({ detailed = false }) => {
       </div>
 
       <div className="mt-6 grid gap-6 sm:mt-8 sm:grid-cols-2 sm:gap-8">
-        {projects.slice(3, 5).map((project, i) => (
+        {supportingProjects.slice(2, 4).map((project, i) => (
           <ScrollReveal key={project.slug} delay={i * 150}>
             <ProjectCard project={project} />
           </ScrollReveal>
