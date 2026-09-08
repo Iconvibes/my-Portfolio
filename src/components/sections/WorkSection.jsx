@@ -26,22 +26,22 @@ const ProjectCard = ({ project, large = false }) => {
       <div className="mt-4 flex items-start justify-between gap-3">
         <div>
           <div className="flex flex-wrap items-center gap-2">
-            <h3 className={`display-ink text-white ${large ? 'text-xl sm:text-2xl' : 'text-lg'}`}>
+            <h3 className={`display-ink text-paper ${large ? 'text-xl sm:text-2xl' : 'text-lg'}`}>
               {project.name}
             </h3>
             {isLive ? (
               <Badge tone="signal">
-                <span className="h-1.5 w-1.5 rounded-full bg-signal" aria-hidden="true" />
+                <span className="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true" />
                 Live
               </Badge>
             ) : (
               <Badge tone="paper">Launching soon</Badge>
             )}
           </div>
-          <p className="mono-label mt-1.5 text-slate-500">{project.sector}</p>
+          <p className="mono-label mt-1.5 text-secondary">{project.sector}</p>
         </div>
         {linkable ? (
-          <span className="mt-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-line text-slate-400 transition-all duration-150 group-hover:border-signal group-hover:bg-signal group-hover:text-signal-ink">
+          <span className="mt-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-line text-secondary transition-all duration-150 group-hover:border-accent group-hover:bg-accent group-hover:text-accent-ink">
             <ArrowUpRightIcon className="h-4 w-4 transition-transform duration-150 group-hover:rotate-45" aria-hidden="true" />
           </span>
         ) : null}
@@ -50,7 +50,7 @@ const ProjectCard = ({ project, large = false }) => {
         {project.tech.slice(0, 4).map((tech) => (
           <span
             key={tech}
-            className="mono-label rounded-full border border-line px-2 py-0.5 text-[0.6rem] text-slate-500"
+            className="mono-label rounded-full border border-line px-2 py-0.5 text-[0.6rem] text-secondary"
           >
             {tech}
           </span>
@@ -83,17 +83,17 @@ const ProjectDetail = ({ project, index }) => {
       </div>
       <div className={isSoon ? 'opacity-60' : ''}>
         <p className="eyebrow">
-          <span className="mr-2 text-slate-500">(0{index + 1})</span>
+          <span className="mr-2 text-secondary">(0{index + 1})</span>
           {project.sector}
         </p>
-        <h2 className="display-ink mt-3 text-2xl text-white sm:text-3xl md:text-4xl lg:text-5xl">{project.name}</h2>
-        <p className="mt-2 text-base text-slate-400 sm:text-lg">{project.tagline}</p>
-        <p className="mt-4 text-sm leading-7 text-slate-300 sm:leading-8">{project.description}</p>
+        <h2 className="display-ink mt-3 text-2xl text-paper sm:text-3xl md:text-4xl lg:text-5xl">{project.name}</h2>
+        <p className="mt-2 text-base text-secondary sm:text-lg">{project.tagline}</p>
+        <p className="mt-4 text-sm leading-7 text-secondary sm:leading-8">{project.description}</p>
 
         <ul className="mt-5 space-y-2">
           {project.highlights.map((highlight) => (
-            <li key={highlight} className="flex items-start gap-3 text-sm leading-6 text-slate-400">
-              <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-signal" aria-hidden="true" />
+            <li key={highlight} className="flex items-start gap-3 text-sm leading-6 text-secondary">
+              <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true" />
               {highlight}
             </li>
           ))}
@@ -137,14 +137,14 @@ const WorkSection = ({ detailed = false }) => {
     );
 
     return (
-      <div className="bg-ink text-white">
+      <div className="bg-ink text-paper">
         <div className="mx-auto max-w-7xl px-5 py-14 sm:px-6 sm:py-20 md:px-8 lg:px-10 lg:py-24">
           <div className="max-w-3xl">
             <p className="eyebrow">(01) Selected Work</p>
-            <h1 className="display-ink mt-3 text-2xl text-white sm:text-3xl md:text-4xl lg:text-5xl sm:mt-4">
+            <h1 className="display-ink mt-3 text-2xl text-paper sm:text-3xl md:text-4xl lg:text-5xl sm:mt-4">
               Different worlds. One standard of care.
             </h1>
-            <p className="mt-4 text-base leading-7 text-slate-400 sm:text-lg sm:leading-8">
+            <p className="mt-4 text-base leading-7 text-secondary sm:text-lg sm:leading-8">
               A government platform, a logistics landing page, a hotel website, and Verdant Estates live in production. EduTrack and NaijaMart, built to the same standard, are on the way.
             </p>
           </div>
@@ -156,8 +156,8 @@ const WorkSection = ({ detailed = false }) => {
                 onClick={() => setActiveFilter(btn.key)}
                 className={`rounded-full px-4 py-2 text-sm font-medium transition duration-150 focus-visible:outline-none sm:px-5 ${
                   activeFilter === btn.key
-                    ? 'bg-signal/10 text-signal border border-signal/30'
-                    : 'border border-white/10 bg-white/[0.03] text-slate-400 hover:border-white/20 hover:text-white'
+                    ? 'bg-accent/10 text-accent border border-accent/30'
+                    : 'border border-line bg-ink-2 text-secondary hover:border-line hover:text-paper'
                 }`}
               >
                 {btn.label}

@@ -24,7 +24,7 @@ const About = () => {
   const showCredentials = hasEducation || hasCertifications || hasCurrentLearning;
 
   return (
-  <div className="bg-ink text-slate-100">
+  <div className="bg-ink text-paper">
     <PageShell
       eyebrow="About"
       index="(01)"
@@ -42,7 +42,7 @@ const About = () => {
           <FactList
             facts={glanceFacts}
             rows
-            ddClassName="mt-1.5 text-sm leading-6 text-slate-300"
+            ddClassName="mt-1.5 text-sm leading-6 text-secondary"
             className="mt-5"
           />
           <div className="mt-7 flex flex-wrap gap-3">
@@ -51,7 +51,7 @@ const About = () => {
               Contact me
             </Button>
           </div>
-          <p className="mono-label mt-6 text-slate-600">{contactChannels[0].value}</p>
+          <p className="mono-label mt-6 text-secondary">{contactChannels[0].value}</p>
         </Card>
       </div>
 
@@ -61,25 +61,25 @@ const About = () => {
           <div className="mt-5 grid gap-8 md:grid-cols-2">
             {hasEducation ? (
               <div className={hasCertifications ? '' : 'md:col-span-2'}>
-                <p className="mono-label text-slate-500">Education</p>
+                <p className="mono-label text-secondary">Education</p>
                 <ul className="mt-3 space-y-5">
                   {credentials.education.map((item) => (
                     <li key={`${item.institution}-${item.degree}`}>
-                      <p className="font-semibold text-white">{item.degree}</p>
-                      <p className="mt-1 text-sm text-slate-400">
+                      <p className="font-semibold text-paper">{item.degree}</p>
+                      <p className="mt-1 text-sm text-secondary">
                         {item.institution}
                         {item.location ? ` · ${item.location}` : ''}
                         {item.year ? ` · ${item.year}` : ''}
                       </p>
                       {item.field ? (
-                        <p className="mono-label mt-1.5 text-slate-500">{item.field}</p>
+                        <p className="mono-label mt-1.5 text-secondary">{item.field}</p>
                       ) : null}
                       {item.url ? (
                         <a
                           href={item.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="mono-label mt-1.5 inline-block text-signal underline-offset-4 hover:underline"
+                          className="mono-label mt-1.5 inline-block text-accent underline-offset-4 hover:underline"
                         >
                           verify
                         </a>
@@ -91,12 +91,12 @@ const About = () => {
             ) : null}
             {hasCertifications ? (
               <div className={hasEducation ? '' : 'md:col-span-2'}>
-                <p className="mono-label text-slate-500">Certifications</p>
+                <p className="mono-label text-secondary">Certifications</p>
                 <ul className="mt-3 space-y-4">
                   {credentials.certifications.map((item) => (
                     <li key={`${item.name}-${item.issuer}`}>
-                      <p className="font-semibold text-white">{item.name}</p>
-                      <p className="mt-1 text-sm text-slate-400">
+                      <p className="font-semibold text-paper">{item.name}</p>
+                      <p className="mt-1 text-sm text-secondary">
                         {item.issuer}
                         {item.year ? ` · ${item.year}` : ''}
                       </p>
@@ -105,7 +105,7 @@ const About = () => {
                           href={item.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="mono-label mt-1 inline-block text-signal underline-offset-4 hover:underline"
+                          className="mono-label mt-1 inline-block text-accent underline-offset-4 hover:underline"
                         >
                           verify
                         </a>
@@ -118,10 +118,10 @@ const About = () => {
           </div>
           {hasCurrentLearning ? (
             <div className="mt-6 border-t border-line-soft pt-5">
-              <p className="mono-label text-slate-500">// currently deepening</p>
+              <p className="mono-label text-secondary">// currently deepening</p>
               <ul className="mt-3 space-y-3">
                 {credentials.currentlyLearning.map((item) => (
-                  <li key={item} className="flex items-center gap-2 text-sm text-slate-300">
+                  <li key={item} className="flex items-center gap-2 text-sm text-secondary">
                     <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-signal" aria-hidden="true" />
                     {item}
                   </li>
@@ -135,11 +135,11 @@ const About = () => {
       <div className="mt-5 grid gap-4 sm:mt-6 sm:gap-6 lg:grid-cols-2">
         <Card>
           <p className="eyebrow">// the short version</p>
-          <div className="mt-4 space-y-4 text-sm leading-8 text-slate-400">
+          <div className="mt-4 space-y-4 text-sm leading-8 text-secondary">
             <p>
               I build web software end to end. The interface people see, the systems underneath
               it, and the deployment that keeps it alive. My work spans{' '}
-              <span className="text-slate-200">government, hospitality, education, real estate, business, and
+              <span className="text-paper">government, hospitality, education, real estate, business, and
               logistics</span> because I care less about the industry and more about building
               things that genuinely work for the people using them.
             </p>
@@ -149,13 +149,11 @@ const About = () => {
                 <a
                   href={featuredProject.href}
                   target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-semibold text-slate-200 underline-offset-4 hover:text-signal hover:underline"
+                  rel="noopener noreferrer"                   className="font-semibold text-paper underline-offset-4 hover:text-accent hover:underline"
                 >
                   the official platform for Ogun State So-Safe Corps
                 </a>
-              ) : (
-                <span className="font-semibold text-slate-200">
+              ) : (                 <span className="font-semibold text-paper">
                   the official platform for Ogun State So-Safe Corps
                 </span>
               )}, a state security institution.
@@ -166,25 +164,22 @@ const About = () => {
         </Card>
         <Card>
           <p className="eyebrow">// currently</p>
-          <div className="mt-4 space-y-4 text-sm leading-8 text-slate-400">
+          <div className="mt-4 space-y-4 text-sm leading-8 text-secondary">
             <p>
               Building {buildingProjects.length} product{buildingProjects.length === 1 ? '' : 's'} I'm excited about:
             </p>
             <ul className="space-y-3">
               {buildingProjects.map((project) => (
                   <li key={project.slug} className="rounded-xl border border-line bg-ink px-4 py-3">
-                    <div className="flex items-center justify-between gap-3">
-                      <span className="font-semibold text-white">{project.name}</span>
+                    <div className="flex items-center justify-between gap-3">                       <span className="font-semibold text-paper">{project.name}</span>
                       <Badge tone="signal">Launching soon</Badge>
-                    </div>
-                    <p className="mt-1.5 text-xs text-slate-500">{project.sector}</p>
+                    </div>                     <p className="mt-1.5 text-xs text-secondary">{project.sector}</p>
                   </li>
                 ))}
             </ul>
             <p>
-              And I'm always open to the next challenge, whether that's a{' '}
-              <span className="text-slate-200">full-time role</span> or a{' '}
-              <span className="text-slate-200">project worth building well</span>.
+              And I'm always open to the next challenge, whether that's a{' '}               <span className="text-paper">full-time role</span> or a{' '}
+               <span className="text-paper">project worth building well</span>.
             </p>
           </div>
         </Card>
@@ -200,9 +195,7 @@ const About = () => {
     >
       <div className="mt-12 grid gap-5 md:grid-cols-2">
         {industries.map((industry) => (
-          <Card key={industry.title} className="border-line-soft">
-            <h3 className="display-ink text-xl text-white">{industry.title}</h3>
-            <p className="mt-3 text-sm leading-7 text-slate-400">{industry.description}</p>
+          <Card key={industry.title} className="border-line-soft">             <h3 className="display-ink text-xl text-paper">{industry.title}</h3>             <p className="mt-3 text-sm leading-7 text-secondary">{industry.description}</p>
           </Card>
         ))}
       </div>

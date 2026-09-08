@@ -6,7 +6,7 @@ import Section from '../ui/Section';
 const FaqItem = ({ item, isOpen, onToggle, index }) => (
   <div
     className={`overflow-hidden rounded-2xl border transition-colors duration-150 ${
-      isOpen ? 'border-signal/40 bg-ink-2' : 'border-line bg-ink-2/60 hover:border-line'
+      isOpen ? 'border-accent/40 bg-ink-2' : 'border-line bg-ink-2/60 hover:border-line'
     }`}
   >
     <button
@@ -17,18 +17,18 @@ const FaqItem = ({ item, isOpen, onToggle, index }) => (
       className="flex w-full items-center justify-between gap-3 px-5 py-4 text-left focus-visible:outline-none sm:gap-4 sm:px-7 sm:py-5"
     >
       <span className="flex items-center gap-4">
-        <span className="mono-label text-slate-500">0{index + 1}</span>
+        <span className="mono-label text-secondary">0{index + 1}</span>
         <span
           className={`text-base font-semibold transition-colors ${
-            isOpen ? 'text-signal' : 'text-white'
+            isOpen ? 'text-accent' : 'text-paper'
           }`}
         >
           {item.question}
         </span>
       </span>
       <ChevronDownIcon
-        className={`h-5 w-5 shrink-0 text-slate-400 transition-transform duration-200 ${
-          isOpen ? 'rotate-180 text-signal' : ''
+        className={`h-5 w-5 shrink-0 text-secondary transition-transform duration-200 ${
+          isOpen ? 'rotate-180 text-accent' : ''
         }`}
         aria-hidden="true"
       />
@@ -43,7 +43,7 @@ const FaqItem = ({ item, isOpen, onToggle, index }) => (
       }`}
     >
       <div className="overflow-hidden">
-        <p className="px-7 pb-6 pl-[3.4rem] text-sm leading-7 text-slate-400">{item.answer}</p>
+        <p className="px-7 pb-6 pl-[3.4rem] text-sm leading-7 text-secondary">{item.answer}</p>
       </div>
     </div>
   </div>
@@ -71,11 +71,11 @@ const FaqSection = () => {
           />
         ))}
       </div>
-      <div className="mt-10 text-sm text-slate-500">
+      <div className="mt-10 text-sm text-secondary">
         Still curious?{' '}
         <a
           href="mailto:ferdinardoluwajuwonlo@gmail.com"
-          className="text-signal underline-offset-4 hover:underline"
+          className="text-accent underline-offset-4 hover:underline"
         >
           Ask me anything.
         </a>{' '}

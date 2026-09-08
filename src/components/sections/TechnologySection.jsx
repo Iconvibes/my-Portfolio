@@ -16,7 +16,7 @@ const TechnologySection = () => (
           className="rounded-2xl border border-line bg-ink-2 p-5 sm:p-7"
         >
           <p className="eyebrow">
-            <span className="mr-2 text-slate-500">//</span>
+            <span className="mr-2 text-secondary">//</span>
             {group.group}
           </p>
           <div className="mt-5 flex flex-wrap gap-2.5">

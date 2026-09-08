@@ -7,7 +7,7 @@ const AboutSection = () => (
     title="Why I build what I build"
   >
     <div className="mt-8 max-w-3xl sm:mt-12">
-      <div className="space-y-5 text-base leading-7 text-slate-300 sm:text-lg sm:leading-8">
+      <div className="space-y-5 text-base leading-7 text-secondary sm:text-lg sm:leading-8">
         <p>
           I started building websites because I wanted to prove that a developer in Lagos
           could ship work that competes with anyone in the world. So far, the evidence is

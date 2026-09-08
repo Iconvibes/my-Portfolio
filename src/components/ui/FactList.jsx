@@ -9,13 +9,13 @@
 //   className    classes for the <dl> (layout: grid, spacing, columns)
 //   ddClassName  classes for each <dd> statement (default matches FactSheet)
 //   rows         when true, add separator borders between facts (About card)
-const FactList = ({ facts, className = '', ddClassName = 'mt-2 text-sm leading-7 text-slate-300', rows = false }) => {
+const FactList = ({ facts, className = '', ddClassName = 'mt-2 text-sm leading-7 text-secondary', rows = false }) => {
   const rowClasses = rows ? 'border-b border-line-soft pb-3 last:border-b-0 last:pb-0' : '';
   return (
     <dl className={className}>
       {facts.map((fact) => (
         <div key={fact.label} className={rowClasses}>
-          <dt className="mono-label text-slate-500">{fact.label}</dt>
+          <dt className="mono-label text-secondary">{fact.label}</dt>
           <dd className={ddClassName}>{fact.statement}</dd>
         </div>
       ))}

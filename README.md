@@ -33,7 +33,7 @@ This is not a template. The architecture — content-driven routing, centralized
 | Layer | Technologies |
 |-------|-------------|
 | UI | React 19, React Router 7, Tailwind CSS v4, lucide-react icons |
-| Animation | Framer Motion, CSS transforms (custom cursor, parallax, tilt cards) |
+| Animation | CSS transitions (fade-in, slide-up on scroll, count-up), `prefers-reduced-motion` respected |
 | Build | Vite 7, Terser (console/debugger stripping), `@tailwindcss/vite` |
 | Rendering | Static prerendering via `src/entry-server.jsx` + `scripts/prerender.mjs` |
 | SEO | `src/seo/schemas.js` — route-specific JSON-LD, canonical URLs, OG/Twitter metadata |
@@ -142,7 +142,7 @@ public/
   robots.txt            # Mirrors the build-generated version
   sitemap.xml           # Mirrors the build-generated version
   _redirects            # Netlify redirect rules
-  fonts/                # Self-hosted woff2 fonts (Inter, Syne, JetBrains Mono, Instrument Serif)
+  fonts/                # Self-hosted woff2 fonts (Manrope, DM Sans, JetBrains Mono)
   projects/             # Project images and visuals
   resume/               # Resume PDF
 ```
@@ -312,28 +312,14 @@ Each page is a separate chunk. The shared vendor bundle (React + React Router) i
 
 ### Font strategy
 
-All four font families (Inter, Syne, JetBrains Mono, Instrument Serif) are self-hosted as woff2 with unicode-range subsets. No third-party font requests at runtime. Only the LCP font (Syne 700) is preloaded.
+Three font families (Manrope, DM Sans, JetBrains Mono) are self-hosted as woff2 with unicode-range subsets. No third-party font requests at runtime.
 
 ### Animation optimization
 
-- **Custom cursor**: Uses `requestAnimationFrame` for the animation loop, passive event listeners for `mousemove`, and `translate3d` transforms for GPU compositing. Disabled on coarse pointers (touch devices) and for users with `prefers-reduced-motion: reduce`.
-- **Scroll animations**: `IntersectionObserver`-based reveal with one-time trigger (disconnects after first intersection). Respects reduced-motion preference.
-- **Parallax and tilt**: CSS `transform`-based with `will-change` hints. Parallax disabled when reduced motion is preferred.
-
----
-
-## Custom cursor
-
-The custom cursor is a deliberate part of the site's visual identity — a lime reticle that follows the native pointer with a lerped ring, contracting over interactive elements and transforming into a text caret over input fields.
-
-It is implemented with:
-
-- **Fine-pointer detection** — only activates on `pointer: fine` (mouse/trackpad). Touch devices never see it.
-- **Reduced-motion respect** — completely hidden when `prefers-reduced-motion: reduce` is active.
-- **Optimized event handling** — `requestAnimationFrame` loop, passive `mousemove` listener, direct DOM style writes (no React re-renders during animation).
-- **iframe awareness** — hides when the pointer enters an iframe (e.g., the resume PDF viewer) to avoid double-cursor rendering.
-
-The native cursor remains visible at all times. The custom cursor is a decorative companion, not a replacement.
+- **Scroll animations**: `IntersectionObserver`-based reveal (250ms fade + 24px slide-up, ease-out). One-time trigger, disconnects after first intersection. Respects `prefers-reduced-motion` — content appears instantly when the preference is active.
+- **Hero entrance**: 250ms staggered `fadeInUp` on load — no blur, no scale, no spring easing.
+- **Stat count-up**: `requestAnimationFrame`-based number animation for the hero stats (real performance data). Skips animation when reduced motion is preferred.
+- **No 3D, no tilt, no parallax, no custom cursor** — removed intentionally. Every transition is a lightweight CSS property change that supports reading order rather than visual spectacle.
 
 ---
 
@@ -343,7 +329,7 @@ The native cursor remains visible at all times. The custom cursor is a decorativ
 - **Semantic HTML** — Proper heading hierarchy (one H1 per page), `<nav>` with `aria-label`, `<main>`, `<article>`, `<section>`, `<dl>` for key-value pairs.
 - **Keyboard navigation** — All interactive elements are focusable. The command palette implements a focus trap. Navigation works without a mouse.
 - **Focus states** — Visible `:focus-visible` outlines using the site's signal color.
-- **Reduced motion** — `useReducedMotion` hook disables Framer Motion animations, parallax, and the custom cursor when the OS preference is active. CSS `prefers-reduced-motion: reduce` also disables all CSS animations and transitions.
+- **Reduced motion** — `useReducedMotion` hook disables scroll reveals and stat count-up animations when the OS preference is active. CSS `prefers-reduced-motion: reduce` also disables all CSS animations and transitions.
 - **Form accessibility** — All form fields use associated `<label>` elements. The contact form includes a honeypot field for bot filtering (hidden from real users).
 - **Touch-friendly** — Mobile navigation uses appropriately sized tap targets. Hover-only interactions have touch alternatives.
 

@@ -13,21 +13,21 @@ const Section = ({
     <div className={`max-w-3xl ${align === 'center' ? 'mx-auto text-center' : ''}`}>
       {eyebrow ? (
         <p className={tone === 'ink' ? 'eyebrow' : 'eyebrow-ink'}>
-          {index ? <span className="mr-2 text-slate-500">{index}</span> : null}
+          {index ? <span className="mr-2 text-secondary">{index}</span> : null}
           {eyebrow}
         </p>
       ) : null}
       {title ? (
         <h2
           className={`display-ink mt-3 text-2xl sm:text-3xl md:text-4xl lg:text-5xl ${
-            tone === 'ink' ? 'text-white' : 'text-ink'
+            tone === 'ink' ? 'text-paper' : 'text-ink'
           }`}
         >
           {title}
         </h2>
       ) : null}
       {description ? (
-        <p className={`mt-4 text-base leading-7 sm:text-lg sm:leading-8 ${tone === 'ink' ? 'text-slate-400' : 'text-ink/70'}`}>
+        <p className={`mt-4 text-base leading-7 sm:text-lg sm:leading-8 ${tone === 'ink' ? 'text-secondary' : 'text-ink/70'}`}>
           {description}
         </p>
       ) : null}

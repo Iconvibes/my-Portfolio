@@ -31,14 +31,14 @@ const ProjectFrame = ({ project, eager = false, className = '' }) => {
           <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
           <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
         </div>
-        <div className="mono-label flex min-w-0 flex-1 items-center gap-2 truncate rounded-md bg-ink px-3 py-1 text-slate-400">
-          <span className={`h-1.5 w-1.5 shrink-0 rounded-full ${isLive ? 'bg-emerald-400' : 'bg-slate-600'}`} />
+        <div className="mono-label flex min-w-0 flex-1 items-center gap-2 truncate rounded-md bg-ink px-3 py-1 text-secondary">
+          <span className={`h-1.5 w-1.5 shrink-0 rounded-full ${isLive ? 'bg-accent' : 'bg-secondary/50'}`} />
           <span className="truncate">{project.domain || project.name}</span>
         </div>
         {isLive ? (
-          <span className="mono-label shrink-0 text-emerald-300">LIVE</span>
+          <span className="mono-label shrink-0 text-accent">LIVE</span>
         ) : (
-          <span className="mono-label shrink-0 text-slate-500">SOON</span>
+          <span className="mono-label shrink-0 text-secondary">SOON</span>
         )}
       </div>
 
@@ -96,8 +96,8 @@ const ProjectFrame = ({ project, eager = false, className = '' }) => {
               >
                 {accent.icon}
               </div>
-              <p className="display-ink text-lg text-white sm:text-xl">{project.name}</p>
-              <p className="mono-label flex items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-slate-300">
+              <p className="display-ink text-lg text-paper sm:text-xl">{project.name}</p>
+              <p className="mono-label flex items-center gap-1.5 rounded-full border border-line bg-ink-2 px-3 py-1 text-secondary">
                 <ArrowUpRightIcon className="h-3 w-3" aria-hidden="true" />
                 Preview coming soon
               </p>

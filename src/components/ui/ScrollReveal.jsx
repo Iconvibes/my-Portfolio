@@ -2,13 +2,13 @@ import { useEffect, useRef, useState } from 'react';
 import { useReducedMotion } from '../../hooks/useReducedMotion';
 
 /**
- * Bold scroll reveal using Intersection Observer.
- * Elements slide up 60px + scale from 0.96 → 1 + fade in over 800ms with spring easing.
+ * Lightweight scroll reveal using Intersection Observer.
+ * Elements fade in + slide up 24px over 250ms with ease-out.
  * Respects prefers-reduced-motion.
  *
  * Usage:
  *   <ScrollReveal><div>content</div></ScrollReveal>
- *   <ScrollReveal delay={150}><div>delayed content</div></ScrollReveal>
+ *   <ScrollReveal delay={100}><div>delayed content</div></ScrollReveal>
  */
 const ScrollReveal = ({ children, className = '', delay = 0, once = true }) => {
   const ref = useRef(null);
@@ -50,9 +50,8 @@ const ScrollReveal = ({ children, className = '', delay = 0, once = true }) => {
       className={className}
       style={{
         opacity: isVisible ? 1 : 0,
-        transform: isVisible ? 'translateY(0) scale(1)' : 'translateY(60px) scale(0.96)',
-        transition: `opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms`,
-        willChange: isVisible ? 'auto' : 'opacity, transform'
+        transform: isVisible ? 'translateY(0)' : 'translateY(24px)',
+        transition: `opacity 0.25s ease-out ${delay}ms, transform 0.25s ease-out ${delay}ms`,
       }}
     >
       {children}

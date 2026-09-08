@@ -6,7 +6,7 @@ import Card from '../components/ui/Card';
 import { insightDate, insights, readingTime } from '../content';
 
 const Insights = () => (
-  <div className="bg-ink text-slate-100">
+  <div className="bg-ink text-paper">
     <PageShell
       eyebrow="Insights"
       index="(01)"
@@ -18,24 +18,24 @@ const Insights = () => (
           <Card key={item.slug} as="article" className="flex flex-col">
             <div className="flex items-center justify-between gap-3">
               <Badge>{item.category}</Badge>
-              <span className="mono-label text-slate-600">{insightDate(item.published)}</span>
+              <span className="mono-label text-secondary">{insightDate(item.published)}</span>
             </div>
-            <h2 className="mt-5 text-xl font-semibold leading-8 text-white">
+            <h2 className="mt-5 text-xl font-semibold leading-8 text-paper">
               <Link
                 to={`/insights/${item.slug}`}
-                className="underline-offset-4 transition hover:text-signal hover:underline"
+                className="underline-offset-4 transition hover:text-accent hover:underline"
               >
                 {item.title}
               </Link>
             </h2>
-            <p className="mt-3 flex-1 text-sm leading-7 text-slate-400">{item.summary}</p>
+            <p className="mt-3 flex-1 text-sm leading-7 text-secondary">{item.summary}</p>
             <div className="mt-6 flex items-center justify-between border-t border-line-soft pt-5">
-              <span className="mono-label text-slate-600">
+              <span className="mono-label text-secondary">
                 {String(index + 1).padStart(2, '0')} · {readingTime(item)} min read
               </span>
               <Link
                 to={`/insights/${item.slug}`}
-                className="mono-label text-signal underline-offset-4 transition hover:underline"
+                className="mono-label text-accent underline-offset-4 transition hover:underline"
               >
                 read →
               </Link>

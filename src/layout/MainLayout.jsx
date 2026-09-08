@@ -77,10 +77,10 @@ const MainLayout = () => {
   }, [location.pathname, prefersReducedMotion]);
 
   return (
-    <div className="min-h-screen bg-ink text-slate-100">
+    <div className="min-h-screen bg-ink text-paper">
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-signal focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-signal-ink"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-accent focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-accent-ink"
       >
         Skip to main content
       </a>

@@ -6,7 +6,7 @@ import ResumeButton from '../ui/ResumeButton';
 
 const navClass = ({ isActive }) =>
   `rounded-full px-4 py-2 text-sm font-medium transition focus-visible:outline-none ${
-    isActive ? 'bg-signal/10 text-signal' : 'text-slate-300 hover:bg-white/5 hover:text-white'
+    isActive ? 'bg-accent/10 text-accent' : 'text-secondary hover:bg-ink-2 hover:text-paper'
   }`;
 
 const Header = () => {
@@ -61,12 +61,12 @@ const Header = () => {
           className="group flex items-center gap-3 focus-visible:outline-none"
           aria-label="Ferdinard Ashonibare, home"
         >
-          <span className="display-ink flex h-11 w-11 items-center justify-center rounded-lg bg-signal text-sm text-signal-ink transition-transform duration-150 group-hover:-rotate-3">
+          <span className="display-ink flex h-11 w-11 items-center justify-center rounded-lg bg-accent text-sm text-accent-ink transition-transform duration-150 group-hover:-rotate-3">
             FA
           </span>
           <span className="hidden flex-col leading-tight sm:flex">
-            <span className="display-ink text-sm text-white">Ferdinard Ashonibare</span>
-            <span className="mono-label text-[0.65rem] text-slate-500">full-stack developer</span>
+            <span className="display-ink text-sm text-paper">Ferdinard Ashonibare</span>
+            <span className="mono-label text-[0.65rem] text-secondary">full-stack developer</span>
           </span>
         </Link>
 
@@ -88,7 +88,7 @@ const Header = () => {
             aria-label={isOpen ? 'Close navigation' : 'Open navigation'}
             aria-expanded={isOpen}
             onClick={() => setIsOpen((open) => !open)}
-            className="flex h-11 w-11 items-center justify-center rounded-full border border-line bg-white/[0.03] text-slate-200 hover:border-signal/50 hover:text-signal lg:hidden"
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-line bg-ink-2 text-paper hover:border-accent/50 hover:text-accent lg:hidden"
           >
             {isOpen ? (
               <XMarkIcon className="h-5 w-5" />
@@ -112,8 +112,8 @@ const Header = () => {
                 onClick={closeMenu}
                 className={`rounded-xl px-4 py-3 text-base font-medium transition ${
                   location.pathname === item.href
-                    ? 'bg-signal/10 text-signal'
-                    : 'text-slate-300 hover:bg-white/5 hover:text-white'
+                    ? 'bg-accent/10 text-accent'
+                    : 'text-secondary hover:bg-ink-2 hover:text-paper'
                 }`}
               >
                 {item.label}

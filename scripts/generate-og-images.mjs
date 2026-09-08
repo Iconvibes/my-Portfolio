@@ -39,21 +39,21 @@ const baseStyles = `
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { width: ${WIDTH}px; height: ${HEIGHT}px; }
   body {
-    background: #060a12; color: #e2e8f0; overflow: hidden; position: relative;
+    background: #121212; color: #F5F5F0; overflow: hidden; position: relative;
     font-family: 'DM Sans', 'Segoe UI', sans-serif;
     -webkit-font-smoothing: antialiased;
   }
   .grid-bg {
     position: absolute; inset: 0;
     background-image:
-      linear-gradient(to right, rgba(148,163,184,.04) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(148,163,184,.04) 1px, transparent 1px);
+      linear-gradient(to right, rgba(245,245,240,.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(245,245,240,.03) 1px, transparent 1px);
     background-size: 64px 64px;
   }
-  .accent { color: #c8f135; }
+  .accent { color: #F59E0B; }
   .eyebrow {
     font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 600;
-    letter-spacing: .14em; text-transform: uppercase; color: #c8f135; margin-bottom: 20px;
+    letter-spacing: .14em; text-transform: uppercase; color: #F59E0B; margin-bottom: 20px;
   }
   .title {
     font-family: 'Manrope', 'Segoe UI', sans-serif; font-weight: 800;
@@ -64,7 +64,7 @@ const baseStyles = `
     color: #94a3b8; margin-top: 16px; max-width: 600px;
   }
   .badge {
-    display: inline-block; background: rgba(200,241,53,.12); color: #c8f135;
+    display: inline-block; background: rgba(245,158,11,.12); color: #F59E0B;
     font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600;
     padding: 6px 14px; border-radius: 99px; letter-spacing: .06em; text-transform: uppercase;
     margin-top: 24px;
@@ -86,16 +86,16 @@ const cards = {
       .card-inner { display: grid; grid-template-columns: 1fr 280px; align-items: center; gap: 40px; }
       .photo-wrap { position: relative; justify-self: end; }
       .photo-glow { position: absolute; inset: -10px; border-radius: 22px;
-        background: radial-gradient(ellipse at center, rgba(200,241,53,.10), transparent 70%);
+        background: radial-gradient(ellipse at center, rgba(245,158,11,.10), transparent 70%);
         filter: blur(18px); }
       .photo { width: 260px; height: 400px; border-radius: 14px; object-fit: cover;
-        object-position: center 15%; border: 1px solid rgba(148,163,184,.12);
+        object-position: center 15%; border: 1px solid #2C2C2E;
         box-shadow: 0 30px 80px rgba(0,0,0,.55); position: relative; z-index: 1; }
       .tagline { font-family: 'DM Sans', sans-serif; font-size: 16px; line-height: 1.6;
         color: #94a3b8; margin-top: 12px; max-width: 500px; }
       .stats-row { display: flex; gap: 28px; margin-top: 22px; }
       .stat-item { display: flex; flex-direction: column; }
-      .stat-val { font-family: 'Manrope', sans-serif; font-weight: 800; font-size: 24px; color: #c8f135; }
+      .stat-val { font-family: 'Manrope', sans-serif; font-weight: 800; font-size: 24px; color: #F59E0B; }
       .stat-key { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #64748b;
         letter-spacing: .08em; text-transform: uppercase; margin-top: 2px; }
     </style></head><body>
@@ -125,16 +125,16 @@ const cards = {
       .card-inner { display: grid; grid-template-columns: 280px 1fr; align-items: center; gap: 40px; }
       .photo-wrap { position: relative; justify-self: start; }
       .photo-glow { position: absolute; inset: -10px; border-radius: 22px;
-        background: radial-gradient(ellipse at center, rgba(200,241,53,.08), transparent 70%);
+        background: radial-gradient(ellipse at center, rgba(245,158,11,.08), transparent 70%);
         filter: blur(18px); }
       .photo { width: 260px; height: 400px; border-radius: 14px; object-fit: cover;
-        object-position: center 15%; border: 1px solid rgba(148,163,184,.12);
+        object-position: center 15%; border: 1px solid #2C2C2E;
         box-shadow: 0 24px 60px rgba(0,0,0,.5); position: relative; z-index: 1; }
       .about-text { font-family: 'DM Sans', sans-serif; font-size: 16px; line-height: 1.65;
         color: #94a3b8; margin-top: 12px; max-width: 520px; }
       .tech-row { display: flex; gap: 8px; margin-top: 20px; flex-wrap: wrap; }
-      .tech-pill { background: rgba(200,241,53,.08); border: 1px solid rgba(200,241,53,.15);
-        color: #c8f135; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600;
+      .tech-pill { background: rgba(245,158,11,.08); border: 1px solid rgba(245,158,11,.15);
+        color: #F59E0B; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600;
         padding: 5px 12px; border-radius: 99px; letter-spacing: .04em; }
       .loc-tag { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #64748b;
         letter-spacing: .08em; margin-top: 16px; }
@@ -166,7 +166,7 @@ const cards = {
   'og-work': {
     html: `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><style>${baseStyles}
       .projects { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; }
-      .project { background: #0c1320; border: 1px solid rgba(148,163,184,.1);
+      .project { background: #1C1C1E; border: 1px solid #2C2C2E;
         border-radius: 12px; padding: 18px 22px; }
       .project-name { font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 16px; color: #f8fafc; }
       .project-sector { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #64748b;
@@ -193,12 +193,12 @@ const cards = {
   'og-contact': {
     html: `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><style>${baseStyles}
       .contact-grid { display: flex; gap: 20px; margin-top: 28px; }
-      .channel { background: #0c1320; border: 1px solid rgba(148,163,184,.1);
+      .channel { background: #1C1C1E; border: 1px solid #2C2C2E;
         border-radius: 12px; padding: 18px 24px; flex: 1; }
       .channel-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #64748b;
         letter-spacing: .1em; text-transform: uppercase; margin-bottom: 6px; }
       .channel-value { font-family: 'DM Sans', sans-serif; font-size: 15px; color: #f8fafc; font-weight: 500; }
-      .cta { display: inline-block; background: #c8f135; color: #060a12; font-family: 'Manrope', sans-serif;
+      .cta { display: inline-block; background: #F59E0B; color: #121212; font-family: 'Manrope', sans-serif;
         font-weight: 700; font-size: 16px; padding: 14px 28px; border-radius: 12px;
         margin-top: 28px; letter-spacing: -.01em; }
     </style></head><body>
@@ -222,10 +222,10 @@ const cards = {
       .card-inner { display: grid; grid-template-columns: 1fr 420px; align-items: center; gap: 36px; }
       .cs-eyebrow {
         font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600;
-        letter-spacing: .14em; text-transform: uppercase; color: #c8f135; margin-bottom: 16px;
+        letter-spacing: .14em; text-transform: uppercase; color: #F59E0B; margin-bottom: 16px;
         display: flex; align-items: center; gap: 10px;
       }
-      .cs-eyebrow::before { content: ''; display: inline-block; width: 28px; height: 2px; background: #c8f135; }
+      .cs-eyebrow::before { content: ''; display: inline-block; width: 28px; height: 2px; background: #F59E0B; }
       .cs-sector {
         font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #64748b;
         letter-spacing: .08em; text-transform: uppercase; margin-top: 12px;
@@ -235,10 +235,10 @@ const cards = {
       .cs-stat-val { font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 15px; color: #f8fafc; }
       .cs-stat-key { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #64748b;
         letter-spacing: .06em; text-transform: uppercase; margin-top: 2px; }
-      .browser { background: #0c1320; border-radius: 12px; overflow: hidden;
-        border: 1px solid rgba(148,163,184,.12); box-shadow: 0 20px 60px rgba(0,0,0,.5); }
+      .browser { background: #1C1C1E; border-radius: 12px; overflow: hidden;
+        border: 1px solid #2C2C2E; box-shadow: 0 20px 60px rgba(0,0,0,.5); }
       .browser-bar { display: flex; align-items: center; gap: 6px; padding: 10px 14px;
-        background: #0f1729; border-bottom: 1px solid rgba(148,163,184,.08); }
+        background: #1C1C1E; border-bottom: 1px solid #2C2C2E; }
       .dot { width: 8px; height: 8px; border-radius: 50%; }
       .dot-r { background: #ef4444; } .dot-y { background: #eab308; } .dot-g { background: #22c55e; }
       .browser-url { flex: 1; margin-left: 10px; font-family: 'JetBrains Mono', monospace;
@@ -288,10 +288,10 @@ const cards = {
       .cs-stat-val { font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 15px; color: #f8fafc; }
       .cs-stat-key { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #64748b;
         letter-spacing: .06em; text-transform: uppercase; margin-top: 2px; }
-      .browser { background: #0c1320; border-radius: 12px; overflow: hidden;
-        border: 1px solid rgba(148,163,184,.12); box-shadow: 0 20px 60px rgba(0,0,0,.5); }
+      .browser { background: #1C1C1E; border-radius: 12px; overflow: hidden;
+        border: 1px solid #2C2C2E; box-shadow: 0 20px 60px rgba(0,0,0,.5); }
       .browser-bar { display: flex; align-items: center; gap: 6px; padding: 10px 14px;
-        background: #0f1729; border-bottom: 1px solid rgba(148,163,184,.08); }
+        background: #1C1C1E; border-bottom: 1px solid #2C2C2E; }
       .dot { width: 8px; height: 8px; border-radius: 50%; }
       .dot-r { background: #ef4444; } .dot-y { background: #eab308; } .dot-g { background: #22c55e; }
       .browser-url { flex: 1; margin-left: 10px; font-family: 'JetBrains Mono', monospace;
@@ -341,9 +341,9 @@ const cards = {
       .cs-stat-val { font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 15px; color: #f8fafc; }
       .cs-stat-key { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #64748b;
         letter-spacing: .06em; text-transform: uppercase; margin-top: 2px; }
-      .system { background: #0c1320; border-radius: 12px; overflow: hidden;
-        border: 1px solid rgba(148,163,184,.12); box-shadow: 0 20px 60px rgba(0,0,0,.5); padding: 28px; }
-      .system-bar { display: flex; align-items: center; gap: 6px; padding-bottom: 24px; border-bottom: 1px solid rgba(148,163,184,.08); }
+      .system { background: #1C1C1E; border-radius: 12px; overflow: hidden;
+        border: 1px solid #2C2C2E; box-shadow: 0 20px 60px rgba(0,0,0,.5); padding: 28px; }
+      .system-bar { display: flex; align-items: center; gap: 6px; padding-bottom: 24px; border-bottom: 1px solid #2C2C2E; }
       .dot { width: 8px; height: 8px; border-radius: 50%; }
       .dot-r { background: #ef4444; } .dot-y { background: #eab308; } .dot-g { background: #22c55e; }
       .system-label { flex: 1; margin-left: 10px; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #64748b; letter-spacing: .04em; }

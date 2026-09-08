@@ -4,7 +4,7 @@ import CtaSection from '../components/sections/CtaSection';
 import ScrollReveal from '../components/ui/ScrollReveal';
 
 const Work = () => (
-  <div className="bg-ink text-slate-100">
+  <div className="bg-ink text-paper">
     <WorkSection detailed />
     <ScrollReveal delay={50}>
       <TestimonialsSection index="(02)" />

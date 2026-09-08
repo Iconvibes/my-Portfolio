@@ -12,11 +12,11 @@ const ProcessSection = () => (
       {processSteps.map((step) => (
         <li
           key={step.number}
-          className="relative rounded-2xl border border-line bg-ink-2 p-5 sm:p-7 transition-colors duration-150 hover:border-signal/40"
+          className="relative rounded-2xl border border-line bg-ink-2 p-5 sm:p-7 transition-colors duration-150 hover:border-accent/40"
         >
-          <span className="display-ink text-4xl text-signal">{step.number}</span>
-          <h3 className="mt-4 text-lg font-semibold text-white">{step.title}</h3>
-          <p className="mt-3 text-sm leading-7 text-slate-400">{step.text}</p>
+          <span className="display-ink text-4xl text-accent">{step.number}</span>
+          <h3 className="mt-4 text-lg font-semibold text-paper">{step.title}</h3>
+          <p className="mt-3 text-sm leading-7 text-secondary">{step.text}</p>
         </li>
       ))}
     </ol>

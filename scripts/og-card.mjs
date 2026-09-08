@@ -82,25 +82,25 @@ const CARD_HTML = `<!DOCTYPE html>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { width: ${WIDTH}px; height: ${HEIGHT}px; }
   body {
-    background: #060a12; color: #e2e8f0; overflow: hidden; position: relative;
+    background: #121212; color: #F5F5F0; overflow: hidden; position: relative;
     font-family: 'DM Sans', 'Segoe UI', sans-serif;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
   .grid-bg { position: absolute; inset: 0;
-    background-image: linear-gradient(to right, rgba(148,163,184,.04) 1px, transparent 1px),
-                      linear-gradient(to bottom, rgba(148,163,184,.04) 1px, transparent 1px);
+    background-image: linear-gradient(to right, rgba(245,245,240,.03) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(245,245,240,.03) 1px, transparent 1px);
     background-size: 64px 64px; }
   .card { position: absolute; inset: 0; display: flex; align-items: center;
     padding: 54px 62px; gap: 50px; }
   .left { flex: 1; min-width: 0; }
-  .eyebrow { color: #c8f135; font-family: 'JetBrains Mono', monospace; font-size: 14px;
+  .eyebrow { color: #F59E0B; font-family: 'JetBrains Mono', monospace; font-size: 14px;
     font-weight: 600; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 20px; }
-  .term { background: #0c1320; border: 1px solid rgba(148,163,184,.12);
+  .term { background: #1C1C1E; border: 1px solid #2C2C2E;
     border-radius: 16px; padding: 20px 26px; width: 580px;
     box-shadow: 0 24px 60px rgba(0,0,0,.4); }
   .bar { display: flex; gap: 8px; align-items: center; padding-bottom: 13px;
-    margin-bottom: 12px; border-bottom: 1px solid rgba(148,163,184,.06); }
+    margin-bottom: 12px; border-bottom: 1px solid #2C2C2E; }
   .bar i { width: 12px; height: 12px; border-radius: 99px; display: inline-block; }
   .bar i:nth-child(1) { background: #ff5f57; }
   .bar i:nth-child(2) { background: #febc2e; }
@@ -108,19 +108,19 @@ const CARD_HTML = `<!DOCTYPE html>
   .bar span { margin-left: auto; color: #64748b; font-family: 'JetBrains Mono', monospace;
     font-size: 12px; letter-spacing: .14em; text-transform: uppercase; }
   .ln { font-family: 'JetBrains Mono', monospace; font-size: 18px; line-height: 1.95; white-space: nowrap; }
-  .p { color: #c8f135; margin-right: 10px; }
+  .p { color: #F59E0B; margin-right: 10px; }
   .hi { color: #f8fafc; font-weight: 600; }
   .dim { color: #64748b; }
-  .status { color: #c8f135; font-weight: 700; }
-  .cursor { display: inline-block; width: 10px; height: 20px; background: #c8f135;
+  .status { color: #F59E0B; font-weight: 700; }
+  .cursor { display: inline-block; width: 10px; height: 20px; background: #F59E0B;
     vertical-align: -3px; margin-left: 5px; border-radius: 2px; }
   .name { font-family: 'Manrope', 'Segoe UI', sans-serif; font-weight: 800;
     font-size: 44px; line-height: 1.05; color: #f8fafc; margin-top: 24px;
     letter-spacing: -.025em; }
-  .name .accent { color: #c8f135; }
+  .name .accent { color: #F59E0B; }
   .right { display: flex; align-items: center; }
   .photo { width: 320px; height: 400px; border-radius: 18px; object-fit: cover;
-    object-position: center top; border: 1px solid rgba(148,163,184,.15);
+    object-position: center top; border: 1px solid #2C2C2E;
     box-shadow: 0 24px 60px rgba(0,0,0,.5); }
 </style>
 </head>

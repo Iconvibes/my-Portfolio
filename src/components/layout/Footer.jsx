@@ -35,12 +35,12 @@ const Footer = () => (
       <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1.2fr] lg:gap-12">
         <div>
           <Link to="/" className="group inline-flex items-center gap-3">
-            <span className="display-ink flex h-11 w-11 items-center justify-center rounded-lg bg-signal text-sm text-signal-ink transition-transform duration-150 group-hover:-rotate-3">
+            <span className="display-ink flex h-11 w-11 items-center justify-center rounded-lg bg-accent text-sm text-accent-ink transition-transform duration-150 group-hover:-rotate-3">
               FA
             </span>
-            <span className="display-ink text-white">Ferdinard Ashonibare</span>
+            <span className="display-ink text-paper">Ferdinard Ashonibare</span>
           </Link>
-          <p className="mt-5 max-w-sm text-sm leading-7 text-slate-400">
+          <p className="mt-5 max-w-sm text-sm leading-7 text-secondary">
             Full-stack web developer building fast, secure platforms for government, hospitality,
             education, and beyond. Based in Lagos, working worldwide.
           </p>
@@ -52,7 +52,7 @@ const Footer = () => (
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={social.label}
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-line bg-white/3 text-slate-300 transition hover:border-signal/60 hover:text-signal"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-line bg-ink-2 text-secondary transition hover:border-accent/60 hover:text-accent"
               >
                 {socialIcon[social.label]}
               </a>
@@ -61,11 +61,11 @@ const Footer = () => (
         </div>
 
         <nav aria-label="Footer navigation">
-          <p className="mono-label mb-4 text-slate-500">Navigate</p>
+          <p className="mono-label mb-4 text-secondary">Navigate</p>
           <ul className="space-y-1 text-sm">
             {navigation.map((item) => (
               <li key={item.href}>
-                <Link to={item.href} className="text-slate-400 transition hover:text-signal inline-flex min-h-[44px] items-center py-2">
+                <Link to={item.href} className="text-secondary transition hover:text-accent inline-flex min-h-[44px] items-center py-2">
                   {item.label}
                 </Link>
               </li>
@@ -74,20 +74,20 @@ const Footer = () => (
         </nav>
 
         <div>
-          <p className="mono-label mb-4 text-slate-500">Contact</p>
+          <p className="mono-label mb-4 text-secondary">Contact</p>
           <ul className="space-y-1 text-sm">
             {contactChannels.map((channel) => (
               <li key={channel.label}>
                 {channel.href ? (
                   <a
                     href={channel.href}
-                    className="flex min-h-[44px] items-center gap-2.5 py-2 text-slate-400 transition hover:text-signal"
+                    className="flex min-h-[44px] items-center gap-2.5 py-2 text-secondary transition hover:text-accent"
                   >
                     {contactIcon[channel.label]}
                     <span>{channel.value}</span>
                   </a>
                 ) : (
-                  <span className="flex min-h-[44px] items-center gap-2.5 py-2 text-slate-400">
+                  <span className="flex min-h-[44px] items-center gap-2.5 py-2 text-secondary">
                     {contactIcon[channel.label]}
                     <span>{channel.value}</span>
                   </span>
@@ -95,7 +95,7 @@ const Footer = () => (
               </li>
             ))}
           </ul>
-          <p className="mt-5 text-xs leading-6 text-slate-600">
+          <p className="mt-5 text-xs leading-6 text-secondary">
             Studio: {siteConfig.brandName} · {siteConfig.siteUrl.replace('https://', '')}
           </p>
           <PreferredSourceButton theme="dark" />
@@ -103,12 +103,12 @@ const Footer = () => (
       </div>
 
       <div className="mt-14 flex flex-col items-start justify-between gap-4 border-t border-line pt-8 sm:flex-row sm:items-center">
-        <p className="text-xs text-slate-500">
+        <p className="text-xs text-secondary">
           &copy; {year} Ferdinard Ashonibare. Designed and built by me.
         </p>
         <a
           href="#main-content"
-          className="mono-label inline-flex min-h-[44px] items-center gap-2 py-2 text-slate-500 transition hover:text-signal"
+          className="mono-label inline-flex min-h-[44px] items-center gap-2 py-2 text-secondary transition hover:text-accent"
         >
           Back to top <ArrowUpIcon className="h-3.5 w-3.5" aria-hidden="true" />
         </a>

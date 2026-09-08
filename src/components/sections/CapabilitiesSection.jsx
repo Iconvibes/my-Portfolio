@@ -16,25 +16,25 @@ const CapabilitiesSection = () => (
         return (
           <article
             key={capability.title}
-            className={`group relative overflow-hidden rounded-2xl border border-line bg-ink-2 p-5 sm:p-7 transition-colors duration-150 hover:border-signal/40 ${
+            className={`group relative overflow-hidden rounded-2xl border border-line bg-ink-2 p-5 sm:p-7 transition-colors duration-150 hover:border-accent/40 ${
               isWide ? 'md:col-span-2' : ''
             }`}
           >
             <div className="flex items-start justify-between">
-              <h3 className="display-ink text-xl text-white">{capability.title}</h3>
+              <h3 className="display-ink text-xl text-paper">{capability.title}</h3>
               <ArrowRightIcon
-                className="h-5 w-5 shrink-0 text-slate-600 transition-all duration-150 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-signal"
+                className="h-5 w-5 shrink-0 text-secondary transition-all duration-150 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent"
                 aria-hidden="true"
               />
             </div>
-            <p className="mt-4 text-sm leading-7 text-slate-400">{capability.description}</p>
+            <p className="mt-4 text-sm leading-7 text-secondary">{capability.description}</p>
             <ul className="mt-5 space-y-2 border-t border-line-soft pt-5">
               {capability.items.map((item) => (
                 <li
                   key={item}
-                  className="mono-label flex items-center gap-2.5 text-[0.7rem] text-slate-500"
+                  className="mono-label flex items-center gap-2.5 text-[0.7rem] text-secondary"
                 >
-                  <span className="text-signal">&rarr;</span>
+                  <span className="text-accent">&rarr;</span>
                   {item}
                 </li>
               ))}

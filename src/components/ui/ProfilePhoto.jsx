@@ -24,8 +24,8 @@ const ProfilePhoto = ({ className = '', priority = false }) => {
       >
         <div className="bg-grid-ink absolute inset-0 opacity-40" aria-hidden="true" />
         <div className="relative flex flex-col items-center gap-3">
-          <span className="display-ink text-7xl text-signal">FA</span>
-          <span className="mono-label text-slate-500">Ferdinard Ashonibare</span>
+          <span className="display-ink text-7xl text-accent">FA</span>
+          <span className="mono-label text-secondary">Ferdinard Ashonibare</span>
         </div>
       </div>
     );
@@ -33,12 +33,6 @@ const ProfilePhoto = ({ className = '', priority = false }) => {
 
   return (
     <div className={`relative ${className}`.trim()}>
-      {/* Subtle glow behind the photo */}
-      <div
-        className="absolute -inset-3 rounded-3xl opacity-30 blur-2xl"
-        style={{ background: 'radial-gradient(ellipse at center, rgba(200,241,53,0.15), transparent 70%)' }}
-        aria-hidden="true"
-      />
       <img
         ref={imgRef}
         src="/profile.jpg"

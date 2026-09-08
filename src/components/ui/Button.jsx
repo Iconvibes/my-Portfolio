@@ -6,11 +6,11 @@ const baseClasses =
 
 const variantClasses = {
   primary:
-    'border-signal bg-signal text-signal-ink hover:bg-signal/90 hover:scale-[1.02] active:scale-[0.98]',
+    'border-accent bg-accent text-accent-ink hover:bg-accent-hover hover:scale-[1.02] active:scale-[0.98]',
   outline:
-    'border-white/15 bg-white/[0.03] text-white hover:border-signal/60 hover:text-signal hover:scale-[1.02] active:scale-[0.98]',
-  ghost: 'border-transparent bg-transparent text-slate-300 hover:text-white',
-  paper: 'border-ink bg-ink text-paper hover:bg-ink/80 hover:scale-[1.02] active:scale-[0.98]'
+    'border-line bg-ink-2 text-paper hover:border-accent/60 hover:text-accent hover:scale-[1.02] active:scale-[0.98]',
+  ghost: 'border-transparent bg-transparent text-secondary hover:text-paper',
+  paper: 'border-ink bg-ink text-accent hover:bg-ink/80 hover:scale-[1.02] active:scale-[0.98]'
 };
 
 const iconClass =

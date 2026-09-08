@@ -247,10 +247,10 @@ const CommandPalette = () => {
         aria-label="Open command palette"
         aria-haspopup="dialog"
         title="Command palette (Cmd+K)"
-        className={`fixed bottom-5 right-5 z-40 flex h-11 w-11 items-center justify-center rounded-full border border-line bg-ink-2 text-signal shadow-[0_16px_40px_rgba(0,0,0,0.45)] transition${reduced ? '' : ' duration-150'} hover:border-signal/60 hover:text-signal-ink hover:bg-signal focus-visible:outline-none sm:bottom-6 sm:right-6 sm:h-12 sm:w-12`}
+        className={`fixed bottom-5 right-5 z-40 flex h-11 w-11 items-center justify-center rounded-full border border-line bg-ink-2 text-accent shadow-[0_16px_40px_rgba(0,0,0,0.45)] transition${reduced ? '' : ' duration-150'} hover:border-accent/60 hover:text-accent-ink hover:bg-accent focus-visible:outline-none sm:bottom-6 sm:right-6 sm:h-12 sm:w-12`}
       >
         <CommandLineIcon className="h-5 w-5" aria-hidden="true" />
-        <span className="mono-label absolute -top-2 -right-2 rounded-full border border-line bg-ink px-1.5 py-0.5 text-[0.55rem] text-slate-400">
+        <span className="mono-label absolute -top-2 -right-2 rounded-full border border-line bg-ink px-1.5 py-0.5 text-[0.55rem] text-secondary">
           Cmd+K
         </span>
       </button>
@@ -277,14 +277,14 @@ const CommandPalette = () => {
                   <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
                   <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
                   <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
-                  <span className="mono-label ml-2 text-slate-500">ferdinard, palette</span>
-                  <kbd className="mono-label ml-auto rounded-md border border-line bg-ink px-1.5 py-0.5 text-[0.6rem] text-slate-400">
+                  <span className="mono-label ml-2 text-secondary">ferdinard, palette</span>
+                  <kbd className="mono-label ml-auto rounded-md border border-line bg-ink px-1.5 py-0.5 text-[0.6rem] text-secondary">
                     esc
                   </kbd>
                 </div>
 
                 <div className="flex items-center gap-3 border-b border-line-soft px-4">
-                  <span className="font-mono text-sm text-signal" aria-hidden="true">
+                  <span className="font-mono text-sm text-accent" aria-hidden="true">
                     $
                   </span>
                   <input
@@ -302,7 +302,7 @@ const CommandPalette = () => {
                     aria-activedescendant={filtered[activeIndex] ? `command-${filtered[activeIndex].name}` : undefined}
                     autoComplete="off"
                     spellCheck="false"
-                    className="w-full bg-transparent py-3.5 font-mono text-sm text-white outline-none placeholder:text-slate-600"
+                    className="w-full bg-transparent py-3.5 font-mono text-sm text-paper outline-none placeholder:text-secondary/50"
                   />
                 </div>
 
@@ -314,8 +314,8 @@ const CommandPalette = () => {
                   className="max-h-72 overflow-y-auto p-2"
                 >
                   {filtered.length === 0 ? (
-                    <p className="px-3 py-4 font-mono text-sm text-slate-500">
-                      command not found: <span className="text-slate-300">{query}</span>
+                    <p className="px-3 py-4 font-mono text-sm text-secondary">
+                      command not found: <span className="text-paper">{query}</span>
                     </p>
                   ) : (
                     filtered.map((command, index) => {
@@ -331,17 +331,17 @@ const CommandPalette = () => {
                           onMouseEnter={() => setActiveIndex(index)}
                           onClick={() => runCommand(command)}
                           className={`flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left transition${reduced ? '' : ' duration-150'} ${
-                            active ? 'bg-signal/10' : 'hover:bg-white/5'
+                            active ? 'bg-accent/10' : 'hover:bg-ink-3'
                           }}`}
                         >
                           <span
                             className={`font-mono text-sm ${
-                              active ? 'text-signal' : 'text-slate-300'
+                              active ? 'text-accent' : 'text-secondary'
                             }`}
                           >
                             {command.name}
                           </span>
-                          <span className="mono-label ml-auto text-[0.6rem] text-slate-500">
+                          <span className="mono-label ml-auto text-[0.6rem] text-secondary">
                             {command.hint}
                           </span>
                         </button>
@@ -352,19 +352,19 @@ const CommandPalette = () => {
 
                 {output ? (
                   <div className="border-t border-line-soft bg-ink/60 px-4 py-2.5">
-                    <p className="font-mono text-xs text-slate-400">
-                      <span className="mr-2 text-signal">&rarr;</span>
+                    <p className="font-mono text-xs text-secondary">
+                      <span className="mr-2 text-accent">&rarr;</span>
                       {output}
                     </p>
                   </div>
                 ) : null}
 
                 <div className="flex items-center gap-4 border-t border-line-soft px-4 py-2.5">
-                  <span className="mono-label flex items-center gap-1.5 text-[0.6rem] text-slate-500">
+                  <span className="mono-label flex items-center gap-1.5 text-[0.6rem] text-secondary">
                     <ArrowLongLeftIcon className="h-3 w-3 rotate-90" aria-hidden="true" /> run
                   </span>
-                  <span className="mono-label text-[0.6rem] text-slate-500">up/down navigate</span>
-                  <span className="mono-label text-[0.6rem] text-slate-500">esc close</span>
+                  <span className="mono-label text-[0.6rem] text-secondary">up/down navigate</span>
+                  <span className="mono-label text-[0.6rem] text-secondary">esc close</span>
                 </div>
               </div>            </div>,
             document.body

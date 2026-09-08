@@ -19,7 +19,7 @@ const TestimonialsSection = ({ index = '(07)' }) => {
           {testimonials.map((testimonial) => (
             <Card key={testimonial.name} as="figure" hover={false} className="flex h-full flex-col">
               <blockquote>
-                <p className="text-sm leading-7 text-slate-300">&ldquo;{testimonial.quote}&rdquo;</p>
+                <p className="text-sm leading-7 text-secondary">&ldquo;{testimonial.quote}&rdquo;</p>
               </blockquote>
               <figcaption className="mt-6 flex items-end justify-between gap-3 border-t border-line-soft pt-4">
                 <div className="flex items-center gap-3">
@@ -33,8 +33,8 @@ const TestimonialsSection = ({ index = '(07)' }) => {
                     />
                   ) : null}
                   <div>
-                    <p className="font-semibold text-white">{testimonial.name}</p>
-                    <p className="mono-label mt-1 text-slate-500">{testimonial.role}</p>
+                    <p className="font-semibold text-paper">{testimonial.name}</p>
+                    <p className="mono-label mt-1 text-secondary">{testimonial.role}</p>
                   </div>
                 </div>
                 {testimonial.href ? (
@@ -42,7 +42,7 @@ const TestimonialsSection = ({ index = '(07)' }) => {
                     href={testimonial.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mono-label text-slate-600 underline-offset-4 transition hover:text-signal hover:underline"
+                    className="mono-label text-secondary underline-offset-4 transition hover:text-accent hover:underline"
                   >
                     verify &nearr;
                   </a>

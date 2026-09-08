@@ -25,8 +25,8 @@ const useCoarsePointer = () => {
 
 const variantClasses = {
   outline:
-    'border-white/15 bg-white/[0.03] text-white hover:border-signal/60 hover:text-signal',
-  primary: 'border-signal bg-signal text-signal-ink hover:bg-signal/90'
+    'border-line bg-ink-2 text-paper hover:border-accent/60 hover:text-accent',
+  primary: 'border-accent bg-accent text-accent-ink hover:bg-accent-hover'
 };
 
 const ResumeButton = ({ variant = 'outline', className = '', children = 'View my resume' }) => {
@@ -121,20 +121,20 @@ const ResumeButton = ({ variant = 'outline', className = '', children = 'View my
                 className="relative flex h-[86vh] w-full max-w-4xl flex-col overflow-hidden rounded-2xl border border-line bg-ink-2 shadow-[0_40px_120px_rgba(0,0,0,0.65)]"
               >
                 <div className="flex flex-wrap items-center justify-between gap-3 border-b border-line-soft px-5 py-3">
-                  <p className="mono-label text-slate-400">// resume, Ferdinard Ashonibare</p>
+                  <p className="mono-label text-secondary">// resume, Ferdinard Ashonibare</p>
                   <div className="flex items-center gap-2">
                     <a
                       href={RESUME_URL}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mono-label inline-flex items-center gap-1.5 rounded-full border border-line px-3 py-1.5 text-slate-300 transition duration-150 hover:border-signal/60 hover:text-signal"
+                      className="mono-label inline-flex items-center gap-1.5 rounded-full border border-line px-3 py-1.5 text-secondary transition duration-150 hover:border-accent/60 hover:text-accent"
                     >
                       Open in new tab <ArrowTopRightOnSquareIcon className="h-3 w-3" aria-hidden="true" />
                     </a>
                     <a
                       href={RESUME_URL}
                       download={RESUME_FILENAME}
-                      className="mono-label inline-flex items-center gap-1.5 rounded-full border border-signal/50 bg-signal/10 px-3 py-1.5 text-signal transition duration-150 hover:bg-signal hover:text-signal-ink"
+                      className="mono-label inline-flex items-center gap-1.5 rounded-full border border-accent/50 bg-accent/10 px-3 py-1.5 text-accent transition duration-150 hover:bg-accent hover:text-accent-ink"
                     >
                       Download <ArrowDownTrayIcon className="h-3 w-3" aria-hidden="true" />
                     </a>
@@ -142,7 +142,7 @@ const ResumeButton = ({ variant = 'outline', className = '', children = 'View my
                       type="button"
                       onClick={() => setOpen(false)}
                       aria-label="Close resume preview"
-                      className="flex h-8 w-8 items-center justify-center rounded-full border border-line text-slate-300 transition duration-150 hover:border-signal/60 hover:text-signal"
+                      className="flex h-8 w-8 items-center justify-center rounded-full border border-line text-secondary transition duration-150 hover:border-accent/60 hover:text-accent"
                     >
                       <XMarkIcon className="h-4 w-4" aria-hidden="true" />
                     </button>
